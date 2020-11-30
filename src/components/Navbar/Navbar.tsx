@@ -4,6 +4,6 @@ import './Navbar.scss'
 
 export const Navbar = () => {
 	return <div className="navbar">
-		<Button className="btn btn-default">Button</Button>
+		<Button className="btn btn-dangerous">Button</Button>
 	</div>
 }

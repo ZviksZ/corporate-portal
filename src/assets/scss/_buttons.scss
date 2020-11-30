@@ -1,12 +1,25 @@
-@import "./variables";
-
 .btn {
     background: $colorPrimary;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14);
+    color: $colorWhite;
     &.btn-default {
         background: $colorButtonWhite;
     }
-    &.btn-default {
-        background: $colorButtonWhite;
+    &.btn-dangerous {
+        background: $colorDangerous;
+    }
+    &.btn-secondary {
+        background: $colorSecondary;
+    }
+    @include desktop {
+        &:hover {
+            background: $colorPrimaryDarken;
+            &.btn-dangerous {
+                background: $colorDangerousDarken;
+            }
+            &.btn-secondary {
+                background: $colorSecondaryDarken;
+            }
+        }
     }
 }
