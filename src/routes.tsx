@@ -1,14 +1,18 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { Navbar } from './components/Navbar/Navbar'
+import { Navbar } from './components/common/Navbar/Navbar'
+import { AuthPage } from './pages/AuthPage/AuthPage'
 
-export const useRoutes = (isAuthenticated = false, userActionsType = '') => {
+export const useRoutes = (isAuthenticated = false, userType = '') => {
 	if (isAuthenticated) {
 		return (
-			<Switch>
-				<Route path="/kanban">kanban</Route>
-				<Route path="/" render={() => <Redirect to="/" />} />
-			</Switch>
+			<>
+				<Navbar />
+				<Switch>
+					<Route path="/kanban">kanban</Route>
+					<Route path="/" render={() => <Redirect to="/" />} />
+				</Switch>
+			</>
 		)
 	}
 
@@ -16,7 +20,9 @@ export const useRoutes = (isAuthenticated = false, userActionsType = '') => {
 		<>
 			<Navbar />
 			<Switch>
-				<Route path="/">auth page</Route>
+				<Route path="/">
+					<AuthPage />
+				</Route>
 			</Switch>
 		</>
 	)

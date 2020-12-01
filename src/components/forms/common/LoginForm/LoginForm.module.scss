@@ -1,0 +1,17 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/media";
+
+.form {
+    width: 100%;
+    max-width: 470px;
+    padding: 40px 77px;
+    background: $colorWhite;
+    .formTitle {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 20px;
+        text-align: center;
+        color: #000000;
+        margin-bottom: 15px;
+    }
+}

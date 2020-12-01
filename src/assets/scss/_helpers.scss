@@ -235,11 +235,32 @@
 }
 .flex-wrap {
     flex-wrap: wrap;
-    & > div, & > p {
-        width: 100%;
-    }
+}
+.ai-center {
+    align-items: center;
+}
+.ai-start {
+    align-items: flex-start;
+}
+.ai-end {
+    align-items: flex-end;
+}
+.jc-center {
+    justify-content: center;
+}
+.jc-start {
+    justify-content: flex-start;
+}
+.jc-end {
+    justify-content: flex-end;
 }
 
 
+.full-page {
+    width: 100%;
+    min-height: 100vh;
+}
 
-
+.form-input {
+    background: $colorWhite;
+}
