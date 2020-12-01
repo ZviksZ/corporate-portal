@@ -11,7 +11,7 @@
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24);
     display: flex;
     align-items: center;
-    padding: 6px 16px 10px;
+    padding: 6px 16px 6px;
     .logo {
         display: block;
         width: 185px;
@@ -28,4 +28,43 @@
         letter-spacing: 0.15px;
         color: rgba(166, 166, 166, 0.87);
     }
+    .navbarContent {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .nav {
+        display: flex;
+        align-items: center;
+    }
+    .link {
+        font-size: 16px;
+        line-height: 28px;
+        letter-spacing: 0.444444px;
+        color: $colorText;
+        transition: 0.1s ease;
+        @include desktop {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+    .link + .link {
+        margin-left: 19px;
+    }
+    .searchInput {
+        margin-left: auto;
+        max-width: 212px;
+    }
+}
+.smallLink {
+    a, span {
+        font-size: 14px;
+        line-height: 16px;
+        text-decoration: none;
+        color: $colorText;
+    }
+}
+.smallLink + .smallLink {
+    margin-top: 10px;
 }

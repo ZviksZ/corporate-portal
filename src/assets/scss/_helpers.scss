@@ -264,3 +264,31 @@
 .form-input {
     background: $colorWhite;
 }
+.search-input {
+    background: #EFEFEF;
+    border-radius: 4px;
+    padding-left: 10px !important;
+    i {
+        display: inline-block;
+        margin-top: 1px;
+        font-size: 22px;
+        color: #B1B1B1;
+    }
+    .MuiInputBase-input {
+        padding: 7.5px 14px 7.5px 0;
+        color: $colorText;
+        border: 0;
+        font-size: 16px;
+        line-height: 28px;
+        &::placeholder {
+            color: $colorText;
+            opacity: 1;
+        }
+    }
+    fieldset {
+        border: 0;
+    }
+
+
+
+}

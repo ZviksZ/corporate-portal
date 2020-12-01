@@ -7,6 +7,9 @@
     left: 0;
     margin: 0;
 }
+.MuiFormLabel-filled {
+    color: $colorPrimary !important;
+}
 .MuiFormLabel-filled + .MuiOutlinedInput-root {
     background: #fcfcfb !important;
     fieldset {
@@ -20,3 +23,5 @@
         border-width: 2px !important;
     }
 }
+
+

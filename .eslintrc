@@ -23,7 +23,7 @@
 	"rules": {
 		"react/prop-types": ["off"],
 		"sonarjs/cognitive-complexity": ["error", 5],
-		"max-lines-per-function": ["error", 40],
+		"max-lines-per-function": ["error", 150],
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/prefer-interface": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
