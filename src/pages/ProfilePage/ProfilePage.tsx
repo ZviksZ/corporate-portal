@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useParams } from 'react-router'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { Profile } from '../../components/profile/Profile/Profile'
 
 export const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -22,6 +23,8 @@ export const ProfilePage: React.FC = () => {
 		<section className="section">
 			<div className="container">
 				<h1 className="h2 section-title">{id ? 'Профиль' : 'Мой профиль'}</h1>
+
+				<Profile />
 			</div>
 		</section>
 	)

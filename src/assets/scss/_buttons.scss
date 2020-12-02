@@ -1,28 +1,31 @@
 .btn {
-    background: $colorPrimary;
+    background: $colorPrimary !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
     color: $colorWhite !important;
     transition: background 0.2s linear;
     text-transform: initial !important;
     &.btn-default {
-        background: $colorButtonWhite;
+        background: $colorButtonWhite !important;
         color: $colorText !important;
         text-transform: initial !important;
     }
     &.btn-dangerous {
-        background: $colorDangerous;
+        background: $colorDangerous!important;
     }
     &.btn-secondary {
-        background: $colorSecondary;
+        background: $colorSecondary !important;
+    }
+    &.btn-full-width {
+        width: 100%;
     }
     @include desktop {
         &:hover {
-            background: $colorPrimaryDarken;
+            background: $colorPrimaryDarken !important;
             &.btn-dangerous {
-                background: $colorDangerousDarken;
+                background: $colorDangerousDarken !important;
             }
             &.btn-secondary {
-                background: $colorSecondaryDarken;
+                background: $colorSecondaryDarken !important;
             }
         }
     }

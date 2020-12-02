@@ -103,7 +103,7 @@
 
 
 .notificationIcon {
-    margin: 0 23px;
+    margin: 0 23px !important;
     @include mobile {
         padding: 6px !important;
         margin: 0 15px 0 0 !important;
