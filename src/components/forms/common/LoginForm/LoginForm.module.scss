@@ -14,4 +14,10 @@
         color: #000000;
         margin-bottom: 15px;
     }
+    @include mobile {
+        padding: 20px 30px;
+    }
+    @include only-mobile {
+        padding: 35px 17px;
+    }
 }

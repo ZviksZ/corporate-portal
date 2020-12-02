@@ -1,55 +1,44 @@
-import * as React        from 'react'
-import s                 from './Navbar.module.scss'
-import { NavLink }       from 'react-router-dom'
-import logo              from '../../../assets/images/logo.svg'
-import FormControl       from '@material-ui/core/FormControl'
-import OutlinedInput     from '@material-ui/core/OutlinedInput'
-import InputAdornment    from '@material-ui/core/InputAdornment'
-import { NavbarProfile } from './NavbarProfile/NavbarProfile'
+import * as React              from 'react'
+import s                       from './Navbar.module.scss'
+import { NavLink }             from 'react-router-dom'
+import { NavbarProfile }       from './NavbarProfile/NavbarProfile'
+import { NavbarNotifications } from './NavbarNotifications/NavbarNotifications'
+import { NavbarLeft }          from './NavbarLeft/NavbarLeft'
+import { NavbarMobile }        from './NavbarMobile/NavbarMobile'
+import { NavbarSearch }        from './NavbarSearch/NavbarSearch'
+import { useState }            from 'react'
+import { ClickAwayListener }   from '@material-ui/core'
+import cn                      from 'classnames'
 
 export const Navbar: React.FC = () => {
-	const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(e.target.value)
-	}
+	const [openMobile, setOpenMobile] = useState(false)
 
 	return (
-		<div className={s.navbar}>
-			<NavLink to="/" className={s.logo}>
-				<img src={logo} alt="logo" className={s.logo} />
-			</NavLink>
-			<span className={s.logoText}>Корпоративный портал</span>
+		<ClickAwayListener onClickAway={() => setOpenMobile(false)}>
+			<div className={s.navbar}>
+				<NavbarMobile openMobile={openMobile} setOpenMobile={setOpenMobile} />
 
-			<div className={s.navbarContent}>
-				<div className={s.nav}>
-					<NavLink to="/units" className={s.link}>
-						Подразделения
-					</NavLink>
-					<NavLink to="/teams" className={s.link}>
-						Команды
-					</NavLink>
-					<NavLink to="/projects" className={s.link}>
-						Проекты
-					</NavLink>
+				<div onClick={() => setOpenMobile(false)} className={cn({ [s.navbarOpen]: openMobile }, s.navbarMobileOverlay)}></div>
+				<NavbarLeft setOpenMobile={setOpenMobile} />
+
+				<div className={s.navbarContent}>
+					<div className={s.nav}>
+						<NavLink to="/units" className={s.link}>
+							Подразделения
+						</NavLink>
+						<NavLink to="/teams" className={s.link}>
+							Команды
+						</NavLink>
+						<NavLink to="/projects" className={s.link}>
+							Проекты
+						</NavLink>
+					</div>
+
+					<NavbarSearch />
+					<NavbarNotifications />
+					<NavbarProfile />
 				</div>
-
-				<FormControl fullWidth variant="outlined" className={s.searchInput}>
-					<OutlinedInput
-						id="outlined-adornment-amount"
-						/*value={values.amount}*/
-						onChange={onSearch}
-						placeholder="Поиск..."
-						className="search-input"
-						startAdornment={
-							<InputAdornment position="start">
-								<i className="icon-search"></i>
-							</InputAdornment>
-						}
-					/>
-				</FormControl>
-
-
-				<NavbarProfile />
 			</div>
-		</div>
+		</ClickAwayListener>
 	)
 }

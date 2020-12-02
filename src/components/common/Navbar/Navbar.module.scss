@@ -12,10 +12,14 @@
     display: flex;
     align-items: center;
     padding: 6px 16px 6px;
+    z-index: 99;
     .logo {
         display: block;
         width: 185px;
         height: auto;
+        @include mobile {
+            width: 106px;
+        }
     }
     .logoText {
         margin: 0 29px 0 17px;
@@ -27,6 +31,9 @@
         align-items: center;
         letter-spacing: 0.15px;
         color: rgba(166, 166, 166, 0.87);
+        @include mobile {
+            display: none;
+        }
     }
     .navbarContent {
         display: flex;
@@ -36,6 +43,9 @@
     .nav {
         display: flex;
         align-items: center;
+        @include mobile {
+            display: none;
+        }
     }
     .link {
         font-size: 16px;
@@ -55,16 +65,170 @@
     .searchInput {
         margin-left: auto;
         max-width: 212px;
+        @include mobile {
+            display: none;
+        }
+    }
+    .searchIcon {
+        margin-left: auto;
+        padding: 6px !important;
+        @include desktop {
+            display: none;
+        }
     }
 }
-.smallLink {
-    a, span {
+.profileAvatar {
+    cursor: pointer;
+}
+.profileList {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 18px;
+    .smallLink {
         font-size: 14px;
         line-height: 16px;
         text-decoration: none;
         color: $colorText;
+        cursor: pointer;
+        @include desktop {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+    .smallLink + .smallLink {
+        margin-top: 15px;
     }
 }
-.smallLink + .smallLink {
-    margin-top: 10px;
+
+
+.notificationIcon {
+    margin: 0 23px;
+    @include mobile {
+        padding: 6px !important;
+        margin: 0 15px 0 0 !important;
+    }
+}
+.notificationList {
+    width: 330px;
+    overflow: hidden;
+    .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 46px;
+        background: $colorButtonWhite;
+        border-radius: 4px 4px 0 0;
+        padding: 0 16px;
+        .text {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: -0.05px;
+            color: $colorText;
+        }
+        .count {
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: -0.0428571px;
+            color: $colorGray;
+        }
+    }
+    .bottom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 46px;
+        background: $colorButtonWhite;
+        border-radius: 0px 0px 4px 4px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        padding: 0 16px;
+        @include desktop {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        span {
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 22px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: $colorText;
+        }
+    }
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        height: 64px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        @include desktop {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        .image {
+            margin-right: 16px;
+        }
+        .type {
+            font-size: 14px;
+            line-height: 21px;
+            letter-spacing: -0.05px;
+            color: $colorText;
+        }
+        .time {
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: -0.0428571px;
+            color: $colorMuted;
+
+        }
+        .openNotification {
+            margin-left: auto;
+            color: $colorMuted;
+            font-size: 24px;
+            margin-top: 4px;
+        }
+    }
+}
+.navbarMobileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateX(-100%);
+    opacity: 0;
+    &.navbarOpen {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.navbarMobile {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 247px;
+    height: 100%;
+    background: $colorWhite;
+    z-index: 101;
+    transition: 0.3s ease;
+    transform: translateX(-100%);
+    opacity: 0;
+    &.navbarOpen {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    .head {
+        width: 100%;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+    }
 }

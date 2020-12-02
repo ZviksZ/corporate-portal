@@ -6,6 +6,8 @@
     text-transform: initial !important;
     &.btn-default {
         background: $colorButtonWhite;
+        color: $colorText !important;
+        text-transform: initial !important;
     }
     &.btn-dangerous {
         background: $colorDangerous;
