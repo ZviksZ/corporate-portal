@@ -8,7 +8,7 @@ import { ProfilePage } from './pages/ProfilePage/ProfilePage'
 export const useRoutes = (isAuthenticated = false, userType = '') => {
 	if (isAuthenticated) {
 		return (
-			<>
+			<div>
 				<Navbar />
 				<GlobalMessage />
 				<div className="header-margin"></div>
@@ -21,12 +21,12 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 					</Route>
 					<Route path="/" render={() => <Redirect to="/" />} />
 				</Switch>
-			</>
+			</div>
 		)
 	}
 
 	return (
-		<>
+		<div>
 			<Navbar />
 			<GlobalMessage />
 			<Switch>
@@ -34,6 +34,6 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 					<AuthPage />
 				</Route>
 			</Switch>
-		</>
+		</div>
 	)
 }

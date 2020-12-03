@@ -1,9 +1,10 @@
-import * as React from 'react'
-import s from '../../Profile.module.scss'
-import atlassian from '../../../../../assets/images/icons/atlassian.svg'
-import printer from '../../../../../assets/images/icons/printer.svg'
-import Button from '@material-ui/core/Button'
-import cn from 'classnames'
+import * as React              from 'react'
+import s                       from '../../Profile.module.scss'
+import atlassian               from '../../../../../assets/images/icons/atlassian.svg'
+import printer                 from '../../../../../assets/images/icons/printer.svg'
+import Button                  from '@material-ui/core/Button'
+import cn                      from 'classnames'
+import { copyTextToClipboard } from '../../../../../services/helpers/utils'
 
 export const ProfileSidebarBottom: React.FC = () => {
 	return (

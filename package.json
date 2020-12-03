@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@date-io/date-fns": "^2.10.6",
     "@hookform/resolvers": "^1.0.1",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.50",
+    "@material-ui/pickers": "^3.2.10",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.9",
@@ -16,6 +18,7 @@
     "@types/react-dom": "^16.9.0",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
+    "date-fns": "^2.16.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",
@@ -34,8 +37,8 @@
     "reselect": "^4.0.0",
     "rete-cli": "^0.6.0",
     "typescript": "^4.0.3",
-    "yup": "^0.29.3",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",

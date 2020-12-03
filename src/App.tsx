@@ -13,5 +13,9 @@ export const App: React.FC = () => {
 		)
 	}
 
-	return <>{routes}</>
+	return (
+		<>
+			<div className="app-wrapper">{routes}</div>
+		</>
+	)
 }

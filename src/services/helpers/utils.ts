@@ -50,3 +50,22 @@ export function addObjectToArray(obj) {
 export function numberWithSpace(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
+
+export function copyTextToClipboard(e) {
+	let text = e.currentTarget.dataset['copy']
+	let textArea = document.createElement('textarea')
+	textArea.value = text
+	document.body.appendChild(textArea)
+	textArea.select()
+	try {
+		let successful = document.execCommand('copy')
+		if (successful) {
+			// SuccessCode
+		}
+		let msg = successful ? 'successful' : 'unsuccessful'
+		console.log('Copying text command was ' + msg)
+	} catch (err) {
+		console.log('Oops, unable to copy')
+	}
+	textArea.remove()
+}

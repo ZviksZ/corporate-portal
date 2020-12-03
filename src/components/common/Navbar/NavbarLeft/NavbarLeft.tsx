@@ -12,7 +12,7 @@ type Props = {
 export const NavbarLeft: React.FC<Props> = ({ setOpenMobile }) => {
 	return (
 		<>
-			<IconButton color="secondary" aria-label="add an alarm" onClick={() => setOpenMobile(true)}>
+			<IconButton className="hide-desktop" color="secondary" aria-label="add an alarm" onClick={() => setOpenMobile(true)}>
 				<MenuOutlinedIcon />
 			</IconButton>
 			<NavLink to="/" className={s.logo}>

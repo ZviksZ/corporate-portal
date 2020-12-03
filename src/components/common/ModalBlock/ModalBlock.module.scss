@@ -1,0 +1,17 @@
+.dialog {
+    height: 100%;
+}
+.dialogHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .dialogHeaderClose {
+        color: #000;
+    }
+    .dialogHeaderCloseBtn {
+        padding: 0;
+    }
+}
+.dialogContent {
+    padding: 10px 24px 24px !important;
+}

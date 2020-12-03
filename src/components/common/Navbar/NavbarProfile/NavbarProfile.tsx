@@ -1,11 +1,8 @@
-import * as React           from 'react'
-import s                    from '../Navbar.module.scss'
-import { NavLink }          from 'react-router-dom'
-import { Avatar, Popover }  from '@material-ui/core'
-import Menu                 from '@material-ui/core/Menu'
-import MenuItem             from '@material-ui/core/MenuItem'
-import { NotificationItem } from '../NavbarNotifications/NotificationItem/NotificationItem'
-import cn                   from 'classnames'
+import * as React from 'react'
+import s from '../Navbar.module.scss'
+import { NavLink } from 'react-router-dom'
+import { Avatar, Popover } from '@material-ui/core'
+import cn from 'classnames'
 
 export const NavbarProfile: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null)
@@ -28,8 +25,9 @@ export const NavbarProfile: React.FC = () => {
 
 	return (
 		<>
-			<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={'../img/1.jpg'} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>OP</Avatar>
-
+			<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={'../img/1.jpg'} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+				OP
+			</Avatar>
 
 			<Popover
 				id={id}
@@ -46,8 +44,12 @@ export const NavbarProfile: React.FC = () => {
 				}}
 			>
 				<div className={s.profileList}>
-					<NavLink className={s.smallLink} to={`/profile/`}>Мой профиль</NavLink>
-					<span className={s.smallLink}>Выйти</span>
+					<NavLink className={s.smallLink} to={`/profile/`} onClick={handleClose}>
+						Мой профиль
+					</NavLink>
+					<span className={s.smallLink} onClick={handleClose}>
+						Выйти
+					</span>
 				</div>
 			</Popover>
 		</>

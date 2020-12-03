@@ -1,5 +1,6 @@
 @import "../../../assets/scss/variables";
 @import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
 
 .navbar {
     position: fixed;
@@ -53,11 +54,7 @@
         letter-spacing: 0.444444px;
         color: $colorText;
         transition: 0.1s ease;
-        @include desktop {
-            &:hover {
-                opacity: 0.7;
-            }
-        }
+        @extend %link-shared;
     }
     .link + .link {
         margin-left: 19px;
@@ -90,11 +87,7 @@
         text-decoration: none;
         color: $colorText;
         cursor: pointer;
-        @include desktop {
-            &:hover {
-                opacity: 0.7;
-            }
-        }
+        @extend %link-shared;
     }
     .smallLink + .smallLink {
         margin-top: 15px;
@@ -144,11 +137,7 @@
         cursor: pointer;
         transition: 0.2s ease;
         padding: 0 16px;
-        @include desktop {
-            &:hover {
-                opacity: 0.7;
-            }
-        }
+        @extend %link-shared;
         span {
             font-weight: 500;
             font-size: 13px;
@@ -165,11 +154,7 @@
         height: 64px;
         cursor: pointer;
         transition: 0.2s ease;
-        @include desktop {
-            &:hover {
-                opacity: 0.7;
-            }
-        }
+        @extend %link-shared;
         .image {
             margin-right: 16px;
         }

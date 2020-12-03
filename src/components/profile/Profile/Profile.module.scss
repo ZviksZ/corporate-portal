@@ -1,9 +1,11 @@
 @import "../../../assets/scss/variables";
 @import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
 
 .profile {
     display: flex;
     padding-bottom: 50px;
+    overflow: hidden;
     .sidebar {
         width: 341px;
         min-width: 341px;
@@ -46,12 +48,7 @@
                 margin-top: 24px;
                 a {
                     display: inline-block;
-                    transition: 0.1s ease;
-                    @include desktop {
-                        &:hover {
-                            opacity: 0.7;
-                        }
-                    }
+                    @extend %link-shared;
                     img {
                         display: inline-block;
                         width: 24px;
@@ -92,7 +89,11 @@
             }
         }
     }
-
+    .profileTitle {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+    }
     .profileSubtitle {
         font-size: 12px;
         line-height: 14px;
@@ -106,5 +107,173 @@
         &.textGreen {
             color: #00BD1E;
         }
+        &.profileTextWith {
+            display: flex;
+            align-items: center;
+        }
+        .profileTextContent {
+            position: relative;
+            display: inline-block;
+            font-size: 16px;
+            line-height: 19px;
+            text-decoration: none;
+            color: $colorText;
+            margin-right: 20px;
+            &.profileTextPhone:not(:last-child) {
+                margin-right: 10px;
+                &:after {
+                    position: absolute;
+                    right: -4px;
+                    top: 0;
+                    display: block;
+                    content: ', ';
+                }
+            }
+            &.profileTextPhone:last-of-type {
+                margin-right: 20px;
+                &:after {
+                    display: none;
+                }
+            }
+        }
+        a.profileTextContent {
+            @extend %link-shared;
+        }
+        i {
+            color: $colorPrimary;
+            font-size: 22px;
+            cursor: pointer;
+            @extend %link-shared;
+        }
+    }
+    .sshBlock {
+        width: 100%;
+        max-width: 708px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid #29B6F6;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 18px 14px;
+        .text {
+            white-space: nowrap;
+            margin-right: 10px;
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+    .sshBlock + .sshBlock {
+        margin-top: 11px;
+    }
+    .profileInfo {
+        width: 100%;
+        .profileMain {
+            padding: 29px 44px 39px;
+            background: $colorWhite;
+        }
+    }
+
+}
+
+
+
+.teamItem {
+    display: flex;
+    align-items: center;
+    background: $colorWhite;
+    padding: 17px 28px;
+    height: 92px;
+    .info {
+        .name {
+            font-size: 16px;
+            line-height: 19px;
+        }
+        .role {
+            font-size: 14px;
+            line-height: 16px;
+            color: $colorGray2;
+            margin-top: 12px;
+        }
+    }
+    .team {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        .position {
+            font-size: 10px;
+            line-height: 12px;
+            color: $colorGray2;
+            margin-bottom: 7px;
+        }
+        .teamInfo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: $colorText;
+            @extend %link-shared;
+            .name {
+                display: inline-block;
+                margin-left: 6px;
+                max-width: 80px;
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
+        .item + .item {
+            margin-left: 18px;
+        }
+    }
+}
+.teamItem + .teamItem {
+    margin-top: 8px;
+}
+
+.teamAdditional {
+    padding: 24px 45px;
+    background: $colorWhite;
+    .item {
+        .position {
+            font-size: 12px;
+            line-height: 14px;
+            color: $colorGray2;
+        }
+        .membersList {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 12px -11px 0;
+            .membersListItem {
+                width: calc(33.333333333333% - 22px);
+                margin: 0 11px 22px;
+                display: flex;
+                align-items: center;
+                color: $colorText;
+                @extend %link-shared;
+                .name {
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 16px;
+                    margin-left: 9px;
+                }
+            }
+        }
+    }
+}
+
+.contractors {
+    padding: 20px 45px;
+    background: $colorWhite;
+    .item {
+        font-size: 14px;
+        line-height: 16px;
+        margin-bottom: 10px;
+    }
+    .showMore {
+        font-size: 14px;
+        line-height: 16px;
+        text-decoration: none;
+        color: $colorPrimary;
     }
 }
