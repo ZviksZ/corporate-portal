@@ -12,27 +12,71 @@ import confluence from '../../../../../assets/images/icons/confluence.svg'
 import atlassian from '../../../../../assets/images/icons/atlassian.svg'
 import google from '../../../../../assets/images/icons/google.svg'
 import service from '../../../../../assets/images/icons/service.svg'
+import { useSelector } from 'react-redux'
+import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 
 export const ProfileSidebarTop: React.FC = () => {
+	const { profileData } = useSelector(selectProfile)
+
+	if (!profileData) {
+		return <></>
+	}
+
 	return (
 		<div className={s.sidebarTop}>
-			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={'../img/1.jpg'}>
-				OP
+			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={profileData.image}>
+				{profileData.name[0]}
+				{profileData.surname[0]}
 			</Avatar>
 
-			<div className={s.name}>Колесников Михаил Андреевич</div>
-			<div className={s.position}>Руководитель Департамента ИТ</div>
-			<div className={s.department}>ООО ИА Банки.ру</div>
+			<div className={s.name}>
+				{profileData.surname} {profileData.name} {profileData.patronymic}
+			</div>
+			<div className={s.position}>{profileData.position}</div>
+			<div className={s.department}>{profileData.department}</div>
 			<div className={s.links}>
-				<a href="#" rel="noopener" target="_blank">
-					<img src={jira} alt="" />
-				</a>
-				<a href="#" rel="noopener" target="_blank">
-					<img src={google} alt="" />
-				</a>
-				<a href="#" rel="noopener" target="_blank">
-					<img src={atlassian} alt="" />
-				</a>
+				{profileData.socials.map((item) => {
+					let src
+					switch (item.type) {
+						case 'yandex':
+							src = yandex
+							break
+						case 'atlassian':
+							src = atlassian
+							break
+						case 'slack':
+							src = slack
+							break
+						case 'vk':
+							src = vk
+							break
+						case 'wiki':
+							src = wiki
+							break
+						case 'facebook':
+							src = facebook
+							break
+						case 'jira':
+							src = jira
+							break
+						case 'confluence':
+							src = confluence
+							break
+						case 'google':
+							src = jira
+							break
+						case 'service':
+							src = confluence
+							break
+						default:
+							break
+					}
+					return (
+						<a key={item.type} href={item.link} rel="noopener" target="_blank">
+							<img src={src} alt="" />
+						</a>
+					)
+				})}
 			</div>
 		</div>
 	)

@@ -4,37 +4,52 @@ import atlassian from '../../../../../assets/images/icons/atlassian.svg'
 import printer from '../../../../../assets/images/icons/printer.svg'
 import Button from '@material-ui/core/Button'
 import cn from 'classnames'
+import { useSelector } from 'react-redux'
+import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
 }
 
 export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm }) => {
+	const { profileData } = useSelector(selectProfile)
+
+	if (!profileData) {
+		return <></>
+	}
+
+	const time = profileData.worktime
+
 	return (
 		<div className={s.sidebarBottom}>
 			<div className={s.profileSubtitle}>Занятость на текущий день</div>
 			<ul className={s.employmentList}>
-				<li>с 09:00 до 10:30</li>
-				<li>с 11:00 до 12:00</li>
-				<li>с 14:00 до 15:00</li>
-				<li>с 16:00 до 18:00</li>
+				{time.employment.map((item, key) => (
+					<li key={key + item.from + item.to}>
+						с {item.from} до {item.to}
+					</li>
+				))}
 			</ul>
-			<a href="#" className="link-with-icon margin-bottom">
+			<a href={time.openTasksLink} className="link-with-icon margin-bottom">
 				<img src={atlassian} alt="" width={'18px'} />
 				<span>Открытые задачи</span>
 			</a>
 			<div className={s.profileSubtitle}>Отпуск</div>
-			<p className={cn(s.profileText, s.textGreen)}>c 12 февраля 2021 по 24 февраля 2021</p>
-			<a href="#" className="link-with-icon margin-bottom" target="_blank" download>
+			<p className={cn(s.profileText, s.textGreen)}>
+				c {time.vacation.from} по {time.vacation.to}
+			</p>
+			<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
 				<img src={printer} alt="" width={'20px'} />
 				<span>Заявление на отпуск.pdf</span>
 			</a>
 			<div className={s.profileSubtitle}>Накоплено дней отпуска</div>
-			<p className={s.profileText}>12</p>
+			<p className={s.profileText}>{time.vacationDays}</p>
 			<div className={s.profileSubtitle}>Корпоративных дней</div>
-			<p className={s.profileText}>5</p>
+			<p className={s.profileText}>{time.corporateDays}</p>
 
-			<Button className="btn btn-full-width" onClick={() => setOpenForm(true)}>+ Заявление на отпуск/больничный</Button>
+			<Button className="btn btn-full-width" onClick={() => setOpenForm(true)}>
+				+ Заявление на отпуск/больничный
+			</Button>
 		</div>
 	)
 }

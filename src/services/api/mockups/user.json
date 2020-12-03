@@ -5,6 +5,8 @@
 		"name": "Иван",
 		"surname": "Иванов",
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImNvbmZpcm1lZCI6dHJ1ZSwiY2F0ZWdvcnkiOiJhZG1pbiIsInB1cmNoYXNlcyI6W10sIl9pZCI6IjVmYmEyNmU1OTE4YWFmM2VmNDA4NWRjMyIsImVtYWlsIjoiYWRtaW5AcmVhY3QucnUiLCJ1c2VybmFtZSI6ImFkbWluIiwiZnVsbG5hbWUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjAtMTEtMjJUMDg6NTI6NTMuODAxWiIsInVwZGF0ZWRBdCI6IjIwMjAtMTEtMjJUMDg6NTI6NTMuODAxWiIsIl9fdiI6MH0sImlhdCI6MTYwNjA1MTczMCwiZXhwIjoxNjA4NjQzNzMwfQ.0gsbHLS4MNXxxC2lpI6Z28Xpc2b2K3ChppStGi9efZk",
-		"userType": "1"
+		"userType": "1",
+		"image": "444",
+		"email": "444"
 	}
 }

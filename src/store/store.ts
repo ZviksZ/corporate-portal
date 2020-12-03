@@ -2,15 +2,16 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { rootReducer } from './rootReducer'
 import rootSaga from './saga'
+import { GlobalState } from './ducks/global/contracts/state'
+import { ProfileState } from './ducks/profile/contracts/state'
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
 const sagaMiddleware = createSagaMiddleware()
 
 export interface RootState {
-	/*products: ProductsState
-	cart: CartState
-	auth: AuthState*/
+	global: GlobalState
+	profile: ProfileState
 }
 
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)))

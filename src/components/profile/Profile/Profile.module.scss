@@ -176,6 +176,14 @@
         }
     }
 
+    @include mobile {
+        flex-wrap: wrap;
+        .sidebar {
+            width: 100%;
+            margin-bottom: 26px;
+        }
+    }
+
 }
 
 
@@ -186,6 +194,8 @@
     background: $colorWhite;
     padding: 17px 28px;
     height: 92px;
+    color: $colorText;
+    text-decoration: none;
     .info {
         .name {
             font-size: 16px;

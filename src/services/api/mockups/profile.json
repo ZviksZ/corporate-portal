@@ -8,6 +8,7 @@
     "userType": "1",
     "position": "Руководитель Департамента ИТ",
     "department": "ООО ИА Банки.ру",
+    "image": "https://atlassian.com/",
     "socials": [
       {
         "type": "yandex",
@@ -58,7 +59,7 @@
           "image": "../img/1.jpg"
         },
         "members": {
-          "size": "25",
+          "size": 25,
           "list": [
             {
               "name": "Колесников Михаил",

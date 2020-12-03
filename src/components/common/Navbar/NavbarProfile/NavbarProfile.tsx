@@ -3,9 +3,15 @@ import s from '../Navbar.module.scss'
 import { NavLink } from 'react-router-dom'
 import { Avatar, Popover } from '@material-ui/core'
 import cn from 'classnames'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../../../store/ducks/global/actionCreators'
+import { selectGlobal } from '../../../../store/ducks/global/selectors'
 
 export const NavbarProfile: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null)
+	const { user } = useSelector(selectGlobal)
+
+	const dispatch = useDispatch()
 
 	const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
 		setAnchorEl(event.currentTarget)
@@ -15,43 +21,48 @@ export const NavbarProfile: React.FC = () => {
 		setAnchorEl(null)
 	}
 
-	const id = !!anchorEl ? 'simple-popover' : undefined
-
 	const logoutHandler = (e: React.MouseEvent<HTMLLIElement>) => {
 		e.preventDefault()
 
-		//logout()
+		setAnchorEl(null)
+		dispatch(logout())
 	}
+
+	const id = !!anchorEl ? 'simple-popover' : undefined
 
 	return (
 		<>
-			<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={'../img/1.jpg'} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-				OP
-			</Avatar>
+			{user && (
+				<>
+					<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={user.image} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+						{user.name[0]}{user.surname[0]}
+					</Avatar>
 
-			<Popover
-				id={id}
-				open={!!anchorEl}
-				anchorEl={anchorEl}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'center',
-				}}
-				transformOrigin={{
-					vertical: 'top',
-					horizontal: 'center',
-				}}
-			>
-				<div className={s.profileList}>
-					<NavLink className={s.smallLink} to={`/profile/`} onClick={handleClose}>
-						Мой профиль
-					</NavLink>
-					<span className={s.smallLink} onClick={handleClose}>
-						Выйти
-					</span>
-				</div>
-			</Popover>
+					<Popover
+						id={id}
+						open={!!anchorEl}
+						anchorEl={anchorEl}
+						onClose={handleClose}
+						anchorOrigin={{
+							vertical: 'bottom',
+							horizontal: 'center',
+						}}
+						transformOrigin={{
+							vertical: 'top',
+							horizontal: 'center',
+						}}
+					>
+						<div className={s.profileList}>
+							<NavLink className={s.smallLink} to={`/profile/`} onClick={handleClose}>
+								Мой профиль
+							</NavLink>
+							<span className={s.smallLink} onClick={logoutHandler}>
+								Выйти
+							</span>
+						</div>
+					</Popover>
+				</>
+			)}
 		</>
 	)
 }

@@ -1,43 +1,13 @@
-export enum AppActionsType {
-	LOGIN = 'app/LOGIN',
-}
+import { ProfileData } from './contracts/state'
+import { GetProfileActionInterface, ProfileActionsType, SetProfileActionInterface } from './contracts/actionTypes'
 
-/*
-import {
-	AuthActionsType,
-	GetAuthMeActionInterface,
-	LoginActionInterface,
-	LoginData,
-	LogoutActionInterface,
-	RegisterActionInterface,
-	RegisterData,
-	SetGlobalMessageActionInterface,
-	SetUserActionInterface,
-} from './contracts/actionTypes'
-import { GlobalMessage, User } from './contracts/state'
-
-export const login = (payload: LoginData): LoginActionInterface => ({
-	type: AuthActionsType.LOGIN,
-	payload,
+export const getProfile = (id: string): GetProfileActionInterface => ({
+	type: ProfileActionsType.GET_PROFILE,
+	id,
 })
-export const registerUser = (payload: RegisterData): RegisterActionInterface => ({
-	type: AuthActionsType.REGISTER,
-	payload,
-})
-export const setUser = (payload: User | null): SetUserActionInterface => ({
-	type: AuthActionsType.SET_USER,
-	payload,
-})
-export const logout = (): LogoutActionInterface => ({
-	type: AuthActionsType.LOGOUT,
-})
-export const getMe = (): GetAuthMeActionInterface => ({
-	type: AuthActionsType.GET_ME,
-})
-export const setGlobalMessage = (payload: GlobalMessage | null): SetGlobalMessageActionInterface => ({
-	type: AuthActionsType.SET_GLOBAL_MESSAGE,
+export const setProfile = (payload: ProfileData | null): SetProfileActionInterface => ({
+	type: ProfileActionsType.SET_PROFILE,
 	payload,
 })
 
-export type AuthActions = SetGlobalMessageActionInterface | LogoutActionInterface | GetAuthMeActionInterface | LoginActionInterface | RegisterActionInterface | SetUserActionInterface
-*/
+export type GlobalActions = GetProfileActionInterface | SetProfileActionInterface

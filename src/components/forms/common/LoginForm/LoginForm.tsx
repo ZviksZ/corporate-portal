@@ -1,28 +1,27 @@
-import * as React      from 'react'
-import { useForm }     from 'react-hook-form'
+import * as React from 'react'
+import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { TextField }   from '@material-ui/core'
-import Button          from '@material-ui/core/Button'
+import { TextField } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
 import { yupResolver } from '@hookform/resolvers/yup'
-import Grid            from '@material-ui/core/Grid'
+import Grid from '@material-ui/core/Grid'
 import { loginSchema } from '../../../../services/helpers/validations'
-import s               from './LoginForm.module.scss'
-import Typography      from '@material-ui/core/Typography'
+import s from './LoginForm.module.scss'
+import { login } from '../../../../store/ducks/global/actionCreators'
 interface IFormInputs {
 	login: string
 	password: string
 }
 
 export const LoginForm: React.FC = () => {
-	//const dispatch = useDispatch()
+	const dispatch = useDispatch()
 
 	const { register, handleSubmit, errors } = useForm<IFormInputs>({
 		resolver: yupResolver(loginSchema),
-		/*validationSchema: loginSchema,*/
 	})
 
 	const onSubmit = (data: IFormInputs) => {
-		//dispatch(login(data))
+		dispatch(login(data))
 	}
 
 	return (

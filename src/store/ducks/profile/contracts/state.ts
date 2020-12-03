@@ -1,29 +1,63 @@
-export interface AppState {
-	user: null
+interface Socials {
+	type: string
+	link: string
+}
+interface FromTo {
+	from: string
+	to: string
+}
+interface Member {
+	name: string
+	id: string
+	image: string
+}
+interface Team {
+	id: string
+	name: string
+	role: string
+	lead: Member
+	members: {
+		size: number
+		list: Member[]
+	}
 }
 
-/*
-export interface User {
-	_id: string
-	email: string
-	fullname: string
-	username: string
-	purchases: []
-	location?: string
-	confirmed?: boolean
-	category?: string
-	token?: string
-	createdAt?: string
-	updatedAt?: string
+export interface ProfileData {
+	id: string
+	name: string
+	surname: string
+	patronymic: string
+	userType: string
+	position: string
+	department: string
+	socials: Socials[]
+	image: string
+	worktime: {
+		employment: FromTo[]
+		openTasksLink: string
+		vacationApplicationLink: string
+		vacation: FromTo
+		vacationDays: string
+		corporateDays: string
+	}
+	contacts: {
+		birthday: string
+		showBirthYear: string
+		email: string
+		mobilePhone: string
+		inPhone: string
+		employmentDate: string
+		tshirtSize: string
+		sshKeys: string[]
+	}
+	teams: Team[]
+	additional: {
+		lead: Member
+		subordinates: Member[]
+	}
+	contractors: string[]
 }
 
-export interface GlobalMessage {
-	text: string
-	type: 'success' | 'info' | 'warning' | 'error' | undefined
+export interface ProfileState {
+	profileData: ProfileData | null
 }
-
-export interface AuthState {
-	user: User | null
-	globalMessage: GlobalMessage | null
-}
-*/

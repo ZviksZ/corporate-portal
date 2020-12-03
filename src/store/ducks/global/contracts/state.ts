@@ -1,29 +1,19 @@
-export interface AppState {
-	user: null
-}
-
-/*
 export interface User {
-	_id: string
+	id: string
+	name: string
+	surname: string
+	token: string
+	userType: string
 	email: string
-	fullname: string
-	username: string
-	purchases: []
-	location?: string
-	confirmed?: boolean
-	category?: string
-	token?: string
-	createdAt?: string
-	updatedAt?: string
+	image: string
 }
-
 export interface GlobalMessage {
 	text: string
 	type: 'success' | 'info' | 'warning' | 'error' | undefined
 }
 
-export interface AuthState {
+export interface GlobalState {
 	user: User | null
 	globalMessage: GlobalMessage | null
+	isLoading: boolean
 }
-*/

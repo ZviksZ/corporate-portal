@@ -1,5 +1,10 @@
 import axios from 'axios'
 import { Cookie } from '../helpers/cookie.js'
+import { User } from '../../store/ducks/global/contracts/state'
+import user from './mockups/user.json'
+import profile from './mockups/profile.json'
+import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
+import { ProfileData } from '../../store/ducks/profile/contracts/state'
 
 interface Response<T> {
 	status: string
@@ -31,8 +36,18 @@ const instance = axios.create({
 })*/
 
 export const AuthApi = {
-	async login(formData: any): Promise<any> {
-		const { data } = await instance.post<Response<any>>('/auth/login', formData)
-		return data.data
+	async login(formData: LoginData): Promise<User> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return user.user
+	},
+}
+
+export const ProfileApi = {
+	//async getProfile(id: string): Promise<ProfileData> {
+	async getProfile(formData: any): Promise<ProfileData> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return profile.profile
 	},
 }

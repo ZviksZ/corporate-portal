@@ -1,60 +1,19 @@
-export enum AppActionsType {
-	LOGIN = 'app/LOGIN',
-}
-
-/*
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { AuthActionsType, LoginActionInterface, RegisterActionInterface } from './contracts/actionTypes'
-import { AuthApi } from '../../../services/api/authApi'
-import { setGlobalMessage, setUser } from './actionCreators'
-import { Cookie } from '../../../services/helpers/cookie'
+import { GetProfileActionInterface, ProfileActionsType } from './contracts/actionTypes'
+import { ProfileApi } from '../../../services/api/api'
+import { setProfile } from './actionCreators'
+import { setGlobalMessage, setLoading } from '../global/actionCreators'
 
-export function* loginRequest({ payload }: LoginActionInterface) {
+export function* getProfileRequest({ id }: GetProfileActionInterface) {
 	try {
-		const user = yield call(AuthApi.login, payload)
+		const profile = yield call(ProfileApi.getProfile, id)
 
-		const jsonResponse = JSON.stringify(user.token)
-		Cookie.setCookie('token', jsonResponse, { expires: 2147483647 })
-
-		yield put(setUser(user))
-		yield put(setGlobalMessage({ text: 'Login is successful', type: 'success' }))
+		yield put(setProfile(profile))
 	} catch (error) {
-		yield put(setGlobalMessage({ text: 'Login error. Try again', type: 'error' }))
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
-export function* registerRequest({ payload }: RegisterActionInterface) {
-	try {
-		yield call(AuthApi.register, payload)
 
-		yield put(setGlobalMessage({ text: 'Register is successful. Login now.', type: 'success' }))
-	} catch (error) {
-		yield put(setGlobalMessage({ text: 'Register error. Try again', type: 'error' }))
-	}
+export function* profileSaga() {
+	yield takeLatest(ProfileActionsType.GET_PROFILE, getProfileRequest)
 }
-export function* getMeRequest() {
-	try {
-		const cookies = Cookie.getCookie('token')
-		const token = JSON.parse(cookies + '')
-
-		if (token) {
-			const user = yield call(AuthApi.getMe, token)
-
-			yield put(setUser(user))
-		}
-	} catch (error) {}
-}
-export function* logoutRequest() {
-	try {
-		Cookie.deleteCookie('token')
-
-		yield put(setUser(null))
-	} catch (error) {}
-}
-
-export function* authSaga() {
-	yield takeLatest(AuthActionsType.LOGIN, loginRequest)
-	yield takeLatest(AuthActionsType.REGISTER, registerRequest)
-	yield takeLatest(AuthActionsType.GET_ME, getMeRequest)
-	yield takeLatest(AuthActionsType.LOGOUT, logoutRequest)
-}
-*/

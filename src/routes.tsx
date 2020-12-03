@@ -19,7 +19,25 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 					<Route path="/profile/:id" exact>
 						<ProfilePage />
 					</Route>
-					<Route path="/" render={() => <Redirect to="/" />} />
+					<Route path="/teams" exact>
+						Teams
+					</Route>
+					<Route path="/teams/:id" exact>
+						Teams detail
+					</Route>
+					<Route path="/units" exact>
+						units
+					</Route>
+					<Route path="/units/:id" exact>
+						units detail
+					</Route>
+					<Route path="/projects" exact>
+						projects
+					</Route>
+					<Route path="/projects/:id" exact>
+						projects detail
+					</Route>
+					<Route path="/" render={() => <Redirect to="/profile" />} />
 				</Switch>
 			</div>
 		)
@@ -30,9 +48,10 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 			<Navbar />
 			<GlobalMessage />
 			<Switch>
-				<Route path="/">
+				<Route path="/" exact>
 					<AuthPage />
 				</Route>
+				<Route path="/" render={() => <Redirect to="/" />} />
 			</Switch>
 		</div>
 	)

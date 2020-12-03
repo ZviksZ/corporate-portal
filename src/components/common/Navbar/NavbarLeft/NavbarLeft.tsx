@@ -7,14 +7,17 @@ import { IconButton } from '@material-ui/core'
 
 type Props = {
 	setOpenMobile: (param: boolean) => void
+	isAuth: boolean
 }
 
-export const NavbarLeft: React.FC<Props> = ({ setOpenMobile }) => {
+export const NavbarLeft: React.FC<Props> = ({ setOpenMobile, isAuth }) => {
 	return (
 		<>
-			<IconButton className="hide-desktop" color="secondary" aria-label="add an alarm" onClick={() => setOpenMobile(true)}>
-				<MenuOutlinedIcon />
-			</IconButton>
+			{isAuth && (
+				<IconButton className="hide-desktop" color="secondary" aria-label="add an alarm" onClick={() => setOpenMobile(true)}>
+					<MenuOutlinedIcon />
+				</IconButton>
+			)}
 			<NavLink to="/" className={s.logo}>
 				<img src={logo} alt="logo" className={s.logo} />
 			</NavLink>

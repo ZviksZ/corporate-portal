@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom'
 
 export const ProfileInfoTeamsItem: React.FC = () => {
 	return (
-		<div className={s.teamItem}>
+		<NavLink to={`/teams/${'id'}`} className={s.teamItem}>
 			<div className={s.info}>
 				<div className={s.name}>Команда А</div>
 				<div className={s.role}>Роль: бэкенд-разработчик</div>
@@ -55,6 +55,6 @@ export const ProfileInfoTeamsItem: React.FC = () => {
 					</NavLink>
 				</div>
 			</div>
-		</div>
+		</NavLink>
 	)
 }
