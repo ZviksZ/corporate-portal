@@ -3,8 +3,8 @@ import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Profile } from '../../components/profile/Profile/Profile'
-import { LoginForm } from '../../components/forms/common/LoginForm/LoginForm'
 import { ModalBlock } from '../../components/common/ModalBlock/ModalBlock'
+import { ApplicationForm } from '../../components/forms/profile/ApplicationForm/ApplicationForm'
 
 export const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -30,7 +30,7 @@ export const ProfilePage: React.FC = () => {
 				<Profile />
 
 				<ModalBlock visible={login} onClose={() => setLogin(false)} title="Login">
-					<LoginForm />
+					<ApplicationForm />
 				</ModalBlock>
 			</div>
 		</section>

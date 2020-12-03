@@ -27,10 +27,10 @@ export const ApplicationForm: React.FC = () => {
 	const [selectedDateFrom, setSelectedDateFrom] = useState(new Date())
 	const [selectedDateTo, setSelectedDateTo] = useState(new Date())
 
-	const handleDateFromChange = (date) => {
+	const handleDateFromChange = (date: any) => {
 		setSelectedDateFrom(date)
 	}
-	const handleDateToChange = (date) => {
+	const handleDateToChange = (date: any) => {
 		setSelectedDateTo(date)
 	}
 
@@ -62,7 +62,7 @@ export const ApplicationForm: React.FC = () => {
 						<DatePicker
 							autoOk
 							disableToolbar
-							variant="outlined"
+							variant="dialog"
 							inputVariant="outlined"
 							format="dd.MM.yyyy"
 							margin="normal"
@@ -85,7 +85,7 @@ export const ApplicationForm: React.FC = () => {
 						<DatePicker
 							autoOk
 							disableToolbar
-							variant="outlined"
+							variant="dialog"
 							inputVariant="outlined"
 							format="dd.MM.yyyy"
 							margin="normal"
