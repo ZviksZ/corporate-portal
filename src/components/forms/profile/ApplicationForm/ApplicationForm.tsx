@@ -43,17 +43,19 @@ export const ApplicationForm: React.FC = () => {
 		//dispatch(login(data))
 	}
 
+	//TODO просчитывать максимальную минимальную даты
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={s.form}>
 			<Grid container spacing={2} justify="center">
-				<h1 className={s.formTitle}>Авторизация</h1>
 				<Grid item xs={12}>
-					<FormControl variant="outlined">
+					<FormControl variant="outlined" fullWidth>
 						<InputLabel id="demo-simple-select-outlined-label">Тип отсутствия</InputLabel>
 						<Select labelId="demo-simple-select-outlined-label" id="demo-simple-select-outlined" name="type" inputRef={register} label="Тип отсутствия">
-							<MenuItem value={'1'}>Ten</MenuItem>
-							<MenuItem value={'2'}>Twenty</MenuItem>
-							<MenuItem value={'3'}>Thirty</MenuItem>
+							<MenuItem value={1}>оплачиваемый отпуск</MenuItem>
+							<MenuItem value={2}>отпуск за свой счет</MenuItem>
+							<MenuItem value={3}>больничный</MenuItem>
+							<MenuItem value={4}>корпоративный день</MenuItem>
 						</Select>
 					</FormControl>
 				</Grid>
@@ -61,6 +63,7 @@ export const ApplicationForm: React.FC = () => {
 					<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
 						<DatePicker
 							autoOk
+							fullWidth
 							disableToolbar
 							variant="dialog"
 							inputVariant="outlined"
@@ -84,6 +87,7 @@ export const ApplicationForm: React.FC = () => {
 					<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
 						<DatePicker
 							autoOk
+							fullWidth
 							disableToolbar
 							variant="dialog"
 							inputVariant="outlined"
@@ -97,6 +101,7 @@ export const ApplicationForm: React.FC = () => {
 							value={selectedDateTo}
 							onChange={handleDateToChange}
 							error={!!errors.dateTo}
+							maxDate={'03/18/2019'}
 							helperText={errors.dateTo ? errors.dateTo.message : ''}
 							name="date"
 							inputRef={register}

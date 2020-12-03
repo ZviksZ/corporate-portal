@@ -1,12 +1,15 @@
-import * as React              from 'react'
-import s                       from '../../Profile.module.scss'
-import atlassian               from '../../../../../assets/images/icons/atlassian.svg'
-import printer                 from '../../../../../assets/images/icons/printer.svg'
-import Button                  from '@material-ui/core/Button'
-import cn                      from 'classnames'
-import { copyTextToClipboard } from '../../../../../services/helpers/utils'
+import * as React from 'react'
+import s from '../../Profile.module.scss'
+import atlassian from '../../../../../assets/images/icons/atlassian.svg'
+import printer from '../../../../../assets/images/icons/printer.svg'
+import Button from '@material-ui/core/Button'
+import cn from 'classnames'
 
-export const ProfileSidebarBottom: React.FC = () => {
+type Props = {
+	setOpenForm: (param: boolean) => void
+}
+
+export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm }) => {
 	return (
 		<div className={s.sidebarBottom}>
 			<div className={s.profileSubtitle}>Занятость на текущий день</div>
@@ -31,7 +34,7 @@ export const ProfileSidebarBottom: React.FC = () => {
 			<div className={s.profileSubtitle}>Корпоративных дней</div>
 			<p className={s.profileText}>5</p>
 
-			<Button className="btn btn-full-width">+ Заявление на отпуск/больничный</Button>
+			<Button className="btn btn-full-width" onClick={() => setOpenForm(true)}>+ Заявление на отпуск/больничный</Button>
 		</div>
 	)
 }
