@@ -52,10 +52,10 @@ export const ApplicationForm: React.FC = () => {
 					<FormControl variant="outlined" fullWidth>
 						<InputLabel id="demo-simple-select-outlined-label">Тип отсутствия</InputLabel>
 						<Select labelId="demo-simple-select-outlined-label" id="demo-simple-select-outlined" name="type" inputRef={register} label="Тип отсутствия">
-							<MenuItem value={1}>оплачиваемый отпуск</MenuItem>
-							<MenuItem value={2}>отпуск за свой счет</MenuItem>
-							<MenuItem value={3}>больничный</MenuItem>
-							<MenuItem value={4}>корпоративный день</MenuItem>
+							<MenuItem value={1}>Оплачиваемый отпуск</MenuItem>
+							<MenuItem value={2}>Отпуск за свой счет</MenuItem>
+							<MenuItem value={3}>Больничный</MenuItem>
+							<MenuItem value={4}>Корпоративный день</MenuItem>
 						</Select>
 					</FormControl>
 				</Grid>

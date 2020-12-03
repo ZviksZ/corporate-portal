@@ -1,0 +1,103 @@
+{
+  "status": "success",
+  "profile": {
+    "id": "5f625ff6bd97609c15525e2b4",
+    "name": "Иван",
+    "surname": "Иванов",
+    "patronymic": "Иванович",
+    "userType": "1",
+    "position": "Руководитель Департамента ИТ",
+    "department": "ООО ИА Банки.ру",
+    "socials": [
+      {
+        "type": "yandex",
+        "link": "https://ya.ru/"
+      },
+      {
+        "type": "atlassian",
+        "link": "https://atlassian.com/"
+      }
+    ],
+    "worktime": {
+      "employment": [
+        {
+          "from": "9:00",
+          "to": "10:30"
+        }
+      ],
+      "openTasksLink": "https://atlassian.com/5f625ff6bd97609c15525e2b4",
+      "vacationApplicationLink": "/upload/app.pdf",
+      "vacation": {
+        "from": "12.02.2021",
+        "to": "24.02.2021"
+      },
+      "vacationDays": "12",
+      "corporateDays": "5"
+    },
+    "contacts": {
+      "birthday": "05.02.1990",
+      "showBirthYear": "0",
+      "email": "example@mail.ru",
+      "mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
+      "inPhone": "+7 495 000 77 55 (265)",
+      "employmentDate": "12.02.2005",
+      "tshirtSize": "XXL",
+      "sshKeys": [
+        "KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H",
+        "HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6"
+      ]
+    },
+    "teams": [
+      {
+        "id": "5f625ff6bd97609",
+        "name": "Команда А",
+        "role": "бэкенд-разработчик",
+        "lead": {
+          "name": "Колесников Михаил",
+          "id": "8f625ff6bd97609c15525e2b4",
+          "image": "../img/1.jpg"
+        },
+        "members": {
+          "size": "25",
+          "list": [
+            {
+              "name": "Колесников Михаил",
+              "id": "8f625ff6bd97609c15525e2b4",
+              "image": "../img/1.jpg"
+            },
+            {
+              "name": "Колесников Михаил",
+              "id": "8f625ff6bd97609c15525e2b4",
+              "image": "../img/1.jpg"
+            }
+          ]
+        }
+      }
+    ],
+    "additional": {
+      "lead": {
+        "name": "Колесников Михаил Павлович",
+        "id": "8f625ff6bd97609c15525e2b4",
+        "image": "../img/1.jpg"
+      },
+      "subordinates": [
+        {
+          "name": "Степанов  Виктор Сергеевич",
+          "id": "8f625ff6bd97609c15525e2b4",
+          "image": "../img/1.jpg"
+        },
+        {
+          "name": "Степанов  Виктор Сергеевич",
+          "id": "8f625ff6bd97609c15525e2b4",
+          "image": "../img/1.jpg"
+        }
+      ]
+    },
+    "contractors": [
+      "ООО первое",
+      "ООО второе",
+      "ООО третье",
+      "ООО четвертое"
+    ]
+  }
+}
