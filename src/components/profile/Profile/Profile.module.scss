@@ -41,22 +41,6 @@
                 text-align: center;
                 color: #B3B3B3;
             }
-            .links {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-top: 24px;
-                a {
-                    display: inline-block;
-                    @extend %link-shared;
-                    img {
-                        display: inline-block;
-                        width: 24px;
-                        height: 24px;
-                        margin: 0 7px 10px;
-                    }
-                }
-            }
         }
         .sidebarBottom {
             background: $colorWhite;
@@ -64,86 +48,8 @@
             margin-top: 26px;
 
             .employmentList {
-                list-style: none;
                 margin-bottom: 14px;
-                li {
-                    position: relative;
-                    font-size: 16px;
-                    line-height: 19px;
-                    padding-left: 30px;
-                    &:before {
-                        position: absolute;
-                        left: 0;
-                        top: 6px;
-                        display: block;
-                        content: '';
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-                        background: $colorDangerous;
-                    }
-                }
-                li + li {
-                    margin-top: 4px;
-                }
             }
-        }
-    }
-    .profileTitle {
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 23px;
-    }
-    .profileSubtitle {
-        font-size: 12px;
-        line-height: 14px;
-        color: $colorGray2;
-        margin-bottom: 6px;
-    }
-    .profileText {
-        font-size: 16px;
-        line-height: 19px;
-        margin-bottom: 22px;
-        &.textGreen {
-            color: #00BD1E;
-        }
-        &.profileTextWith {
-            display: flex;
-            align-items: center;
-        }
-        .profileTextContent {
-            position: relative;
-            display: inline-block;
-            font-size: 16px;
-            line-height: 19px;
-            text-decoration: none;
-            color: $colorText;
-            margin-right: 20px;
-            &.profileTextPhone:not(:last-child) {
-                margin-right: 10px;
-                &:after {
-                    position: absolute;
-                    right: -4px;
-                    top: 0;
-                    display: block;
-                    content: ', ';
-                }
-            }
-            &.profileTextPhone:last-of-type {
-                margin-right: 20px;
-                &:after {
-                    display: none;
-                }
-            }
-        }
-        a.profileTextContent {
-            @extend %link-shared;
-        }
-        i {
-            color: $colorPrimary;
-            font-size: 22px;
-            cursor: pointer;
-            @extend %link-shared;
         }
     }
     .sshBlock {
@@ -186,60 +92,23 @@
 
 }
 
-
-
-.teamItem {
-    display: flex;
-    align-items: center;
-    background: $colorWhite;
-    padding: 17px 28px;
-    height: 92px;
-    color: $colorText;
-    text-decoration: none;
-    .info {
-        .name {
+.applications {
+    border-top: 1px solid #C4C4C4;
+    padding: 15px 0;
+    margin-top: 15px;
+    .appItem {
+        margin-bottom: 5px;
+        .appText {
             font-size: 16px;
             line-height: 19px;
         }
-        .role {
-            font-size: 14px;
-            line-height: 16px;
-            color: $colorGray2;
-            margin-top: 12px;
-        }
-    }
-    .team {
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        .position {
-            font-size: 10px;
-            line-height: 12px;
-            color: $colorGray2;
-            margin-bottom: 7px;
-        }
-        .teamInfo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: $colorText;
-            @extend %link-shared;
-            .name {
-                display: inline-block;
-                margin-left: 6px;
-                max-width: 80px;
-                font-size: 12px;
-                line-height: 14px;
-            }
-        }
-        .item + .item {
-            margin-left: 18px;
+        .appText + .appText {
+            margin-top: 2px;
         }
     }
 }
-.teamItem + .teamItem {
-    margin-top: 8px;
-}
+
+
 
 .teamAdditional {
     padding: 24px 45px;

@@ -69,3 +69,21 @@ export function copyTextToClipboard(e) {
 	}
 	textArea.remove()
 }
+export function getStatusText(status) {
+	let text = ''
+	switch (status) {
+		case '0':
+			text = 'На согласовании'
+			break
+		case '1':
+			text = 'Согласовано'
+			break
+		case '2':
+			text = 'Не согласовано'
+			break
+		default:
+			break
+	}
+
+	return text
+}

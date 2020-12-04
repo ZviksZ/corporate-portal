@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRoutes } from './routes'
 import { Loader } from './components/common/Loader/Loader'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectGlobal } from './store/ducks/global/selectors'
+import { getCookieUser } from './store/ducks/global/actionCreators'
 
 export const App: React.FC = () => {
 	const { user, isLoading } = useSelector(selectGlobal)
+	const dispatch = useDispatch()
 	const isAuth = !!user
 	const routes = useRoutes(isAuth, '')
+
+	useEffect(() => {
+		dispatch(getCookieUser())
+	}, [])
 
 	if (isLoading) {
 		return (

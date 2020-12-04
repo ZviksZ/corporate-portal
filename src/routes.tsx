@@ -4,6 +4,9 @@ import { Navbar } from './components/common/Navbar/Navbar'
 import { AuthPage } from './pages/AuthPage/AuthPage'
 import { GlobalMessage } from './components/common/GlobalMessage/GlobalMessage'
 import { ProfilePage } from './pages/ProfilePage/ProfilePage'
+import { TeamsPage } from './pages/TeamsPage/TeamsPage'
+import { TeamsDetailPage } from './pages/TeamsDetailPage/TeamsDetailPage'
+import { UnitsPage } from './pages/UnitsPage/UnitsPage'
 
 export const useRoutes = (isAuthenticated = false, userType = '') => {
 	if (isAuthenticated) {
@@ -20,13 +23,13 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 						<ProfilePage />
 					</Route>
 					<Route path="/teams" exact>
-						Teams
+						<TeamsPage />
 					</Route>
 					<Route path="/teams/:id" exact>
-						Teams detail
+						<TeamsDetailPage />
 					</Route>
 					<Route path="/units" exact>
-						units
+						<UnitsPage />
 					</Route>
 					<Route path="/units/:id" exact>
 						units detail

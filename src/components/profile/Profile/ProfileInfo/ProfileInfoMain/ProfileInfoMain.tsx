@@ -4,68 +4,69 @@ import cn from 'classnames'
 import { FormControlLabel } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import { ClipboardCopy } from '../../../../common/ClipboardCopy/ClipboardCopy'
+import { useSelector } from 'react-redux'
+import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 
 export const ProfileInfoMain: React.FC = () => {
+	const { profileData } = useSelector(selectProfile)
+
+	if (!profileData) {
+		return <></>
+	}
+
+	const main = profileData.contacts
+	const isShowBirthday = +main.showBirthYear
+
 	const showDateChange = () => {}
 	return (
 		<div className={s.profileMain}>
-			<h4 className={cn(s.profileTitle, 'margin-bottom-x2')}>Контактная информация</h4>
+			<h4 className={cn('sectionTitle', 'margin-bottom-x2')}>Контактная информация</h4>
 
-			<div className={s.profileSubtitle}>День рождения</div>
-			<p className={cn(s.profileText, s.profileTextWith)}>
-				<span className={s.profileTextContent}>5 февраля 1990</span>
-				<FormControlLabel className={s.profileTextCheckbox} control={<Checkbox onChange={showDateChange} color="primary" name="showBirthDate" />} label="Показывать год" />
+			<div className="sectionSubtitle">День рождения</div>
+			<p className={cn('sectionText', 'sectionTextWith')}>
+				<span className="sectionTextContent">{main.birthday}</span>
+				<FormControlLabel control={<Checkbox onChange={showDateChange} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />
 			</p>
 
-			<div className={s.profileSubtitle}>Контактный Email</div>
-			<p className={cn(s.profileText, s.profileTextWith)}>
-				<a href="mailto:example@mail.ru" className={s.profileTextContent}>
-					example@mail.ru
+			<div className="sectionSubtitle">Контактный Email</div>
+			<p className={cn('sectionText', 'sectionTextWith')}>
+				<a href={'mailto:' + main.email} className="sectionTextContent">
+					{main.email}
 				</a>
-				<ClipboardCopy text={'example@mail.ru'} />
+				<ClipboardCopy text={main.email} />
 			</p>
 
-			<div className={s.profileSubtitle}>Мобильный телефон</div>
-			<p className={cn(s.profileText, s.profileTextWith)}>
-				<a href="tel:+7 900 000 00 00" className={cn(s.profileTextContent, s.profileTextPhone)}>
-					+7 900 000 00 00
-				</a>
-				<a href="tel:+7 800 000 55 66" className={cn(s.profileTextContent, s.profileTextPhone)}>
-					+7 800 000 55 66
-				</a>
+			<div className="sectionSubtitle">Мобильный телефон</div>
+			<p className={cn('sectionText', 'sectionTextWith')}>
+				{main.mobilePhone.split(',').map((item, index) => (
+					<a key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
+						{item}
+					</a>
+				))}
 				<i className="icon-edit"></i>
 			</p>
 
-			<div className={s.profileSubtitle}>Внутренний телефон</div>
-			<p className={cn(s.profileText, s.profileTextWith)}>
-				<a href="tel:+7 495 000 77 55 (265)" className={cn(s.profileTextContent, s.profileTextPhone)}>
-					+7 495 000 77 55 (265)
+			<div className="sectionSubtitle">Внутренний телефон</div>
+			<p className={cn('sectionText', 'sectionTextWith')}>
+				<a href={'tel:' + main.inPhone} className={cn('sectionTextContent', 'sectionTextPhone')}>
+					{main.inPhone}
 				</a>
 			</p>
 
-			<div className={s.profileSubtitle}>Дата трудоустройства</div>
-			<p className={s.profileText}>
-				c 12 февраля 2005
-			</p>
+			<div className="sectionSubtitle">Дата трудоустройства</div>
+			<p className="sectionText">c {main.employmentDate}</p>
 
-			<div className={s.profileSubtitle}>Размер футболки</div>
-			<p className={s.profileText}>
-				XXL
-			</p>
+			<div className="sectionSubtitle">Размер футболки</div>
+			<p className="sectionText">{main.tshirtSize}</p>
 
-			<div className={s.profileSubtitle}>SSH ключ</div>
-			<div className={s.sshBlock}>
-				<span className={s.text}>
-					ssh rsa KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H
-				</span>
-				<ClipboardCopy isBigIcon={true} text={'ssh rsa KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H'} />
-			</div>
-			<div className={s.sshBlock}>
-				<span className={s.text}>
-					ssh rsa HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6
-				</span>
-				<ClipboardCopy isBigIcon={true} text={'ssh rsa HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6'} />
-			</div>
+			<div className="sectionSubtitle">SSH ключ</div>
+
+			{main.sshKeys.map((item) => (
+				<div key={item} className={s.sshBlock}>
+					<span className={s.text}>ssh rsa {item}</span>
+					<ClipboardCopy isBigIcon={true} text={'ssh rsa ' + item} />
+				</div>
+			))}
 		</div>
 	)
 }

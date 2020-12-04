@@ -30,14 +30,21 @@
       "vacationApplicationLink": "/upload/app.pdf",
       "vacation": {
         "from": "12.02.2021",
-        "to": "24.02.2021"
+        "to": "24.02.2021",
+        "status": "0"
       },
       "vacationDays": "12",
-      "corporateDays": "5"
+      "corporateDays": "5",
+      "applications": [
+        {
+          "name": "Заявление на отпуск от 17.11.2020",
+          "status": "0"
+        }
+      ]
     },
     "contacts": {
       "birthday": "05.02.1990",
-      "showBirthYear": "0",
+      "showBirthYear": "1",
       "email": "example@mail.ru",
       "mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
       "inPhone": "+7 495 000 77 55 (265)",
@@ -55,7 +62,7 @@
         "role": "бэкенд-разработчик",
         "lead": {
           "name": "Колесников Михаил",
-          "id": "8f625ff6bd97609c15525e2b4",
+          "id": "12f625ff6bd97609c15525e2b4",
           "image": "../img/1.jpg"
         },
         "members": {
@@ -63,12 +70,12 @@
           "list": [
             {
               "name": "Колесников Михаил",
-              "id": "8f625ff6bd97609c15525e2b4",
+              "id": "10f625ff6bd97609c15525e2b4",
               "image": "../img/1.jpg"
             },
             {
               "name": "Колесников Михаил",
-              "id": "8f625ff6bd97609c15525e2b4",
+              "id": "11f625ff6bd97609c15525e2b4",
               "image": "../img/1.jpg"
             }
           ]
@@ -83,18 +90,22 @@
       },
       "subordinates": [
         {
-          "name": "Степанов  Виктор Сергеевич",
-          "id": "8f625ff6bd97609c15525e2b4",
+          "name": "Степанов Виктор Сергеевич",
+          "id": "9f625ff6bd97609c15525e2b4",
           "image": "../img/1.jpg"
         },
         {
-          "name": "Степанов  Виктор Сергеевич",
-          "id": "8f625ff6bd97609c15525e2b4",
+          "name": "Степанов Виктор Сергеевич",
+          "id": "7f625ff6bd97609c15525e2b4",
           "image": "../img/1.jpg"
         }
       ]
     },
     "contractors": [
+      "ООО первое",
+      "ООО второе",
+      "ООО третье",
+      "ООО четвертое",
       "ООО первое",
       "ООО второе",
       "ООО третье",

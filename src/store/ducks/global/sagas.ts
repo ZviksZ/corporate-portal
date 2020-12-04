@@ -9,7 +9,7 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 		yield put(setLoading(true))
 		const user = yield call(AuthApi.login, payload)
 
-		const jsonResponse = JSON.stringify(user.token)
+		const jsonResponse = JSON.stringify(user)
 		Cookie.setCookie('userData', jsonResponse, { expires: 2147483647 })
 
 		yield put(setUser(user))
@@ -20,17 +20,26 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 		yield put(setGlobalMessage({ text: 'Login error. Try again', type: 'error' }))
 	}
 }
+export function* getUserCookieRequest() {
+	try {
+		const cookies = Cookie.getCookie('userData')
+		const user = JSON.parse(cookies + '')
 
+		if (user) {
+			yield put(setUser(user))
+		}
+	} catch (error) {}
+}
 export function* logoutRequest() {
 	try {
-		Cookie.deleteCookie('token')
+		Cookie.deleteCookie('userData')
 
 		yield put(setUser(null))
 	} catch (error) {}
 }
 
 export function* globalSaga() {
+	yield takeLatest(GlobalActionsType.GET_COOKIE_USER, getUserCookieRequest)
 	yield takeLatest(GlobalActionsType.LOGIN, loginRequest)
 	yield takeLatest(GlobalActionsType.LOGOUT, logoutRequest)
 }
-

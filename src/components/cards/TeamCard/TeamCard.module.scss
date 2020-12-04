@@ -1,0 +1,56 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
+
+.teamItem {
+    display: flex;
+    align-items: center;
+    background: $colorWhite;
+    padding: 17px 28px;
+    height: 92px;
+    color: $colorText;
+    text-decoration: none;
+    .info {
+        .name {
+            font-size: 16px;
+            line-height: 19px;
+        }
+        .role {
+            font-size: 14px;
+            line-height: 16px;
+            color: $colorGray2;
+            margin-top: 12px;
+        }
+    }
+    .team {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        .position {
+            font-size: 10px;
+            line-height: 12px;
+            color: $colorGray2;
+            margin-bottom: 7px;
+        }
+        .teamInfo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: $colorText;
+            @extend %link-shared;
+            .name {
+                display: inline-block;
+                margin-left: 6px;
+                max-width: 80px;
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
+        .item + .item {
+            margin-left: 18px;
+        }
+    }
+}
+.teamItem + .teamItem {
+    margin-top: 8px;
+}

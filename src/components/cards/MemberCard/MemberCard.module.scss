@@ -1,0 +1,65 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
+
+.member {
+    display: flex;
+    background: $colorWhite;
+    padding: 20px 27px;
+    min-height: 170px;
+    overflow: hidden;
+    color: $colorText;
+    .memberMain {
+        display: flex;
+        width: 100%;
+        margin-right: 15px;
+        .memberMainData {
+            width: 100%;
+        }
+        .avatar {
+            width: 130px;
+            min-width: 130px;
+            height: 130px;
+            margin-right: 28px;
+        }
+        .name {
+            font-size: 16px;
+            line-height: 19px;
+        }
+        .position {
+            font-size: 14px;
+            line-height: 16px;
+            color: $colorGray2;
+            margin: 3px 0 17px;
+        }
+        .employmentList {
+            display: flex;
+            margin: 10px -10px 5px;
+            &.employmentListBig {
+                flex-wrap: wrap;
+            }
+            .employmentListItem {
+                width: calc(30% - 20px);
+                margin: 0 10px 10px;
+                padding-left: 14px;
+            }
+            li {
+                span {
+                    font-size: 16px;
+                    line-height: 19px;
+                    text-decoration-line: underline;
+                    color: $colorPrimary;
+
+                }
+            }
+        }
+    }
+    .memberContacts {
+        max-width: 385px;
+        min-width: 385px;
+        margin-left: auto;
+        border-left: 1px solid #E6E6E6;
+        padding-left: 39px;
+
+    }
+}

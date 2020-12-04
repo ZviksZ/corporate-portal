@@ -7,6 +7,7 @@ export enum GlobalActionsType {
 	LOGOUT = 'global/LOGOUT',
 	SET_GLOBAL_MESSAGE = 'global/SET_GLOBAL_MESSAGE',
 	SET_LOADING = 'global/SET_LOADING',
+	GET_COOKIE_USER = 'global/GET_COOKIE_USER',
 }
 export interface LoginData {
 	login: string
@@ -15,6 +16,9 @@ export interface LoginData {
 
 export interface LogoutActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.LOGOUT
+}
+export interface GetCookieUserActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.GET_COOKIE_USER
 }
 export interface LoginActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.LOGIN

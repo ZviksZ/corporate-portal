@@ -1,5 +1,14 @@
 import { GlobalMessage, User } from './contracts/state'
-import { GlobalActionsType, LoginActionInterface, LoginData, LogoutActionInterface, SetGlobalMessageActionInterface, SetLoadingActionInterface, SetUserActionInterface } from './contracts/actionTypes'
+import {
+	GetCookieUserActionInterface,
+	GlobalActionsType,
+	LoginActionInterface,
+	LoginData,
+	LogoutActionInterface,
+	SetGlobalMessageActionInterface,
+	SetLoadingActionInterface,
+	SetUserActionInterface,
+} from './contracts/actionTypes'
 
 export const login = (payload: LoginData): LoginActionInterface => ({
 	type: GlobalActionsType.LOGIN,
@@ -12,6 +21,9 @@ export const setUser = (payload: User | null): SetUserActionInterface => ({
 export const logout = (): LogoutActionInterface => ({
 	type: GlobalActionsType.LOGOUT,
 })
+export const getCookieUser = (): GetCookieUserActionInterface => ({
+	type: GlobalActionsType.GET_COOKIE_USER,
+})
 export const setGlobalMessage = (payload: GlobalMessage | null): SetGlobalMessageActionInterface => ({
 	type: GlobalActionsType.SET_GLOBAL_MESSAGE,
 	payload,
@@ -21,4 +33,4 @@ export const setLoading = (payload: boolean): SetLoadingActionInterface => ({
 	payload,
 })
 
-export type GlobalActions = SetLoadingActionInterface | SetGlobalMessageActionInterface | LogoutActionInterface | LoginActionInterface | SetUserActionInterface
+export type GlobalActions = GetCookieUserActionInterface | SetLoadingActionInterface | SetGlobalMessageActionInterface | LogoutActionInterface | LoginActionInterface | SetUserActionInterface

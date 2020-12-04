@@ -40,6 +40,12 @@
 .section-title {
     margin: 38px 0;
 }
+.section-title-small {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    margin: 34px 0;
+}
 
 
 .link-with-icon {
@@ -85,5 +91,111 @@
         &:hover {
             opacity: 0.7;
         }
+    }
+}
+
+
+.sectionTitle {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+.sectionSubtitle {
+    font-size: 12px;
+    line-height: 14px;
+    color: $colorGray2;
+    margin-bottom: 6px;
+}
+.sectionBigSubtitle {
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: $colorGray2;
+    margin-bottom: 18px;
+}
+.sectionText {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 22px;
+    &.textGreen {
+        color: #00BD1E;
+    }
+    &.sectionTextWith {
+        display: flex;
+        align-items: center;
+    }
+    .sectionTextLogo {
+        display: block;
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+    .sectionTextContent {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        line-height: 19px;
+        text-decoration: none;
+        color: $colorText;
+        margin-right: 20px;
+        &.sectionTextPhone:not(:last-child) {
+            margin-right: 10px;
+            &:after {
+                position: absolute;
+                right: -4px;
+                top: 0;
+                display: block;
+                content: ', ';
+            }
+        }
+        &.sectionTextPhone:last-of-type {
+            margin-right: 20px;
+            &:after {
+                display: none;
+            }
+        }
+    }
+    a.sectionTextContent {
+        @extend %link-shared;
+    }
+    i {
+        color: $colorPrimary;
+        font-size: 22px;
+        cursor: pointer;
+        @extend %link-shared;
+    }
+}
+.sectionList {
+    list-style: none;
+    .sectionListItem {
+        position: relative;
+        font-size: 16px;
+        line-height: 19px;
+        padding-left: 30px;
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 6px;
+            display: block;
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: $colorDangerous;
+        }
+    }
+    .sectionListItem + .sectionListItem{
+        margin-top: 4px;
+    }
+}
+.breadcrumbs {
+    padding: 24px 0;
+    .breadcrumbsItem {
+        color: $colorText;
+        font-size: 14px;
+        line-height: 16px;
+    }
+    a.breadcrumbsItem {
+        @extend %link-shared;
     }
 }
