@@ -1,0 +1,94 @@
+{
+  "status": "success",
+  "units": [
+    {
+      "id": "6f625ff6bd97609",
+      "name": "Команда А",
+      "main": null,
+      "mainName": null,
+      "parent": null,
+      "parentName": null,
+      "lead": {
+        "name": "Колесников Михаил",
+        "id": "8f625ff6bd97609c15525e2b4",
+        "image": "../img/1.jpg"
+      },
+      "members": {
+        "size": 25,
+        "list": [
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bd97609c15525e2b4",
+            "image": "../img/1.jpg"
+          },
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bd97609c15525e2b4",
+            "image": "../img/1.jpg"
+          }
+        ]
+      },
+      "subUnits": [
+        {
+          "id": "5f625ff6bd97609",
+          "name": "Команда Б",
+          "main": "6f625ff6bd97609",
+          "mainName": "Команда А",
+          "parent": "6f625ff6bd97609",
+          "parentName": "Команда А",
+          "lead": {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bd97609c15525e2b4",
+            "image": "../img/1.jpg"
+          },
+          "members": {
+            "size": 25,
+            "list": [
+              {
+                "name": "Колесников Михаил",
+                "id": "8f625ff6bd97609c15525e2b4",
+                "image": "../img/1.jpg"
+              },
+              {
+                "name": "Колесников Михаил",
+                "id": "8f625ff6bd97609c15525e2b4",
+                "image": "../img/1.jpg"
+              }
+            ]
+          },
+          "subUnits": [
+            {
+              "id": "5f625ff6bd97609",
+              "name": "Команда В",
+              "main": "6f625ff6bd97609",
+              "mainName": "Команда А",
+              "parent": "5f625ff6bd97609",
+              "parentName": "Команда Б",
+              "lead": {
+                "name": "Колесников Михаил",
+                "id": "8f625ff6bd97609c15525e2b4",
+                "image": "../img/1.jpg"
+              },
+              "members": {
+                "size": 25,
+                "list": [
+                  {
+                    "name": "Колесников Михаил",
+                    "id": "8f625ff6bd97609c15525e2b4",
+                    "image": "../img/1.jpg"
+                  },
+                  {
+                    "name": "Колесников Михаил",
+                    "id": "8f625ff6bd97609c15525e2b4",
+                    "image": "../img/1.jpg"
+                  }
+                ]
+              },
+              "subUnits": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

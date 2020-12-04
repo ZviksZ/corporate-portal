@@ -1,0 +1,45 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
+
+.unit {
+    position: relative;
+    padding-left: 30px;
+    overflow: hidden;
+    height: auto;
+    margin-top: 18px;
+    .unitBorder {
+        display: none;
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        top: 20px;
+        left: 6px;
+        border-left: 1px dashed $colorGray3;
+    }
+    .unitShowBtn {
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        background: $colorWhite;
+        box-sizing: border-box;
+        border-radius: 1px;
+        color: $colorPrimary;
+        border: 1px solid $colorPrimary;
+    }
+    &.unitOpen {
+        & > .unitBorder {
+            display: block;
+        }
+        & > .unitShowBtn {
+            color: $colorGray2;
+            border: 1px solid $colorGray2;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { RootState } from '../../store'
 import { createSelector } from 'reselect'
 
-import { ProfileState } from './contracts/state'
+import { UnitsState } from './contracts/state'
 
-export const selectProfile = (state: RootState): ProfileState => state.profile
+export const selectUnits = (state: RootState): UnitsState => state.units

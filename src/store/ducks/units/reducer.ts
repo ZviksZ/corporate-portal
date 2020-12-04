@@ -1,19 +1,17 @@
 import produce, { Draft } from 'immer'
-import { ProfileState } from './contracts/state'
-import { GlobalActions } from './actionCreators'
-import { ProfileActionsType } from './contracts/actionTypes'
+import { UnitsState } from './contracts/state'
+import { UnitsActions } from './actionCreators'
+import { UnitsActionsType } from './contracts/actionTypes'
 
-const initialProfileState: ProfileState = {
-	profileData: null,
-	isPersonalProfile: true,
+const initialUnitsState: UnitsState = {
+	units: null,
 }
-export const profileReducer = produce((draft: Draft<ProfileState>, action: GlobalActions) => {
+export const unitsReducer = produce((draft: Draft<UnitsState>, action: UnitsActions) => {
 	switch (action.type) {
-		case ProfileActionsType.SET_PROFILE:
-			draft.profileData = action.payload.profileData
-			draft.isPersonalProfile = action.payload.isPersonalProfile
+		case UnitsActionsType.SET_UNITS:
+			draft.units = action.payload
 			break
 		default:
 			break
 	}
-}, initialProfileState)
+}, initialUnitsState)

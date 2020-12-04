@@ -1,19 +1,12 @@
-import { ProfileData } from './contracts/state'
-import { GetProfileActionInterface, ProfileActionsType, SetProfileActionInterface } from './contracts/actionTypes'
+import { GetUnitsActionInterface, SetUnitsActionInterface, UnitsActionsType } from './contracts/actionTypes'
+import { Unit } from './contracts/state'
 
-export const getProfile = (id: string, isPersonalProfile: boolean): GetProfileActionInterface => ({
-	type: ProfileActionsType.GET_PROFILE,
-	payload: {
-		id,
-		isPersonalProfile,
-	},
+export const getUnits = (): GetUnitsActionInterface => ({
+	type: UnitsActionsType.GET_UNITS,
 })
-export const setProfile = (profileData: ProfileData | null, isPersonalProfile: boolean): SetProfileActionInterface => ({
-	type: ProfileActionsType.SET_PROFILE,
-	payload: {
-		profileData,
-		isPersonalProfile,
-	},
+export const setUnits = (payload: Unit[] | null): SetUnitsActionInterface => ({
+	type: UnitsActionsType.SET_UNITS,
+	payload,
 })
 
-export type GlobalActions = GetProfileActionInterface | SetProfileActionInterface
+export type UnitsActions = GetUnitsActionInterface | SetUnitsActionInterface

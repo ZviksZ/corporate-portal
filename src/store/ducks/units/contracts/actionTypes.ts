@@ -1,23 +1,15 @@
 import { Action } from 'redux'
-import { ProfileData } from './state'
+import { Unit } from './state'
 
-export enum ProfileActionsType {
-	GET_PROFILE = 'profile/GET_PROFILE',
-	SET_PROFILE = 'profile/SET_PROFILE',
+export enum UnitsActionsType {
+	GET_UNITS = 'profile/GET_UNITS',
+	SET_UNITS = 'profile/SET_UNITS',
 }
 
-export interface GetProfileActionInterface extends Action<ProfileActionsType> {
-	type: ProfileActionsType.GET_PROFILE
-	payload: {
-		id: string
-		isPersonalProfile: boolean
-	}
-
+export interface GetUnitsActionInterface extends Action<UnitsActionsType> {
+	type: UnitsActionsType.GET_UNITS
 }
-export interface SetProfileActionInterface extends Action<ProfileActionsType> {
-	type: ProfileActionsType.SET_PROFILE
-	payload: {
-		profileData: ProfileData | null
-		isPersonalProfile: boolean
-	}
+export interface SetUnitsActionInterface extends Action<UnitsActionsType> {
+	type: UnitsActionsType.SET_UNITS
+	payload: Unit[] | null
 }

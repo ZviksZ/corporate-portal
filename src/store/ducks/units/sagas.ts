@@ -1,19 +1,19 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { GetProfileActionInterface, ProfileActionsType } from './contracts/actionTypes'
-import { ProfileApi } from '../../../services/api/api'
-import { setProfile } from './actionCreators'
-import { setGlobalMessage, setLoading } from '../global/actionCreators'
+import { UnitsActionsType } from './contracts/actionTypes'
+import { UnitsApi } from '../../../services/api/api'
+import { setGlobalMessage } from '../global/actionCreators'
+import { setUnits } from './actionCreators'
 
-export function* getProfileRequest({payload}: GetProfileActionInterface) {
+export function* getUnitsRequest() {
 	try {
-		const profile = yield call(ProfileApi.getProfile, payload.id)
+		const units = yield call(UnitsApi.getUnits)
 
-		yield put(setProfile(profile, payload.isPersonalProfile))
+		yield put(setUnits(units))
 	} catch (error) {
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
 
-export function* profileSaga() {
-	yield takeLatest(ProfileActionsType.GET_PROFILE, getProfileRequest)
+export function* unitsSaga() {
+	yield takeLatest(UnitsActionsType.GET_UNITS, getUnitsRequest)
 }
