@@ -4,9 +4,10 @@ import { User } from '../../store/ducks/global/contracts/state'
 import user from './mockups/user.json'
 import profile from './mockups/profile.json'
 import units from './mockups/units.json'
+import unitDetail from './mockups/unit-detail.json'
 import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
 import { ProfileData } from '../../store/ducks/profile/contracts/state'
-import { Unit } from '../../store/ducks/units/contracts/state'
+import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
 
 interface Response<T> {
 	status: string
@@ -59,5 +60,10 @@ export const UnitsApi = {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return units.units
+	},
+	async getUnitData(id: string): Promise<UnitDetail> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return unitDetail.unit
 	},
 }

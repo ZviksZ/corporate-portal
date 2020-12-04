@@ -6,7 +6,7 @@ export const TeamsDetailPage: React.FC = () => {
 		<div className="container">
 			TeamsDetail
 
-			<MemberCard/>
+			{/*<MemberCard/>*/}
 		</div>
 	)
 }

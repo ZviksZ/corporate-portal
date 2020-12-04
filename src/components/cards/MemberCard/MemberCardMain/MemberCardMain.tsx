@@ -4,8 +4,13 @@ import { Avatar } from '@material-ui/core'
 import cn from 'classnames'
 import jira from '../../../../assets/images/icons/jira.svg'
 import { useState } from 'react'
+import { Member } from '../../../../store/ducks/units/contracts/state'
 
-export const MemberCardMain: React.FC = () => {
+type Props = {
+	member: Member
+}
+
+export const MemberCardMain: React.FC<Props> = ({ member }) => {
 	const [showEmployment, setShowEmployment] = useState(false)
 
 	const showMoreTimes = (e: React.MouseEvent<HTMLLIElement>) => {
@@ -13,33 +18,37 @@ export const MemberCardMain: React.FC = () => {
 		e.preventDefault()
 		setShowEmployment(true)
 	}
+
+	const memberNameArray = member.name.split(' ')
 	return (
 		<div className={s.memberMain}>
-			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={''}>
-				OR
+			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member.image}>
+				{memberNameArray[0][0]}
+				{memberNameArray[1][0]}
 			</Avatar>
 			<div className={s.memberMainData}>
-				<div className={s.name}>Колесников Михаил</div>
-				<div className={s.position}>Руководитель Департамента ИТ</div>
+				<div className={s.name}>{member.name}</div>
+				<div className={s.position}>{member.position}</div>
 				<div className="sectionSubtitle">Занятость на текущий день:</div>
 				<ul className={cn('sectionList', s.employmentList, { [s.employmentListBig]: showEmployment })}>
-					{[1, 2, 3, 4].map((item, key) => {
-						if (!showEmployment) {
-							if (key < 3) {
+					{member.employment &&
+						member.employment.map((item, key) => {
+							if (!showEmployment) {
+								if (key < 3) {
+									return (
+										<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
+											с {item.from} до {item.to}
+										</li>
+									)
+								}
+							} else {
 								return (
 									<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-										{/*с {item.from} до {item.to}*/}с 09:00 до 10:30
+										с {item.from} до {item.to}
 									</li>
 								)
 							}
-						} else {
-							return (
-								<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-									{/*с {item.from} до {item.to}*/}с 09:00 до 10:30
-								</li>
-							)
-						}
-					})}
+						})}
 					{!showEmployment && (
 						<li onClick={showMoreTimes}>
 							<span>еще</span>
@@ -47,7 +56,7 @@ export const MemberCardMain: React.FC = () => {
 					)}
 				</ul>
 				<object type="owo/uwu">
-					<a onClick={(e) => e.stopPropagation()} href={``} className="link-with-icon margin-bottom">
+					<a onClick={(e) => e.stopPropagation()} href={member.openTasksLink} className="link-with-icon margin-bottom">
 						<img src={jira} alt="" width={'18px'} />
 						<span>Открытые задачи</span>
 					</a>

@@ -7,7 +7,7 @@ export interface FromTo {
 	to: string
 	status?: string
 }
-export interface Member {
+export interface SimpleMember {
 	name: string
 	id: string
 	image: string
@@ -16,10 +16,10 @@ export interface Team {
 	id: string
 	name: string
 	role: string
-	lead: Member
+	lead: SimpleMember
 	members: {
 		size: number
-		list: Member[]
+		list: SimpleMember[]
 	}
 }
 export interface Application {
@@ -58,8 +58,8 @@ export interface ProfileData {
 	}
 	teams: Team[]
 	additional: {
-		lead: Member
-		subordinates: Member[]
+		lead: SimpleMember
+		subordinates: SimpleMember[]
 	}
 	contractors: string[]
 }

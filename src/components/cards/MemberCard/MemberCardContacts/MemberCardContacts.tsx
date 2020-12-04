@@ -3,8 +3,13 @@ import s from '../MemberCard.module.scss'
 import cn from 'classnames'
 import { ClipboardCopy } from '../../../common/ClipboardCopy/ClipboardCopy'
 import slack from '../../../../assets/images/icons/slack.svg'
+import { Member } from '../../../../store/ducks/units/contracts/state'
 
-export const MemberCardContacts: React.FC = () => {
+type Props = {
+	member: Member
+}
+
+export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 	return (
 		<div className={s.memberContacts}>
 			<div className="sectionSubtitle">Контактный Email</div>

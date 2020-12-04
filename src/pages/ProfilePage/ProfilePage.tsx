@@ -35,12 +35,7 @@ export const ProfilePage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
-					<NavLink to={`/profile/${1}`} className="breadcrumbsItem">ООО ИА Банки.ру</NavLink>
-
-					<span className="breadcrumbsItem">Петр Константинович Михалков</span>
-				</Breadcrumbs>
-				<h1 className="h2 section-title no-margin-top">{title}</h1>
+				<h1 className="h2 section-title">{title}</h1>
 				<Profile />
 			</div>
 		</section>

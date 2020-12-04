@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useEffect, useState } from 'react'
 import s from '../Units.module.scss'
 import cn from 'classnames'
-import { TeamCard } from '../../../cards/TeamCard/TeamCard'
+import { UnitCard } from '../../../cards/UnitCard/UnitCard'
 import { Unit } from '../../../../store/ducks/units/contracts/state'
 
 type Props = {
@@ -31,7 +31,7 @@ export const UnitsItem: React.FC<Props> = ({ item }) => {
 			</div>
 			<div className={s.unitBorder}></div>
 
-			<TeamCard key={item.id} item={item} />
+			<UnitCard key={item.id} item={item} linkPath={'units'} />
 
 			{showSub && item.subUnits && item.subUnits.map((unit) => <UnitsItem key={unit.id} item={unit} />)}
 		</div>

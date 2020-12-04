@@ -1,7 +1,7 @@
 import * as React from 'react'
 import s from '../../Profile.module.scss'
 import cn from 'classnames'
-import { TeamCard } from '../../../../cards/TeamCard/TeamCard'
+import { UnitCard } from '../../../../cards/UnitCard/UnitCard'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 
@@ -18,7 +18,7 @@ export const ProfileInfoTeams: React.FC = () => {
 		<>
 			<h4 className={cn(s.profileTitle, 'margin-bottom-x2', 'margin-top-x2')}>Команды</h4>
 			{teams.map((item) => (
-				<TeamCard key={item.id} item={item} showRole={true} />
+				<UnitCard key={item.id} item={item} showRole={true} linkPath={'teams'} />
 			))}
 		</>
 	)

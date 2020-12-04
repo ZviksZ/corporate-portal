@@ -1,5 +1,5 @@
 import * as React from 'react'
-import s from './TeamCard.module.scss'
+import s from './UnitCard.module.scss'
 import cn from 'classnames'
 import { Avatar } from '@material-ui/core'
 import { AvatarGroup } from '@material-ui/lab'
@@ -9,13 +9,14 @@ import { Unit } from '../../../store/ducks/units/contracts/state'
 type Props = {
 	item: Unit
 	showRole?: boolean
+	linkPath: string
 }
 
-export const TeamCard: React.FC<Props> = ({ item, showRole = false }) => {
+export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) => {
 	const leadNameArray = item.lead.name.split(' ')
 
 	return (
-		<NavLink to={`/teams/${item.id}`} className={s.teamItem}>
+		<NavLink to={`/${linkPath}/${item.id}`} className={s.teamItem}>
 			<div className={s.info}>
 				<div className={s.name}>{item.name}</div>
 				{showRole && item.role && <div className={s.role}>{item.role}</div>}
