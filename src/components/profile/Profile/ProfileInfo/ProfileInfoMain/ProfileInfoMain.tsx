@@ -6,6 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import { ClipboardCopy } from '../../../../common/ClipboardCopy/ClipboardCopy'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
+import { getFormatedDate } from '../../../../../services/helpers/utils'
 
 export const ProfileInfoMain: React.FC = () => {
 	const { profileData } = useSelector(selectProfile)
@@ -24,7 +25,7 @@ export const ProfileInfoMain: React.FC = () => {
 
 			<div className="sectionSubtitle">День рождения</div>
 			<p className={cn('sectionText', 'sectionTextWith')}>
-				<span className="sectionTextContent">{main.birthday}</span>
+				<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
 				<FormControlLabel control={<Checkbox onChange={showDateChange} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />
 			</p>
 
@@ -54,7 +55,7 @@ export const ProfileInfoMain: React.FC = () => {
 			</p>
 
 			<div className="sectionSubtitle">Дата трудоустройства</div>
-			<p className="sectionText">c {main.employmentDate}</p>
+			<p className="sectionText">c {getFormatedDate(main.employmentDate)}</p>
 
 			<div className="sectionSubtitle">Размер футболки</div>
 			<p className="sectionText">{main.tshirtSize}</p>

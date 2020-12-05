@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button'
 import cn from 'classnames'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
-import { getStatusText } from '../../../../../services/helpers/utils'
+import { getFormatedDate, getStatusText } from '../../../../../services/helpers/utils'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
@@ -37,7 +37,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm }) => {
 			</a>
 			<div className="sectionSubtitle">Отпуск</div>
 			<p className={'sectionText status-' + time.vacation.status}>
-				c {time.vacation.from} по {time.vacation.to}
+				c {getFormatedDate(time.vacation.from)} по {getFormatedDate(time.vacation.to)}
 			</p>
 			<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
 				<img src={printer} alt="" width={'20px'} />

@@ -5,6 +5,7 @@ import cn from 'classnames'
 import jira from '../../../../assets/images/icons/jira.svg'
 import { useState } from 'react'
 import { Member } from '../../../../store/ducks/units/contracts/state'
+import { getInitialsFromName } from '../../../../services/helpers/utils'
 
 type Props = {
 	member: Member
@@ -18,13 +19,10 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 		e.preventDefault()
 		setShowEmployment(true)
 	}
-
-	const memberNameArray = member.name.split(' ')
 	return (
 		<div className={s.memberMain}>
 			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member.image}>
-				{memberNameArray[0][0]}
-				{memberNameArray[1][0]}
+				{getInitialsFromName(member.name)}
 			</Avatar>
 			<div className={s.memberMainData}>
 				<div className={s.name}>{member.name}</div>
@@ -49,7 +47,7 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 								)
 							}
 						})}
-					{!showEmployment && (
+					{!showEmployment && member.employment && member.employment.length > 3 && (
 						<li onClick={showMoreTimes}>
 							<span>еще</span>
 						</li>

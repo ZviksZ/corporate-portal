@@ -69,16 +69,19 @@ export function copyTextToClipboard(e) {
 	}
 	textArea.remove()
 }
-export function getStatusText(status) {
+export function getStatusText(status: string | number) {
 	let text = ''
 	switch (status) {
 		case '0':
+		case 0:
 			text = 'На согласовании'
 			break
 		case '1':
+		case 1:
 			text = 'Согласовано'
 			break
 		case '2':
+		case 2:
 			text = 'Не согласовано'
 			break
 		default:
@@ -86,4 +89,21 @@ export function getStatusText(status) {
 	}
 
 	return text
+}
+
+export function getInitialsFromName(name: string) {
+	const nameArray = name.split(' ')
+
+	return `${nameArray[0][0].toUpperCase()}${nameArray[1][0].toUpperCase()}`
+}
+export function getFormatedDate(dateString: string) {
+	let formatedDate = dateString.split('.').reverse().join('/')
+
+	const monthNames = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']
+	let date = new Date(formatedDate)
+	let day = date.getDate()
+	let month = date.getMonth()
+	let year = date.getFullYear()
+
+	return `${day} ${monthNames[month]} ${year}`
 }

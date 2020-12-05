@@ -5,6 +5,7 @@ import { Avatar } from '@material-ui/core'
 import { AvatarGroup } from '@material-ui/lab'
 import { NavLink } from 'react-router-dom'
 import { Unit } from '../../../store/ducks/units/contracts/state'
+import { getInitialsFromName } from '../../../services/helpers/utils'
 
 type Props = {
 	item: Unit
@@ -13,8 +14,6 @@ type Props = {
 }
 
 export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) => {
-	const leadNameArray = item.lead.name.split(' ')
-
 	return (
 		<NavLink to={`/${linkPath}/${item.id}`} className={s.teamItem}>
 			<div className={s.info}>
@@ -28,8 +27,7 @@ export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) 
 					<object type="owo/uwu">
 						<NavLink className={s.teamInfo} to={`/profile/${item.lead.id}`}>
 							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.lead.image} aria-controls="simple-menu" aria-haspopup="true">
-								{leadNameArray[0][0]}
-								{leadNameArray[1][0]}
+								{getInitialsFromName(item.lead.name)}
 							</Avatar>
 							<span className={s.name}>{item.lead.name}</span>
 						</NavLink>
@@ -41,11 +39,9 @@ export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) 
 						<NavLink className={s.teamInfo} to={`/teams/${item.id}`}>
 							<AvatarGroup max={7}>
 								{item.members.list.map((member) => {
-									const memberNameArray = member.name.split(' ')
 									return (
 										<Avatar key={member.id} className={cn(s.image, 'avatar-bg')} alt="" src={member.image} aria-controls="simple-menu" aria-haspopup="true">
-											{memberNameArray[0][0]}
-											{memberNameArray[1][0]}
+											{getInitialsFromName(member.name)}
 										</Avatar>
 									)
 								})}
