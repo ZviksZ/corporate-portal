@@ -1,0 +1,53 @@
+{
+  "status": "success",
+  "teams": [
+    {
+      "id": "6f625ff6bd97609",
+      "name": "Команда А",
+      "lead": {
+        "name": "Колесников Михаил",
+        "id": "8f625ff6afaf09c15525e2b4",
+        "image": "../img/1.jpg"
+      },
+      "members": {
+        "size": 25,
+        "list": [
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bfaafs609c15525e2b4",
+            "image": "../img/1.jpg"
+          },
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6afaf97609c15525e2b4",
+            "image": "../img/1.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "7f625ff6bd97609",
+      "name": "Команда Б",
+      "lead": {
+        "name": "Колесников Михаил",
+        "id": "8f625ff6afaf09c15525e2b4",
+        "image": "../img/1.jpg"
+      },
+      "members": {
+        "size": 25,
+        "list": [
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bfaafs609c15525e2b4",
+            "image": "../img/1.jpg"
+          },
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6afaf97609c15525e2b4",
+            "image": "../img/1.jpg"
+          }
+        ]
+      }
+    }
+  ]
+}

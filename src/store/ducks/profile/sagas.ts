@@ -4,6 +4,10 @@ import { ProfileApi } from '../../../services/api/api'
 import { setProfile } from './actionCreators'
 import { setGlobalMessage, setLoading } from '../global/actionCreators'
 
+/**
+ * Данные профиля(детальные)
+ * @param {String} payload - id профиля
+ */
 export function* getProfileRequest({ payload }: GetProfileActionInterface) {
 	try {
 		const profile = yield call(ProfileApi.getProfile, payload.id)

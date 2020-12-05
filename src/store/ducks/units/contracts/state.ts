@@ -11,6 +11,9 @@ export interface Member {
 	mobilePhone?: string
 	slackEmail?: string
 }
+/**
+ * Интерфейс для подразделений и команд
+ */
 export interface Unit {
 	id: string
 	name: string
@@ -26,6 +29,9 @@ export interface Unit {
 	}
 	subUnits?: Unit[] | null
 }
+/**
+ * Интерфейс для подразделений и команд(детальная страница)
+ */
 export interface UnitDetail {
 	id: string
 	name: string

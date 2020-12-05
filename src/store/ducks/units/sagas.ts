@@ -4,6 +4,9 @@ import { UnitsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
 import { setUnitData, setUnits } from './actionCreators'
 
+/**
+ * Список подразделений
+ */
 export function* getUnitsRequest() {
 	try {
 		const units = yield call(UnitsApi.getUnits)
@@ -13,6 +16,10 @@ export function* getUnitsRequest() {
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
+/**
+ * Данные подразделения(детальные)
+ * @param {String} id - id подразделения
+ */
 export function* getUnitDataRequest({ id }: GetUnitDataActionInterface) {
 	try {
 		const unit = yield call(UnitsApi.getUnitData, id)

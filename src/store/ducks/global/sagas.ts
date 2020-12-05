@@ -4,6 +4,10 @@ import { setGlobalMessage, setLoading, setUser } from './actionCreators'
 import { Cookie } from '../../../services/helpers/cookie'
 import { AuthApi } from '../../../services/api/api'
 
+
+/**
+ * Авторизация
+ */
 export function* loginRequest({ payload }: LoginActionInterface) {
 	try {
 		yield put(setLoading(true))
@@ -20,6 +24,9 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 		yield put(setGlobalMessage({ text: 'Login error. Try again', type: 'error' }))
 	}
 }
+/**
+ * Поиск данных пользователя и токена в куках
+ */
 export function* getUserCookieRequest() {
 	try {
 		const cookies = Cookie.getCookie('userData')
@@ -30,6 +37,9 @@ export function* getUserCookieRequest() {
 		}
 	} catch (error) {}
 }
+/**
+ * Выход из приложения
+ */
 export function* logoutRequest() {
 	try {
 		Cookie.deleteCookie('userData')

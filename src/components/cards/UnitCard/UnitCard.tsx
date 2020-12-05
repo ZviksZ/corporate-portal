@@ -33,7 +33,7 @@ export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) 
 						</NavLink>
 					</object>
 				</div>
-				<div className={s.item}>
+				<div className={cn(s.item, s.memberItem)}>
 					<div className={s.position}>Сотрудники</div>
 					<object type="owo/uwu">
 						<NavLink className={s.teamInfo} to={`/teams/${item.id}`}>

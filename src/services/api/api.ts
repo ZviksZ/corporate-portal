@@ -5,6 +5,7 @@ import user from './mockups/user.json'
 import profile from './mockups/profile.json'
 import units from './mockups/units.json'
 import unitDetail from './mockups/unit-detail.json'
+import teams from './mockups/teams.json'
 import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
 import { ProfileData } from '../../store/ducks/profile/contracts/state'
 import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
@@ -38,6 +39,9 @@ instance.interceptors.request.use((config) => {
 })
 
 export const AuthApi = {
+	/**
+	 * Авторизация
+	 */
 	async login(formData: LoginData): Promise<User> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
@@ -46,7 +50,10 @@ export const AuthApi = {
 }
 
 export const ProfileApi = {
-	//async getProfile(id: string): Promise<ProfileData> {
+	/**
+	 * Данные профиля(детальные)
+	 * @param {String} id - id сотрудника
+	 */
 	async getProfile(formData: any): Promise<ProfileData> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
@@ -55,13 +62,39 @@ export const ProfileApi = {
 }
 
 export const UnitsApi = {
-	//async getProfile(id: string): Promise<ProfileData> {
+	/**
+	 * Список подразделений
+	 */
 	async getUnits(): Promise<Unit[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return units.units
 	},
+	/**
+	 * Данные подразделения(детальные)
+	 * @param {String} id - id подразделения
+	 */
 	async getUnitData(id: string): Promise<UnitDetail> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return unitDetail.unit
+	},
+}
+
+export const TeamsApi = {
+	/**
+	 * Список команд
+	 */
+	async getTeams(): Promise<Unit[]> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return teams.teams
+	},
+	/**
+	 * Данные команды(детальные)
+	 * @param {String} id - id команды
+	 */
+	async getTeamData(id: string): Promise<UnitDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return unitDetail.unit
