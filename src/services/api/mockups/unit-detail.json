@@ -10,7 +10,7 @@
     "lead": {
       "name": "Колесников Михаил",
       "id": "8f625ff6bd97609c15525e2b4",
-      "image": "../img/1.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "employment": [
         {
           "from": "9:00",
@@ -19,9 +19,9 @@
       ],
       "position": "Руководитель Департамента ИТ",
       "openTasksLink": "https://atlassian.com/5f625ff6bd97609c15525e2b4",
-      "email": "example@mail.ru",
+      "email": "example1@mail.ru",
       "mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
-      "slackEmail": "example@mail.ru"
+      "slackEmail": "example2@mail.ru"
     },
     "members": {
       "size": 25,

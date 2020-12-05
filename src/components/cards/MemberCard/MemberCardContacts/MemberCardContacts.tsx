@@ -10,29 +10,33 @@ type Props = {
 }
 
 export const MemberCardContacts: React.FC<Props> = ({ member }) => {
+	if (!member) {
+		return <></>
+	}
 	return (
 		<div className={s.memberContacts}>
 			<div className="sectionSubtitle">Контактный Email</div>
 			<p className={cn('sectionText', 'sectionTextWith')}>
-				<a href={'mailto:example@mail.ru'} className="sectionTextContent">
-					example@mail.ru
+				<a onClick={e => e.stopPropagation()} href={'mailto:' + member.email} className="sectionTextContent">
+					{member.email}
 				</a>
-				<ClipboardCopy text={'example@mail.ru'} />
+				<ClipboardCopy text={member.email || ''} />
 			</p>
 			<div className="sectionSubtitle">Мобильный телефон</div>
 			<p className={cn('sectionText', 'sectionTextWith')}>
-				{'+7 900 000 00 00, +7 800 000 55 66'.split(',').map((item, index) => (
-					<a key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
-						{item}
-					</a>
-				))}
+				{member.mobilePhone &&
+					member.mobilePhone.split(',').map((item, index) => (
+						<a onClick={e => e.stopPropagation()} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
+							{item}
+						</a>
+					))}
 			</p>
 			<p className={cn('sectionText', 'sectionTextWith', 'no-margin-bottom')}>
 				<img src={slack} className="sectionTextLogo" alt="" />
-				<a href={'mailto:example@mail.ru'} className="sectionTextContent">
-					example@mail.ru
+				<a onClick={e => e.stopPropagation()} href={'mailto:' + member.slackEmail} className="sectionTextContent">
+					{member.slackEmail}
 				</a>
-				<ClipboardCopy text={'example@mail.ru'} />
+				<ClipboardCopy text={member.slackEmail || ''} />
 			</p>
 		</div>
 	)

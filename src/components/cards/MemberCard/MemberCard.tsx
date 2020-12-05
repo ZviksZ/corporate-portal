@@ -11,9 +11,9 @@ type Props = {
 
 export const MemberCard: React.FC<Props> = ({ member }) => {
 	return (
-		<NavLink to={`/profile/${1}`} className={s.member}>
-			<MemberCardMain member={member}/>
-			<MemberCardContacts member={member}/>
+		<NavLink to={`/profile/${member.id}`} className={s.member}>
+			<MemberCardMain member={member} />
+			<MemberCardContacts member={member} />
 		</NavLink>
 	)
 }

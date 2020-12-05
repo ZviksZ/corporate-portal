@@ -13,6 +13,9 @@ export const ClipboardCopy: React.FC<Props> = ({ text, isBigIcon = false }) => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLImageElement | null>(null)
 
 	const handleClick = (event: React.MouseEvent<HTMLImageElement>) => {
+		event.stopPropagation()
+		event.preventDefault()
+
 		setAnchorEl(event.currentTarget)
 		copyTextToClipboard(event)
 
