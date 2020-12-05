@@ -105,6 +105,9 @@
     margin-bottom: 6px;
 }
 .sectionBigSubtitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 14px;
     line-height: 16px;
     text-transform: uppercase;

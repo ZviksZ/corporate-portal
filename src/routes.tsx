@@ -29,6 +29,9 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 					<Route path="/teams/:id" exact>
 						<TeamsDetailPage />
 					</Route>
+					<Route path="/teams/:id/squad" exact>
+						squad page
+					</Route>
 					<Route path="/units" exact>
 						<UnitsPage />
 					</Route>
