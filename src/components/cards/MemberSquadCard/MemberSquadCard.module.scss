@@ -1,0 +1,66 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
+
+.squadCard {
+    height: 79px;
+    background: $colorWhite;
+    box-shadow: 0 1px 3px rgba(63, 63, 68, 0.15), 0px -1px 0px #E0E2E4, -1px 0px 0px #E0E2E4, 0px 1px 0px #E0E2E4, 1px 0px 0px #E0E2E4;
+    border-radius: 4px;
+    display: flex;
+    padding: 15px 28px;
+    .squadCardItem {
+        width: 197px;
+        min-width: 197px;
+    }
+    .squadCardItem + .squadCardItem {
+        margin-left: 70px;
+    }
+    .avatar {
+        margin-right: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    .subtitle {
+        margin-bottom: 5px;
+    }
+    .link {
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: -0.05px;
+        color: $colorPrimary;
+        cursor: pointer;
+        @extend %link-shared
+    }
+
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        line-height: 24px;
+        width: 45px;
+        min-width: 45px;
+        font-weight: 300;
+        border-radius: 50%;
+        height: 45px;
+        border: 1px solid $colorPrimary;
+        color: $colorPrimary;
+        cursor: pointer;
+        transition: 0.1s ease;
+        margin-left: auto;
+        @include desktop {
+            &:hover {
+                background: $colorPrimary;
+                color: $colorWhite;
+            }
+        }
+        &.added-member {
+            background: $colorPrimary;
+            color: $colorWhite;
+        }
+    }
+}
+.squadCard + .squadCard {
+    margin-top: 14px;
+}

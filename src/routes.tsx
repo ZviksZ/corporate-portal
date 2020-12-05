@@ -8,6 +8,7 @@ import { TeamsPage } from './pages/TeamsPage/TeamsPage'
 import { TeamsDetailPage } from './pages/TeamsDetailPage/TeamsDetailPage'
 import { UnitsPage } from './pages/UnitsPage/UnitsPage'
 import { UnitDetailPage } from './pages/UnitDetailPage/UnitDetailPage'
+import { TeamsSquadPage } from './pages/TeamsSquadPage/TeamsSquadPage'
 
 export const useRoutes = (isAuthenticated = false, userType = '') => {
 	if (isAuthenticated) {
@@ -30,7 +31,7 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 						<TeamsDetailPage />
 					</Route>
 					<Route path="/teams/:id/squad" exact>
-						squad page
+						<TeamsSquadPage />
 					</Route>
 					<Route path="/units" exact>
 						<UnitsPage />
