@@ -22,9 +22,9 @@ export function* getProjectsRequest() {
  */
 export function* getProjectDataRequest({ id }: GetProjectDataActionInterface) {
 	try {
-		/*const project = yield call(ProjectsApi.getProjectData, id)
+		const project = yield call(ProjectsApi.getProjectData, id)
 
-		yield put(setProjectData(project))*/
+		yield put(setProjectData(project))
 	} catch (error) {
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}

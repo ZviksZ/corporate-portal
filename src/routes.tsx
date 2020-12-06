@@ -10,6 +10,7 @@ import { UnitsPage } from './pages/UnitsPage/UnitsPage'
 import { UnitDetailPage } from './pages/UnitDetailPage/UnitDetailPage'
 import { TeamsSquadPage } from './pages/TeamsSquadPage/TeamsSquadPage'
 import { ProjectsPage } from './pages/ProjectsPage/ProjectsPage'
+import { ProjectsDetailPage } from './pages/ProjectsDetailPage/ProjectsDetailPage'
 
 export const useRoutes = (isAuthenticated = false, userType = '') => {
 	if (isAuthenticated) {
@@ -41,10 +42,10 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 						<UnitDetailPage />
 					</Route>
 					<Route path="/projects" exact>
-						<ProjectsPage/>
+						<ProjectsPage />
 					</Route>
 					<Route path="/projects/:id" exact>
-						projects detail
+						<ProjectsDetailPage />
 					</Route>
 					<Route path="/" render={() => <Redirect to="/profile" />} />
 				</Switch>

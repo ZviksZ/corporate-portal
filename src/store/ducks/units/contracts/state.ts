@@ -1,6 +1,6 @@
 import { FromTo } from '../../profile/contracts/state'
 
-export interface Member {
+export interface MemberDetail {
 	name: string
 	id: string
 	image: string
@@ -17,7 +17,7 @@ export interface Member {
 export interface Unit {
 	id: string
 	name: string
-	lead: Member
+	lead: MemberDetail
 	role?: string
 	main?: string | null
 	mainName?: string | null
@@ -25,7 +25,7 @@ export interface Unit {
 	parentName?: string | null
 	members: {
 		size: number
-		list: Member[]
+		list: MemberDetail[]
 	}
 	subUnits?: Unit[] | null
 }
@@ -35,14 +35,14 @@ export interface Unit {
 export interface UnitDetail {
 	id: string
 	name: string
-	lead: Member
+	lead: MemberDetail
 	main?: string | null
 	mainName?: string | null
 	parent?: string | null
 	parentName?: string | null
 	members: {
 		size: number
-		list: Member[]
+		list: MemberDetail[]
 	}
 	subUnits?: Unit[] | null
 }

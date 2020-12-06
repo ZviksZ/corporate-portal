@@ -48,7 +48,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm }) => {
 			<div className="sectionSubtitle">Корпоративных дней</div>
 			<p className="sectionText">{time.corporateDays}</p>
 
-			<Button className="btn btn-full-width margin-top" onClick={() => setOpenForm(true)}>
+			<Button className="btn btn-full-width margin-top text-initial" onClick={() => setOpenForm(true)}>
 				+ Заявление на отпуск/больничный
 			</Button>
 
