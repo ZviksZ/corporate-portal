@@ -62,15 +62,22 @@
         cursor: pointer;
         transition: 0.1s ease;
         margin-left: auto;
+        padding-bottom: 2px;
         @include desktop {
             &:hover {
                 background: $colorPrimary;
                 color: $colorWhite;
             }
         }
-        &.added-member {
+        &.addedMember {
             background: $colorPrimary;
             color: $colorWhite;
+            @include desktop {
+                &:hover {
+                    background: $colorWhite;
+                    color: $colorPrimary;
+                }
+            }
         }
     }
 }

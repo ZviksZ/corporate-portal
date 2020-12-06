@@ -7,9 +7,11 @@ import units from './mockups/units.json'
 import unitDetail from './mockups/unit-detail.json'
 import teams from './mockups/teams.json'
 import teamDetail from './mockups/team-detail.json'
+import projects from './mockups/projects.json'
 import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
 import { ProfileData } from '../../store/ducks/profile/contracts/state'
 import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
+import { Project, ProjectDetail } from '../../store/ducks/projects/contracts/state'
 
 interface Response<T> {
 	status: string
@@ -100,4 +102,23 @@ export const TeamsApi = {
 		//return data.data
 		return teamDetail.team
 	},
+}
+export const ProjectsApi = {
+	/**
+	 * Список проектов
+	 */
+	async getProjects(): Promise<Project[]> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return projects.projects
+	},
+	/**
+	 * Данные проекта(детальные)
+	 * @param {String} id - id проекта
+	 */
+	/*async getProjectData(id: string): Promise<ProjectDetail> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		//return teamDetail.team
+	},*/
 }

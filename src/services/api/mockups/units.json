@@ -3,7 +3,7 @@
   "units": [
     {
       "id": "6f625ff6bd97609",
-      "name": "Команда А",
+      "name": "Подразделение А",
       "main": null,
       "mainName": null,
       "parent": null,
@@ -31,11 +31,11 @@
       "subUnits": [
         {
           "id": "5f625ff6bd97609",
-          "name": "Команда Б",
+          "name": "Подразделение Б",
           "main": "6f625ff6bd97609",
-          "mainName": "Команда А",
+          "mainName": "Подразделение А",
           "parent": "6f625ff6bd97609",
-          "parentName": "Команда А",
+          "parentName": "Подразделение А",
           "lead": {
             "name": "Колесников Михаил",
             "id": "8f625ff6bd97609c15525e2b4",
@@ -59,11 +59,11 @@
           "subUnits": [
             {
               "id": "5f625ff6bd97609",
-              "name": "Команда В",
+              "name": "Подразделение В",
               "main": "6f625ff6bd97609",
-              "mainName": "Команда А",
+              "mainName": "Подразделение А",
               "parent": "5f625ff6bd97609",
-              "parentName": "Команда Б",
+              "parentName": "Подразделение Б",
               "lead": {
                 "name": "Колесников Михаил",
                 "id": "8f625ff6bd97609c15525e2b4",
@@ -92,7 +92,7 @@
     },
     {
       "id": "9f625ff6bd97609",
-      "name": "Команда А1",
+      "name": "Подразделение А1",
       "main": null,
       "mainName": null,
       "parent": null,
@@ -120,11 +120,11 @@
       "subUnits": [
         {
           "id": "5f625ff6bd97609",
-          "name": "Команда Б1",
+          "name": "Подразделение Б1",
           "main": "61425ff6bd97609",
-          "mainName": "Команда А",
+          "mainName": "Подразделение А",
           "parent": "6f625ff6bd97609",
-          "parentName": "Команда А",
+          "parentName": "Подразделение А",
           "lead": {
             "name": "Колесников Михаил",
             "id": "8f62414f6bd97609c15525e2b4",
@@ -148,11 +148,11 @@
           "subUnits": [
             {
               "id": "5152135f6bd97609",
-              "name": "Команда В1",
+              "name": "Подразделение В1",
               "main": "6f625ff6bd97609",
-              "mainName": "Команда А",
+              "mainName": "Подразделение А",
               "parent": "5f625ff6bd97609",
-              "parentName": "Команда Б",
+              "parentName": "Подразделение Б",
               "lead": {
                 "name": "Колесников Михаил",
                 "id": "8f621515bd97609c15525e2b4",

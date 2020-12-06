@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import s from './Navbar.module.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useParams, useRouteMatch } from 'react-router-dom'
 import { NavbarProfile } from './NavbarProfile/NavbarProfile'
 import { NavbarNotifications } from './NavbarNotifications/NavbarNotifications'
 import { NavbarLeft } from './NavbarLeft/NavbarLeft'
@@ -15,6 +15,10 @@ import { useSelector } from 'react-redux'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
 
 export const Navbar: React.FC = () => {
+	const params = useLocation()
+	const match = useRouteMatch()
+	console.log(params.pathname.split('/'))
+	console.log(match)
 	const [openMobile, setOpenMobile] = useState(false)
 	const { user } = useSelector(selectGlobal)
 
@@ -32,13 +36,13 @@ export const Navbar: React.FC = () => {
 
 							<div className={s.navbarContent}>
 								<div className={s.nav}>
-									<NavLink to="/units" className={s.link}>
+									<NavLink to="/units" activeClassName={s.activeLink} className={s.link}>
 										Подразделения
 									</NavLink>
-									<NavLink to="/teams" className={s.link}>
+									<NavLink to="/teams" activeClassName={s.activeLink} className={s.link}>
 										Команды
 									</NavLink>
-									<NavLink to="/projects" className={s.link}>
+									<NavLink to="/projects" activeClassName={s.activeLink} className={s.link}>
 										Проекты
 									</NavLink>
 								</div>

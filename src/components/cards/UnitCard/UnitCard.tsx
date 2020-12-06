@@ -35,19 +35,15 @@ export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) 
 				</div>
 				<div className={cn(s.item, s.memberItem)}>
 					<div className={s.position}>Сотрудники</div>
-					<object type="owo/uwu">
-						<NavLink className={s.teamInfo} to={`/teams/${item.id}`}>
-							<AvatarGroup max={7}>
-								{item.members.list.map((member) => {
-									return (
-										<Avatar key={member.id} className={cn(s.image, 'avatar-bg')} alt="" src={member.image} aria-controls="simple-menu" aria-haspopup="true">
-											{getInitialsFromName(member.name)}
-										</Avatar>
-									)
-								})}
-							</AvatarGroup>
-						</NavLink>
-					</object>
+					<AvatarGroup max={7}>
+						{item.members.list.map((member) => {
+							return (
+								<Avatar key={member.id} className={cn(s.image, 'avatar-bg')} alt="" src={member.image} aria-controls="simple-menu" aria-haspopup="true">
+									{getInitialsFromName(member.name)}
+								</Avatar>
+							)
+						})}
+					</AvatarGroup>
 				</div>
 			</div>
 		</NavLink>

@@ -33,13 +33,13 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top">{unit.name}</h1>
 
-			<div className="sectionBigSubtitle">Руководитель</div>
+			<div className="sectionBigSubtitle text-uppercase">Руководитель</div>
 
 			<MemberCard member={unit.lead} />
 
 			{unit.subUnits && (
 				<>
-					<div className="sectionBigSubtitle margin-top-x2">Подотделы ({unit.subUnits.length})</div>
+					<div className="sectionBigSubtitle text-uppercase margin-top-x2">Подотделы ({unit.subUnits.length})</div>
 					{unit.subUnits.map((sub) => (
 						<UnitCard linkPath={'units'} key={sub.id} item={sub} />
 					))}
@@ -48,7 +48,7 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 
 			{unit.members && unit.members.list && (
 				<>
-					<div className="sectionBigSubtitle margin-top-x2">сотрудники ({unit.members.list.length})</div>
+					<div className="sectionBigSubtitle text-uppercase margin-top-x2">сотрудники ({unit.members.list.length})</div>
 					{unit.members.list.map((member) => (
 						<MemberCard member={member} key={member.id} />
 					))}

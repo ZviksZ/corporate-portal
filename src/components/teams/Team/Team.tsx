@@ -30,13 +30,13 @@ export const Team: React.FC<Props> = ({ team }) => {
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top">{team.name}</h1>
 
-			<div className="sectionBigSubtitle">Тимлид</div>
+			<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
 
 			<MemberCard member={team.lead} />
 
 			{team.members && team.members.list && (
 				<>
-					<div className="sectionBigSubtitle margin-top-x2">
+					<div className="sectionBigSubtitle text-uppercase margin-top-x2">
 						<span>сотрудники ({team.members.list.length})</span>
 						{user && user.userType === '1' && <Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">Управление составом</Button>}
 					</div>

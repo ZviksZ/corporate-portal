@@ -7,8 +7,13 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import cn from 'classnames'
 import Button from '@material-ui/core/Button'
 import s from './TeamSquad.module.scss'
+import { ModalBlock } from '../../common/ModalBlock/ModalBlock'
+import { useState } from 'react'
+import { TeamRoleForm } from '../../forms/team/TeamRoleForm/TeamRoleForm'
 
 export const TeamSquad: React.FC = () => {
+	const [openForm, setOpenForm] = useState(false)
+
 	const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		console.log(e.target.value)
 	}
@@ -35,7 +40,8 @@ export const TeamSquad: React.FC = () => {
 				/>
 			</FormControl>
 
-			<MemberSquadCard showRole={true} />
+			<MemberSquadCard openForm={setOpenForm} showRole={true} isTeamMember={true}/>
+			<MemberSquadCard openForm={setOpenForm} showRole={false} />
 
 			<div className={s.squadButtons}>
 				<Button size="large" component={NavLink} to={`/teams/id`} className="btn btn-default text-uppercase">
@@ -45,6 +51,10 @@ export const TeamSquad: React.FC = () => {
 					Сохранить
 				</Button>
 			</div>
+
+			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title="Изменить роль в команде">
+				<TeamRoleForm onClose={setOpenForm} />
+			</ModalBlock>
 		</div>
 	)
 }

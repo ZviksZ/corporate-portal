@@ -1,5 +1,6 @@
-import { GetTeamsActionInterface, SetTeamsActionInterface, TeamsActionsType, GetTeamDataActionInterface, SetTeamDataActionInterface } from './contracts/actionTypes'
+import { GetTeamsActionInterface, SetTeamsActionInterface, TeamsActionsType, GetTeamDataActionInterface, SetTeamDataActionInterface, SetRoleFormDataActionInterface } from './contracts/actionTypes'
 import { Unit, UnitDetail } from '../units/contracts/state'
+import { SquadMember } from './contracts/state'
 
 
 
@@ -30,5 +31,12 @@ export const setTeamData = (payload: UnitDetail | null): SetTeamDataActionInterf
 	type: TeamsActionsType.SET_TEAM_DATA,
 	payload,
 })
+/**
+ * Установка данных сотрудника для формы смены роли в команде
+ */
+export const setRoleFormData = (payload: SquadMember | null): SetRoleFormDataActionInterface => ({
+	type: TeamsActionsType.SET_ROLE_FORM_DATA,
+	payload,
+})
 
-export type TeamsActions = GetTeamDataActionInterface | SetTeamDataActionInterface | GetTeamsActionInterface | SetTeamsActionInterface
+export type TeamsActions = SetRoleFormDataActionInterface | GetTeamDataActionInterface | SetTeamDataActionInterface | GetTeamsActionInterface | SetTeamsActionInterface

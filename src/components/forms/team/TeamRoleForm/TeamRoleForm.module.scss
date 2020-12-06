@@ -1,0 +1,25 @@
+.form {
+    .formMember {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+        .avatar {
+            width: 60px;
+            height: 60px;
+            margin-right: 21px;
+        }
+        .info {
+            .name {
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .formFooter {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 20px 0 0;
+        border-top: 1px solid #C4C4C4;
+        margin-top: 25px;
+    }
+}
