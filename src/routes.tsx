@@ -59,7 +59,7 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 				<Route path="/" exact>
 					<AuthPage />
 				</Route>
-				<Route path="/" render={() => <Redirect to="/" />} />
+				{/*<Route path="/" render={() => <Redirect to="/" />} />*/}
 			</Switch>
 		</div>
 	)

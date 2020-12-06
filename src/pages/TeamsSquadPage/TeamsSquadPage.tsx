@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { MemberSquadCard } from '../../components/cards/MemberSquadCard/MemberSquadCard'
+import { TeamSquad } from '../../components/teams/TeamSquad/TeamSquad'
 
 export const TeamsSquadPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<MemberSquadCard />
+				<TeamSquad/>
 			</div>
 		</section>
 	)

@@ -16,8 +16,6 @@ export const NavbarSearch: React.FC = () => {
 			</IconButton>
 			<FormControl fullWidth variant="outlined" className={s.searchInput}>
 				<OutlinedInput
-					id="outlined-adornment-amount"
-					/*value={values.amount}*/
 					onChange={onSearch}
 					placeholder="Поиск..."
 					className="search-input"

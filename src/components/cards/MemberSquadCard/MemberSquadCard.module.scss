@@ -8,8 +8,13 @@
     box-shadow: 0 1px 3px rgba(63, 63, 68, 0.15), 0px -1px 0px #E0E2E4, -1px 0px 0px #E0E2E4, 0px 1px 0px #E0E2E4, 1px 0px 0px #E0E2E4;
     border-radius: 4px;
     display: flex;
+    align-items: center;
     padding: 15px 28px;
+    color: $colorText;
     .squadCardItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 197px;
         min-width: 197px;
     }
@@ -29,6 +34,14 @@
         line-height: 24px;
         letter-spacing: -0.05px;
         color: $colorPrimary;
+        cursor: pointer;
+        @extend %link-shared
+    }
+    .text {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: -0.05px;
         cursor: pointer;
         @extend %link-shared
     }
