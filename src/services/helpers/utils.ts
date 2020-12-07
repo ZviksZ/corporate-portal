@@ -16,6 +16,17 @@ export function setFormData(args) {
 
 	return formData
 }
+export function addDaysToDate(data, day)
+{
+	data = data.split('.');
+	data = new Date(data[2], +data[1]-1, +data[0]+day, 0, 0, 0, 0);
+	/*console.log(data)
+	data = [data.getMonth()+1,data.getDate(),data.getFullYear()];
+	console.log(data)
+	data = data.join('.').replace(/(^|\/)(\d)(?=\/)/g,"$10$2");*/
+	return data
+}
+
 
 export function formatDate(data, fullYear) {
 	const date = new Date(data)

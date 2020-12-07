@@ -5,9 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Profile } from '../../components/profile/Profile/Profile'
 import { selectGlobal } from '../../store/ducks/global/selectors'
 import { getProfile, setProfile } from '../../store/ducks/profile/actionCreators'
-import { Breadcrumbs } from '@material-ui/core'
-import s from '../../components/cards/MemberCard/MemberCard.module.scss'
-import { NavLink } from 'react-router-dom'
 
 export const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()

@@ -30,3 +30,27 @@
 .MuiPickersBasePicker-container .MuiPickersSlideTransition-transitionContainer > * {
     text-transform: capitalize;
 }
+
+.MuiFormHelperText-root {
+    margin: 0 !important;
+    color: $colorDangerous !important;
+}
+.MuiFormControl-root {
+    .Mui-error {
+        fieldset {
+            border-color: $colorDangerous !important;
+            border-width: 2px !important;
+        }
+        @include desktop {
+            &:hover {
+                fieldset {
+                    border-color: $colorDangerous !important;
+                    border-width: 2px !important;
+                }
+            }
+        }
+    }
+}
+.MuiFormLabel-root.Mui-error {
+    color: $colorDangerous !important;
+}

@@ -3,7 +3,7 @@
 
 .form {
     width: 100%;
-    padding: 16px 24px;
+    padding: 0 24px;
     background: $colorWhite;
     .formTitle {
         font-weight: 400;
@@ -12,6 +12,19 @@
         text-align: center;
         color: #000000;
         margin-bottom: 15px;
+    }
+    .footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0 0;
+        border-top: 1px solid #C4C4C4;
+        margin-top: 25px;
+    }
+    .subtitle {
+        margin: 10px 0 0 !important;
+        padding: 0 8px;
     }
     @include mobile {
         padding: 20px 30px;

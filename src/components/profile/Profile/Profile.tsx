@@ -16,7 +16,7 @@ export const Profile: React.FC = () => {
 				<ProfileInfo />
 			</div>
 			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title="Заявление на отпуск/больничный">
-				<ApplicationForm />
+				<ApplicationForm onClose={setOpenForm} />
 			</ModalBlock>
 		</>
 	)

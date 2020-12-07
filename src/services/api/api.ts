@@ -49,7 +49,7 @@ export const AuthApi = {
 	async login(formData: LoginData): Promise<User> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return user.user
+		return user.data
 	},
 }
 
@@ -61,7 +61,7 @@ export const ProfileApi = {
 	async getProfile(formData: any): Promise<ProfileData> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return profile.profile
+		return profile.data
 	},
 }
 
@@ -72,7 +72,7 @@ export const UnitsApi = {
 	async getUnits(): Promise<Unit[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return units.units
+		return units.data
 	},
 	/**
 	 * Данные подразделения(детальные)
@@ -81,7 +81,7 @@ export const UnitsApi = {
 	async getUnitData(id: string): Promise<UnitDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return unitDetail.unit
+		return unitDetail.data
 	},
 }
 
@@ -92,7 +92,7 @@ export const TeamsApi = {
 	async getTeams(): Promise<Unit[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return teams.teams
+		return teams.data
 	},
 	/**
 	 * Данные команды(детальные)
@@ -101,7 +101,7 @@ export const TeamsApi = {
 	async getTeamData(id: string): Promise<UnitDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return teamDetail.team
+		return teamDetail.data
 	},
 }
 export const ProjectsApi = {
@@ -111,7 +111,7 @@ export const ProjectsApi = {
 	async getProjects(): Promise<Project[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return projects.projects
+		return projects.data
 	},
 	/**
 	 * Данные проекта(детальные)
@@ -120,6 +120,6 @@ export const ProjectsApi = {
 	async getProjectData(id: string): Promise<ProjectDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
-		return project.project
+		return project.data
 	},
 }
