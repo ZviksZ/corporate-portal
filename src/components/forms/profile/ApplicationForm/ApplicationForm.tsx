@@ -11,8 +11,6 @@ import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import { useEffect, useState } from 'react'
 import DateFnsUtils from '@date-io/date-fns'
 import cn from 'classnames'
-import { Autocomplete } from '@material-ui/lab'
-import TextField from '@material-ui/core/TextField'
 import { addDaysToDate, formatDate } from '../../../../services/helpers/utils'
 import { selectGlobal } from '../../../../store/ducks/global/selectors'
 import { FormControl, MenuItem } from '@material-ui/core'
@@ -33,7 +31,7 @@ type Props = {
 export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 	const { user } = useSelector(selectGlobal)
 
-	const { control, register, handleSubmit, errors, setValue, getValues } = useForm<IFormInputs>({
+	const { control, register, handleSubmit, errors, getValues } = useForm<IFormInputs>({
 		resolver: yupResolver(profileApplicationSchema),
 	})
 
@@ -63,6 +61,10 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 			setSelectedDateTo(date)
 		}
 	}
+	const selectHandler = (e: React.ChangeEvent<{ value: unknown }>) => {
+		console.log('111')
+		setType(e.target.value as string)
+	}
 
 	const onSubmit = (data: IFormInputs) => {
 		const formData = {
@@ -90,17 +92,22 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 						<Controller
 							labelId="demo-simple-select-label"
 							label="Тип отсутствия"
-							as={
-								<Select>
+							name="type"
+							control={control}
+							native={true}
+							onChange={selectHandler}
+							value={type}
+							render={(props) => (
+								<Select {...props} value={type} onChange={(value) => {
+									props.onChange(value);
+									selectHandler(value);
+								}} label="Тип отсутствия" labelId="demo-simple-select-label">
 									<MenuItem value="1">Оплачиваемый отпуск</MenuItem>
 									<MenuItem value="2">Отпуск за свой счет</MenuItem>
 									<MenuItem value="3">Больничный</MenuItem>
 									<MenuItem value="4">Корпоративный день</MenuItem>
 								</Select>
-							}
-							name="type"
-							control={control}
-							defaultValue=""
+							)}
 						/>
 						<FormHelperText>{errors.type && (errors.type as FieldError).message}</FormHelperText>
 					</FormControl>
