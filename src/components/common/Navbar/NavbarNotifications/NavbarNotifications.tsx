@@ -4,10 +4,17 @@ import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneO
 import Badge from '@material-ui/core/Badge'
 import s from '../Navbar.module.scss'
 import { useState } from 'react'
-import { NotificationItem } from './NotificationItem/NotificationItem'
+import { NotificationPopupItem } from './NotificationItem/NotificationPopupItem'
+import { ModalBlock } from '../../ModalBlock/ModalBlock'
+import { NotificationForm } from '../../../forms/common/NotificationForm/NotificationForm'
+import { useSelector } from 'react-redux'
+import { selectGlobal } from '../../../../store/ducks/global/selectors'
+import { NavLink } from 'react-router-dom'
 
 export const NavbarNotifications: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
+	const [openForm, setOpenForm] = useState(false)
+	const { notifications, notificationDetail } = useSelector(selectGlobal)
 
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget)
@@ -40,21 +47,27 @@ export const NavbarNotifications: React.FC = () => {
 					horizontal: 'center',
 				}}
 			>
-				<div className={s.notificationList}>
-					<div className={s.head}>
-						<span className={s.text}>Уведомление</span>
-						<span className={s.count}>14 новых</span>
+				{notifications && (
+					<div className={s.notificationList}>
+						<div className={s.head}>
+							<span className={s.text}>Уведомление</span>
+							<span className={s.count}>{notifications.newCount} новых</span>
+						</div>
+						<div className={s.list}>
+							{notifications.lastFive.map((item) => (
+								<NotificationPopupItem openForm={setOpenForm} key={item.id} item={item} />
+							))}
+						</div>
+						<div className={s.bottom}>
+							<NavLink to={'/notifications'}>Посмотреть все</NavLink>
+						</div>
 					</div>
-					<div className={s.list}>
-						{[1, 2, 3, 4, 5].map((item) => (
-							<NotificationItem key={item} item={item} />
-						))}
-					</div>
-					<div className={s.bottom}>
-						<span>Посмотреть все</span>
-					</div>
-				</div>
+				)}
 			</Popover>
+
+			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title={(notificationDetail && notificationDetail.name) || ''}>
+				<NotificationForm onClose={setOpenForm} />
+			</ModalBlock>
 		</>
 	)
 }

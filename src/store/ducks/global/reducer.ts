@@ -7,6 +7,8 @@ const initialGlobalState: GlobalState = {
 	user: null,
 	globalMessage: null,
 	isLoading: false,
+	notifications: null,
+	notificationDetail: null
 }
 export const globalReducer = produce((draft: Draft<GlobalState>, action: GlobalActions) => {
 	switch (action.type) {
@@ -18,6 +20,12 @@ export const globalReducer = produce((draft: Draft<GlobalState>, action: GlobalA
 			break
 		case GlobalActionsType.SET_LOADING:
 			draft.isLoading = action.payload
+			break
+		case GlobalActionsType.SET_NOTIFICATIONS:
+			draft.notifications = action.payload
+			break
+		case GlobalActionsType.SET_NOTIFICATION_DATA:
+			draft.notificationDetail = action.payload
 			break
 		default:
 			break

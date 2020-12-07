@@ -159,7 +159,7 @@
         transition: 0.2s ease;
         padding: 0 16px;
         @extend %link-shared;
-        span {
+        a {
             font-weight: 500;
             font-size: 13px;
             line-height: 22px;

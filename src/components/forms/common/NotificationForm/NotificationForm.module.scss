@@ -1,0 +1,30 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/media";
+@import "../../../../assets/scss/infographic";
+
+.notification {
+    .author {
+        display: flex;
+        align-items: center;
+        color: $colorText;
+        margin-bottom: 23px;
+        @extend %link-shared;
+        .avatar {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            margin-right: 21px;
+        }
+        .info {
+            * {
+                margin: 0;
+            }
+
+            display: flex;
+            flex-direction: column;
+        }
+        .author {
+            margin: 4px 0 3px !important;
+        }
+    }
+}

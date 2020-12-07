@@ -1,9 +1,8 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
-import { setGlobalMessage, setLoading, setUser } from './actionCreators'
+import { GetNotificationDataActionInterface, GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
+import { setGlobalMessage, setLoading, setNotificationData, setNotifications, setUser } from './actionCreators'
 import { Cookie } from '../../../services/helpers/cookie'
-import { AuthApi } from '../../../services/api/api'
-
+import { AuthApi, NotificationsApi } from '../../../services/api/api'
 
 /**
  * Авторизация
@@ -48,8 +47,36 @@ export function* logoutRequest() {
 	} catch (error) {}
 }
 
+/**
+ * Список уведомлений
+ */
+export function* getNotificationsRequest() {
+	try {
+		const notifications = yield call(NotificationsApi.getNotifications)
+
+		yield put(setNotifications(notifications))
+	} catch (error) {
+		//yield put(setGlobalMessage({ text: 'Error. Try again', type: 'error' }))
+	}
+}
+
+/**
+ * Данные уведомления
+ */
+export function* getNotificationDataRequest({ id }: GetNotificationDataActionInterface) {
+	try {
+		const notification = yield call(NotificationsApi.getNotificationData, id)
+
+		yield put(setNotificationData(notification))
+	} catch (error) {
+		//yield put(setGlobalMessage({ text: 'Error. Try again', type: 'error' }))
+	}
+}
+
 export function* globalSaga() {
 	yield takeLatest(GlobalActionsType.GET_COOKIE_USER, getUserCookieRequest)
 	yield takeLatest(GlobalActionsType.LOGIN, loginRequest)
 	yield takeLatest(GlobalActionsType.LOGOUT, logoutRequest)
+	yield takeLatest(GlobalActionsType.GET_NOTIFICATIONS, getNotificationsRequest)
+	yield takeLatest(GlobalActionsType.GET_NOTIFICATION_DATA, getNotificationDataRequest)
 }

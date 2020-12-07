@@ -3,7 +3,7 @@ import { useRoutes } from './routes'
 import { Loader } from './components/common/Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectGlobal } from './store/ducks/global/selectors'
-import { getCookieUser } from './store/ducks/global/actionCreators'
+import { getCookieUser, getNotifications } from './store/ducks/global/actionCreators'
 
 export const App: React.FC = () => {
 	const { user, isLoading } = useSelector(selectGlobal)
@@ -14,6 +14,15 @@ export const App: React.FC = () => {
 	useEffect(() => {
 		dispatch(getCookieUser())
 	}, [])
+
+	useEffect(() => {
+		if (isAuth) {
+			dispatch(getNotifications())
+			setInterval(() => {
+				dispatch(getNotifications())
+			}, 60000)
+		}
+	}, [isAuth])
 
 	if (isLoading) {
 		return (

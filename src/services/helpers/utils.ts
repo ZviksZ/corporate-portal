@@ -1,5 +1,15 @@
 // @ts-nocheck
 /* eslint-disable */
+/**
+ * Фукнция склонения
+ * @param {Number} number - число для склонения
+ * @param {Array} titles - массив слов склонений
+ * @returns {String} подпись
+ */
+export function declOfNum(number, titles) {
+	const cases = [2, 0, 1, 1, 1, 2]
+	return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]]
+}
 
 export function setFormData(args) {
 	const formData = new FormData()
@@ -16,17 +26,45 @@ export function setFormData(args) {
 
 	return formData
 }
-export function addDaysToDate(data, day)
-{
-	data = data.split('.');
-	data = new Date(data[2], +data[1]-1, +data[0]+day, 0, 0, 0, 0);
-	/*console.log(data)
-	data = [data.getMonth()+1,data.getDate(),data.getFullYear()];
-	console.log(data)
-	data = data.join('.').replace(/(^|\/)(\d)(?=\/)/g,"$10$2");*/
+
+export function addDaysToDate(data, day) {
+	data = data.split('.')
+	data = new Date(data[2], +data[1] - 1, +data[0] + day, 0, 0, 0, 0)
+
 	return data
 }
+export function getReverseFormatDate(date) {
+	let dateArray = date.split(' ')
+	let reverseDate = dateArray[0].split('.').reverse().join('.')
 
+	return new Date(reverseDate + ' ' + dateArray[1])
+}
+export function timeSince(date) {
+	let seconds = Math.floor((new Date() - date) / 1000)
+
+	let interval = seconds / 31536000
+
+	if (interval > 1) {
+		return Math.floor(interval) + ' ' + declOfNum(Math.floor(interval), ['год', 'года', 'лет'])
+	}
+	interval = seconds / 2592000
+	if (interval > 1) {
+		return Math.floor(interval) + ' ' + declOfNum(Math.floor(interval), ['месяц', 'месяца', 'месяцев'])
+	}
+	interval = seconds / 86400
+	if (interval > 1) {
+		return Math.floor(interval) + ' ' + declOfNum(Math.floor(interval), ['день', 'дня', 'дней'])
+	}
+	interval = seconds / 3600
+	if (interval > 1) {
+		return Math.floor(interval) + ' ' + declOfNum(Math.floor(interval), ['час', 'часа', 'часов'])
+	}
+	interval = seconds / 60
+	if (interval > 1) {
+		return Math.floor(interval) + ' ' + declOfNum(Math.floor(interval), ['минуту', 'минуты', 'минут'])
+	}
+	return Math.floor(seconds) + ' ' + declOfNum(Math.floor(seconds), ['секунду', 'секунды', 'секунд'])
+}
 
 export function formatDate(data, fullYear) {
 	const date = new Date(data)

@@ -1,15 +1,18 @@
-import { GlobalMessage, User } from './contracts/state'
+import { GlobalMessage, NotificationData, NotificationDetail, User } from './contracts/state'
 import {
 	GetCookieUserActionInterface,
+	GetNotificationDataActionInterface,
+	GetNotificationsActionInterface,
 	GlobalActionsType,
 	LoginActionInterface,
 	LoginData,
 	LogoutActionInterface,
 	SetGlobalMessageActionInterface,
 	SetLoadingActionInterface,
+	SetNotificationDataActionInterface,
+	SetNotificationsActionInterface,
 	SetUserActionInterface,
 } from './contracts/actionTypes'
-
 
 /**
  * Авторизация
@@ -51,5 +54,43 @@ export const setLoading = (payload: boolean): SetLoadingActionInterface => ({
 	type: GlobalActionsType.SET_LOADING,
 	payload,
 })
+/**
+ * Загрузка уведомлений
+ */
+export const getNotifications = (): GetNotificationsActionInterface => ({
+	type: GlobalActionsType.GET_NOTIFICATIONS,
+})
+/**
+ * Установка в состояние уведомлений
+ */
+export const setNotifications = (payload: NotificationData | null): SetNotificationsActionInterface => ({
+	type: GlobalActionsType.SET_NOTIFICATIONS,
+	payload,
+})
 
-export type GlobalActions = GetCookieUserActionInterface | SetLoadingActionInterface | SetGlobalMessageActionInterface | LogoutActionInterface | LoginActionInterface | SetUserActionInterface
+/**
+ * Загрузка данных уведомления
+ */
+export const getNotificationData = (id: string): GetNotificationDataActionInterface => ({
+	type: GlobalActionsType.GET_NOTIFICATION_DATA,
+	id,
+})
+/**
+ * Установка в состояние уведомления
+ */
+export const setNotificationData = (payload: NotificationDetail | null): SetNotificationDataActionInterface => ({
+	type: GlobalActionsType.SET_NOTIFICATION_DATA,
+	payload,
+})
+
+export type GlobalActions =
+	| GetNotificationDataActionInterface
+	| SetNotificationDataActionInterface
+	| GetNotificationsActionInterface
+	| SetNotificationsActionInterface
+	| GetCookieUserActionInterface
+	| SetLoadingActionInterface
+	| SetGlobalMessageActionInterface
+	| LogoutActionInterface
+	| LoginActionInterface
+	| SetUserActionInterface

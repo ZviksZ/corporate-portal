@@ -15,10 +15,6 @@ import { useSelector } from 'react-redux'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
 
 export const Navbar: React.FC = () => {
-	const params = useLocation()
-	const match = useRouteMatch()
-	console.log(params.pathname.split('/'))
-	console.log(match)
 	const [openMobile, setOpenMobile] = useState(false)
 	const { user } = useSelector(selectGlobal)
 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Cookie } from '../helpers/cookie'
-import { User } from '../../store/ducks/global/contracts/state'
+import { NotificationData, NotificationDetail, User } from '../../store/ducks/global/contracts/state'
 import user from './mockups/user.json'
 import profile from './mockups/profile.json'
 import units from './mockups/units.json'
@@ -9,6 +9,8 @@ import teams from './mockups/teams.json'
 import teamDetail from './mockups/team-detail.json'
 import projects from './mockups/projects.json'
 import project from './mockups/project-detail.json'
+import notifications from './mockups/notifications.json'
+import notificationDetail from './mockups/notification-detail.json'
 import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
 import { ProfileData } from '../../store/ducks/profile/contracts/state'
 import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
@@ -50,6 +52,25 @@ export const AuthApi = {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return user.data
+	},
+}
+
+export const NotificationsApi = {
+	/**
+	 * Получить уведомления
+	 */
+	async getNotifications(): Promise<NotificationData> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return notifications.data
+	},
+	/**
+	 * Получить уведомления
+	 */
+	async getNotificationData(id: string): Promise<NotificationDetail> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return notificationDetail.data
 	},
 }
 

@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "data": {
+    "id": "5f625ff6bd97609c15525e2b4",
+    "author": "Иванов Иван Иванович",
+    "authorId": "5f625ff6faa9c15525e2b4",
+    "name": "Заявление на отпуск",
+    "authorImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+    "authorPosition": "Разработчик ПО",
+    "applicationDates": {
+      "from": "12.02.2021",
+      "to": "24.02.2021"
+    },
+    "vacationGraphic": {
+      "from": "12.02.2021",
+      "to": "24.02.2021"
+    },
+    "vacationDays": "12",
+    "corporateDays": "5"
+  }
+}

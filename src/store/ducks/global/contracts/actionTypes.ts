@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { GlobalMessage, User } from './state'
+import { GlobalMessage, NotificationData, NotificationDetail, User } from './state'
 
 export enum GlobalActionsType {
 	LOGIN = 'global/LOGIN',
@@ -8,6 +8,10 @@ export enum GlobalActionsType {
 	SET_GLOBAL_MESSAGE = 'global/SET_GLOBAL_MESSAGE',
 	SET_LOADING = 'global/SET_LOADING',
 	GET_COOKIE_USER = 'global/GET_COOKIE_USER',
+	GET_NOTIFICATIONS = 'global/GET_NOTIFICATIONS',
+	SET_NOTIFICATIONS = 'global/SET_NOTIFICATIONS',
+	GET_NOTIFICATION_DATA = 'global/GET_NOTIFICATION_DATA',
+	SET_NOTIFICATION_DATA = 'global/SET_NOTIFICATION_DATA',
 }
 export interface LoginData {
 	login: string
@@ -35,4 +39,21 @@ export interface SetGlobalMessageActionInterface extends Action<GlobalActionsTyp
 export interface SetLoadingActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_LOADING
 	payload: boolean
+}
+
+export interface GetNotificationsActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.GET_NOTIFICATIONS
+}
+export interface SetNotificationsActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.SET_NOTIFICATIONS
+	payload: NotificationData | null
+}
+
+export interface GetNotificationDataActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.GET_NOTIFICATION_DATA
+	id: string
+}
+export interface SetNotificationDataActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.SET_NOTIFICATION_DATA
+	payload: NotificationDetail | null
 }
