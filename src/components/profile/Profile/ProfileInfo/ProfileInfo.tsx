@@ -5,10 +5,13 @@ import { ProfileInfoTeams } from './ProfileInfoTeams/ProfileInfoTeams'
 import { ProfileInfoAdditional } from './ProfileInfoAdditional/ProfileInfoAdditional'
 import { ProfileInfoContractors } from './ProfileInfoContractors/ProfileInfoContractors'
 
-export const ProfileInfo: React.FC = () => {
+type Props = {
+	isMyProfile: boolean
+}
+export const ProfileInfo: React.FC<Props> = ({ isMyProfile }) => {
 	return (
 		<div className={s.profileInfo}>
-			<ProfileInfoMain />
+			<ProfileInfoMain isMyProfile={isMyProfile} />
 			<ProfileInfoTeams />
 			<ProfileInfoAdditional />
 			<ProfileInfoContractors />

@@ -6,14 +6,17 @@ import { ApplicationForm } from '../../forms/profile/ApplicationForm/Application
 import { ModalBlock } from '../../common/ModalBlock/ModalBlock'
 import { useState } from 'react'
 
-export const Profile: React.FC = () => {
+type Props = {
+	isMyProfile: boolean
+}
+export const Profile: React.FC<Props> = ({ isMyProfile }) => {
 	const [openForm, setOpenForm] = useState(false)
 
 	return (
 		<>
 			<div className={s.profile}>
-				<ProfileSidebar setOpenForm={setOpenForm} />
-				<ProfileInfo />
+				<ProfileSidebar isMyProfile={isMyProfile} setOpenForm={setOpenForm} />
+				<ProfileInfo isMyProfile={isMyProfile} />
 			</div>
 			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title="Заявление на отпуск/больничный">
 				<ApplicationForm onClose={setOpenForm} />

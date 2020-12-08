@@ -5,14 +5,15 @@ import s from '../Profile.module.scss'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
+	isMyProfile: boolean
 }
 
-export const ProfileSidebar: React.FC<Props> = ({ setOpenForm }) => {
+export const ProfileSidebar: React.FC<Props> = ({ setOpenForm, isMyProfile }) => {
 	return (
 		<>
 			<div className={s.sidebar}>
 				<ProfileSidebarTop />
-				<ProfileSidebarBottom setOpenForm={setOpenForm} />
+				<ProfileSidebarBottom isMyProfile={isMyProfile} setOpenForm={setOpenForm} />
 			</div>
 		</>
 	)

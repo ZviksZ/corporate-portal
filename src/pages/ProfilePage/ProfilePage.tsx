@@ -10,6 +10,7 @@ export const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()
 	const { user } = useSelector(selectGlobal)
 	const [title, setTitle] = useState('Профиль')
+	const [isMyProfile, setIsMyProfile] = useState(true)
 	const params: { id?: string } = useParams()
 	const id = params.id
 
@@ -17,12 +18,15 @@ export const ProfilePage: React.FC = () => {
 		if (id) {
 			dispatch(getProfile(id, false))
 			setTitle('Профиль')
+			setIsMyProfile(false)
 		} else if (id && user && id === user.id) {
 			dispatch(getProfile(user.id, true))
 			setTitle('Мой профиль')
+			setIsMyProfile(true)
 		} else if (user && user.id) {
 			dispatch(getProfile(user.id, true))
 			setTitle('Мой профиль')
+			setIsMyProfile(true)
 		}
 		return () => {
 			dispatch(setProfile(null, false))
@@ -33,7 +37,7 @@ export const ProfilePage: React.FC = () => {
 		<section className="section">
 			<div className="container">
 				<h1 className="h2 section-title">{title}</h1>
-				<Profile />
+				<Profile isMyProfile={isMyProfile} />
 			</div>
 		</section>
 	)

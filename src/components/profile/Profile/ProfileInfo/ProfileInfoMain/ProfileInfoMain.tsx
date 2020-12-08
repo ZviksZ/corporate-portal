@@ -8,7 +8,10 @@ import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 import { getFormatedDate } from '../../../../../services/helpers/utils'
 
-export const ProfileInfoMain: React.FC = () => {
+type Props = {
+	isMyProfile: boolean
+}
+export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 	const { profileData } = useSelector(selectProfile)
 
 	if (!profileData) {
@@ -26,7 +29,7 @@ export const ProfileInfoMain: React.FC = () => {
 			<div className="sectionSubtitle">День рождения</div>
 			<p className={cn('sectionText', 'sectionTextWith')}>
 				<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
-				<FormControlLabel control={<Checkbox onChange={showDateChange} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />
+				{isMyProfile && <FormControlLabel control={<Checkbox onChange={showDateChange} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />}
 			</p>
 
 			<div className="sectionSubtitle">Контактный Email</div>
@@ -44,7 +47,7 @@ export const ProfileInfoMain: React.FC = () => {
 						{item}
 					</a>
 				))}
-				<i className="icon-edit"></i>
+				{isMyProfile && <i className="icon-edit"></i>}
 			</p>
 
 			<div className="sectionSubtitle">Внутренний телефон</div>
@@ -59,15 +62,18 @@ export const ProfileInfoMain: React.FC = () => {
 
 			<div className="sectionSubtitle">Размер футболки</div>
 			<p className="sectionText">{main.tshirtSize}</p>
+			{isMyProfile && (
+				<>
+					<div className="sectionSubtitle">SSH ключ</div>
 
-			<div className="sectionSubtitle">SSH ключ</div>
-
-			{main.sshKeys.map((item) => (
-				<div key={item} className={s.sshBlock}>
-					<span className={s.text}>ssh rsa {item}</span>
-					<ClipboardCopy isBigIcon={true} text={'ssh rsa ' + item} />
-				</div>
-			))}
+					{main.sshKeys.map((item) => (
+						<div key={item} className={s.sshBlock}>
+							<span className={s.text}>ssh rsa {item}</span>
+							<ClipboardCopy isBigIcon={true} text={'ssh rsa ' + item} />
+						</div>
+					))}
+				</>
+			)}
 		</div>
 	)
 }

@@ -10,9 +10,9 @@ import { getFormatedDate, getStatusText } from '../../../../../services/helpers/
 
 type Props = {
 	setOpenForm: (param: boolean) => void
+	isMyProfile: boolean
 }
-
-export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm }) => {
+export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile }) => {
 	const { profileData } = useSelector(selectProfile)
 
 	if (!profileData) {
@@ -39,27 +39,31 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm }) => {
 			<p className={'sectionText status-' + time.vacation.status}>
 				c {getFormatedDate(time.vacation.from)} по {getFormatedDate(time.vacation.to)}
 			</p>
-			<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
-				<img src={printer} alt="" width={'20px'} />
-				<span>Заявление на отпуск.pdf</span>
-			</a>
-			<div className="sectionSubtitle">Накоплено дней отпуска</div>
-			<p className="sectionText">{time.vacationDays}</p>
-			<div className="sectionSubtitle">Корпоративных дней</div>
-			<p className="sectionText">{time.corporateDays}</p>
+			{isMyProfile && (
+				<>
+					<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
+						<img src={printer} alt="" width={'20px'} />
+						<span>Заявление на отпуск.pdf</span>
+					</a>
+					<div className="sectionSubtitle">Накоплено дней отпуска</div>
+					<p className="sectionText">{time.vacationDays}</p>
+					<div className="sectionSubtitle">Корпоративных дней</div>
+					<p className="sectionText">{time.corporateDays}</p>
 
-			<Button className="btn btn-full-width margin-top text-initial" onClick={() => setOpenForm(true)}>
-				+ Заявление на отпуск/больничный
-			</Button>
+					<Button className="btn btn-full-width margin-top text-initial" onClick={() => setOpenForm(true)}>
+						+ Заявление на отпуск/больничный
+					</Button>
 
-			<div className={s.applications}>
-				{time.applications.map((item) => (
-					<div key={item.name} className={s.appItem}>
-						<div className="sectionText no-margin-bottom">{item.name}</div>
-						<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item.status)}</div>
+					<div className={s.applications}>
+						{time.applications.map((item) => (
+							<div key={item.name} className={s.appItem}>
+								<div className="sectionText no-margin-bottom">{item.name}</div>
+								<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item.status)}</div>
+							</div>
+						))}
 					</div>
-				))}
-			</div>
+				</>
+			)}
 		</div>
 	)
 }
