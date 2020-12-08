@@ -14,12 +14,14 @@ export const ProjectsPage: React.FC = () => {
 		return () => {
 			dispatch(setProjects(null))
 		}
-	})
-	return <section className="section">
-		<div className="container">
-			<h1 className="section-title-small">Проекты</h1>
+	}, [])
+	return (
+		<section className="section">
+			<div className="container">
+				<h1 className="section-title-small">Проекты</h1>
 
-			<Projects/>
-		</div>
-	</section>
+				<Projects />
+			</div>
+		</section>
+	)
 }

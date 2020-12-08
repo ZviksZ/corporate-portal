@@ -12,7 +12,7 @@ export const TeamsPage: React.FC = () => {
 		return () => {
 			dispatch(setTeams(null))
 		}
-	})
+	}, [])
 
 	return (
 		<section className="section">

@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react'
 import Popper from '@material-ui/core/Popper'
 import { NavbarSearchItem } from './NavbarSearchItem/NavbarSearchItem'
 import cn from 'classnames'
+import Fade from '@material-ui/core/Fade'
 
 export const NavbarSearch: React.FC = () => {
 	const [anchorEl, setAnchorEl] = useState<any>(null)
@@ -36,6 +37,7 @@ export const NavbarSearch: React.FC = () => {
 		dispatch(setSearch(null))
 	}
 
+
 	useEffect(() => {
 		if (searchResults) {
 			setAnchorEl(anchorRef.current)
@@ -48,10 +50,10 @@ export const NavbarSearch: React.FC = () => {
 
 	return (
 		<>
-			<IconButton className={s.searchIcon} ref={anchorRef} aria-describedby={'popper-id'}>
+			<IconButton className={s.searchIcon} ref={anchorRef} aria-describedby={'transitions-popper'}>
 				<SearchOutlinedIcon/>
 			</IconButton>
-			<FormControl fullWidth ref={anchorRef} variant="outlined" className={s.searchInput} aria-describedby={'popper-id'}>
+			<FormControl fullWidth ref={anchorRef} variant="outlined" className={s.searchInput} aria-describedby={'transitions-popper'}>
 				<OutlinedInput
 					onChange={onSearch}
 					placeholder="Поиск..."
@@ -66,49 +68,53 @@ export const NavbarSearch: React.FC = () => {
 			</FormControl>
 			{searchResults && (
 				<ClickAwayListener onClickAway={clickLinkHandler}>
-					<Popper className={s.popper} placement={'bottom-end'} id={'popper-id'} anchorEl={anchorEl} open={open}>
-						<div className={s.popperContent}>
-							{searchResults.members && (
-								<>
-									<div className={cn(s.searchTitle, 'no-margin-top')}>Сотрудники</div>
-									<div className={cn(s.searchWrap, s.searchWrapDouble)}>
-										{searchResults.members.map((member) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={member.id} path={'profile'} item={member}/>
-										))}
-									</div>
-								</>
-							)}
-							{searchResults.units && (
-								<>
-									<div className={s.searchTitle}>Подразделения</div>
-									<div className={cn(s.searchWrap)}>
-										{searchResults.units.map((unit) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={unit.id} path={'units'} item={unit}/>
-										))}
-									</div>
-								</>
-							)}
-							{searchResults.teams && (
-								<>
-									<div className={s.searchTitle}>Команды</div>
-									<div className={cn(s.searchWrap)}>
-										{searchResults.teams.map((team) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={team.id} path={'teams'} item={team}/>
-										))}
-									</div>
-								</>
-							)}
-							{searchResults.projects && (
-								<>
-									<div className={s.searchTitle}>Проекты</div>
-									<div className={cn(s.searchWrap)}>
-										{searchResults.projects.map((project) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={project.id} path={'projects'} item={project}/>
-										))}
-									</div>
-								</>
-							)}
-						</div>
+					<Popper transition className={s.popper} placement={'bottom-end'} id={'transitions-popper'} anchorEl={anchorEl} open={open}>
+						{({ TransitionProps }) => (
+							<Fade {...TransitionProps} timeout={350}>
+								<div className={s.popperContent}>
+									{searchResults.members && searchResults.members.length > 0 && (
+										<>
+											<div className={cn(s.searchTitle, 'no-margin-top')}>Сотрудники</div>
+											<div className={cn(s.searchWrap, s.searchWrapDouble)}>
+												{searchResults.members.map((member) => (
+													<NavbarSearchItem clickFn={clickLinkHandler} key={member.id} path={'profile'} item={member}/>
+												))}
+											</div>
+										</>
+									)}
+									{searchResults.units && searchResults.units.length > 0 && (
+										<>
+											<div className={s.searchTitle}>Подразделения</div>
+											<div className={cn(s.searchWrap)}>
+												{searchResults.units.map((unit) => (
+													<NavbarSearchItem clickFn={clickLinkHandler} key={unit.id} path={'units'} item={unit}/>
+												))}
+											</div>
+										</>
+									)}
+									{searchResults.teams && searchResults.teams.length > 0 && (
+										<>
+											<div className={s.searchTitle}>Команды</div>
+											<div className={cn(s.searchWrap)}>
+												{searchResults.teams.map((team) => (
+													<NavbarSearchItem clickFn={clickLinkHandler} key={team.id} path={'teams'} item={team}/>
+												))}
+											</div>
+										</>
+									)}
+									{searchResults.projects && searchResults.projects.length > 0 && (
+										<>
+											<div className={s.searchTitle}>Проекты</div>
+											<div className={cn(s.searchWrap)}>
+												{searchResults.projects.map((project) => (
+													<NavbarSearchItem clickFn={clickLinkHandler} key={project.id} path={'projects'} item={project}/>
+												))}
+											</div>
+										</>
+									)}
+								</div>
+							</Fade>
+						)}
 					</Popper>
 				</ClickAwayListener>
 			)}

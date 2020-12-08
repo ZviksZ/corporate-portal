@@ -12,7 +12,7 @@ export const UnitsPage: React.FC = () => {
 		return () => {
 			dispatch(setUnits(null))
 		}
-	})
+	}, [])
 
 	return (
 		<section className="section">

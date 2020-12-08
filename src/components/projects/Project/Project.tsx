@@ -20,7 +20,7 @@ export const Project: React.FC<Props> = ({ project }) => {
 		<div className={s.project}>
 			<Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
 				<NavLink to={`/projects/`} className="breadcrumbsItem">
-					Команды
+					Проекты
 				</NavLink>
 				<span className="breadcrumbsItem">{project.name}</span>
 			</Breadcrumbs>
