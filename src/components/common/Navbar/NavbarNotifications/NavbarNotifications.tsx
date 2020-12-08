@@ -29,7 +29,7 @@ export const NavbarNotifications: React.FC = () => {
 	return (
 		<>
 			<IconButton className={s.notificationIcon} onClick={handleClick} aria-describedby={id}>
-				<Badge badgeContent={4} color="error">
+				<Badge badgeContent={(notifications && notifications.newCount) || ''} color="error">
 					<NotificationsNoneOutlinedIcon />
 				</Badge>
 			</IconButton>

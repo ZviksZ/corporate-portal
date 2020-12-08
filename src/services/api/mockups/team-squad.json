@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "data": {
+    "id": "6f625ff6bd97609",
+    "name": "Команда Б",
+    "lead": {
+      "name": "Колесников Михаил",
+      "id": "8f625ff6bd97609c15525e2b4",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+      "position": "Руководитель",
+      "department": "Департамент 1164",
+      "role": "Тимлид"
+    },
+    "members": {
+      "size": 25,
+      "list": [
+        {
+          "name": "Колесников Михаил 2",
+          "id": "8f645ff6bd97609c15525e2b4",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+          "position": "Руководитель",
+          "department": "Департамент 1164",
+          "role": ""
+        },
+        {
+          "name": "Колесников Михаил 3",
+          "id": "8f626f6bd97609c15525e2b4",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+          "position": "Руководитель",
+          "department": "Департамент 1164",
+          "role": ""
+        }
+      ]
+    }
+  }
+}

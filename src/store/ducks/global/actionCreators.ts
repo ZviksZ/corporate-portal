@@ -13,6 +13,7 @@ import {
 	SetNotificationsActionInterface,
 	SetUserActionInterface,
 } from './contracts/actionTypes'
+import { SquadMember } from '../teams/contracts/state'
 
 /**
  * Авторизация

@@ -8,7 +8,7 @@ const initialGlobalState: GlobalState = {
 	globalMessage: null,
 	isLoading: false,
 	notifications: null,
-	notificationDetail: null
+	notificationDetail: null,
 }
 export const globalReducer = produce((draft: Draft<GlobalState>, action: GlobalActions) => {
 	switch (action.type) {

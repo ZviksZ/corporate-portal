@@ -27,4 +27,15 @@
             margin: 4px 0 3px !important;
         }
     }
+    .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 1px solid #C4C4C4;
+        margin-top: 25px;
+        button {
+            width: 48% !important;
+        }
+    }
 }

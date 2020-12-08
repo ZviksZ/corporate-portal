@@ -58,7 +58,7 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 			<Navbar />
 			<GlobalMessage />
 			<Switch>
-				<Route path="/" exact>
+				<Route path="/">
 					<AuthPage />
 				</Route>
 				{/*<Route path="/" render={() => <Redirect to="/" />} />*/}

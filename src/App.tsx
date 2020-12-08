@@ -4,6 +4,7 @@ import { Loader } from './components/common/Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectGlobal } from './store/ducks/global/selectors'
 import { getCookieUser, getNotifications } from './store/ducks/global/actionCreators'
+import { getMembers } from './store/ducks/teams/actionCreators'
 
 export const App: React.FC = () => {
 	const { user, isLoading } = useSelector(selectGlobal)
@@ -17,6 +18,7 @@ export const App: React.FC = () => {
 
 	useEffect(() => {
 		if (isAuth) {
+			dispatch(getMembers())
 			dispatch(getNotifications())
 			setInterval(() => {
 				dispatch(getNotifications())

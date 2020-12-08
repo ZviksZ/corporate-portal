@@ -3,10 +3,6 @@
   "data": {
     "id": "6f625ff6bd97609",
     "name": "Команда Б",
-    "main": "7f625ff6bd97609",
-    "mainName": "Команда А",
-    "parent": "7f625ff6bd97609",
-    "parentName": "Команда А",
     "lead": {
       "name": "Колесников Михаил",
       "id": "8f625ff6bd97609c15525e2b4",

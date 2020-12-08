@@ -1,5 +1,6 @@
 import { Action } from 'redux'
 import { GlobalMessage, NotificationData, NotificationDetail, User } from './state'
+import { SquadMember } from '../../teams/contracts/state'
 
 export enum GlobalActionsType {
 	LOGIN = 'global/LOGIN',
@@ -57,3 +58,5 @@ export interface SetNotificationDataActionInterface extends Action<GlobalActions
 	type: GlobalActionsType.SET_NOTIFICATION_DATA
 	payload: NotificationDetail | null
 }
+
+

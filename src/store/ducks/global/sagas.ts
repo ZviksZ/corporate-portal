@@ -2,7 +2,7 @@ import { put, takeLatest, call } from 'redux-saga/effects'
 import { GetNotificationDataActionInterface, GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
 import { setGlobalMessage, setLoading, setNotificationData, setNotifications, setUser } from './actionCreators'
 import { Cookie } from '../../../services/helpers/cookie'
-import { AuthApi, NotificationsApi } from '../../../services/api/api'
+import { AuthApi, NotificationsApi, TeamsApi } from '../../../services/api/api'
 
 /**
  * Авторизация
@@ -17,10 +17,10 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 
 		yield put(setUser(user))
 		yield put(setLoading(false))
-		yield put(setGlobalMessage({ text: 'Login is successful', type: 'success' }))
+		yield put(setGlobalMessage({ text: 'Авторизация прошла успешно', type: 'success' }))
 	} catch (error) {
 		yield put(setLoading(false))
-		yield put(setGlobalMessage({ text: 'Login error. Try again', type: 'error' }))
+		yield put(setGlobalMessage({ text: 'Ошибка авторизации. Попробуйте еще раз', type: 'error' }))
 	}
 }
 /**
@@ -72,6 +72,8 @@ export function* getNotificationDataRequest({ id }: GetNotificationDataActionInt
 		//yield put(setGlobalMessage({ text: 'Error. Try again', type: 'error' }))
 	}
 }
+
+
 
 export function* globalSaga() {
 	yield takeLatest(GlobalActionsType.GET_COOKIE_USER, getUserCookieRequest)

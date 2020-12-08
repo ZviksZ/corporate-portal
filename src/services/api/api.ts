@@ -7,14 +7,17 @@ import units from './mockups/units.json'
 import unitDetail from './mockups/unit-detail.json'
 import teams from './mockups/teams.json'
 import teamDetail from './mockups/team-detail.json'
+import teamSquad from './mockups/team-squad.json'
 import projects from './mockups/projects.json'
 import project from './mockups/project-detail.json'
 import notifications from './mockups/notifications.json'
 import notificationDetail from './mockups/notification-detail.json'
+import allMembers from './mockups/all-members.json'
 import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
 import { ProfileData } from '../../store/ducks/profile/contracts/state'
 import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
 import { Project, ProjectDetail } from '../../store/ducks/projects/contracts/state'
+import { SquadMember } from '../../store/ducks/teams/contracts/state'
 
 interface Response<T> {
 	status: string
@@ -110,6 +113,14 @@ export const TeamsApi = {
 	/**
 	 * Список команд
 	 */
+	async getAllMembers(): Promise<SquadMember[]> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return allMembers.data
+	},
+	/**
+	 * Список команд
+	 */
 	async getTeams(): Promise<Unit[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
@@ -123,6 +134,15 @@ export const TeamsApi = {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return teamDetail.data
+	},
+	/**
+	 * Данные состава команды
+	 * @param {String} id - id команды
+	 */
+	async getTeamSquadData(id: string): Promise<UnitDetail> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return teamSquad.data
 	},
 }
 export const ProjectsApi = {

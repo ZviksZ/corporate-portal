@@ -6,6 +6,7 @@ import cn from 'classnames'
 import { Avatar } from '@material-ui/core'
 import { getFormatedDate, getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 type Props = {
 	onClose: (param: boolean) => void
@@ -41,6 +42,10 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 			<p className={'sectionText margin-bottom'}>{notificationDetail.vacationDays}</p>
 			<div className="sectionSubtitle">Корпоративных дней</div>
 			<p className={'sectionText margin-bottom'}>{notificationDetail.corporateDays}</p>
+			<div className={s.footer}>
+				<Button className="btn btn-dangerous">отказать</Button>
+				<Button className="btn">Согласовать</Button>
+			</div>
 		</div>
 	)
 }

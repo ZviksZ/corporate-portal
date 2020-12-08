@@ -1,8 +1,12 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/media";
+
 .form {
     .formMember {
         display: flex;
         align-items: center;
         margin: 5px 0;
+        color: $colorText;
         .avatar {
             width: 60px;
             height: 60px;

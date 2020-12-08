@@ -1,4 +1,5 @@
 import { FromTo } from '../../profile/contracts/state'
+import { SquadMember } from '../../teams/contracts/state'
 
 export interface User {
 	id: string

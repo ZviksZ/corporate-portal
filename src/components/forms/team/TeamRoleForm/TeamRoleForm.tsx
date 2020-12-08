@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setRoleFormData } from '../../../../store/ducks/teams/actionCreators'
 import { selectTeams } from '../../../../store/ducks/teams/selectors'
 import { getInitialsFromName } from '../../../../services/helpers/utils'
+import { NavLink } from 'react-router-dom'
 
 type Props = {
 	onClose: (param: boolean) => void
@@ -47,7 +48,7 @@ export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 
 	return (
 		<div className={s.form}>
-			<div className={s.formMember}>
+			<NavLink to={`/profile/${roleFormData.id}`} className={s.formMember}>
 				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={roleFormData.image}>
 					{getInitialsFromName(roleFormData.name)}
 				</Avatar>
@@ -55,7 +56,7 @@ export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 					<div className={cn('sectionText', 'no-margin', s.name)}>{roleFormData.name}</div>
 					<div className="sectionBigSubtitle no-margin">{roleFormData.position}</div>
 				</div>
-			</div>
+			</NavLink>
 			<Grid container spacing={2} justify="center">
 				<Grid item xs={12}>
 					<TextField
