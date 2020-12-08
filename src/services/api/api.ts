@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Cookie } from '../helpers/cookie'
-import { NotificationData, NotificationDetail, User } from '../../store/ducks/global/contracts/state'
+import { NotificationData, NotificationDetail, SearchResults, User } from '../../store/ducks/global/contracts/state'
 import user from './mockups/user.json'
 import profile from './mockups/profile.json'
 import units from './mockups/units.json'
@@ -13,6 +13,7 @@ import project from './mockups/project-detail.json'
 import notifications from './mockups/notifications.json'
 import notificationDetail from './mockups/notification-detail.json'
 import allMembers from './mockups/all-members.json'
+import searchResults from './mockups/search-results.json'
 import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
 import { ProfileData } from '../../store/ducks/profile/contracts/state'
 import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
@@ -47,7 +48,7 @@ instance.interceptors.request.use((config) => {
 	return config
 })
 
-export const AuthApi = {
+export const GlobalApi = {
 	/**
 	 * Авторизация
 	 */
@@ -56,9 +57,6 @@ export const AuthApi = {
 		//return data.data
 		return user.data
 	},
-}
-
-export const NotificationsApi = {
 	/**
 	 * Получить уведомления
 	 */
@@ -69,11 +67,21 @@ export const NotificationsApi = {
 	},
 	/**
 	 * Получить уведомления
+	 * @param {String} id - id уведомления
 	 */
 	async getNotificationData(id: string): Promise<NotificationDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return notificationDetail.data
+	},
+	/**
+	 * Поиск по сотрудникам, подразделениям, командам и проектам
+	 * @param {String} query - введенные символы
+	 */
+	async getSearch(query: string): Promise<SearchResults> {
+		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+		//return data.data
+		return searchResults.data
 	},
 }
 

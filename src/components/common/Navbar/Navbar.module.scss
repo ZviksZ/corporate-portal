@@ -94,6 +94,62 @@
             display: none;
         }
     }
+
+}
+.searchTitle {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.0428571px;
+    color: #000000;
+    margin: 13px 0;
+}
+.searchWrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    .searchItem {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        @extend %link-shared;
+        .avatar {
+            width: 20px;
+            height: 20px;
+            margin-right: 9px;
+        }
+        .name {
+            font-size: 12px;
+            line-height: 14px;
+            color: $colorGray2;
+        }
+    }
+    .searchItem + .searchItem {
+        margin-top: 13px;
+    }
+    &.searchWrapDouble {
+        .searchItem {
+            width: 48%;
+            margin-bottom: 12px;
+        }
+        .searchItem + .searchItem {
+            margin-top: 0;
+        }
+    }
+}
+
+
+.popper {
+    margin-top: 20px;
+    z-index: 88;
+    .popperContent {
+        background: #FFFFFF;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        width: 492px;
+        padding: 17px 25px;
+    }
 }
 .profileAvatar {
     cursor: pointer;

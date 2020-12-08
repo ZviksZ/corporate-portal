@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { GlobalMessage, NotificationData, NotificationDetail, User } from './state'
+import { GlobalMessage, NotificationData, NotificationDetail, SearchResults, User } from './state'
 import { SquadMember } from '../../teams/contracts/state'
 
 export enum GlobalActionsType {
@@ -13,6 +13,8 @@ export enum GlobalActionsType {
 	SET_NOTIFICATIONS = 'global/SET_NOTIFICATIONS',
 	GET_NOTIFICATION_DATA = 'global/GET_NOTIFICATION_DATA',
 	SET_NOTIFICATION_DATA = 'global/SET_NOTIFICATION_DATA',
+	GET_SEARCH = 'global/GET_SEARCH',
+	SET_SEARCH = 'global/SET_SEARCH',
 }
 export interface LoginData {
 	login: string
@@ -59,4 +61,11 @@ export interface SetNotificationDataActionInterface extends Action<GlobalActions
 	payload: NotificationDetail | null
 }
 
-
+export interface GetSearchActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.GET_SEARCH
+	query: string
+}
+export interface SetSearchActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.SET_SEARCH
+	payload: SearchResults | null
+}

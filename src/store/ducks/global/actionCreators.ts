@@ -1,8 +1,9 @@
-import { GlobalMessage, NotificationData, NotificationDetail, User } from './contracts/state'
+import { GlobalMessage, NotificationData, NotificationDetail, SearchResults, User } from './contracts/state'
 import {
 	GetCookieUserActionInterface,
 	GetNotificationDataActionInterface,
 	GetNotificationsActionInterface,
+	GetSearchActionInterface,
 	GlobalActionsType,
 	LoginActionInterface,
 	LoginData,
@@ -11,9 +12,9 @@ import {
 	SetLoadingActionInterface,
 	SetNotificationDataActionInterface,
 	SetNotificationsActionInterface,
+	SetSearchActionInterface,
 	SetUserActionInterface,
 } from './contracts/actionTypes'
-import { SquadMember } from '../teams/contracts/state'
 
 /**
  * Авторизация
@@ -84,7 +85,24 @@ export const setNotificationData = (payload: NotificationDetail | null): SetNoti
 	payload,
 })
 
+/**
+ * Поиск по сотрудникам, подразделениям, командам и проектам
+ */
+export const getSearch = (query: string): GetSearchActionInterface => ({
+	type: GlobalActionsType.GET_SEARCH,
+	query,
+})
+/**
+ * Установка в состояние результатов поиска
+ */
+export const setSearch = (payload: SearchResults | null): SetSearchActionInterface => ({
+	type: GlobalActionsType.SET_SEARCH,
+	payload,
+})
+
 export type GlobalActions =
+	| GetSearchActionInterface
+	| SetSearchActionInterface
 	| GetNotificationDataActionInterface
 	| SetNotificationDataActionInterface
 	| GetNotificationsActionInterface

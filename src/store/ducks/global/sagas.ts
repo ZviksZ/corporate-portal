@@ -1,8 +1,8 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { GetNotificationDataActionInterface, GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
-import { setGlobalMessage, setLoading, setNotificationData, setNotifications, setUser } from './actionCreators'
+import { GetNotificationDataActionInterface, GetSearchActionInterface, GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
+import { setGlobalMessage, setLoading, setNotificationData, setNotifications, setSearch, setUser } from './actionCreators'
 import { Cookie } from '../../../services/helpers/cookie'
-import { AuthApi, NotificationsApi, TeamsApi } from '../../../services/api/api'
+import { GlobalApi } from '../../../services/api/api'
 
 /**
  * Авторизация
@@ -10,7 +10,7 @@ import { AuthApi, NotificationsApi, TeamsApi } from '../../../services/api/api'
 export function* loginRequest({ payload }: LoginActionInterface) {
 	try {
 		yield put(setLoading(true))
-		const user = yield call(AuthApi.login, payload)
+		const user = yield call(GlobalApi.login, payload)
 
 		const jsonResponse = JSON.stringify(user)
 		Cookie.setCookie('userData', jsonResponse, { expires: 2147483647 })
@@ -52,7 +52,7 @@ export function* logoutRequest() {
  */
 export function* getNotificationsRequest() {
 	try {
-		const notifications = yield call(NotificationsApi.getNotifications)
+		const notifications = yield call(GlobalApi.getNotifications)
 
 		yield put(setNotifications(notifications))
 	} catch (error) {
@@ -65,7 +65,7 @@ export function* getNotificationsRequest() {
  */
 export function* getNotificationDataRequest({ id }: GetNotificationDataActionInterface) {
 	try {
-		const notification = yield call(NotificationsApi.getNotificationData, id)
+		const notification = yield call(GlobalApi.getNotificationData, id)
 
 		yield put(setNotificationData(notification))
 	} catch (error) {
@@ -73,9 +73,21 @@ export function* getNotificationDataRequest({ id }: GetNotificationDataActionInt
 	}
 }
 
+/**
+ * Поиск по сотрудникам, подразделениям, командам и проектам
+ */
+export function* getSearchRequest({ query }: GetSearchActionInterface) {
+	try {
+		const results = yield call(GlobalApi.getSearch, query)
 
+		yield put(setSearch(results))
+	} catch (error) {
+		//yield put(setGlobalMessage({ text: 'Error. Try again', type: 'error' }))
+	}
+}
 
 export function* globalSaga() {
+	yield takeLatest(GlobalActionsType.GET_SEARCH, getSearchRequest)
 	yield takeLatest(GlobalActionsType.GET_COOKIE_USER, getUserCookieRequest)
 	yield takeLatest(GlobalActionsType.LOGIN, loginRequest)
 	yield takeLatest(GlobalActionsType.LOGOUT, logoutRequest)

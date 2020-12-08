@@ -22,9 +22,26 @@
             opacity: 1;
         }
     }
+
     fieldset {
-        border: 0;
+        border: 1px solid #EFEFEF;
+        border-width: 1px !important;
     }
+    &.Mui-focused {
+        fieldset {
+            border: 1px solid $colorPrimary;
+        }
+    }
+    &.MuiOutlinedInput-root {
+        @include desktop {
+            &:hover {
+                fieldset {
+                    border-width: 1px !important;
+                }
+            }
+        }
+    }
+
 }
 
 .search-input-big {

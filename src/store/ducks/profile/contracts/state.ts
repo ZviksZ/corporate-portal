@@ -1,3 +1,5 @@
+import { Unit } from '../../units/contracts/state'
+
 export interface Socials {
 	type: string
 	link: string
@@ -7,19 +9,19 @@ export interface FromTo {
 	to: string
 	status?: string
 }
-export interface SimpleMember {
+export interface SimpleMemberUnit {
 	name: string
 	id: string
-	image: string
+	image?: string
 }
 export interface Team {
 	id: string
 	name: string
 	role: string
-	lead: SimpleMember
+	lead: SimpleMemberUnit
 	members: {
 		size: number
-		list: SimpleMember[]
+		list: SimpleMemberUnit[]
 	}
 }
 export interface Application {
@@ -56,10 +58,10 @@ export interface ProfileData {
 		tshirtSize: string
 		sshKeys: string[]
 	}
-	teams: Team[]
+	teams: Unit[]
 	additional: {
-		lead: SimpleMember
-		subordinates: SimpleMember[]
+		lead: SimpleMemberUnit
+		subordinates: SimpleMemberUnit[]
 	}
 	contractors: string[]
 }

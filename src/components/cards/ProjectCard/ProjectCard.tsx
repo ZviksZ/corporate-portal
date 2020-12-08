@@ -18,16 +18,18 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 		<NavLink to={`/projects/${project.id}`} className={s.projectItem}>
 			<div className={s.info}>
 				<div className={s.name}>{project.name}</div>
-				<div className="d-flex align-item-center">
-					<a href={project.wikiLink} className="link-with-icon" rel="noreferrer" target="_blank">
-						<img src={wiki} alt="" width={'18px'} />
-						<span>Страница в Wiki</span>
-					</a>
-					<a href={project.jiraLink} className="link-with-icon margin-left" rel="noreferrer" target="_blank">
-						<img src={jira} alt="" width={'18px'} />
-						<span>Страница в Jira</span>
-					</a>
-				</div>
+				<object type="owo/uwu">
+					<div className="d-flex align-item-center">
+						<a href={project.wikiLink} className="link-with-icon" rel="noreferrer" target="_blank">
+							<img src={wiki} alt="" width={'18px'} />
+							<span>Страница в Wiki</span>
+						</a>
+						<a href={project.jiraLink} className="link-with-icon margin-left" rel="noreferrer" target="_blank">
+							<img src={jira} alt="" width={'18px'} />
+							<span>Страница в Jira</span>
+						</a>
+					</div>
+				</object>
 			</div>
 
 			<div className={s.projectTeam}>

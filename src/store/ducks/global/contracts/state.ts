@@ -1,4 +1,4 @@
-import { FromTo } from '../../profile/contracts/state'
+import { FromTo, SimpleMemberUnit } from '../../profile/contracts/state'
 import { SquadMember } from '../../teams/contracts/state'
 
 export interface User {
@@ -38,10 +38,17 @@ export interface NotificationDetail {
 	vacationDays: string
 	corporateDays: string
 }
+export interface SearchResults {
+	members: SimpleMemberUnit[] | null
+	units: SimpleMemberUnit[] | null
+	teams: SimpleMemberUnit[] | null
+	projects: SimpleMemberUnit[] | null
+}
 export interface GlobalState {
 	user: User | null
 	globalMessage: GlobalMessage | null
 	isLoading: boolean,
 	notifications: NotificationData | null
 	notificationDetail: NotificationDetail | null
+	searchResults: SearchResults | null
 }

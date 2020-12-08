@@ -6,6 +6,7 @@ import { AvatarGroup } from '@material-ui/lab'
 import { NavLink } from 'react-router-dom'
 import { Unit } from '../../../store/ducks/units/contracts/state'
 import { getInitialsFromName } from '../../../services/helpers/utils'
+import { Team } from '../../../store/ducks/profile/contracts/state'
 
 type Props = {
 	item: Unit

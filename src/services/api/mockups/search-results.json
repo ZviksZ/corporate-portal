@@ -1,0 +1,52 @@
+{
+  "status": "success",
+  "data": {
+    "members": [
+      {
+        "name": "Колесников Михаил",
+        "id": "8f625ff6bd97609c15525e2b4",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
+      },
+      {
+        "name": "Колесников Михаил 2",
+        "id": "8f625ff6bd37609c15525e2b4",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
+      },
+      {
+        "name": "Колесников Михаил 3",
+        "id": "8f625ff6bd4609c15525e2b4",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
+      }
+    ],
+    "units": [
+      {
+        "name": "Отдел тестирования мобильного приложения на iOS",
+        "id": "8f625ff6bd97609c15525e2b4"
+      },
+      {
+        "name": "Отдел тестирования мобильного приложения на Android",
+        "id": "8f6254f6bd97609c15525e2b4"
+      }
+    ],
+    "teams": [
+      {
+        "name": "Команда тестирования мобильного приложения на iOS",
+        "id": "8f625ff6bd97609c15525e2b4"
+      },
+      {
+        "name": "Команда тестирования мобильного приложения на Android",
+        "id": "8f6254f6bd97609c15525e2b4"
+      }
+    ],
+    "projects": [
+      {
+        "name": "Разработка мобильного приложения на iOS",
+        "id": "8f625ff6bd97609c15525e2b4"
+      },
+      {
+        "name": "Разработка очень длянного названия мобильного приложения на Все мобильные операционные системы",
+        "id": "8f6254f6bd97609c15525e2b4"
+      }
+    ]
+  }
+}
