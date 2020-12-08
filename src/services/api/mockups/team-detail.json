@@ -5,7 +5,7 @@
     "name": "Команда Б",
     "lead": {
       "name": "Колесников Михаил",
-      "id": "8f625ff6bd97609c15525e2b4",
+      "id": "8f625ff6bd97609fc15525e2b4",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "employment": [
         {
@@ -24,7 +24,7 @@
       "list": [
         {
           "name": "Колесников Михаил",
-          "id": "8f625ff6bd97609c15525e2b4",
+          "id": "8f625ff6bd9a7609c15525e2b4",
           "image": "../img/1.jpg",
           "employment": [
             {
@@ -40,7 +40,7 @@
         },
         {
           "name": "Колесников Михаил",
-          "id": "8f625ff6bd97609c15525e2b4",
+          "id": "8f625ff6bd9760f9c15525e2b4",
           "image": "../img/1.jpg",
           "employment": [
             {

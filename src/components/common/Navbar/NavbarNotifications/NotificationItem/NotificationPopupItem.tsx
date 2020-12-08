@@ -10,9 +10,10 @@ import { getNotificationData } from '../../../../../store/ducks/global/actionCre
 type Props = {
 	item: NotificationItem
 	openForm: (param: boolean) => void
+	handleClose: () => void
 }
 
-export const NotificationPopupItem: React.FC<Props> = ({ item, openForm }) => {
+export const NotificationPopupItem: React.FC<Props> = ({ item, openForm, handleClose }) => {
 	const dispatch = useDispatch()
 
 	const formatedDate = getReverseFormatDate(item.date)
@@ -20,6 +21,7 @@ export const NotificationPopupItem: React.FC<Props> = ({ item, openForm }) => {
 
 	const openNotification = () => {
 		dispatch(getNotificationData(item.id))
+		handleClose()
 		openForm(true)
 	}
 

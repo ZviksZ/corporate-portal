@@ -26,16 +26,16 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 				<ClipboardCopy text={member.email || ''} />
 			</p>
 			<div className="sectionSubtitle">Мобильный телефон</div>
-			<p className={cn('sectionText', 'sectionTextWith')}>
-				{member.mobilePhone &&
-					member.mobilePhone.split(',').map((item, index) => (
-						<object type="owo/uwu">
+			<object type="owo/uwu">
+				<p className={cn('sectionText', 'sectionTextWith')}>
+					{member.mobilePhone &&
+						member.mobilePhone.split(',').map((item, index) => (
 							<a onClick={(e) => e.stopPropagation()} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
 								{item}
 							</a>
-						</object>
-					))}
-			</p>
+						))}
+				</p>
+			</object>
 			<p className={cn('sectionText', 'sectionTextWith', 'no-margin-bottom')}>
 				<img src={slack} className="sectionTextLogo" alt="" />
 				<object type="owo/uwu">

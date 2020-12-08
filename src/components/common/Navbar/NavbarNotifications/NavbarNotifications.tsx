@@ -55,11 +55,11 @@ export const NavbarNotifications: React.FC = () => {
 						</div>
 						<div className={s.list}>
 							{notifications.lastFive.map((item) => (
-								<NotificationPopupItem openForm={setOpenForm} key={item.id} item={item} />
+								<NotificationPopupItem handleClose={handleClose} openForm={setOpenForm} key={item.id} item={item} />
 							))}
 						</div>
 						<div className={s.bottom}>
-							<NavLink to={'/notifications'}>Посмотреть все</NavLink>
+							<NavLink to={'/notifications'} onClick={handleClose}>Посмотреть все</NavLink>
 						</div>
 					</div>
 				)}
