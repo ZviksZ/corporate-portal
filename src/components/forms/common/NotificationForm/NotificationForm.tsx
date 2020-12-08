@@ -18,9 +18,14 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 	if (!notificationDetail) {
 		return <></>
 	}
+
+	const closeForm = () => {
+		onClose(false)
+	}
+
 	return (
 		<div className={s.notification}>
-			<NavLink to={`/profile/${notificationDetail.authorId}`} className={s.author}>
+			<NavLink onClick={closeForm} to={`/profile/${notificationDetail.authorId}`} className={s.author}>
 				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={notificationDetail.authorImage}>
 					{getInitialsFromName(notificationDetail.author)}
 				</Avatar>
