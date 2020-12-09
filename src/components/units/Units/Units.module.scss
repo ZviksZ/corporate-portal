@@ -42,4 +42,8 @@
             border: 1px solid $colorGray2;
         }
     }
+
+    @include mobile {
+        padding-left: 15px;
+    }
 }

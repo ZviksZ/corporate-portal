@@ -35,7 +35,7 @@
         letter-spacing: -0.05px;
         color: $colorPrimary;
         cursor: pointer;
-        @extend %link-shared
+        @extend %link-shared;
     }
     .text {
         font-weight: 500;
@@ -43,7 +43,7 @@
         line-height: 24px;
         letter-spacing: -0.05px;
         cursor: pointer;
-        @extend %link-shared
+        @extend %link-shared;
     }
 
     .button {
@@ -78,6 +78,44 @@
                     color: $colorPrimary;
                 }
             }
+        }
+    }
+
+    @include mobile {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        padding: 15px;
+        .avatar {
+            margin-right: 0;
+            margin-bottom: 15px;
+            width: 70px;
+            height: 70px;
+        }
+        .squadCardItem {
+            width: 100%;
+            min-width: 197px;
+        }
+        .squadCardItem + .squadCardItem {
+            margin-left: 0;
+            margin-top: 14px;
+        }
+        .subtitle {
+            margin-bottom: 5px;
+        }
+        .link {
+            font-size: 14px;
+            line-height: 24px;
+            letter-spacing: -0.05px;
+            color: $colorPrimary;
+            cursor: pointer;
+        }
+        .text {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            letter-spacing: -0.05px;
+            cursor: pointer;
         }
     }
 }

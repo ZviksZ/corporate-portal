@@ -27,7 +27,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 			</p>
 			<div className="sectionSubtitle">Мобильный телефон</div>
 			<object type="owo/uwu">
-				<p className={cn('sectionText', 'sectionTextWith')}>
+				<p className={cn('sectionText', 'sectionTextWith', s.phones)}>
 					{member.mobilePhone &&
 						member.mobilePhone.split(',').map((item, index) => (
 							<a onClick={(e) => e.stopPropagation()} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>

@@ -48,6 +48,51 @@
             width: 238px;
         }
     }
+
+    @include mobile {
+        flex-wrap: wrap;
+        height: auto;
+        .info {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    @include only-mobile {
+        flex-wrap: wrap;
+        padding: 17px 15px;
+        height: auto;
+        .info {
+            .name {
+                margin-bottom: 12px;
+            }
+            .links {
+                flex-wrap: wrap;
+                margin-top: 5px;
+                a {
+                    width: 100%;
+                    margin-left: 0 !important;
+                }
+                a + a {
+                    margin-top: 5px;
+                }
+            }
+        }
+        .projectTeam {
+            flex-wrap: wrap;
+            margin-top: 20px;
+            .item {
+                width: 100%;
+                .image:first-child {
+                    margin-left: 0;
+                }
+            }
+            .item + .item {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    }
 }
 .projectItem + .projectItem {
     margin-top: 18px;

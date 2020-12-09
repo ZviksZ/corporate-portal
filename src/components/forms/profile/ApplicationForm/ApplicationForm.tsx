@@ -62,7 +62,6 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 		}
 	}
 	const selectHandler = (e: React.ChangeEvent<{ value: unknown }>) => {
-		console.log('111')
 		setType(e.target.value as string)
 	}
 
@@ -113,7 +112,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 					</FormControl>
 				</Grid>
 				<div className={cn('sectionBigSubtitle', s.subtitle)}>дата отсутствия</div>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
 						<DatePicker
 							autoOk
@@ -123,7 +122,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 							inputVariant="outlined"
 							format="dd.MM.yyyy"
 							margin="normal"
-							label="Дата"
+							label="Дата начала"
 							okLabel="Выбрать"
 							cancelLabel="Отмена"
 							className="form-input date-input"
@@ -137,7 +136,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 						/>
 					</MuiPickersUtilsProvider>
 				</Grid>
-				<Grid item xs={6}>
+				<Grid item xs={12} sm={6}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
 						<DatePicker
 							autoOk
@@ -147,7 +146,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 							inputVariant="outlined"
 							format="dd.MM.yyyy"
 							margin="normal"
-							label="Дата"
+							label="Дата окончания"
 							okLabel="Выбрать"
 							cancelLabel="Отмена"
 							className="form-input date-input"

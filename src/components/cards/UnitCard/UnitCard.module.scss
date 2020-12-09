@@ -51,10 +51,13 @@
         }
         .memberItem {
             width: 238px;
+            @include mobile {
+                width: 170px;
+            }
         }
     }
 
-    @include mobile {
+    @include only-mobile {
         flex-wrap: wrap;
         height: auto;
         padding: 17px 15px;

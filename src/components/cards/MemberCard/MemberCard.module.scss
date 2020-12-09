@@ -63,6 +63,65 @@
         padding-left: 39px;
 
     }
+
+    @include mobile {
+        padding: 20px 15px;
+        .memberMain {
+            margin-right: 0;
+            .employmentList {
+                .employmentListItem {
+                    width: calc(48% - 20px);
+                }
+            }
+            .avatar {
+                width: 90px;
+                min-width: 90px;
+                height: 90px;
+                margin-right: 20px;
+                font-size: 28px;
+            }
+
+        }
+        .memberContacts {
+            max-width: 300px;
+            min-width: 300px;
+            margin-left: auto;
+            border-left: 1px solid #E6E6E6;
+            padding-left: 25px;
+            .phones {
+                flex-wrap: wrap;
+            }
+        }
+    }
+    @include only-mobile {
+        flex-wrap: wrap;
+        .memberMain {
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-right: 0;
+            .memberMainData {
+                padding: 15px;
+                .name, .position {
+                    text-align: center;
+                }
+            }
+            .employmentList {
+                flex-wrap: wrap;
+                .employmentListItem {
+                    width: calc(100% - 20px);
+                }
+            }
+        }
+        .memberContacts {
+            max-width: 100%;
+            min-width: auto;
+            margin-left: 0;
+            border-top: 1px solid #E6E6E6;
+            border-left: 0;
+            padding: 15px;
+
+        }
+    }
 }
 .member + .member {
     margin-top: 19px;

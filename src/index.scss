@@ -21,7 +21,10 @@ body {
     margin: 0 auto;
     padding: 1px 17px;
 }
-
+.section {
+    padding-bottom: 50px;
+    overflow: hidden;
+}
 
 @import "assets/scss/variables";
 @import "assets/scss/media";

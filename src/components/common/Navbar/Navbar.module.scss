@@ -182,6 +182,9 @@
 .notificationList {
     width: 330px;
     overflow: hidden;
+    @include mobile {
+        width: 290px;
+    }
     .head {
         display: flex;
         align-items: center;

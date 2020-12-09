@@ -19,7 +19,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 			<div className={s.info}>
 				<div className={s.name}>{project.name}</div>
 				<object type="owo/uwu">
-					<div className="d-flex align-item-center">
+					<div className={cn('d-flex align-item-center', s.links)}>
 						<a href={project.wikiLink} className="link-with-icon" rel="noreferrer" target="_blank">
 							<img src={wiki} alt="" width={'18px'} />
 							<span>Страница в Wiki</span>
