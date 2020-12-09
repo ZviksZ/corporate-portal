@@ -7,7 +7,6 @@ import { getTeamSquad, setTeamSquad } from '../../store/ducks/teams/actionCreato
 import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsTeamsLoading, selectIsTeamsLoadingError } from '../../store/ducks/teams/selectors'
 import { Button } from '@material-ui/core'
-import { getUnitData } from '../../store/ducks/units/actionCreators'
 
 export const TeamsSquadPage: React.FC = () => {
 	const dispatch = useDispatch()

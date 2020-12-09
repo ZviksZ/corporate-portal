@@ -8,8 +8,6 @@ const initialGlobalState: GlobalStateInterface = {
 	user: null,
 	globalMessage: null,
 	LoadingStatus: LoadingStatus.NEVER,
-	notifications: null,
-	notificationDetail: null,
 	searchResults: null,
 }
 export const globalReducer = produce((draft: Draft<GlobalStateInterface>, action: GlobalActions) => {
@@ -23,12 +21,6 @@ export const globalReducer = produce((draft: Draft<GlobalStateInterface>, action
 			break
 		case GlobalActionsType.SET_LOADING_STATE:
 			draft.LoadingStatus = action.payload
-			break
-		case GlobalActionsType.SET_NOTIFICATIONS:
-			draft.notifications = action.payload
-			break
-		case GlobalActionsType.SET_NOTIFICATION_DATA:
-			draft.notificationDetail = action.payload
 			break
 		case GlobalActionsType.SET_SEARCH:
 			draft.searchResults = action.payload

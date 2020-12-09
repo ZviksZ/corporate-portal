@@ -3,8 +3,9 @@ import { useRoutes } from './routes'
 import { Loader } from './components/common/Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectGlobal, selectIsGlobalLoading, selectIsGlobalLoadingError } from './store/ducks/global/selectors'
-import { getCookieUser, getNotifications } from './store/ducks/global/actionCreators'
+import { getCookieUser } from './store/ducks/global/actionCreators'
 import { getMembers } from './store/ducks/teams/actionCreators'
+import { getNotifications } from './store/ducks/notifications/actionCreators'
 
 export const App: React.FC = () => {
 	const { user } = useSelector(selectGlobal)

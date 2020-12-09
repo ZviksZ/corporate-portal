@@ -1,8 +1,6 @@
-import { GlobalMessageInterface, NotificationDataInterface, NotificationDetailInterface, SearchResultsInterface, UserInterface } from './contracts/state'
+import { GlobalMessageInterface, SearchResultsInterface, UserInterface } from './contracts/state'
 import {
 	GetCookieUserActionInterface,
-	GetNotificationDataActionInterface,
-	GetNotificationsActionInterface,
 	GetSearchActionInterface,
 	GlobalActionsType,
 	LoginActionInterface,
@@ -10,8 +8,6 @@ import {
 	LogoutActionInterface,
 	SetGlobalMessageActionInterface,
 	SetLoadingActionInterface,
-	SetNotificationDataActionInterface,
-	SetNotificationsActionInterface,
 	SetSearchActionInterface,
 	SetUserActionInterface,
 } from './contracts/actionTypes'
@@ -35,23 +31,8 @@ export const setGlobalMessage = (payload: GlobalMessageInterface | null): SetGlo
 	type: GlobalActionsType.SET_GLOBAL_MESSAGE,
 	payload,
 })
-export const setLoading = (payload: LoadingStatus): SetLoadingActionInterface => ({
+export const setGlobalLoading = (payload: LoadingStatus): SetLoadingActionInterface => ({
 	type: GlobalActionsType.SET_LOADING_STATE,
-	payload,
-})
-export const getNotifications = (): GetNotificationsActionInterface => ({
-	type: GlobalActionsType.GET_NOTIFICATIONS,
-})
-export const setNotifications = (payload: NotificationDataInterface | null): SetNotificationsActionInterface => ({
-	type: GlobalActionsType.SET_NOTIFICATIONS,
-	payload,
-})
-export const getNotificationData = (id: string): GetNotificationDataActionInterface => ({
-	type: GlobalActionsType.GET_NOTIFICATION_DATA,
-	id,
-})
-export const setNotificationData = (payload: NotificationDetailInterface | null): SetNotificationDataActionInterface => ({
-	type: GlobalActionsType.SET_NOTIFICATION_DATA,
 	payload,
 })
 export const getSearch = (query: string): GetSearchActionInterface => ({
@@ -66,10 +47,6 @@ export const setSearch = (payload: SearchResultsInterface | null): SetSearchActi
 export type GlobalActions =
 	| GetSearchActionInterface
 	| SetSearchActionInterface
-	| GetNotificationDataActionInterface
-	| SetNotificationDataActionInterface
-	| GetNotificationsActionInterface
-	| SetNotificationsActionInterface
 	| GetCookieUserActionInterface
 	| SetLoadingActionInterface
 	| SetGlobalMessageActionInterface

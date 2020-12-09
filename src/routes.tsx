@@ -11,6 +11,7 @@ import { UnitDetailPage } from './pages/UnitDetailPage/UnitDetailPage'
 import { TeamsSquadPage } from './pages/TeamsSquadPage/TeamsSquadPage'
 import { ProjectsPage } from './pages/ProjectsPage/ProjectsPage'
 import { ProjectsDetailPage } from './pages/ProjectsDetailPage/ProjectsDetailPage'
+import { NotificationsPage } from './pages/NotificationsPage/NotificationsPage'
 
 export const useRoutes = (isAuthenticated = false, userType = '') => {
 	if (isAuthenticated) {
@@ -46,6 +47,9 @@ export const useRoutes = (isAuthenticated = false, userType = '') => {
 					</Route>
 					<Route path="/projects/:id" exact>
 						<ProjectsDetailPage />
+					</Route>
+					<Route path="/notifications" exact>
+						<NotificationsPage/>
 					</Route>
 					<Route path="/" render={() => <Redirect to="/profile" />} />
 				</Switch>

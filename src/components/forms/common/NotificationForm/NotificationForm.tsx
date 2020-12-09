@@ -1,19 +1,28 @@
 import * as React from 'react'
-import { useSelector } from 'react-redux'
-import { selectGlobal } from '../../../../store/ducks/global/selectors'
+import { useDispatch, useSelector } from 'react-redux'
 import s from './NotificationForm.module.scss'
 import cn from 'classnames'
 import { Avatar } from '@material-ui/core'
 import { getFormatedDate, getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import { selectNotifications } from '../../../../store/ducks/notifications/selectors'
+import { useEffect } from 'react'
+import { setNotificationData } from '../../../../store/ducks/notifications/actionCreators'
 
 type Props = {
 	onClose: (param: boolean) => void
 }
 
 export const NotificationForm: React.FC<Props> = ({ onClose }) => {
-	const { notificationDetail } = useSelector(selectGlobal)
+	const dispatch = useDispatch()
+	const { notificationDetail } = useSelector(selectNotifications)
+
+	useEffect(() => {
+		return () => {
+			dispatch(setNotificationData(null))
+		}
+	}, [])
 
 	if (!notificationDetail) {
 		return <></>

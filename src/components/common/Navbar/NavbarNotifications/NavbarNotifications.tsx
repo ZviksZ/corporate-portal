@@ -3,18 +3,22 @@ import { IconButton, Popover } from '@material-ui/core'
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined'
 import Badge from '@material-ui/core/Badge'
 import s from '../Navbar.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NotificationPopupItem } from './NotificationItem/NotificationPopupItem'
 import { ModalBlock } from '../../ModalBlock/ModalBlock'
 import { NotificationForm } from '../../../forms/common/NotificationForm/NotificationForm'
 import { useSelector } from 'react-redux'
-import { selectGlobal } from '../../../../store/ducks/global/selectors'
 import { NavLink } from 'react-router-dom'
+import { selectNotifications } from '../../../../store/ducks/notifications/selectors'
 
 export const NavbarNotifications: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
 	const [openForm, setOpenForm] = useState(false)
-	const { notifications, notificationDetail } = useSelector(selectGlobal)
+	const { notifications, notificationDetail } = useSelector(selectNotifications)
+
+	useEffect(() => {
+		setOpenForm(!!notificationDetail)
+	}, [notificationDetail])
 
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget)
@@ -55,7 +59,7 @@ export const NavbarNotifications: React.FC = () => {
 						</div>
 						<div className={s.list}>
 							{notifications.lastFive.map((item) => (
-								<NotificationPopupItem handleClose={handleClose} openForm={setOpenForm} key={item.id} item={item} />
+								<NotificationPopupItem handleClose={handleClose} key={item.id} item={item} />
 							))}
 						</div>
 						<div className={s.bottom}>

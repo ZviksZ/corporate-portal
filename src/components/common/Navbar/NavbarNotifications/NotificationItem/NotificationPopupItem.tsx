@@ -3,17 +3,16 @@ import s from '../../Navbar.module.scss'
 import { Avatar } from '@material-ui/core'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
-import { NotificationItemInterface } from '../../../../../store/ducks/global/contracts/state'
 import { getInitialsFromName, getReverseFormatDate, timeSince } from '../../../../../services/helpers/utils'
-import { getNotificationData } from '../../../../../store/ducks/global/actionCreators'
+import { NotificationItemInterface } from '../../../../../store/ducks/notifications/contracts/state'
+import { getNotificationData } from '../../../../../store/ducks/notifications/actionCreators'
 
 type Props = {
 	item: NotificationItemInterface
-	openForm: (param: boolean) => void
 	handleClose: () => void
 }
 
-export const NotificationPopupItem: React.FC<Props> = ({ item, openForm, handleClose }) => {
+export const NotificationPopupItem: React.FC<Props> = ({ item, handleClose }) => {
 	const dispatch = useDispatch()
 
 	const formatedDate = getReverseFormatDate(item.date)
@@ -22,7 +21,6 @@ export const NotificationPopupItem: React.FC<Props> = ({ item, openForm, handleC
 	const openNotification = () => {
 		dispatch(getNotificationData(item.id))
 		handleClose()
-		openForm(true)
 	}
 
 	return (

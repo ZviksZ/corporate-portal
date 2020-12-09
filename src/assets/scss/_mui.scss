@@ -54,9 +54,11 @@
 .MuiFormLabel-root.Mui-error {
     color: $colorDangerous !important;
 }
-
-.MuiDialog-paperWidthSm.MuiDialog-paperScrollBody {
-    max-width: calc(100% - 30px) !important;
-    width: calc(100% - 30px) !important;
-    margin: 32px 15px !important;
+@include only-mobile {
+    .MuiDialog-paperWidthSm.MuiDialog-paperScrollBody {
+        max-width: calc(100% - 30px) !important;
+        width: calc(100% - 30px) !important;
+        margin: 32px 15px !important;
+    }
 }
+

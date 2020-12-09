@@ -7,6 +7,7 @@ import { ProfileStateInterface } from './ducks/profile/contracts/state'
 import { UnitsStateInterface } from './ducks/units/contracts/state'
 import { TeamsStateInterface } from './ducks/teams/contracts/state'
 import { ProjectsStateInterface } from './ducks/projects/contracts/state'
+import { NotificationsStateInterface } from './ducks/notifications/contracts/state'
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
@@ -18,6 +19,7 @@ export interface RootStateInterface {
 	units: UnitsStateInterface
 	teams: TeamsStateInterface
 	projects: ProjectsStateInterface
+	notifications: NotificationsStateInterface
 }
 
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)))
