@@ -1,6 +1,6 @@
 import { Action } from 'redux'
-import { Unit, UnitDetail } from '../../units/contracts/state'
-import { SquadMember, TeamSquad } from './state'
+import { UnitInterface, UnitDetailInterface } from '../../units/contracts/state'
+import { SquadMemberInterface, TeamSquadInterface } from './state'
 import { LoadingStatus } from '../../../types'
 import { ProjectsActionsType } from '../../projects/contracts/actionTypes'
 
@@ -23,7 +23,7 @@ export interface GetTeamsActionInterface extends Action<TeamsActionsType> {
 }
 export interface SetTeamsActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_TEAMS
-	payload: Unit[] | null
+	payload: UnitInterface[] | null
 }
 export interface GetTeamDataActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.GET_TEAM_DATA
@@ -31,11 +31,11 @@ export interface GetTeamDataActionInterface extends Action<TeamsActionsType> {
 }
 export interface SetTeamDataActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_TEAM_DATA
-	payload: UnitDetail | null
+	payload: UnitDetailInterface | null
 }
 export interface SetRoleFormDataActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_ROLE_FORM_DATA
-	payload: SquadMember | null
+	payload: SquadMemberInterface | null
 }
 
 export interface GetTeamSquadActionInterface extends Action<TeamsActionsType> {
@@ -44,14 +44,14 @@ export interface GetTeamSquadActionInterface extends Action<TeamsActionsType> {
 }
 export interface SetTeamSquadActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_TEAM_SQUAD
-	payload: TeamSquad | null
+	payload: TeamSquadInterface | null
 }
 export interface GetMembersActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.GET_MEMBERS
 }
 export interface SetMembersActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_MEMBERS
-	payload: SquadMember[] | null
+	payload: SquadMemberInterface[] | null
 }
 export interface SetTeamSquadSearchActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_TEAM_SQUAD_SEARCH

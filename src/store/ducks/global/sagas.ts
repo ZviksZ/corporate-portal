@@ -62,7 +62,7 @@ export function* getNotificationDataRequest({ id }: GetNotificationDataActionInt
 }
 export function* getSearchRequest({ query }: GetSearchActionInterface) {
 	try {
-		const results = yield call(GlobalApi.getSearch, query)
+		const results = yield call(GlobalApi.getSearch, { query })
 
 		yield put(setSearch(results))
 	} catch (error) {

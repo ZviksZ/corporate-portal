@@ -4,12 +4,12 @@ import cn from 'classnames'
 import { Avatar } from '@material-ui/core'
 import { AvatarGroup } from '@material-ui/lab'
 import { NavLink } from 'react-router-dom'
-import { Unit } from '../../../store/ducks/units/contracts/state'
+import { UnitInterface } from '../../../store/ducks/units/contracts/state'
 import { getInitialsFromName } from '../../../services/helpers/utils'
-import { Team } from '../../../store/ducks/profile/contracts/state'
+import { TeamInterface } from '../../../store/ducks/profile/contracts/state'
 
 type Props = {
-	item: Unit
+	item: UnitInterface
 	showRole?: boolean
 	linkPath: string
 }

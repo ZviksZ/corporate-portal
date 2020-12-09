@@ -7,10 +7,10 @@ import { getInitialsFromName } from '../../../services/helpers/utils'
 import { AvatarGroup } from '@material-ui/lab'
 import wiki from '../../../assets/images/icons/wiki.svg'
 import jira from '../../../assets/images/icons/jira.svg'
-import { Project } from '../../../store/ducks/projects/contracts/state'
+import { ProjectInterface } from '../../../store/ducks/projects/contracts/state'
 
 type Props = {
-	project: Project
+	project: ProjectInterface
 }
 
 export const ProjectCard: React.FC<Props> = ({ project }) => {

@@ -1,15 +1,15 @@
 import produce, { Draft } from 'immer'
-import { UnitsState } from './contracts/state'
+import { UnitsStateInterface } from './contracts/state'
 import { UnitsActions } from './actionCreators'
 import { UnitsActionsType } from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
 
-const initialUnitsState: UnitsState = {
+const initialUnitsState: UnitsStateInterface = {
 	units: null,
 	unitDetail: null,
 	LoadingStatus: LoadingStatus.NEVER,
 }
-export const unitsReducer = produce((draft: Draft<UnitsState>, action: UnitsActions) => {
+export const unitsReducer = produce((draft: Draft<UnitsStateInterface>, action: UnitsActions) => {
 	switch (action.type) {
 		case UnitsActionsType.SET_UNITS:
 			draft.units = action.payload

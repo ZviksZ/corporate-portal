@@ -1,10 +1,10 @@
 import produce, { Draft } from 'immer'
-import { GlobalState } from './contracts/state'
+import { GlobalStateInterface } from './contracts/state'
 import { GlobalActions } from './actionCreators'
 import { GlobalActionsType } from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
 
-const initialGlobalState: GlobalState = {
+const initialGlobalState: GlobalStateInterface = {
 	user: null,
 	globalMessage: null,
 	LoadingStatus: LoadingStatus.NEVER,
@@ -12,7 +12,7 @@ const initialGlobalState: GlobalState = {
 	notificationDetail: null,
 	searchResults: null,
 }
-export const globalReducer = produce((draft: Draft<GlobalState>, action: GlobalActions) => {
+export const globalReducer = produce((draft: Draft<GlobalStateInterface>, action: GlobalActions) => {
 	switch (action.type) {
 		case GlobalActionsType.SET_USER:
 			draft.user = action.payload

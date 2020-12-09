@@ -53,6 +53,37 @@
             width: 238px;
         }
     }
+
+    @include mobile {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 17px 15px;
+        .info {
+            width: 100%;
+            margin-bottom: 10px;
+            .role {
+                margin-top: 4px;
+            }
+        }
+        .team {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-left: 0;
+            .teamInfo {
+                width: 100%;
+            }
+            .item + .item {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+            .memberItem {
+                width: 100%;
+            }
+            .image:first-child {
+                margin-left: 0;
+            }
+        }
+    }
 }
 .teamItem + .teamItem {
     margin-top: 8px;

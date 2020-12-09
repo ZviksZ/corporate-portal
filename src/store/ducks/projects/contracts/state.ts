@@ -1,36 +1,32 @@
-import { MemberDetail } from '../../units/contracts/state'
+import { MemberDetailInterface } from '../../units/contracts/state'
 import { LoadingStatus } from '../../../types'
 
-export interface Project {
+export interface ProjectInterface {
 	id: string
 	name: string
-	lead: MemberDetail
-	owner: MemberDetail
+	lead: MemberDetailInterface
+	owner: MemberDetailInterface
 	wikiLink: string
 	jiraLink: string
 	members: {
 		size: number
-		list: MemberDetail[]
+		list: MemberDetailInterface[]
 	}
 }
-
-/**
- * Интерфейс для подразделений и команд(детальная страница)
- */
-export interface ProjectDetail {
+export interface ProjectDetailInterface {
 	id: string
 	name: string
 	wikiLink: string
 	jiraLink: string
-	lead: MemberDetail
-	owner: MemberDetail
+	lead: MemberDetailInterface
+	owner: MemberDetailInterface
 	members: {
 		size: number
-		list: MemberDetail[]
+		list: MemberDetailInterface[]
 	}
 }
-export interface ProjectsState {
-	projects: Project[] | null
-	projectDetail: ProjectDetail | null
+export interface ProjectsStateInterface {
+	projects: ProjectInterface[] | null
+	projectDetail: ProjectDetailInterface | null
 	LoadingStatus: LoadingStatus
 }

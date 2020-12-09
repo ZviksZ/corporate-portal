@@ -3,12 +3,12 @@ import s from '../../Navbar.module.scss'
 import { Avatar } from '@material-ui/core'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
-import { NotificationItem } from '../../../../../store/ducks/global/contracts/state'
+import { NotificationItemInterface } from '../../../../../store/ducks/global/contracts/state'
 import { getInitialsFromName, getReverseFormatDate, timeSince } from '../../../../../services/helpers/utils'
 import { getNotificationData } from '../../../../../store/ducks/global/actionCreators'
 
 type Props = {
-	item: NotificationItem
+	item: NotificationItemInterface
 	openForm: (param: boolean) => void
 	handleClose: () => void
 }

@@ -3,10 +3,10 @@ import s from './MemberCard.module.scss'
 import { NavLink } from 'react-router-dom'
 import { MemberCardContacts } from './MemberCardContacts/MemberCardContacts'
 import { MemberCardMain } from './MemberCardMain/MemberCardMain'
-import { MemberDetail } from '../../../store/ducks/units/contracts/state'
+import { MemberDetailInterface } from '../../../store/ducks/units/contracts/state'
 
 type Props = {
-	member: MemberDetail
+	member: MemberDetailInterface
 }
 
 export const MemberCard: React.FC<Props> = ({ member }) => {

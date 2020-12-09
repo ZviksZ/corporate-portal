@@ -1,10 +1,10 @@
 import produce, { Draft } from 'immer'
-import { TeamsState } from './contracts/state'
+import { TeamsStateInterface } from './contracts/state'
 import { TeamsActions } from './actionCreators'
 import { TeamsActionsType } from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
 
-const initialTeamsState: TeamsState = {
+const initialTeamsState: TeamsStateInterface = {
 	teams: null,
 	teamDetail: null,
 	roleFormData: null,
@@ -13,7 +13,7 @@ const initialTeamsState: TeamsState = {
 	teamSquadSearch: '',
 	LoadingStatus: LoadingStatus.NEVER,
 }
-export const teamsReducer = produce((draft: Draft<TeamsState>, action: TeamsActions) => {
+export const teamsReducer = produce((draft: Draft<TeamsStateInterface>, action: TeamsActions) => {
 	switch (action.type) {
 		case TeamsActionsType.SET_TEAMS:
 			draft.teams = action.payload

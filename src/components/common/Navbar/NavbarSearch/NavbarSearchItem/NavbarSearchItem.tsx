@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SimpleMemberUnit } from '../../../../../store/ducks/profile/contracts/state'
+import { SimpleMemberUnitInterface } from '../../../../../store/ducks/profile/contracts/state'
 import s from '../../Navbar.module.scss'
 import { Avatar } from '@material-ui/core'
 import cn from 'classnames'
@@ -7,7 +7,7 @@ import { getInitialsFromName } from '../../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
 
 type Props = {
-	item: SimpleMemberUnit
+	item: SimpleMemberUnitInterface
 	path: string
 	clickFn: () => void
 }

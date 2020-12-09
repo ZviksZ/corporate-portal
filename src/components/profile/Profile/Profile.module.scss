@@ -86,7 +86,27 @@
         flex-wrap: wrap;
         .sidebar {
             width: 100%;
+            min-width: auto;
             margin-bottom: 26px;
+            .sidebarTop {
+                padding: 32px 15px 15px;
+            }
+            .sidebarBottom {
+                padding: 30px 15px 22px;
+            }
+        }
+        .profileInfo {
+            width: 100%;
+            .profileMain {
+                width: 100%;
+                padding: 29px 15px 39px;
+            }
+            .profilePhones {
+                flex-wrap: wrap;
+            }
+            .profileBirthday {
+                flex-wrap: wrap;
+            }
         }
     }
 
@@ -113,6 +133,9 @@
 .teamAdditional {
     padding: 24px 45px;
     background: $colorWhite;
+    @include mobile {
+        padding: 24px 15px;
+    }
     .item {
         .position {
             font-size: 12px;
@@ -137,6 +160,19 @@
                     margin-left: 9px;
                 }
             }
+            @include mobile {
+                flex-wrap: wrap;
+                .membersListItem {
+                    width: calc(50% - 22px);
+                }
+            }
+            @include only-mobile {
+                margin: 12px 0 0;
+                .membersListItem {
+                    width: 100%;
+                    margin: 0 0 22px;
+                }
+            }
         }
     }
 }
@@ -154,5 +190,8 @@
         line-height: 16px;
         text-decoration: none;
         color: $colorPrimary;
+    }
+    @include mobile {
+        padding: 20px 15px;
     }
 }

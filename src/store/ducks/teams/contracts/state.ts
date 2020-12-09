@@ -1,7 +1,7 @@
-import { Unit, UnitDetail } from '../../units/contracts/state'
+import { UnitInterface, UnitDetailInterface } from '../../units/contracts/state'
 import { LoadingStatus } from '../../../types'
 
-export interface SquadMember {
+export interface SquadMemberInterface {
 	name: string
 	id: string
 	image: string
@@ -10,22 +10,22 @@ export interface SquadMember {
 	role?: string
 }
 
-export interface TeamSquad {
+export interface TeamSquadInterface {
 	id: string
 	name: string
-	lead: SquadMember
+	lead: SquadMemberInterface
 	members: {
 		size: number,
-		list: SquadMember[]
+		list: SquadMemberInterface[]
 	}
 }
 
-export interface TeamsState {
-	teams: Unit[] | null
-	teamDetail: UnitDetail | null
-	teamSquad: TeamSquad | null
+export interface TeamsStateInterface {
+	teams: UnitInterface[] | null
+	teamDetail: UnitDetailInterface | null
+	teamSquad: TeamSquadInterface | null
 	teamSquadSearch: string
-	roleFormData: SquadMember | null
-	allMembers: SquadMember[] | null
+	roleFormData: SquadMemberInterface | null
+	allMembers: SquadMemberInterface[] | null
 	LoadingStatus: LoadingStatus
 }

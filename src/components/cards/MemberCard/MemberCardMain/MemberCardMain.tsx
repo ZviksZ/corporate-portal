@@ -4,11 +4,11 @@ import { Avatar } from '@material-ui/core'
 import cn from 'classnames'
 import jira from '../../../../assets/images/icons/jira.svg'
 import { useState } from 'react'
-import { MemberDetail } from '../../../../store/ducks/units/contracts/state'
+import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
 import { getInitialsFromName } from '../../../../services/helpers/utils'
 
 type Props = {
-	member: MemberDetail
+	member: MemberDetailInterface
 }
 
 export const MemberCardMain: React.FC<Props> = ({ member }) => {

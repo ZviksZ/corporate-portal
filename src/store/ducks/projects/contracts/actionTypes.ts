@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { Project, ProjectDetail } from './state'
+import { ProjectInterface, ProjectDetailInterface } from './state'
 import { LoadingStatus } from '../../../types'
 import { ProfileActionsType } from '../../profile/contracts/actionTypes'
 
@@ -16,7 +16,7 @@ export interface GetProjectsActionInterface extends Action<ProjectsActionsType> 
 }
 export interface SetProjectsActionInterface extends Action<ProjectsActionsType> {
 	type: ProjectsActionsType.SET_PROJECTS
-	payload: Project[] | null
+	payload: ProjectInterface[] | null
 }
 export interface GetProjectDataActionInterface extends Action<ProjectsActionsType> {
 	type: ProjectsActionsType.GET_PROJECT_DATA
@@ -24,7 +24,7 @@ export interface GetProjectDataActionInterface extends Action<ProjectsActionsTyp
 }
 export interface SetProjectDataActionInterface extends Action<ProjectsActionsType> {
 	type: ProjectsActionsType.SET_PROJECT_DATA
-	payload: ProjectDetail | null
+	payload: ProjectDetailInterface | null
 }
 export interface SetLoadingProjectsActionInterface extends Action<ProjectsActionsType> {
 	type: ProjectsActionsType.SET_LOADING_STATE

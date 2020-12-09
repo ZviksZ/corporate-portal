@@ -1,8 +1,8 @@
-import { FromTo, SimpleMemberUnit } from '../../profile/contracts/state'
-import { SquadMember } from '../../teams/contracts/state'
+import { FromToInterface, SimpleMemberUnitInterface } from '../../profile/contracts/state'
+import { SquadMemberInterface } from '../../teams/contracts/state'
 import { LoadingStatus } from '../../../types'
 
-export interface User {
+export interface UserInterface {
 	id: string
 	name: string
 	surname: string
@@ -11,45 +11,45 @@ export interface User {
 	email: string
 	image: string
 }
-export interface GlobalMessage {
+export interface GlobalMessageInterface {
 	text: string
 	type: 'success' | 'info' | 'warning' | 'error' | undefined
 }
-export interface NotificationItem {
+export interface NotificationItemInterface {
 	id: string
 	author: string
 	name: string
 	date: string
 	authorImage: string
 }
-export interface NotificationData {
+export interface NotificationDataInterface {
 	total: number,
 	newCount: number,
-	lastFive: NotificationItem[]
+	lastFive: NotificationItemInterface[]
 }
-export interface NotificationDetail {
+export interface NotificationDetailInterface {
 	id: string
 	author: string
 	authorPosition: string
 	name: string
 	authorImage: string
 	authorId: string
-	applicationDates: FromTo
-	vacationGraphic: FromTo
+	applicationDates: FromToInterface
+	vacationGraphic: FromToInterface
 	vacationDays: string
 	corporateDays: string
 }
-export interface SearchResults {
-	members: SimpleMemberUnit[] | null
-	units: SimpleMemberUnit[] | null
-	teams: SimpleMemberUnit[] | null
-	projects: SimpleMemberUnit[] | null
+export interface SearchResultsInterface {
+	members: SimpleMemberUnitInterface[] | null
+	units: SimpleMemberUnitInterface[] | null
+	teams: SimpleMemberUnitInterface[] | null
+	projects: SimpleMemberUnitInterface[] | null
 }
-export interface GlobalState {
-	user: User | null
-	globalMessage: GlobalMessage | null
+export interface GlobalStateInterface {
+	user: UserInterface | null
+	globalMessage: GlobalMessageInterface | null
 	LoadingStatus: LoadingStatus
-	notifications: NotificationData | null
-	notificationDetail: NotificationDetail | null
-	searchResults: SearchResults | null
+	notifications: NotificationDataInterface | null
+	notificationDetail: NotificationDetailInterface | null
+	searchResults: SearchResultsInterface | null
 }

@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { Unit, UnitDetail } from './state'
+import { UnitInterface, UnitDetailInterface } from './state'
 import { LoadingStatus } from '../../../types'
 import { TeamsActionsType } from '../../teams/contracts/actionTypes'
 
@@ -16,7 +16,7 @@ export interface GetUnitsActionInterface extends Action<UnitsActionsType> {
 }
 export interface SetUnitsActionInterface extends Action<UnitsActionsType> {
 	type: UnitsActionsType.SET_UNITS
-	payload: Unit[] | null
+	payload: UnitInterface[] | null
 }
 export interface GetUnitDataActionInterface extends Action<UnitsActionsType> {
 	type: UnitsActionsType.GET_UNIT_DATA
@@ -24,7 +24,7 @@ export interface GetUnitDataActionInterface extends Action<UnitsActionsType> {
 }
 export interface SetUnitDataActionInterface extends Action<UnitsActionsType> {
 	type: UnitsActionsType.SET_UNIT_DATA
-	payload: UnitDetail | null
+	payload: UnitDetailInterface | null
 }
 export interface SetLoadingUnitsActionInterface extends Action<UnitsActionsType> {
 	type: UnitsActionsType.SET_LOADING_STATE

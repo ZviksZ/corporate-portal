@@ -8,10 +8,10 @@ import wiki from '../../../assets/images/icons/wiki.svg'
 import facebook from '../../../assets/images/icons/facebook.svg'
 import jira from '../../../assets/images/icons/jira.svg'
 import confluence from '../../../assets/images/icons/confluence.svg'
-import { Socials } from '../../../store/ducks/profile/contracts/state'
+import { SocialsInterface } from '../../../store/ducks/profile/contracts/state'
 
 type Props = {
-	socials: Socials[]
+	socials: SocialsInterface[]
 }
 
 export const MemberSocials: React.FC<Props> = ({ socials }) => {

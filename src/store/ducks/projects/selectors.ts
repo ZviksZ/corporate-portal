@@ -1,14 +1,14 @@
-import { RootState } from '../../store'
+import { RootStateInterface } from '../../store'
 import { createSelector } from 'reselect'
 
-import { ProjectsState } from './contracts/state'
+import { ProjectsStateInterface } from './contracts/state'
 import { LoadingStatus } from '../../types'
 
-export const selectProjects = (state: RootState): ProjectsState => state.projects
+export const selectProjects = (state: RootStateInterface): ProjectsStateInterface => state.projects
 
-export const selectProjectsLoadingStatus = (state: RootState): LoadingStatus => selectProjects(state).LoadingStatus
+export const selectProjectsLoadingStatus = (state: RootStateInterface): LoadingStatus => selectProjects(state).LoadingStatus
 
-export const selectIsProjectsLoading = (state: RootState): boolean => selectProjectsLoadingStatus(state) === LoadingStatus.LOADING
-export const selectIsProjectsLoaded = (state: RootState): boolean => selectProjectsLoadingStatus(state) === LoadingStatus.LOADED
-export const selectIsProjectsLoadingError = (state: RootState): boolean => selectProjectsLoadingStatus(state) === LoadingStatus.ERROR
+export const selectIsProjectsLoading = (state: RootStateInterface): boolean => selectProjectsLoadingStatus(state) === LoadingStatus.LOADING
+export const selectIsProjectsLoaded = (state: RootStateInterface): boolean => selectProjectsLoadingStatus(state) === LoadingStatus.LOADED
+export const selectIsProjectsLoadingError = (state: RootStateInterface): boolean => selectProjectsLoadingStatus(state) === LoadingStatus.ERROR
 

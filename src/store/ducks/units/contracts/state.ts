@@ -1,24 +1,21 @@
-import { FromTo } from '../../profile/contracts/state'
+import { FromToInterface } from '../../profile/contracts/state'
 import { LoadingStatus } from '../../../types'
 
-export interface MemberDetail {
+export interface MemberDetailInterface {
 	name: string
 	id: string
 	image: string
-	employment?: FromTo[]
+	employment?: FromToInterface[]
 	position?: string
 	openTasksLink?: string
 	email?: string
 	mobilePhone?: string
 	slackEmail?: string
 }
-/**
- * Интерфейс для подразделений и команд
- */
-export interface Unit {
+export interface UnitInterface {
 	id: string
 	name: string
-	lead: MemberDetail
+	lead: MemberDetailInterface
 	role?: string
 	main?: string | null
 	mainName?: string | null
@@ -26,30 +23,27 @@ export interface Unit {
 	parentName?: string | null
 	members: {
 		size: number
-		list: MemberDetail[]
+		list: MemberDetailInterface[]
 	}
-	subUnits?: Unit[] | null
+	subUnits?: UnitInterface[] | null
 }
-/**
- * Интерфейс для подразделений и команд(детальная страница)
- */
-export interface UnitDetail {
+export interface UnitDetailInterface {
 	id: string
 	name: string
-	lead: MemberDetail
+	lead: MemberDetailInterface
 	main?: string | null
 	mainName?: string | null
 	parent?: string | null
 	parentName?: string | null
 	members: {
 		size: number
-		list: MemberDetail[]
+		list: MemberDetailInterface[]
 	}
-	subUnits?: Unit[] | null
+	subUnits?: UnitInterface[] | null
 }
 
-export interface UnitsState {
-	units: Unit[] | null
-	unitDetail: UnitDetail | null
+export interface UnitsStateInterface {
+	units: UnitInterface[] | null
+	unitDetail: UnitDetailInterface | null
 	LoadingStatus: LoadingStatus
 }

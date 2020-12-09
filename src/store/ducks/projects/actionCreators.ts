@@ -6,14 +6,14 @@ import {
 	ProjectsActionsType,
 	SetLoadingProjectsActionInterface,
 } from './contracts/actionTypes'
-import { Project, ProjectDetail } from './contracts/state'
+import { ProjectInterface, ProjectDetailInterface } from './contracts/state'
 import { LoadingStatus } from '../../types'
 import { ProfileActionsType, SetLoadingProfileActionInterface } from '../profile/contracts/actionTypes'
 
 export const getProjects = (): GetProjectsActionInterface => ({
 	type: ProjectsActionsType.GET_PROJECTS,
 })
-export const setProjects = (payload: Project[] | null): SetProjectsActionInterface => ({
+export const setProjects = (payload: ProjectInterface[] | null): SetProjectsActionInterface => ({
 	type: ProjectsActionsType.SET_PROJECTS,
 	payload,
 })
@@ -21,7 +21,7 @@ export const getProjectData = (id: string): GetProjectDataActionInterface => ({
 	type: ProjectsActionsType.GET_PROJECT_DATA,
 	id,
 })
-export const setProjectData = (payload: ProjectDetail | null): SetProjectDataActionInterface => ({
+export const setProjectData = (payload: ProjectDetailInterface | null): SetProjectDataActionInterface => ({
 	type: ProjectsActionsType.SET_PROJECT_DATA,
 	payload,
 })

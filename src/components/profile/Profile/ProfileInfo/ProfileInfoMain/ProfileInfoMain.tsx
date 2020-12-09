@@ -27,7 +27,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 			<h4 className={cn('sectionTitle', 'margin-bottom-x2')}>Контактная информация</h4>
 
 			<div className="sectionSubtitle">День рождения</div>
-			<p className={cn('sectionText', 'sectionTextWith')}>
+			<p className={cn('sectionText', 'sectionTextWith', s.profileBirthday)}>
 				<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
 				{isMyProfile && <FormControlLabel control={<Checkbox onChange={showDateChange} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />}
 			</p>
@@ -41,7 +41,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 			</p>
 
 			<div className="sectionSubtitle">Мобильный телефон</div>
-			<p className={cn('sectionText', 'sectionTextWith')}>
+			<p className={cn('sectionText', 'sectionTextWith', s.profilePhones)}>
 				{main.mobilePhone.split(',').map((item, index) => (
 					<a key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
 						{item}

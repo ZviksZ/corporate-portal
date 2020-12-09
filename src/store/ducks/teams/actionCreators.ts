@@ -12,15 +12,15 @@ import {
 	SetTeamSquadSearchActionInterface,
 	SetLoadingTeamsActionInterface,
 } from './contracts/actionTypes'
-import { Unit, UnitDetail } from '../units/contracts/state'
-import { SquadMember, TeamSquad } from './contracts/state'
+import { UnitInterface, UnitDetailInterface } from '../units/contracts/state'
+import { SquadMemberInterface, TeamSquadInterface } from './contracts/state'
 import { LoadingStatus } from '../../types'
 import { ProjectsActionsType, SetLoadingProjectsActionInterface } from '../projects/contracts/actionTypes'
 
 export const getTeams = (): GetTeamsActionInterface => ({
 	type: TeamsActionsType.GET_TEAMS,
 })
-export const setTeams = (payload: Unit[] | null): SetTeamsActionInterface => ({
+export const setTeams = (payload: UnitInterface[] | null): SetTeamsActionInterface => ({
 	type: TeamsActionsType.SET_TEAMS,
 	payload,
 })
@@ -28,11 +28,11 @@ export const getTeamData = (id: string): GetTeamDataActionInterface => ({
 	type: TeamsActionsType.GET_TEAM_DATA,
 	id,
 })
-export const setTeamData = (payload: UnitDetail | null): SetTeamDataActionInterface => ({
+export const setTeamData = (payload: UnitDetailInterface | null): SetTeamDataActionInterface => ({
 	type: TeamsActionsType.SET_TEAM_DATA,
 	payload,
 })
-export const setRoleFormData = (payload: SquadMember | null): SetRoleFormDataActionInterface => ({
+export const setRoleFormData = (payload: SquadMemberInterface | null): SetRoleFormDataActionInterface => ({
 	type: TeamsActionsType.SET_ROLE_FORM_DATA,
 	payload,
 })
@@ -40,14 +40,14 @@ export const getTeamSquad = (id: string): GetTeamSquadActionInterface => ({
 	type: TeamsActionsType.GET_TEAM_SQUAD,
 	id,
 })
-export const setTeamSquad = (payload: TeamSquad | null): SetTeamSquadActionInterface => ({
+export const setTeamSquad = (payload: TeamSquadInterface | null): SetTeamSquadActionInterface => ({
 	type: TeamsActionsType.SET_TEAM_SQUAD,
 	payload,
 })
 export const getMembers = (): GetMembersActionInterface => ({
 	type: TeamsActionsType.GET_MEMBERS,
 })
-export const setMembers = (payload: SquadMember[] | null): SetMembersActionInterface => ({
+export const setMembers = (payload: SquadMemberInterface[] | null): SetMembersActionInterface => ({
 	type: TeamsActionsType.SET_MEMBERS,
 	payload,
 })

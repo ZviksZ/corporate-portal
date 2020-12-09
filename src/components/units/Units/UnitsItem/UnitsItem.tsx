@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react'
 import s from '../Units.module.scss'
 import cn from 'classnames'
 import { UnitCard } from '../../../cards/UnitCard/UnitCard'
-import { Unit } from '../../../../store/ducks/units/contracts/state'
+import { UnitInterface } from '../../../../store/ducks/units/contracts/state'
 
 type Props = {
-	item: Unit
+	item: UnitInterface
 }
 
 export const UnitsItem: React.FC<Props> = ({ item }) => {

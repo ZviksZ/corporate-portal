@@ -1,4 +1,4 @@
-export interface Response<T> {
+export interface ResponseInterface<T> {
 	status: string
 	data: T
 }
@@ -10,4 +10,7 @@ export interface LoginRequestInterface {
 
 export interface StandartRequestInterface {
 	id: string
+}
+export interface SearchRequestInterface {
+	query: string
 }

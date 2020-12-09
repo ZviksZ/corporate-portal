@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { UnitDetail } from '../../../store/ducks/units/contracts/state'
+import { UnitDetailInterface } from '../../../store/ducks/units/contracts/state'
 import s from './Team.module.scss'
 import { NavLink } from 'react-router-dom'
 import { Breadcrumbs } from '@material-ui/core'
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
 
 type Props = {
-	team: UnitDetail | null
+	team: UnitDetailInterface | null
 }
 
 export const Team: React.FC<Props> = ({ team }) => {

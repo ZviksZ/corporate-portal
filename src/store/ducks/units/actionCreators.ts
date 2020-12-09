@@ -1,12 +1,12 @@
 import { GetUnitDataActionInterface, GetUnitsActionInterface, SetLoadingUnitsActionInterface, SetUnitDataActionInterface, SetUnitsActionInterface, UnitsActionsType } from './contracts/actionTypes'
-import { Unit, UnitDetail } from './contracts/state'
+import { UnitInterface, UnitDetailInterface } from './contracts/state'
 import { LoadingStatus } from '../../types'
 import { SetLoadingTeamsActionInterface, TeamsActionsType } from '../teams/contracts/actionTypes'
 
 export const getUnits = (): GetUnitsActionInterface => ({
 	type: UnitsActionsType.GET_UNITS,
 })
-export const setUnits = (payload: Unit[] | null): SetUnitsActionInterface => ({
+export const setUnits = (payload: UnitInterface[] | null): SetUnitsActionInterface => ({
 	type: UnitsActionsType.SET_UNITS,
 	payload,
 })
@@ -14,7 +14,7 @@ export const getUnitData = (id: string): GetUnitDataActionInterface => ({
 	type: UnitsActionsType.GET_UNIT_DATA,
 	id,
 })
-export const setUnitData = (payload: UnitDetail | null): SetUnitDataActionInterface => ({
+export const setUnitData = (payload: UnitDetailInterface | null): SetUnitDataActionInterface => ({
 	type: UnitsActionsType.SET_UNIT_DATA,
 	payload,
 })

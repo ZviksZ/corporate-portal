@@ -6,10 +6,10 @@ import { getInitialsFromName } from '../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setRoleFormData } from '../../../store/ducks/teams/actionCreators'
-import { SquadMember } from '../../../store/ducks/teams/contracts/state'
+import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 
 type Props = {
-	member: SquadMember
+	member: SquadMemberInterface
 	showRole?: boolean
 	isTeamMember?: boolean
 	openForm?: (param: boolean) => void

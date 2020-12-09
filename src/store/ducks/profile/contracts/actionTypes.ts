@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { ProfileData } from './state'
+import { ProfileDataInterface } from './state'
 import { LoadingStatus } from '../../../types'
 import { GlobalActionsType } from '../../global/contracts/actionTypes'
 
@@ -20,7 +20,7 @@ export interface GetProfileActionInterface extends Action<ProfileActionsType> {
 export interface SetProfileActionInterface extends Action<ProfileActionsType> {
 	type: ProfileActionsType.SET_PROFILE
 	payload: {
-		profileData: ProfileData | null
+		profileData: ProfileDataInterface | null
 		isPersonalProfile: boolean
 	}
 }

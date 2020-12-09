@@ -13,7 +13,7 @@ import { TeamRoleForm } from '../../forms/team/TeamRoleForm/TeamRoleForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { filteredAllMembersList, selectTeams } from '../../../store/ducks/teams/selectors'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
-import { SquadMember } from '../../../store/ducks/teams/contracts/state'
+import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { setTeamSquadSearch } from '../../../store/ducks/teams/actionCreators'
 
 export const TeamSquad: React.FC = () => {
@@ -69,7 +69,7 @@ export const TeamSquad: React.FC = () => {
 			{filteredMembers && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">все сотрудники ({filteredMembers.length})</div>
-					{filteredMembers.map((member: SquadMember) => (
+					{filteredMembers.map((member: SquadMemberInterface) => (
 						<MemberSquadCard key={member.id} member={member} openForm={setOpenForm} showRole={false} isTeamMember={false} />
 					))}
 				</>

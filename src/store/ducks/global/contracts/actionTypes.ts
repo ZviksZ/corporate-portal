@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { GlobalMessage, NotificationData, NotificationDetail, SearchResults, User } from './state'
+import { GlobalMessageInterface, NotificationDataInterface, NotificationDetailInterface, SearchResultsInterface, UserInterface } from './state'
 import { LoadingStatus } from '../../../types'
 
 export enum GlobalActionsType {
@@ -33,11 +33,11 @@ export interface LoginActionInterface extends Action<GlobalActionsType> {
 }
 export interface SetUserActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_USER
-	payload: User | null
+	payload: UserInterface | null
 }
 export interface SetGlobalMessageActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_GLOBAL_MESSAGE
-	payload: GlobalMessage | null
+	payload: GlobalMessageInterface | null
 }
 export interface SetLoadingActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_LOADING_STATE
@@ -49,7 +49,7 @@ export interface GetNotificationsActionInterface extends Action<GlobalActionsTyp
 }
 export interface SetNotificationsActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_NOTIFICATIONS
-	payload: NotificationData | null
+	payload: NotificationDataInterface | null
 }
 
 export interface GetNotificationDataActionInterface extends Action<GlobalActionsType> {
@@ -58,7 +58,7 @@ export interface GetNotificationDataActionInterface extends Action<GlobalActions
 }
 export interface SetNotificationDataActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_NOTIFICATION_DATA
-	payload: NotificationDetail | null
+	payload: NotificationDetailInterface | null
 }
 
 export interface GetSearchActionInterface extends Action<GlobalActionsType> {
@@ -67,5 +67,5 @@ export interface GetSearchActionInterface extends Action<GlobalActionsType> {
 }
 export interface SetSearchActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_SEARCH
-	payload: SearchResults | null
+	payload: SearchResultsInterface | null
 }

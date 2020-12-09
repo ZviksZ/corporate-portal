@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { UnitDetail } from '../../../store/ducks/units/contracts/state'
+import { UnitDetailInterface } from '../../../store/ducks/units/contracts/state'
 import s from './Unit.module.scss'
 import { NavLink } from 'react-router-dom'
 import { Breadcrumbs } from '@material-ui/core'
@@ -7,7 +7,7 @@ import { MemberCard } from '../../cards/MemberCard/MemberCard'
 import { UnitCard } from '../../cards/UnitCard/UnitCard'
 
 type Props = {
-	unit: UnitDetail | null
+	unit: UnitDetailInterface | null
 }
 
 export const Unit: React.FC<Props> = ({ unit }) => {

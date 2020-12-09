@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Cookie } from '../helpers/cookie'
-import { NotificationData, NotificationDetail, SearchResults, User } from '../../store/ducks/global/contracts/state'
+import { NotificationDataInterface, NotificationDetailInterface, SearchResultsInterface, UserInterface } from '../../store/ducks/global/contracts/state'
 import user from './mockups/user.json'
 import profile from './mockups/profile.json'
 import units from './mockups/units.json'
@@ -14,14 +14,11 @@ import notifications from './mockups/notifications.json'
 import notificationDetail from './mockups/notification-detail.json'
 import allMembers from './mockups/all-members.json'
 import searchResults from './mockups/search-results.json'
-import { LoginDataInterface } from '../../store/ducks/global/contracts/actionTypes'
-import { ProfileData } from '../../store/ducks/profile/contracts/state'
-import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
-import { Project, ProjectDetail } from '../../store/ducks/projects/contracts/state'
-import { SquadMember } from '../../store/ducks/teams/contracts/state'
-import { LoginRequestInterface, StandartRequestInterface } from './interfaces'
-
-
+import { UnitInterface, UnitDetailInterface } from '../../store/ducks/units/contracts/state'
+import { ProjectInterface, ProjectDetailInterface } from '../../store/ducks/projects/contracts/state'
+import { SquadMemberInterface } from '../../store/ducks/teams/contracts/state'
+import { LoginRequestInterface, SearchRequestInterface, StandartRequestInterface } from './interfaces'
+import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 
 const BASE_URL = '/api'
 
@@ -47,79 +44,79 @@ instance.interceptors.request.use((config) => {
 })
 
 export const GlobalApi = {
-	async login(formData: LoginRequestInterface): Promise<User> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async login(requestData: LoginRequestInterface): Promise<UserInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return user.data
 	},
-	async getNotifications(): Promise<NotificationData> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getNotifications(): Promise<NotificationDataInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return notifications.data
 	},
-	async getNotificationData(formData: StandartRequestInterface): Promise<NotificationDetail> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getNotificationData(requestData: StandartRequestInterface): Promise<NotificationDetailInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return notificationDetail.data
 	},
-	async getSearch(query: string): Promise<SearchResults> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getSearch(requestData: SearchRequestInterface): Promise<SearchResultsInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return searchResults.data
 	},
 }
 
 export const ProfileApi = {
-	async getProfile(formData: StandartRequestInterface): Promise<any> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return profile.data
 	},
 }
 
 export const UnitsApi = {
-	async getUnits(): Promise<Unit[]> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getUnits(): Promise<UnitInterface[]> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return units.data
 	},
-	async getUnitData(formData: StandartRequestInterface): Promise<UnitDetail> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getUnitData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return unitDetail.data
 	},
 }
 
 export const TeamsApi = {
-	async getAllMembers(): Promise<SquadMember[]> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getAllMembers(): Promise<SquadMemberInterface[]> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return allMembers.data
 	},
-	async getTeams(): Promise<Unit[]> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getTeams(): Promise<UnitInterface[]> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return teams.data
 	},
-	async getTeamData(formData: StandartRequestInterface): Promise<UnitDetail> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getTeamData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return teamDetail.data
 	},
-	async getTeamSquadData(formData: StandartRequestInterface): Promise<UnitDetail> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getTeamSquadData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return teamSquad.data
 	},
 }
 export const ProjectsApi = {
-	async getProjects(): Promise<Project[]> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getProjects(): Promise<ProjectInterface[]> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return projects.data
 	},
-	async getProjectData(formData: StandartRequestInterface): Promise<ProjectDetail> {
-		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
+	async getProjectData(requestData: StandartRequestInterface): Promise<ProjectDetailInterface> {
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return project.data
 	},

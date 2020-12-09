@@ -3,10 +3,10 @@ import s from '../MemberCard.module.scss'
 import cn from 'classnames'
 import { ClipboardCopy } from '../../../common/ClipboardCopy/ClipboardCopy'
 import slack from '../../../../assets/images/icons/slack.svg'
-import { MemberDetail } from '../../../../store/ducks/units/contracts/state'
+import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
 
 type Props = {
-	member: MemberDetail
+	member: MemberDetailInterface
 }
 
 export const MemberCardContacts: React.FC<Props> = ({ member }) => {

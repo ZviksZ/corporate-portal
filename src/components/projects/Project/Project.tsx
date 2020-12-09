@@ -3,12 +3,12 @@ import s from './Project.module.scss'
 import { NavLink } from 'react-router-dom'
 import { Breadcrumbs } from '@material-ui/core'
 import { MemberCard } from '../../cards/MemberCard/MemberCard'
-import { ProjectDetail } from '../../../store/ducks/projects/contracts/state'
+import { ProjectDetailInterface } from '../../../store/ducks/projects/contracts/state'
 import wiki from '../../../assets/images/icons/wiki.svg'
 import jira from '../../../assets/images/icons/jira.svg'
 
 type Props = {
-	project: ProjectDetail | null
+	project: ProjectDetailInterface | null
 }
 
 export const Project: React.FC<Props> = ({ project }) => {

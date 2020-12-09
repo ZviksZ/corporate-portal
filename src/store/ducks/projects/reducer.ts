@@ -1,15 +1,15 @@
 import produce, { Draft } from 'immer'
-import { ProjectsState } from './contracts/state'
+import { ProjectsStateInterface } from './contracts/state'
 import { ProjectsActions } from './actionCreators'
 import { ProjectsActionsType } from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
 
-const initialProjectsState: ProjectsState = {
+const initialProjectsState: ProjectsStateInterface = {
 	projects: null,
 	projectDetail: null,
 	LoadingStatus: LoadingStatus.NEVER,
 }
-export const projectsReducer = produce((draft: Draft<ProjectsState>, action: ProjectsActions) => {
+export const projectsReducer = produce((draft: Draft<ProjectsStateInterface>, action: ProjectsActions) => {
 	switch (action.type) {
 		case ProjectsActionsType.SET_PROJECTS:
 			draft.projects = action.payload
