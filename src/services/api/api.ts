@@ -14,16 +14,14 @@ import notifications from './mockups/notifications.json'
 import notificationDetail from './mockups/notification-detail.json'
 import allMembers from './mockups/all-members.json'
 import searchResults from './mockups/search-results.json'
-import { LoginData } from '../../store/ducks/global/contracts/actionTypes'
+import { LoginDataInterface } from '../../store/ducks/global/contracts/actionTypes'
 import { ProfileData } from '../../store/ducks/profile/contracts/state'
 import { Unit, UnitDetail } from '../../store/ducks/units/contracts/state'
 import { Project, ProjectDetail } from '../../store/ducks/projects/contracts/state'
 import { SquadMember } from '../../store/ducks/teams/contracts/state'
+import { LoginRequestInterface, StandartRequestInterface } from './interfaces'
 
-interface Response<T> {
-	status: string
-	data: T
-}
+
 
 const BASE_URL = '/api'
 
@@ -49,35 +47,21 @@ instance.interceptors.request.use((config) => {
 })
 
 export const GlobalApi = {
-	/**
-	 * Авторизация
-	 */
-	async login(formData: LoginData): Promise<User> {
+	async login(formData: LoginRequestInterface): Promise<User> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return user.data
 	},
-	/**
-	 * Получить уведомления
-	 */
 	async getNotifications(): Promise<NotificationData> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return notifications.data
 	},
-	/**
-	 * Получить уведомления
-	 * @param {String} id - id уведомления
-	 */
-	async getNotificationData(id: string): Promise<NotificationDetail> {
+	async getNotificationData(formData: StandartRequestInterface): Promise<NotificationDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return notificationDetail.data
 	},
-	/**
-	 * Поиск по сотрудникам, подразделениям, командам и проектам
-	 * @param {String} query - введенные символы
-	 */
 	async getSearch(query: string): Promise<SearchResults> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
@@ -86,11 +70,7 @@ export const GlobalApi = {
 }
 
 export const ProfileApi = {
-	/**
-	 * Данные профиля(детальные)
-	 * @param {String} id - id сотрудника
-	 */
-	async getProfile(formData: any): Promise<ProfileData> {
+	async getProfile(formData: StandartRequestInterface): Promise<any> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return profile.data
@@ -98,19 +78,12 @@ export const ProfileApi = {
 }
 
 export const UnitsApi = {
-	/**
-	 * Список подразделений
-	 */
 	async getUnits(): Promise<Unit[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return units.data
 	},
-	/**
-	 * Данные подразделения(детальные)
-	 * @param {String} id - id подразделения
-	 */
-	async getUnitData(id: string): Promise<UnitDetail> {
+	async getUnitData(formData: StandartRequestInterface): Promise<UnitDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return unitDetail.data
@@ -118,55 +91,34 @@ export const UnitsApi = {
 }
 
 export const TeamsApi = {
-	/**
-	 * Список команд
-	 */
 	async getAllMembers(): Promise<SquadMember[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return allMembers.data
 	},
-	/**
-	 * Список команд
-	 */
 	async getTeams(): Promise<Unit[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return teams.data
 	},
-	/**
-	 * Данные команды(детальные)
-	 * @param {String} id - id команды
-	 */
-	async getTeamData(id: string): Promise<UnitDetail> {
+	async getTeamData(formData: StandartRequestInterface): Promise<UnitDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return teamDetail.data
 	},
-	/**
-	 * Данные состава команды
-	 * @param {String} id - id команды
-	 */
-	async getTeamSquadData(id: string): Promise<UnitDetail> {
+	async getTeamSquadData(formData: StandartRequestInterface): Promise<UnitDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return teamSquad.data
 	},
 }
 export const ProjectsApi = {
-	/**
-	 * Список проектов
-	 */
 	async getProjects(): Promise<Project[]> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return projects.data
 	},
-	/**
-	 * Данные проекта(детальные)
-	 * @param {String} id - id проекта
-	 */
-	async getProjectData(id: string): Promise<ProjectDetail> {
+	async getProjectData(formData: StandartRequestInterface): Promise<ProjectDetail> {
 		//const { data } = await instance.post<Response<any>>('/auth/login', formData)
 		//return data.data
 		return project.data

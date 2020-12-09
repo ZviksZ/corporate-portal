@@ -2,57 +2,55 @@ import { put, takeLatest, call } from 'redux-saga/effects'
 import { GetTeamDataActionInterface, GetTeamSquadActionInterface, TeamsActionsType } from './contracts/actionTypes'
 import { TeamsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
-import { setMembers, setTeamData, setTeams, setTeamSquad } from './actionCreators'
+import { setLoadingTeams, setMembers, setTeamData, setTeams, setTeamSquad } from './actionCreators'
+import { LoadingStatus } from '../../types'
 
-/**
- * Список команд
- */
 export function* getTeamsRequest() {
 	try {
+		yield put(setLoadingTeams(LoadingStatus.LOADING))
 		const teams = yield call(TeamsApi.getTeams)
 
 		yield put(setTeams(teams))
+		yield put(setLoadingTeams(LoadingStatus.LOADED))
 	} catch (error) {
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
-/**
- * Данные команды(детальные)
- * @param {String} id - id команды
- */
 export function* getTeamDataRequest({ id }: GetTeamDataActionInterface) {
 	try {
-		const team = yield call(TeamsApi.getTeamData, id)
+		yield put(setLoadingTeams(LoadingStatus.LOADING))
+		const team = yield call(TeamsApi.getTeamData, { id })
 
 		yield put(setTeamData(team))
+		yield put(setLoadingTeams(LoadingStatus.LOADED))
 	} catch (error) {
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
-/**
- * Данные команды(детальные)
- * @param {String} id - id команды
- */
 export function* getTeamSquadRequest({ id }: GetTeamSquadActionInterface) {
 	try {
-		const squad = yield call(TeamsApi.getTeamSquadData, id)
+		yield put(setLoadingTeams(LoadingStatus.LOADING))
+		const squad = yield call(TeamsApi.getTeamSquadData, { id })
 
 		yield put(setTeamSquad(squad))
+		yield put(setLoadingTeams(LoadingStatus.LOADED))
 	} catch (error) {
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
-
-/**
- * Список всех сотрудников
- */
 export function* getMembersRequest() {
 	try {
+		yield put(setLoadingTeams(LoadingStatus.LOADING))
 		const members = yield call(TeamsApi.getAllMembers)
 
 		yield put(setMembers(members))
+		yield put(setLoadingTeams(LoadingStatus.LOADED))
 	} catch (error) {
-		//yield put(setGlobalMessage({ text: 'Error. Try again', type: 'error' }))
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
 

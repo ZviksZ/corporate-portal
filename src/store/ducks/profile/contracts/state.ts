@@ -1,4 +1,5 @@
 import { Unit } from '../../units/contracts/state'
+import { LoadingStatus } from '../../../types'
 
 export interface Socials {
 	type: string
@@ -69,4 +70,5 @@ export interface ProfileData {
 export interface ProfileState {
 	profileData: ProfileData | null
 	isPersonalProfile: boolean
+	LoadingStatus: LoadingStatus
 }

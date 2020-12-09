@@ -2,12 +2,14 @@ import React, { useEffect } from 'react'
 import { useRoutes } from './routes'
 import { Loader } from './components/common/Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectGlobal } from './store/ducks/global/selectors'
+import { selectGlobal, selectIsGlobalLoading, selectIsGlobalLoadingError } from './store/ducks/global/selectors'
 import { getCookieUser, getNotifications } from './store/ducks/global/actionCreators'
 import { getMembers } from './store/ducks/teams/actionCreators'
 
 export const App: React.FC = () => {
-	const { user, isLoading } = useSelector(selectGlobal)
+	const { user } = useSelector(selectGlobal)
+	const isLoading= useSelector(selectIsGlobalLoading)
+	const isLoadingError= useSelector(selectIsGlobalLoadingError)
 	const dispatch = useDispatch()
 	const isAuth = !!user
 	const routes = useRoutes(isAuth, '')
@@ -30,6 +32,13 @@ export const App: React.FC = () => {
 		return (
 			<div className="full-page d-flex ai-center jc-center">
 				<Loader />
+			</div>
+		)
+	}
+	if (isLoadingError) {
+		return (
+			<div className="full-page d-flex ai-center jc-center">
+				Ошибка
 			</div>
 		)
 	}

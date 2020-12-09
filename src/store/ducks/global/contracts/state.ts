@@ -1,5 +1,6 @@
 import { FromTo, SimpleMemberUnit } from '../../profile/contracts/state'
 import { SquadMember } from '../../teams/contracts/state'
+import { LoadingStatus } from '../../../types'
 
 export interface User {
 	id: string
@@ -47,7 +48,7 @@ export interface SearchResults {
 export interface GlobalState {
 	user: User | null
 	globalMessage: GlobalMessage | null
-	isLoading: boolean,
+	LoadingStatus: LoadingStatus
 	notifications: NotificationData | null
 	notificationDetail: NotificationDetail | null
 	searchResults: SearchResults | null

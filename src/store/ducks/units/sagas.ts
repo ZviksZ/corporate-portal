@@ -2,30 +2,30 @@ import { put, takeLatest, call } from 'redux-saga/effects'
 import { GetUnitDataActionInterface, UnitsActionsType } from './contracts/actionTypes'
 import { UnitsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
-import { setUnitData, setUnits } from './actionCreators'
+import { setLoadingUnits, setUnitData, setUnits } from './actionCreators'
+import { LoadingStatus } from '../../types'
 
-/**
- * Список подразделений
- */
 export function* getUnitsRequest() {
 	try {
+		yield put(setLoadingUnits(LoadingStatus.LOADING))
 		const units = yield call(UnitsApi.getUnits)
 
 		yield put(setUnits(units))
+		yield put(setLoadingUnits(LoadingStatus.LOADED))
 	} catch (error) {
+		yield put(setLoadingUnits(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
-/**
- * Данные подразделения(детальные)
- * @param {String} id - id подразделения
- */
 export function* getUnitDataRequest({ id }: GetUnitDataActionInterface) {
 	try {
-		const unit = yield call(UnitsApi.getUnitData, id)
+		yield put(setLoadingUnits(LoadingStatus.LOADING))
+		const unit = yield call(UnitsApi.getUnitData, { id })
 
 		yield put(setUnitData(unit))
+		yield put(setLoadingUnits(LoadingStatus.LOADED))
 	} catch (error) {
+		yield put(setLoadingUnits(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }

@@ -1,9 +1,8 @@
 import { ProfileData } from './contracts/state'
-import { GetProfileActionInterface, ProfileActionsType, SetProfileActionInterface } from './contracts/actionTypes'
+import { GetProfileActionInterface, ProfileActionsType, SetLoadingProfileActionInterface, SetProfileActionInterface } from './contracts/actionTypes'
+import { LoadingStatus } from '../../types'
+import { GlobalActionsType, SetLoadingActionInterface } from '../global/contracts/actionTypes'
 
-/**
- * Получение профиля
- */
 export const getProfile = (id: string, isPersonalProfile: boolean): GetProfileActionInterface => ({
 	type: ProfileActionsType.GET_PROFILE,
 	payload: {
@@ -11,9 +10,6 @@ export const getProfile = (id: string, isPersonalProfile: boolean): GetProfileAc
 		isPersonalProfile,
 	},
 })
-/**
- * Установка профиля в состояние
- */
 export const setProfile = (profileData: ProfileData | null, isPersonalProfile: boolean): SetProfileActionInterface => ({
 	type: ProfileActionsType.SET_PROFILE,
 	payload: {
@@ -22,4 +18,9 @@ export const setProfile = (profileData: ProfileData | null, isPersonalProfile: b
 	},
 })
 
-export type GlobalActions = GetProfileActionInterface | SetProfileActionInterface
+export const setLoadingProfile = (payload: LoadingStatus): SetLoadingProfileActionInterface => ({
+	type: ProfileActionsType.SET_LOADING_STATE,
+	payload,
+})
+
+export type GlobalActions = SetLoadingProfileActionInterface | GetProfileActionInterface | SetProfileActionInterface

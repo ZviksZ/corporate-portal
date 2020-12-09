@@ -1,7 +1,8 @@
 import { Action } from 'redux'
 import { Unit, UnitDetail } from '../../units/contracts/state'
 import { SquadMember, TeamSquad } from './state'
-import { GlobalActionsType } from '../../global/contracts/actionTypes'
+import { LoadingStatus } from '../../../types'
+import { ProjectsActionsType } from '../../projects/contracts/actionTypes'
 
 export enum TeamsActionsType {
 	GET_TEAMS = 'teams/GET_TEAMS',
@@ -14,6 +15,7 @@ export enum TeamsActionsType {
 	SET_TEAM_SQUAD_SEARCH = 'teams/SET_TEAM_SQUAD_SEARCH',
 	GET_MEMBERS = 'teams/GET_MEMBERS',
 	SET_MEMBERS = 'teams/SET_MEMBERS',
+	SET_LOADING_STATE = 'teams/SET_LOADING_STATE',
 }
 
 export interface GetTeamsActionInterface extends Action<TeamsActionsType> {
@@ -54,4 +56,8 @@ export interface SetMembersActionInterface extends Action<TeamsActionsType> {
 export interface SetTeamSquadSearchActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_TEAM_SQUAD_SEARCH
 	query: string
+}
+export interface SetLoadingTeamsActionInterface extends Action<TeamsActionsType> {
+	type: TeamsActionsType.SET_LOADING_STATE
+	payload: LoadingStatus
 }

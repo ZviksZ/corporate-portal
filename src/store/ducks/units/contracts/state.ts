@@ -1,4 +1,5 @@
 import { FromTo } from '../../profile/contracts/state'
+import { LoadingStatus } from '../../../types'
 
 export interface MemberDetail {
 	name: string
@@ -50,4 +51,5 @@ export interface UnitDetail {
 export interface UnitsState {
 	units: Unit[] | null
 	unitDetail: UnitDetail | null
+	LoadingStatus: LoadingStatus
 }

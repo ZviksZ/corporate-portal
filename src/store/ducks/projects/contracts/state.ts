@@ -1,4 +1,5 @@
 import { MemberDetail } from '../../units/contracts/state'
+import { LoadingStatus } from '../../../types'
 
 export interface Project {
 	id: string
@@ -31,4 +32,5 @@ export interface ProjectDetail {
 export interface ProjectsState {
 	projects: Project[] | null
 	projectDetail: ProjectDetail | null
+	LoadingStatus: LoadingStatus
 }

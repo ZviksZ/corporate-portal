@@ -1,19 +1,19 @@
-import { put, takeLatest, call } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import { GetProfileActionInterface, ProfileActionsType } from './contracts/actionTypes'
 import { ProfileApi } from '../../../services/api/api'
-import { setProfile } from './actionCreators'
-import { setGlobalMessage, setLoading } from '../global/actionCreators'
+import { setLoadingProfile, setProfile } from './actionCreators'
+import { setGlobalMessage } from '../global/actionCreators'
+import { LoadingStatus } from '../../types'
 
-/**
- * Данные профиля(детальные)
- * @param {String} payload - id профиля
- */
 export function* getProfileRequest({ payload }: GetProfileActionInterface) {
 	try {
-		const profile = yield call(ProfileApi.getProfile, payload.id)
+		yield put(setLoadingProfile(LoadingStatus.LOADING))
+		const profile = yield call(ProfileApi.getProfile, { id: payload.id })
 
 		yield put(setProfile(profile, payload.isPersonalProfile))
+		yield put(setLoadingProfile(LoadingStatus.LOADED))
 	} catch (error) {
+		yield put(setLoadingProfile(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }

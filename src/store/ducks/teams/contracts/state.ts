@@ -1,4 +1,5 @@
 import { Unit, UnitDetail } from '../../units/contracts/state'
+import { LoadingStatus } from '../../../types'
 
 export interface SquadMember {
 	name: string
@@ -26,4 +27,5 @@ export interface TeamsState {
 	teamSquadSearch: string
 	roleFormData: SquadMember | null
 	allMembers: SquadMember[] | null
+	LoadingStatus: LoadingStatus
 }

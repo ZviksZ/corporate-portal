@@ -257,13 +257,18 @@
 .jc-end {
     justify-content: flex-end;
 }
-
+.flex-column {
+    flex-direction: column;
+}
 
 .full-page {
     width: 100%;
     min-height: 100vh;
+    background: #F5F6F7;
 }
-
+.full-width {
+    width: 100%;
+}
 
 
 .status-0 {

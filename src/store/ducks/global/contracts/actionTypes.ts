@@ -1,13 +1,13 @@
 import { Action } from 'redux'
 import { GlobalMessage, NotificationData, NotificationDetail, SearchResults, User } from './state'
-import { SquadMember } from '../../teams/contracts/state'
+import { LoadingStatus } from '../../../types'
 
 export enum GlobalActionsType {
 	LOGIN = 'global/LOGIN',
 	SET_USER = 'global/SET_USER',
 	LOGOUT = 'global/LOGOUT',
 	SET_GLOBAL_MESSAGE = 'global/SET_GLOBAL_MESSAGE',
-	SET_LOADING = 'global/SET_LOADING',
+	SET_LOADING_STATE = 'global/SET_LOADING_STATE',
 	GET_COOKIE_USER = 'global/GET_COOKIE_USER',
 	GET_NOTIFICATIONS = 'global/GET_NOTIFICATIONS',
 	SET_NOTIFICATIONS = 'global/SET_NOTIFICATIONS',
@@ -16,7 +16,7 @@ export enum GlobalActionsType {
 	GET_SEARCH = 'global/GET_SEARCH',
 	SET_SEARCH = 'global/SET_SEARCH',
 }
-export interface LoginData {
+export interface LoginDataInterface {
 	login: string
 	password: string
 }
@@ -29,7 +29,7 @@ export interface GetCookieUserActionInterface extends Action<GlobalActionsType> 
 }
 export interface LoginActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.LOGIN
-	payload: LoginData
+	payload: LoginDataInterface
 }
 export interface SetUserActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_USER
@@ -40,8 +40,8 @@ export interface SetGlobalMessageActionInterface extends Action<GlobalActionsTyp
 	payload: GlobalMessage | null
 }
 export interface SetLoadingActionInterface extends Action<GlobalActionsType> {
-	type: GlobalActionsType.SET_LOADING
-	payload: boolean
+	type: GlobalActionsType.SET_LOADING_STATE
+	payload: LoadingStatus
 }
 
 export interface GetNotificationsActionInterface extends Action<GlobalActionsType> {
