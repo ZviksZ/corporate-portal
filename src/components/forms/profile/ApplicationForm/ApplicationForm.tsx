@@ -97,10 +97,16 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 							onChange={selectHandler}
 							value={type}
 							render={(props) => (
-								<Select {...props} value={type} onChange={(value) => {
-									props.onChange(value);
-									selectHandler(value);
-								}} label="Тип отсутствия" labelId="demo-simple-select-label">
+								<Select
+									{...props}
+									value={type}
+									onChange={(value) => {
+										props.onChange(value)
+										selectHandler(value)
+									}}
+									label="Тип отсутствия"
+									labelId="demo-simple-select-label"
+								>
 									<MenuItem value="1">Оплачиваемый отпуск</MenuItem>
 									<MenuItem value="2">Отпуск за свой счет</MenuItem>
 									<MenuItem value="3">Больничный</MenuItem>

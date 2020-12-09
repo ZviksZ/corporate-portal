@@ -10,7 +10,7 @@ import { Button } from '@material-ui/core'
 
 export const TeamsDetailPage: React.FC = () => {
 	const dispatch = useDispatch()
-	const { teamDetail } = useSelector(selectTeams)
+	const { teamDetail, LoadingStatus } = useSelector(selectTeams)
 	const isLoading = useSelector(selectIsTeamsLoading)
 	const isLoadingError = useSelector(selectIsTeamsLoadingError)
 	const params: { id?: string } = useParams()
@@ -38,6 +38,8 @@ export const TeamsDetailPage: React.FC = () => {
 			</div>
 		)
 	}
+	console.log(LoadingStatus)
+	console.log(isLoadingError)
 	if (isLoadingError) {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">

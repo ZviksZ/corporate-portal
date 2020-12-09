@@ -32,7 +32,6 @@ export const teamsReducer = produce((draft: Draft<TeamsStateInterface>, action: 
 			break
 		case TeamsActionsType.SET_MEMBERS:
 			draft.allMembers = action.payload
-			draft.LoadingStatus = LoadingStatus.SUCCESS
 			break
 		case TeamsActionsType.SET_TEAM_SQUAD_SEARCH:
 			draft.teamSquadSearch = action.query

@@ -43,11 +43,9 @@ export function* getTeamSquadRequest({ id }: GetTeamSquadActionInterface) {
 }
 export function* getMembersRequest() {
 	try {
-		yield put(setLoadingTeams(LoadingStatus.LOADING))
 		const members = yield call(TeamsApi.getAllMembers)
 
 		yield put(setMembers(members))
-		yield put(setLoadingTeams(LoadingStatus.LOADED))
 	} catch (error) {
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
