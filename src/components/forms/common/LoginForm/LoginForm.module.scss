@@ -15,6 +15,7 @@
         margin-bottom: 15px;
     }
     @include mobile {
+        margin: 64px 0;
         padding: 20px 30px;
     }
     @include only-mobile {

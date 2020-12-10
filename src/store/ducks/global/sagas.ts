@@ -25,7 +25,7 @@ export function* getUserCookieRequest() {
 	try {
 		yield put(setGlobalLoading(LoadingStatus.LOADING))
 		const cookies = Cookie.getCookie('userData')
-		const user = JSON.parse(cookies + '')
+		const user = cookies && JSON.parse(cookies + '')
 
 		if (user) {
 			yield put(setUser(user))

@@ -38,18 +38,20 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 	const [selectedDateFrom, setSelectedDateFrom] = useState<any>(new Date())
 	const [selectedDateTo, setSelectedDateTo] = useState<any>(new Date())
 	const [maxDateTo, setMaxDateTo] = useState<any>(null)
-	const [type, setType] = React.useState('')
+	const [type, setType] = useState('')
 
 	useEffect(() => {
 		if (type == '4') {
 			const values = getValues()
-			const newDate = addDaysToDate(values.dateFrom, 3)
+			const newDate = new Date(addDaysToDate(values.dateFrom, 3))
+
 			setMaxDateTo(newDate)
 			setSelectedDateTo(newDate)
 		} else {
 			setMaxDateTo(null)
 		}
 	}, [type, selectedDateFrom])
+
 
 	const handleDateFromChange = (date: any) => {
 		if (date < selectedDateTo) {
@@ -126,7 +128,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 							disableToolbar
 							variant="dialog"
 							inputVariant="outlined"
-							format="dd.MM.yyyy"
+							format="dd/MM/yyyy"
 							margin="normal"
 							label="Дата начала"
 							okLabel="Выбрать"
@@ -150,7 +152,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 							disableToolbar
 							variant="dialog"
 							inputVariant="outlined"
-							format="dd.MM.yyyy"
+							format="dd/MM/yyyy"
 							margin="normal"
 							label="Дата окончания"
 							okLabel="Выбрать"

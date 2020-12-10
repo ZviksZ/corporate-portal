@@ -9,6 +9,4 @@ export const loginSchema = yup.object().shape({
 
 export const profileApplicationSchema = yup.object().shape({
 	type: yup.string().required(requiredText),
-	dateFrom: yup.date().required(requiredText),
-	dateTo: yup.date().required(requiredText),
 })

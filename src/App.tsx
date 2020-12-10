@@ -9,8 +9,8 @@ import { getNotifications } from './store/ducks/notifications/actionCreators'
 
 export const App: React.FC = () => {
 	const { user } = useSelector(selectGlobal)
-	const isLoading= useSelector(selectIsGlobalLoading)
-	const isLoadingError= useSelector(selectIsGlobalLoadingError)
+	const isLoading = useSelector(selectIsGlobalLoading)
+	const isLoadingError = useSelector(selectIsGlobalLoadingError)
 	const dispatch = useDispatch()
 	const isAuth = !!user
 	const routes = useRoutes(isAuth, '')
@@ -37,11 +37,7 @@ export const App: React.FC = () => {
 		)
 	}
 	if (isLoadingError) {
-		return (
-			<div className="full-page d-flex ai-center jc-center">
-				Ошибка
-			</div>
-		)
+		return <div className="full-page d-flex ai-center jc-center">Ошибка</div>
 	}
 
 	return (

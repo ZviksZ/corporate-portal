@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+@import "assets/scss/media";
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +10,7 @@
 }
 
 body {
+    position: relative;
     background: #F5F6F7;
     height: auto !important;
     min-width: 320px;
@@ -27,7 +30,6 @@ body {
 }
 
 @import "assets/scss/variables";
-@import "assets/scss/media";
 @import "assets/scss/typo";
 @import "assets/scss/icons";
 @import "assets/scss/buttons";

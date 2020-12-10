@@ -35,7 +35,10 @@ export const TeamSquad: React.FC = () => {
 				<NavLink to={`/teams/`} className="breadcrumbsItem">
 					Команды
 				</NavLink>
-				<span className="breadcrumbsItem">{teamSquad.name}</span>
+				<NavLink to={`/teams/${teamSquad.id}`} className="breadcrumbsItem">
+					{teamSquad.name}
+				</NavLink>
+				<span className="breadcrumbsItem">Управление составом</span>
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top">Управление составом</h1>
 

@@ -23,14 +23,15 @@ export function setFormData(args) {
 }
 
 export function addDaysToDate(data, day) {
-	data = data.split('.')
+	data = data.split('/')
 	data = new Date(data[2], +data[1] - 1, +data[0] + day, 0, 0, 0, 0)
+	data = data.toLocaleDateString().split('.').reverse().join('/')
 
 	return data
 }
 export function getReverseFormatDate(date) {
 	let dateArray = date.split(' ')
-	let reverseDate = dateArray[0].split('.').reverse().join('.')
+	let reverseDate = dateArray[0].split('.').reverse().join('/')
 
 	return new Date(reverseDate + ' ' + dateArray[1])
 }

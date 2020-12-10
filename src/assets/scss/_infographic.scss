@@ -251,12 +251,30 @@
 }
 .breadcrumbs {
     padding: 24px 0;
+    .MuiBreadcrumbs-ol {
+        display: flex;
+        align-items: center;
+        overflow: auto;
+        flex-wrap: nowrap;
+    }
     .breadcrumbsItem {
         color: $colorText;
         font-size: 14px;
         line-height: 16px;
+        white-space: nowrap;
     }
     a.breadcrumbsItem {
         @extend %link-shared;
     }
+}
+body.overflow-hidden-body,
+html.overflow-hidden-body {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    touch-action: none !important;
+    -ms-touch-action: none !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
 }
