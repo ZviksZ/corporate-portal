@@ -31,7 +31,7 @@ export const MemberSquadCard: React.FC<Props> = ({ member, showRole = false, isT
 
 	return (
 		<NavLink to={`/profile/${member.id}`} className={s.squadCard}>
-			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member?.image || ''}>
+			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member?.photo || ''}>
 				{getInitialsFromName(member.name)}
 			</Avatar>
 			<div className={s.squadCardItem}>

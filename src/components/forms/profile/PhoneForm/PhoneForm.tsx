@@ -15,7 +15,7 @@ type Props = {
 export const PhoneForm: React.FC<Props> = ({ onClose }) => {
 	const dispatch = useDispatch()
 	const { profileData } = useSelector(selectProfile)
-	const phones = (profileData && profileData.contacts.mobilePhone.split(',')) || null
+	const phones = (profileData && profileData.contacts.mobile.split(',')) || null
 	const [phone, setPhone] = useState('')
 	const [phone2, setPhone2] = useState('')
 

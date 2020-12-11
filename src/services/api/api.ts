@@ -39,7 +39,7 @@ instance.interceptors.request.use((config) => {
 	const data = JSON.parse(cookies + '')
 
 	if (data && data.token) {
-		config.headers['X-AUTH-TOKEN'] = `${data.token}`
+		config.headers['Authorization'] = `Bearer ${data.token}`
 	}
 
 	return config

@@ -10,10 +10,18 @@ export interface FromToInterface {
 	to: string
 	status?: string
 }
+
+export interface BusyPeriodsInterface {
+	id: number
+	exchange_id: string
+	user_id: string
+	dateTimeStart: string
+	dateTimeEnd: string
+}
 export interface SimpleMemberUnitInterface {
 	name: string
 	id: string
-	image?: string
+	photo?: string
 }
 export interface TeamInterface {
 	id: string
@@ -33,13 +41,14 @@ export interface ApplicationInterface {
 export interface ProfileDataInterface {
 	id: string
 	name: string
-	surname: string
-	patronymic: string
+	lastName: string
+	middleName: string
 	userType: string
 	position: string
 	department: string
+	gender?: 'm' | 'f'
 	socials: SocialsInterface[]
-	image: string
+	photo: string
 	worktime: {
 		employment: FromToInterface[]
 		openTasksLink: string
@@ -50,13 +59,13 @@ export interface ProfileDataInterface {
 		applications: ApplicationInterface[]
 	}
 	contacts: {
-		birthday: string
+		birthDate: string
 		showBirthYear: string
 		email: string
-		mobilePhone: string
-		inPhone: string
-		employmentDate: string
-		tshirtSize: string
+		mobile: string
+		phone: string
+		hireDate: string
+		size: string
 		sshKeys: string[]
 	}
 	teams: UnitInterface[]

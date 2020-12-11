@@ -11,7 +11,7 @@
       "lead": {
         "name": "Колесников Михаил",
         "id": "8f625ff6afkaf09c15525e2b4",
-        "image": "../img/1.jpg"
+        "photo": "../img/1.jpg"
       },
       "members": {
         "size": 25,
@@ -19,12 +19,12 @@
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6bfgaafs609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           },
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6dafaf97609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           }
         ]
       },
@@ -39,7 +39,7 @@
           "lead": {
             "name": "Колесников Михаил",
             "id": "8f625ff6bd97609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           },
           "members": {
             "size": 25,
@@ -47,12 +47,12 @@
               {
                 "name": "Колесников Михаил",
                 "id": "8f625afafda97609c15525e2b4",
-                "image": "../img/1.jpg"
+                "photo": "../img/1.jpg"
               },
               {
                 "name": "Колесников Михаил",
                 "id": "8f625fafasffd97609c15525e2b4",
-                "image": "../img/1.jpg"
+                "photo": "../img/1.jpg"
               }
             ]
           },
@@ -67,7 +67,7 @@
               "lead": {
                 "name": "Колесников Михаил",
                 "id": "8f625ff6bafd97609c15525e2b4",
-                "image": "../img/1.jpg"
+                "photo": "../img/1.jpg"
               },
               "members": {
                 "size": 25,
@@ -75,12 +75,12 @@
                   {
                     "name": "Колесников Михаил",
                     "id": "8f625ff6bafd97609c15525e2b4",
-                    "image": "../img/1.jpg"
+                    "photo": "../img/1.jpg"
                   },
                   {
                     "name": "Колесников Михаил",
                     "id": "8f625faff6bd97609c15525e2b4",
-                    "image": "../img/1.jpg"
+                    "photo": "../img/1.jpg"
                   }
                 ]
               },
@@ -100,7 +100,7 @@
       "lead": {
         "name": "Колесников Михаил",
         "id": "8f625ff6bd97609c15525e2b4",
-        "image": "../img/1.jpg"
+        "photo": "../img/1.jpg"
       },
       "members": {
         "size": 25,
@@ -108,12 +108,12 @@
           {
             "name": "Колесников Михаил",
             "id": "35f625ff6bd97609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           },
           {
             "name": "Колесников Михаил",
             "id": "46f625ff6bd97609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           }
         ]
       },
@@ -128,7 +128,7 @@
           "lead": {
             "name": "Колесников Михаил",
             "id": "8f62414f6bd97609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           },
           "members": {
             "size": 25,
@@ -136,12 +136,12 @@
               {
                 "name": "Колесников Михаил",
                 "id": "8f625135f6bd97609c15525e2b4",
-                "image": "../img/1.jpg"
+                "photo": "../img/1.jpg"
               },
               {
                 "name": "Колесников Михаил",
                 "id": "8f6255156bd97609c15525e2b4",
-                "image": "../img/1.jpg"
+                "photo": "../img/1.jpg"
               }
             ]
           },
@@ -156,7 +156,7 @@
               "lead": {
                 "name": "Колесников Михаил",
                 "id": "8f621515bd97609c15525e2b4",
-                "image": "../img/1.jpg"
+                "photo": "../img/1.jpg"
               },
               "members": {
                 "size": 25,
@@ -164,12 +164,12 @@
                   {
                     "name": "Колесников Михаил",
                     "id": "8f62515156bd97609c15525e2b4",
-                    "image": "../img/1.jpg"
+                    "photo": "../img/1.jpg"
                   },
                   {
                     "name": "Колесников Михаил",
                     "id": "8f625ff135135d97609c15525e2b4",
-                    "image": "../img/1.jpg"
+                    "photo": "../img/1.jpg"
                   }
                 ]
               },

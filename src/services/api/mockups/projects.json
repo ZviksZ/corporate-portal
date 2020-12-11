@@ -4,17 +4,17 @@
     {
       "id": "6f625ff6bd97609",
       "name": "Проект 1",
-      "wikiLink": "http://wiki.com",
+      "wiki": "http://wiki.com",
       "jiraLink": "http://jira.com",
       "owner": {
         "name": "Константинопольский Константин",
         "id": "8f625ff6afaf09c15525e2b4",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
+        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
       },
       "lead": {
         "name": "Колесников Михаил",
         "id": "8f625ff6afaf09c15525e2b4",
-        "image": "../img/1.jpg"
+        "photo": "../img/1.jpg"
       },
       "members": {
         "size": 25,
@@ -22,12 +22,12 @@
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6bfaafs609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           },
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6afaf97609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           }
         ]
       }
@@ -35,17 +35,17 @@
     {
       "id": "7f625ff6bd97609",
       "name": "Проект 2",
-      "wikiLink": "http://wiki.com",
+      "wiki": "http://wiki.com",
       "jiraLink": "http://jira.com",
       "owner": {
         "name": "Константинопольский Константин",
         "id": "8f625ff6afaf09c15525e2b4",
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
+        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
       },
       "lead": {
         "name": "Колесников Михаил",
         "id": "8f625ff6afaf09c15525e2b4",
-        "image": "../img/1.jpg"
+        "photo": "../img/1.jpg"
       },
       "members": {
         "size": 25,
@@ -53,12 +53,12 @@
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6bfaafs609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           },
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6afaf97609c15525e2b4",
-            "image": "../img/1.jpg"
+            "photo": "../img/1.jpg"
           }
         ]
       }

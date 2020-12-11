@@ -15,17 +15,17 @@ export const ProfileSidebarTop: React.FC = () => {
 
 	return (
 		<div className={s.sidebarTop}>
-			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={profileData.image}>
+			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={profileData.photo}>
 				{profileData.name[0]}
-				{profileData.surname[0]}
+				{profileData.lastName[0]}
 			</Avatar>
 
 			<div className={s.name}>
-				{profileData.surname} {profileData.name} {profileData.patronymic}
+				{profileData.lastName} {profileData.name} {profileData.middleName}
 			</div>
 			<div className={s.position}>{profileData.position}</div>
 			<div className={s.department}>{profileData.department}</div>
-			<MemberSocials socials={profileData.socials}/>
+			<MemberSocials socials={profileData.socials} />
 		</div>
 	)
 }

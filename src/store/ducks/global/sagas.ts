@@ -10,6 +10,8 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 		yield put(setGlobalLoading(LoadingStatus.LOADING))
 		const user = yield call(GlobalApi.login, payload)
 
+		//window.localStorage.setItem('access_token', user.token)
+
 		const jsonResponse = JSON.stringify(user)
 		Cookie.setCookie('userData', jsonResponse, { expires: 2147483647 })
 

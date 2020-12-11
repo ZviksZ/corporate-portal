@@ -33,7 +33,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 
 				<div className="sectionSubtitle">День рождения</div>
 				<p className={cn('sectionText', 'sectionTextWith', s.profileBirthday)}>
-					<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
+					<span className="sectionTextContent">{getFormatedDate(main.birthDate)}</span>
 					{isMyProfile && <FormControlLabel control={<Checkbox onChange={showDateChange} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />}
 				</p>
 
@@ -47,7 +47,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 
 				<div className="sectionSubtitle">Мобильный телефон</div>
 				<p className={cn('sectionText', 'sectionTextWith', s.profilePhones)}>
-					{main.mobilePhone.split(',').map((item, index) => (
+					{main.mobile.split(',').map((item, index) => (
 						<a key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
 							{item}
 						</a>
@@ -57,16 +57,16 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 
 				<div className="sectionSubtitle">Внутренний телефон</div>
 				<p className={cn('sectionText', 'sectionTextWith')}>
-					<a href={'tel:' + main.inPhone} className={cn('sectionTextContent', 'sectionTextPhone')}>
-						{main.inPhone}
+					<a href={'tel:' + main.phone} className={cn('sectionTextContent', 'sectionTextPhone')}>
+						{main.phone}
 					</a>
 				</p>
 
 				<div className="sectionSubtitle">Дата трудоустройства</div>
-				<p className="sectionText">c {getFormatedDate(main.employmentDate)}</p>
+				<p className="sectionText">c {getFormatedDate(main.hireDate)}</p>
 
 				<div className="sectionSubtitle">Размер футболки</div>
-				<p className="sectionText">{main.tshirtSize}</p>
+				<p className="sectionText">{main.size}</p>
 				{isMyProfile && (
 					<>
 						<div className="sectionSubtitle">SSH ключ</div>

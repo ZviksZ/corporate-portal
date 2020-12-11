@@ -21,7 +21,7 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 	}
 	return (
 		<div className={s.memberMain}>
-			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member.image}>
+			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member.photo}>
 				{getInitialsFromName(member.name)}
 			</Avatar>
 			<div className={s.memberMainData}>

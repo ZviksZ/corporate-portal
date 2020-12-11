@@ -26,7 +26,7 @@ export const Project: React.FC<Props> = ({ project }) => {
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top no-margin-bottom">{project.name}</h1>
 			<div className="d-flex align-item-center margin-top-x2 margin-bottom">
-				<a href={project.wikiLink} className="link-with-icon" rel="noreferrer" target="_blank">
+				<a href={project.wiki} className="link-with-icon" rel="noreferrer" target="_blank">
 					<img src={wiki} alt="" width={'18px'} />
 					<span>Страница в Wiki</span>
 				</a>

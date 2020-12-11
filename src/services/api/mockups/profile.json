@@ -3,12 +3,12 @@
   "data": {
     "id": "5f625ff6bd97609c15525e2b4",
     "name": "Иван",
-    "surname": "Иванов",
-    "patronymic": "Иванович",
+    "lastName": "Иванов",
+    "middleName": "Иванович",
     "userType": "1",
     "position": "Руководитель Департамента ИТ",
     "department": "ООО ИА Банки.ру",
-    "image": "https://atlassian.com/",
+    "photo": "https://atlassian.com/",
     "socials": [
       {
         "type": "yandex",
@@ -43,13 +43,13 @@
       ]
     },
     "contacts": {
-      "birthday": "05.02.1990",
+      "birthDate": "05.02.1990",
       "showBirthYear": "1",
       "email": "example@mail.ru",
-      "mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
-      "inPhone": "+7 495 000 77 55 (265)",
-      "employmentDate": "12.02.2005",
-      "tshirtSize": "XXL",
+      "mobile": "+7 900 000 00 00, +7 800 000 55 66",
+      "phone": "+7 495 000 77 55 (265)",
+      "hireDate": "12.02.2005",
+      "size": "XXL",
       "sshKeys": [
         "KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H",
         "HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6"
@@ -63,7 +63,7 @@
         "lead": {
           "name": "Колесников Михаил",
           "id": "12f625ff6bd97609c15525e2b4",
-          "image": "../img/1.jpg"
+          "photo": "../img/1.jpg"
         },
         "members": {
           "size": 25,
@@ -71,12 +71,12 @@
             {
               "name": "Колесников Михаил",
               "id": "10f625ff6bd97609c15525e2b4",
-              "image": "../img/1.jpg"
+              "photo": "../img/1.jpg"
             },
             {
               "name": "Колесников Михаил",
               "id": "11f625ff6bd97609c15525e2b4",
-              "image": "../img/1.jpg"
+              "photo": "../img/1.jpg"
             }
           ]
         }
@@ -86,18 +86,18 @@
       "lead": {
         "name": "Колесников Михаил Павлович",
         "id": "8f625ff6bd97609c15525e2b4",
-        "image": "../img/1.jpg"
+        "photo": "../img/1.jpg"
       },
       "subordinates": [
         {
           "name": "Степанов Виктор Сергеевич",
           "id": "9f625ff6bd97609c15525e2b4",
-          "image": "../img/1.jpg"
+          "photo": "../img/1.jpg"
         },
         {
           "name": "Степанов Виктор Сергеевич",
           "id": "7f625ff6bd97609c15525e2b4",
-          "image": "../img/1.jpg"
+          "photo": "../img/1.jpg"
         }
       ]
     },

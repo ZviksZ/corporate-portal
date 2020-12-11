@@ -6,7 +6,7 @@ export interface ProjectInterface {
 	name: string
 	lead: MemberDetailInterface
 	owner: MemberDetailInterface
-	wikiLink: string
+	wiki: string
 	jiraLink: string
 	members: {
 		size: number
@@ -16,7 +16,7 @@ export interface ProjectInterface {
 export interface ProjectDetailInterface {
 	id: string
 	name: string
-	wikiLink: string
+	wiki: string
 	jiraLink: string
 	lead: MemberDetailInterface
 	owner: MemberDetailInterface

@@ -26,7 +26,7 @@ export const ProfileInfoAdditional: React.FC = () => {
 						{additional.subordinates.map((item) => {
 							return (
 								<NavLink key={item.id} className={s.membersListItem} to={`/profile/${item.id}`}>
-									<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.image} aria-controls="simple-menu" aria-haspopup="true">
+									<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.photo} aria-controls="simple-menu" aria-haspopup="true">
 										{getInitialsFromName(item.name)}
 									</Avatar>
 									<span className={s.name}>{item.name}</span>
@@ -40,7 +40,7 @@ export const ProfileInfoAdditional: React.FC = () => {
 					<div className={s.position}>Руководитель</div>
 					<div className={s.membersList}>
 						<NavLink className={s.membersListItem} to={`/profile/${additional.lead.id}`}>
-							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={additional.lead.image} aria-controls="simple-menu" aria-haspopup="true">
+							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={additional.lead.photo} aria-controls="simple-menu" aria-haspopup="true">
 								{getInitialsFromName(additional.lead.name)}
 							</Avatar>
 							<span className={s.name}>{additional.lead.name}</span>
