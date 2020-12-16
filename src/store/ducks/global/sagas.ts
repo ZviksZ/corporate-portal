@@ -2,7 +2,7 @@ import { put, takeLatest, call } from 'redux-saga/effects'
 import { GetSearchActionInterface, GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
 import { setGlobalMessage, setGlobalLoading, setSearch, setUser } from './actionCreators'
 import { Cookie } from '../../../services/helpers/cookie'
-import { GlobalApi } from '../../../services/api/api'
+import { ACCESS_TKN, GlobalApi } from '../../../services/api/api'
 import { LoadingStatus } from '../../types'
 
 export function* loginRequest({ payload }: LoginActionInterface) {
@@ -14,6 +14,8 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 
 		const jsonResponse = JSON.stringify(user)
 		Cookie.setCookie('userData', jsonResponse, { expires: 2147483647 })
+
+		ACCESS_TKN.setToken(user.token)
 
 		yield put(setUser(user))
 		yield put(setGlobalLoading(LoadingStatus.LOADED))

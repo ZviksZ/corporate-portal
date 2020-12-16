@@ -21,8 +21,11 @@ import { SquadMemberInterface } from '../../store/ducks/teams/contracts/state'
 import { LoginRequestInterface, ResponseInterface, SearchRequestInterface, StandartRequestInterface } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllNotificationDataInterface, NotificationDataInterface, NotificationDetailInterface } from '../../store/ducks/notifications/contracts/state'
+import { TokenService } from '../helpers/token'
 
 const BASE_URL = '/api'
+
+export const ACCESS_TKN = new TokenService()
 
 const instance = axios.create({
 	baseURL: BASE_URL,
@@ -35,11 +38,8 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use((config) => {
-	const cookies = Cookie.getCookie('userData')
-	const data = JSON.parse(cookies + '')
-
-	if (data && data.token) {
-		config.headers['Authorization'] = `Bearer ${data.token}`
+	if (ACCESS_TKN.getToken()) {
+		config.headers['Authorization'] = `Bearer ${ACCESS_TKN.getToken()}`
 	}
 
 	return config
@@ -60,7 +60,7 @@ export const GlobalApi = {
 
 export const NotificationsApi = {
 	async getNotifications(): Promise<NotificationDataInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
+		const { data } = await instance.post<ResponseInterface<any>>('/auth/login')
 		//return data.data
 		return notifications.data
 	},
