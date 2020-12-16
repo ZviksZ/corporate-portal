@@ -6,8 +6,8 @@ export interface SocialsInterface {
 	link: string
 }
 export interface FromToInterface {
-	from: string
-	to: string
+	dateStart: string
+	dateEnd: string
 	status?: string
 }
 
@@ -33,11 +33,6 @@ export interface TeamInterface {
 		list: SimpleMemberUnitInterface[]
 	}
 }
-export interface ApplicationInterface {
-	name: string
-	status: string
-}
-
 export interface ProfileDataInterface {
 	id: string
 	name: string
@@ -47,16 +42,14 @@ export interface ProfileDataInterface {
 	position: string
 	department: string
 	gender?: 'm' | 'f'
-	socials: SocialsInterface[]
 	photo: string
 	worktime: {
 		employment: FromToInterface[]
 		openTasksLink: string
 		vacationApplicationLink: string
-		vacation: FromToInterface
+		vacation: FromToInterface[]
 		vacationDays: string
 		corporateDays: string
-		applications: ApplicationInterface[]
 	}
 	contacts: {
 		birthDate: string

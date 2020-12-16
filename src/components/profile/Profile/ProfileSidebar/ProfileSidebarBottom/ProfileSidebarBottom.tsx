@@ -26,8 +26,8 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			<div className="sectionSubtitle">Занятость на текущий день</div>
 			<ul className={cn('sectionList', s.employmentList)}>
 				{time.employment.map((item, key) => (
-					<li className="sectionListItem" key={key + item.from + item.to}>
-						с {item.from} до {item.to}
+					<li className="sectionListItem" key={key + item.dateStart + item.dateEnd}>
+						с {item.dateStart} до {item.dateEnd}
 					</li>
 				))}
 			</ul>
@@ -36,8 +36,8 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 				<span>Открытые задачи</span>
 			</a>
 			<div className="sectionSubtitle">Отпуск</div>
-			<p className={'sectionText status-' + time.vacation.status}>
-				c {getFormatedDate(time.vacation.from)} по {getFormatedDate(time.vacation.to)}
+			<p className={'sectionText status-' + time.vacation[0].status}>
+				c {getFormatedDate(time.vacation[0].dateStart)} по {getFormatedDate(time.vacation[0].dateEnd)}
 			</p>
 			{isMyProfile && (
 				<>
@@ -55,12 +55,16 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 					</Button>
 
 					<div className={s.applications}>
-						{time.applications.map((item) => (
-							<div key={item.name} className={s.appItem}>
-								<div className="sectionText no-margin-bottom">{item.name}</div>
-								<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item.status)}</div>
-							</div>
-						))}
+						{time.vacation.map((item, index) => {
+							if (index > 0) {
+								return (
+									<div key={item?.dateStart || index + index} className={s.appItem}>
+										<div className="sectionText no-margin-bottom">Заявление на отпуск от {item.dateStart}</div>
+										<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</div>
+									</div>
+								)
+							}
+						})}
 					</div>
 				</>
 			)}

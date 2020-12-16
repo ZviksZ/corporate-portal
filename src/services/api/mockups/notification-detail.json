@@ -8,12 +8,12 @@
     "authorImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
     "authorPosition": "Разработчик ПО",
     "applicationDates": {
-      "from": "12.02.2021",
-      "to": "24.02.2021"
+      "dateStart": "12.02.2021",
+      "dateEnd": "24.02.2021"
     },
     "vacationGraphic": {
-      "from": "12.02.2021",
-      "to": "24.02.2021"
+      "dateStart": "12.02.2021",
+      "dateEnd": "24.02.2021"
     },
     "vacationDays": "12",
     "corporateDays": "5"

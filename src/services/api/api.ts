@@ -18,7 +18,7 @@ import searchResults from './mockups/search-results.json'
 import { UnitInterface, UnitDetailInterface } from '../../store/ducks/units/contracts/state'
 import { ProjectInterface, ProjectDetailInterface } from '../../store/ducks/projects/contracts/state'
 import { SquadMemberInterface } from '../../store/ducks/teams/contracts/state'
-import { LoginRequestInterface, SearchRequestInterface, StandartRequestInterface } from './interfaces'
+import { LoginRequestInterface, ResponseInterface, SearchRequestInterface, StandartRequestInterface } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllNotificationDataInterface, NotificationDataInterface, NotificationDetailInterface } from '../../store/ducks/notifications/contracts/state'
 
@@ -76,10 +76,9 @@ export const NotificationsApi = {
 	},
 }
 
-
 export const ProfileApi = {
 	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
+		//await instance.post<ResponseInterface<any>>('/profile/', requestData)
 		//return data.data
 		return profile.data
 	},

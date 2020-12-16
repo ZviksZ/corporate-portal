@@ -35,14 +35,14 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 								if (key < 3) {
 									return (
 										<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-											с {item.from} до {item.to}
+											с {item.dateStart} до {item.dateEnd}
 										</li>
 									)
 								}
 							} else {
 								return (
 									<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-										с {item.from} до {item.to}
+										с {item.dateStart} до {item.dateEnd}
 									</li>
 								)
 							}

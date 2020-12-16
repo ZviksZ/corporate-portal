@@ -1,115 +1,94 @@
 {
-  "status": "success",
-  "data": {
-    "id": "5f625ff6bd97609c15525e2b4",
-    "name": "Иван",
-    "lastName": "Иванов",
-    "middleName": "Иванович",
-    "userType": "1",
-    "position": "Руководитель Департамента ИТ",
-    "department": "ООО ИА Банки.ру",
-    "photo": "https://atlassian.com/",
-    "socials": [
-      {
-        "type": "yandex",
-        "link": "https://ya.ru/"
-      },
-      {
-        "type": "atlassian",
-        "link": "https://atlassian.com/"
-      }
-    ],
-    "worktime": {
-      "employment": [
-        {
-          "from": "9:00",
-          "to": "10:30"
-        }
-      ],
-      "openTasksLink": "https://atlassian.com/5f625ff6bd97609c15525e2b4",
-      "vacationApplicationLink": "/upload/app.pdf",
-      "vacation": {
-        "from": "12.02.2021",
-        "to": "24.02.2021",
-        "status": "0"
-      },
-      "vacationDays": "12",
-      "corporateDays": "5",
-      "applications": [
-        {
-          "name": "Заявление на отпуск от 17.11.2020",
-          "status": "0"
-        }
-      ]
-    },
-    "contacts": {
-      "birthDate": "05.02.1990",
-      "showBirthYear": "1",
-      "email": "example@mail.ru",
-      "mobile": "+7 900 000 00 00, +7 800 000 55 66",
-      "phone": "+7 495 000 77 55 (265)",
-      "hireDate": "12.02.2005",
-      "size": "XXL",
-      "sshKeys": [
-        "KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H",
-        "HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6"
-      ]
-    },
-    "teams": [
-      {
-        "id": "5f625ff6bd97609",
-        "name": "Команда А",
-        "role": "бэкенд-разработчик",
-        "lead": {
-          "name": "Колесников Михаил",
-          "id": "12f625ff6bd97609c15525e2b4",
-          "photo": "../img/1.jpg"
-        },
-        "members": {
-          "size": 25,
-          "list": [
-            {
-              "name": "Колесников Михаил",
-              "id": "10f625ff6bd97609c15525e2b4",
-              "photo": "../img/1.jpg"
-            },
-            {
-              "name": "Колесников Михаил",
-              "id": "11f625ff6bd97609c15525e2b4",
-              "photo": "../img/1.jpg"
-            }
-          ]
-        }
-      }
-    ],
-    "additional": {
-      "lead": {
-        "name": "Колесников Михаил Павлович",
-        "id": "8f625ff6bd97609c15525e2b4",
-        "photo": "../img/1.jpg"
-      },
-      "subordinates": [
-        {
-          "name": "Степанов Виктор Сергеевич",
-          "id": "9f625ff6bd97609c15525e2b4",
-          "photo": "../img/1.jpg"
-        },
-        {
-          "name": "Степанов Виктор Сергеевич",
-          "id": "7f625ff6bd97609c15525e2b4",
-          "photo": "../img/1.jpg"
-        }
-      ]
-    },
-    "contractors": [
-      "ООО первое",
-      "ООО второе",
-      "ООО третье",
-      "ООО четвертое",
-      "ООО первое",
-      "ООО второе",
-      "ООО третье",
-      "ООО четвертое"
-    ]
-  }
+	"status": "success",
+	"data": {
+		"id": "5f625ff6bd97609c15525e2b4",
+		"name": "Иван",
+		"lastName": "Иванов",
+		"middleName": "Иванович",
+		"userType": "1",
+		"position": "Руководитель Департамента ИТ",
+		"department": "ООО ИА Банки.ру",
+		"photo": "https://atlassian.com/",
+		"worktime": {
+			"employment": [
+				{
+					"dateStart": "9:00",
+					"dateEnd": "10:30"
+				}
+			],
+			"openTasksLink": "https://atlassian.com/5f625ff6bd97609c15525e2b4",
+			"vacationApplicationLink": "/upload/app.pdf",
+			"vacation": [
+				{
+					"dateStart": "12.02.2021",
+					"dateEnd": "24.02.2021",
+					"status": "0"
+				},
+				{
+					"dateStart": "13.02.2021",
+					"dateEnd": "24.02.2021",
+					"status": "1"
+				}
+			],
+			"vacationDays": "12",
+			"corporateDays": "5"
+		},
+		"contacts": {
+			"birthDate": "05.02.1990",
+			"showBirthYear": "1",
+			"email": "example@mail.ru",
+			"mobile": "+7 900 000 00 00, +7 800 000 55 66",
+			"phone": "+7 495 000 77 55 (265)",
+			"hireDate": "12.02.2005",
+			"size": "XXL",
+			"sshKeys": ["KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H", "HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6"]
+		},
+		"teams": [
+			{
+				"id": "5f625ff6bd97609",
+				"name": "Команда А",
+				"role": "бэкенд-разработчик",
+				"lead": {
+					"name": "Колесников Михаил",
+					"id": "12f625ff6bd97609c15525e2b4",
+					"photo": "../img/1.jpg"
+				},
+				"members": {
+					"size": 25,
+					"list": [
+						{
+							"name": "Колесников Михаил",
+							"id": "10f625ff6bd97609c15525e2b4",
+							"photo": "../img/1.jpg"
+						},
+						{
+							"name": "Колесников Михаил",
+							"id": "11f625ff6bd97609c15525e2b4",
+							"photo": "../img/1.jpg"
+						}
+					]
+				}
+			}
+		],
+		"additional": {
+			"lead": {
+				"name": "Колесников Михаил Павлович",
+				"id": "8f625ff6bd97609c15525e2b4",
+				"photo": "../img/1.jpg"
+			},
+			"subordinates": [
+				{
+					"name": "Степанов Виктор Сергеевич",
+					"id": "9f625ff6bd97609c15525e2b4",
+					"photo": "../img/1.jpg"
+				},
+				{
+					"name": "Степанов Виктор Сергеевич",
+					"id": "7f625ff6bd97609c15525e2b4",
+					"photo": "../img/1.jpg"
+				}
+			]
+		},
+		"contractors": ["ООО первое", "ООО второе", "ООО третье", "ООО четвертое", "ООО первое", "ООО второе", "ООО третье", "ООО четвертое"]
+	}
 }

@@ -25,7 +25,6 @@ export const ProfileSidebarTop: React.FC = () => {
 			</div>
 			<div className={s.position}>{profileData.position}</div>
 			<div className={s.department}>{profileData.department}</div>
-			<MemberSocials socials={profileData.socials} />
 		</div>
 	)
 }
