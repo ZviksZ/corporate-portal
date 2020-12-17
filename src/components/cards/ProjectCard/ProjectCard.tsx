@@ -37,7 +37,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 					<div className={s.position}>Бизнес-владелец</div>
 					<object type="owo/uwu">
 						<NavLink className={s.teamInfo} to={`/profile/${project.owner.id}`}>
-							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={project.owner.image} aria-controls="simple-menu" aria-haspopup="true">
+							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={project.owner.photo} aria-controls="simple-menu" aria-haspopup="true">
 								{getInitialsFromName(project.owner.name)}
 							</Avatar>
 							<span className={s.name}>{project.owner.name}</span>
@@ -48,7 +48,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 					<div className={s.position}>Технический руководитель</div>
 					<object type="owo/uwu">
 						<NavLink className={s.teamInfo} to={`/profile/${project.lead.id}`}>
-							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={project.lead.image} aria-controls="simple-menu" aria-haspopup="true">
+							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={project.lead.photo} aria-controls="simple-menu" aria-haspopup="true">
 								{getInitialsFromName(project.lead.name)}
 							</Avatar>
 							<span className={s.name}>{project.lead.name}</span>
@@ -62,7 +62,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 							<AvatarGroup max={7}>
 								{project.members.list.map((member: any) => {
 									return (
-										<Avatar key={member.id} className={cn(s.image, 'avatar-bg')} alt="" src={member.image} aria-controls="simple-menu" aria-haspopup="true">
+										<Avatar key={member.id} className={cn(s.image, 'avatar-bg')} alt="" src={member.photo} aria-controls="simple-menu" aria-haspopup="true">
 											{getInitialsFromName(member.name)}
 										</Avatar>
 									)

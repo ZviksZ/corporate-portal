@@ -8,7 +8,7 @@
     "owner": {
       "name": "Артем Иванов",
       "id": "10f625ff6bd97609c15525e2b4",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "employment": [
         {
           "dateStart": "9:00",
@@ -24,7 +24,7 @@
     "lead": {
       "name": "Колесников Михаил",
       "id": "8f625ff6bd97609c1d5525e2b4",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "employment": [
         {
           "dateStart": "9:00",
@@ -43,7 +43,7 @@
         {
           "name": "Колесников Михаил",
           "id": "8f625ff6bd97g609c15525e2b4",
-          "image": "../img/1.jpg",
+          "photo": "../img/1.jpg",
           "employment": [
             {
               "dateStart": "9:00",
@@ -59,7 +59,7 @@
         {
           "name": "Колесников Михаил",
           "id": "8f625ff6bd9760a9c15525e2b4",
-          "image": "../img/1.jpg",
+          "photo": "../img/1.jpg",
           "employment": [
             {
               "dateStart": "9:00",

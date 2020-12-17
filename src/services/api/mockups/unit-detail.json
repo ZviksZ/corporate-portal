@@ -10,7 +10,7 @@
     "lead": {
       "name": "Колесников Михаил",
       "id": "8f625ff6bd97609c15525e2b4",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "employment": [
         {
           "dateStart": "9:00",
@@ -29,7 +29,7 @@
         {
           "name": "Колесников Михаил",
           "id": "8f625ff6bd973609c15525e2b4",
-          "image": "../img/1.jpg",
+          "photo": "../img/1.jpg",
           "employment": [
             {
               "dateStart": "9:00",
@@ -45,7 +45,7 @@
         {
           "name": "Колесников Михаил",
           "id": "8f6254ff6bd97609c15525e2b4",
-          "image": "../img/1.jpg",
+          "photo": "../img/1.jpg",
           "employment": [
             {
               "dateStart": "9:00",
@@ -71,7 +71,7 @@
         "lead": {
           "name": "Колесников Михаил",
           "id": "8f625ff6b78d97609c15525e2b4",
-          "image": "../img/1.jpg"
+          "photo": "../img/1.jpg"
         },
         "members": {
           "size": 25,
@@ -79,12 +79,12 @@
             {
               "name": "Колесников Михаил",
               "id": "8f625ff6b3d97609c15525e2b4",
-              "image": "../img/1.jpg"
+              "photo": "../img/1.jpg"
             },
             {
               "name": "Колесников Михаил",
               "id": "8f625ff614bd97609c15525e2b4",
-              "image": "../img/1.jpg"
+              "photo": "../img/1.jpg"
             }
           ]
         },

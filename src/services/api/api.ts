@@ -47,12 +47,14 @@ instance.interceptors.request.use((config) => {
 
 	return config
 })
-axios.interceptors.response.use(
+instance.interceptors.response.use(
 	(response) => {
 		return response
 	},
 	function (error) {
-		if (error.response.code === 401) {
+		console.log(error)
+		console.log(error.response)
+		if (error.response.code == 401) {
 			store.dispatch(logout())
 		}
 		return Promise.reject(error)
@@ -63,7 +65,7 @@ export const GlobalApi = {
 		if (DEV_MODE) {
 			return user.data
 		}
-		const { data } = await instance.post<ResponseInterface<any>>('/login', requestData)
+		const { data } = await instance.post<ResponseInterface<UserInterface>>('/login', requestData)
 		return data.data
 	},
 	async getSearch(requestData: SearchRequestInterface): Promise<SearchResultsInterface> {
@@ -118,19 +120,23 @@ export const UnitsApi = {
 
 export const TeamsApi = {
 	async getAllMembers(): Promise<SquadMemberInterface[]> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
+		/*const { data } = await instance.get('/teams')
+		return data.data*/
 		return allMembers.data
 	},
 	async getTeams(): Promise<UnitInterface[]> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return teams.data
+		if (DEV_MODE) {
+			return teams.data
+		}
+		const { data } = await instance.get<ResponseInterface<UnitInterface[]>>('/teams')
+		return data.data
 	},
 	async getTeamData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return teamDetail.data
+		if (DEV_MODE) {
+			return teamDetail.data
+		}
+		const { data } = await instance.get<ResponseInterface<UnitDetailInterface>>(`/teams/${requestData.id}`)
+		return data.data
 	},
 	async getTeamSquadData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
