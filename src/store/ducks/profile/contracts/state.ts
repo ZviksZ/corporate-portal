@@ -21,7 +21,7 @@ export interface BusyPeriodsInterface {
 export interface SimpleMemberUnitInterface {
 	name: string
 	id: string
-	photo?: string
+	image?: string
 }
 export interface TeamInterface {
 	id: string
@@ -42,7 +42,7 @@ export interface ProfileDataInterface {
 	position: string
 	department: string
 	gender?: 'm' | 'f'
-	photo: string
+	image: string
 	worktime: {
 		employment: FromToInterface[]
 		openTasksLink: string

@@ -34,9 +34,9 @@ export const NavbarProfile: React.FC = () => {
 		<>
 			{user && (
 				<>
-					<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={user.photo} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+					<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={user.image} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
 						{user.name[0]}
-						{user.lastName[0]}
+						{user.surname[0]}
 					</Avatar>
 
 					<Popover

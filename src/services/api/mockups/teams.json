@@ -7,7 +7,7 @@
       "lead": {
         "name": "Колесников Михаил",
         "id": "8f625ff6afaf09c15525e2b4",
-        "photo": "../img/1.jpg"
+        "image": "../img/1.jpg"
       },
       "members": {
         "size": 25,
@@ -15,12 +15,12 @@
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6bfaafs609c15525e2b4",
-            "photo": "../img/1.jpg"
+            "image": "../img/1.jpg"
           },
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6afaf97609c15525e2b4",
-            "photo": "../img/1.jpg"
+            "image": "../img/1.jpg"
           }
         ]
       }
@@ -31,7 +31,7 @@
       "lead": {
         "name": "Колесников Михаил",
         "id": "8f625ff6afaf09c15525e2b4",
-        "photo": "../img/1.jpg"
+        "image": "../img/1.jpg"
       },
       "members": {
         "size": 25,
@@ -39,12 +39,12 @@
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6bfaafs609c15525e2b4",
-            "photo": "../img/1.jpg"
+            "image": "../img/1.jpg"
           },
           {
             "name": "Колесников Михаил",
             "id": "8f625ff6afaf97609c15525e2b4",
-            "photo": "../img/1.jpg"
+            "image": "../img/1.jpg"
           }
         ]
       }

@@ -8,7 +8,7 @@
 		"userType": "1",
 		"position": "Руководитель Департамента ИТ",
 		"department": "ООО ИА Банки.ру",
-		"photo": "https://atlassian.com/",
+		"image": "https://atlassian.com/",
 		"worktime": {
 			"employment": [
 				{
@@ -51,7 +51,7 @@
 				"lead": {
 					"name": "Колесников Михаил",
 					"id": "12f625ff6bd97609c15525e2b4",
-					"photo": "../img/1.jpg"
+					"image": "../img/1.jpg"
 				},
 				"members": {
 					"size": 25,
@@ -59,12 +59,12 @@
 						{
 							"name": "Колесников Михаил",
 							"id": "10f625ff6bd97609c15525e2b4",
-							"photo": "../img/1.jpg"
+							"image": "../img/1.jpg"
 						},
 						{
 							"name": "Колесников Михаил",
 							"id": "11f625ff6bd97609c15525e2b4",
-							"photo": "../img/1.jpg"
+							"image": "../img/1.jpg"
 						}
 					]
 				}
@@ -74,18 +74,18 @@
 			"lead": {
 				"name": "Колесников Михаил Павлович",
 				"id": "8f625ff6bd97609c15525e2b4",
-				"photo": "../img/1.jpg"
+				"image": "../img/1.jpg"
 			},
 			"subordinates": [
 				{
 					"name": "Степанов Виктор Сергеевич",
 					"id": "9f625ff6bd97609c15525e2b4",
-					"photo": "../img/1.jpg"
+					"image": "../img/1.jpg"
 				},
 				{
 					"name": "Степанов Виктор Сергеевич",
 					"id": "7f625ff6bd97609c15525e2b4",
-					"photo": "../img/1.jpg"
+					"image": "../img/1.jpg"
 				}
 			]
 		},

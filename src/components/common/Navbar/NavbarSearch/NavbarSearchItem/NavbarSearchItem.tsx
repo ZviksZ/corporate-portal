@@ -14,8 +14,8 @@ type Props = {
 export const NavbarSearchItem: React.FC<Props> = ({ item, path, clickFn }) => {
 	return (
 		<NavLink to={`/${path}/${item.id}`} onClick={clickFn} className={s.searchItem}>
-			{item.photo && (
-				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={item.photo}>
+			{item.image && (
+				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={item.image}>
 					{getInitialsFromName(item.name)}
 				</Avatar>
 			)}

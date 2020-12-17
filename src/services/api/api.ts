@@ -22,8 +22,11 @@ import { LoginRequestInterface, ResponseInterface, SearchRequestInterface, Stand
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllNotificationDataInterface, NotificationDataInterface, NotificationDetailInterface } from '../../store/ducks/notifications/contracts/state'
 import { TokenService } from '../helpers/token'
+import { store } from '../../store/store'
+import { logout } from '../../store/ducks/global/actionCreators'
 
-const BASE_URL = '/api'
+const BASE_URL = 'http://intranet.internetlab.ru/api'
+const DEV_MODE = false
 
 export const ACCESS_TKN = new TokenService()
 
@@ -44,12 +47,24 @@ instance.interceptors.request.use((config) => {
 
 	return config
 })
-
+axios.interceptors.response.use(
+	(response) => {
+		return response
+	},
+	function (error) {
+		if (error.response.code === 401) {
+			store.dispatch(logout())
+		}
+		return Promise.reject(error)
+	},
+)
 export const GlobalApi = {
 	async login(requestData: LoginRequestInterface): Promise<UserInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return user.data
+		if (DEV_MODE) {
+			return user.data
+		}
+		const { data } = await instance.post<ResponseInterface<any>>('/login', requestData)
+		return data.data
 	},
 	async getSearch(requestData: SearchRequestInterface): Promise<SearchResultsInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
@@ -60,7 +75,7 @@ export const GlobalApi = {
 
 export const NotificationsApi = {
 	async getNotifications(): Promise<NotificationDataInterface> {
-		const { data } = await instance.post<ResponseInterface<any>>('/auth/login')
+		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login')
 		//return data.data
 		return notifications.data
 	},
@@ -86,9 +101,13 @@ export const ProfileApi = {
 
 export const UnitsApi = {
 	async getUnits(): Promise<UnitInterface[]> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
+		if (DEV_MODE) {
+			return units.data
+		}
+
 		return units.data
+		/*const { data } = await instance.get('/units')
+		return data.data*/
 	},
 	async getUnitData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)

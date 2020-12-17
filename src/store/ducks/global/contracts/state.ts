@@ -5,11 +5,11 @@ import { LoadingStatus } from '../../../types'
 export interface UserInterface {
 	id: string
 	name: string
-	lastName: string
+	surname: string
 	token: string
 	userType: string
-	email: string
-	photo: string
+	email?: string
+	image?: string
 }
 export interface GlobalMessageInterface {
 	text: string

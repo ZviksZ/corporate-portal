@@ -5,7 +5,7 @@ export interface ResponseInterface<T> {
 
 export interface LoginRequestInterface {
 	login: string
-	password: string
+	pass: string
 }
 
 export interface StandartRequestInterface {

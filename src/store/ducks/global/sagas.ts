@@ -8,18 +8,22 @@ import { LoadingStatus } from '../../types'
 export function* loginRequest({ payload }: LoginActionInterface) {
 	try {
 		yield put(setGlobalLoading(LoadingStatus.LOADING))
-		const user = yield call(GlobalApi.login, payload)
+		const user = yield call(GlobalApi.login, { login: payload.login, pass: payload.password })
 
-		//window.localStorage.setItem('access_token', user.token)
+		if (user && user.token) {
+			const jsonResponse = JSON.stringify(user)
+			Cookie.setCookie('userData', jsonResponse, { expires: 2147483647 })
 
-		const jsonResponse = JSON.stringify(user)
-		Cookie.setCookie('userData', jsonResponse, { expires: 2147483647 })
+			ACCESS_TKN.setToken(user.token)
 
-		ACCESS_TKN.setToken(user.token)
+			yield put(setUser(user))
+			yield put(setGlobalLoading(LoadingStatus.LOADED))
+			yield put(setGlobalMessage({ text: 'Авторизация прошла успешно', type: 'success' }))
+		} else {
+			yield put(setGlobalLoading(LoadingStatus.ERROR))
+			yield put(setGlobalMessage({ text: 'Ошибка авторизации. Попробуйте еще раз', type: 'error' }))
+		}
 
-		yield put(setUser(user))
-		yield put(setGlobalLoading(LoadingStatus.LOADED))
-		yield put(setGlobalMessage({ text: 'Авторизация прошла успешно', type: 'success' }))
 	} catch (error) {
 		yield put(setGlobalLoading(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка авторизации. Попробуйте еще раз', type: 'error' }))
@@ -32,6 +36,7 @@ export function* getUserCookieRequest() {
 		const user = cookies && JSON.parse(cookies + '')
 
 		if (user) {
+			ACCESS_TKN.setToken(user.token)
 			yield put(setUser(user))
 		}
 		yield put(setGlobalLoading(LoadingStatus.LOADED))
@@ -42,7 +47,7 @@ export function* getUserCookieRequest() {
 export function* logoutRequest() {
 	try {
 		Cookie.deleteCookie('userData')
-
+		ACCESS_TKN.setToken(null)
 		yield put(setUser(null))
 	} catch (error) {}
 }

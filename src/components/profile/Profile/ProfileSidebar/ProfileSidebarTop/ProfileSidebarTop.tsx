@@ -15,7 +15,7 @@ export const ProfileSidebarTop: React.FC = () => {
 
 	return (
 		<div className={s.sidebarTop}>
-			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={profileData.photo}>
+			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={profileData.image}>
 				{profileData.name[0]}
 				{profileData.lastName[0]}
 			</Avatar>

@@ -37,7 +37,7 @@ export const Team: React.FC<Props> = ({ team }) => {
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">
 						<span>сотрудники ({team.members.list.length})</span>
-						{user && user.userType === '1' && <Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">Управление составом</Button>}
+						{user && <Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">Управление составом</Button>}
 					</div>
 					{team.members.list.map((member) => (
 						<MemberCard member={member} key={member.id} />

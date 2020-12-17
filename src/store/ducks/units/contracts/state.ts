@@ -4,7 +4,7 @@ import { LoadingStatus } from '../../../types'
 export interface MemberDetailInterface {
 	name: string
 	id: string
-	photo: string
+	image: string
 	employment?: FromToInterface[]
 	position?: string
 	openTasksLink?: string

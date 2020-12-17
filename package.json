@@ -2,7 +2,7 @@
   "name": "banki-ru_front",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dev.internetlab.ru/html/banki-ru",
+  "homepage": "http://intranet.internetlab.ru",
   "dependencies": {
     "@date-io/date-fns": "1.3.13",
     "@hookform/resolvers": "^1.0.1",
@@ -45,6 +45,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-public": "react-scripts build && mv build ../public",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",

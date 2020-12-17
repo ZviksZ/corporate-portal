@@ -4,7 +4,7 @@ import { LoadingStatus } from '../../../types'
 export interface SquadMemberInterface {
 	name: string
 	id: string
-	photo: string
+	image: string
 	department: string
 	position: string
 	role?: string

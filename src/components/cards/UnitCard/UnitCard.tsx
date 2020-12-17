@@ -27,7 +27,7 @@ export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) 
 					<div className={s.position}>Руководитель</div>
 					<object type="owo/uwu">
 						<NavLink className={s.teamInfo} to={`/profile/${item.lead.id}`}>
-							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.lead.photo} aria-controls="simple-menu" aria-haspopup="true">
+							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.lead.image} aria-controls="simple-menu" aria-haspopup="true">
 								{getInitialsFromName(item.lead.name)}
 							</Avatar>
 							<span className={s.name}>{item.lead.name}</span>
@@ -39,7 +39,7 @@ export const UnitCard: React.FC<Props> = ({ item, showRole = false, linkPath }) 
 					<AvatarGroup max={7}>
 						{item.members.list.map((member) => {
 							return (
-								<Avatar key={member.id} className={cn(s.image, 'avatar-bg')} alt="" src={member.photo} aria-controls="simple-menu" aria-haspopup="true">
+								<Avatar key={member.id} className={cn(s.image, 'avatar-bg')} alt="" src={member.image} aria-controls="simple-menu" aria-haspopup="true">
 									{getInitialsFromName(member.name)}
 								</Avatar>
 							)

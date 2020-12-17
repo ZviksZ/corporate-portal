@@ -49,7 +49,7 @@ export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 	return (
 		<div className={s.form}>
 			<NavLink to={`/profile/${roleFormData.id}`} className={s.formMember}>
-				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={roleFormData.photo}>
+				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={roleFormData.image}>
 					{getInitialsFromName(roleFormData.name)}
 				</Avatar>
 				<div className={s.info}>

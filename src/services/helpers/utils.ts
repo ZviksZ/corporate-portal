@@ -139,7 +139,7 @@ export function getStatusText(status: string | number) {
 export function getInitialsFromName(name: string) {
 	const nameArray = name.split(' ')
 
-	return `${nameArray[0][0].toUpperCase()}${nameArray[1][0].toUpperCase()}`
+	return `${nameArray[0] && nameArray[0][0].toUpperCase() || ''}${nameArray[1] && nameArray[1][0].toUpperCase() || ''}`
 }
 export function getFormatedDate(dateString: string) {
 	let formatedDate = dateString.split('.').reverse().join('/')
