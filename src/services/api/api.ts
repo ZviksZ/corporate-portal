@@ -26,7 +26,7 @@ import { store } from '../../store/store'
 import { logout } from '../../store/ducks/global/actionCreators'
 
 const BASE_URL = 'http://intranet.internetlab.ru/api'
-const DEV_MODE = false
+const DEV_MODE = true
 
 export const ACCESS_TKN = new TokenService()
 
@@ -36,7 +36,7 @@ const instance = axios.create({
 		'Access-Control-Allow-Origin': '*',
 		'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
 		'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
-		'Content-Type': 'multipart/form-data',
+		'Content-Type': 'application/json',
 	},
 })
 
@@ -44,7 +44,6 @@ instance.interceptors.request.use((config) => {
 	if (ACCESS_TKN.getToken()) {
 		config.headers['Authorization'] = `Bearer ${ACCESS_TKN.getToken()}`
 	}
-
 	return config
 })
 instance.interceptors.response.use(
@@ -52,9 +51,7 @@ instance.interceptors.response.use(
 		return response
 	},
 	function (error) {
-		console.log(error)
-		console.log(error.response)
-		if (error.response.code == 401) {
+		if (error.response.status == 401) {
 			store.dispatch(logout())
 		}
 		return Promise.reject(error)
@@ -69,9 +66,11 @@ export const GlobalApi = {
 		return data.data
 	},
 	async getSearch(requestData: SearchRequestInterface): Promise<SearchResultsInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return searchResults.data
+		if (DEV_MODE) {
+			return searchResults.data
+		}
+		const { data } = await instance.post<ResponseInterface<SearchResultsInterface>>('/search', requestData)
+		return data.data
 	},
 }
 
@@ -95,9 +94,11 @@ export const NotificationsApi = {
 
 export const ProfileApi = {
 	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface> {
-		//await instance.post<ResponseInterface<any>>('/profile/', requestData)
-		//return data.data
-		return profile.data
+		if (DEV_MODE) {
+			return profile.data
+		}
+		const { data } = await instance.get<ResponseInterface<ProfileDataInterface>>(`/users/${requestData.id}`)
+		return data.data
 	},
 }
 
@@ -106,15 +107,15 @@ export const UnitsApi = {
 		if (DEV_MODE) {
 			return units.data
 		}
-
-		return units.data
-		/*const { data } = await instance.get('/units')
-		return data.data*/
+		const { data } = await instance.get('/units')
+		return data.data
 	},
 	async getUnitData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return unitDetail.data
+		if (DEV_MODE) {
+			return unitDetail.data
+		}
+		const { data } = await instance.post<ResponseInterface<UnitDetailInterface>>(`/units/${requestData.id}`)
+		return data.data
 	},
 }
 

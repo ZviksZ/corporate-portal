@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Profile } from '../../components/profile/Profile/Profile'
 import { selectGlobal } from '../../store/ducks/global/selectors'
 import { getProfile, setProfile } from '../../store/ducks/profile/actionCreators'
-import { selectIsProfileLoading, selectIsProfileLoadingError } from '../../store/ducks/profile/selectors'
+import { selectIsProfileLoading, selectIsProfileLoadingError, selectProfile } from '../../store/ducks/profile/selectors'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
 
 export const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()
 	const { user } = useSelector(selectGlobal)
+	const { profileData } = useSelector(selectProfile)
 	const isLoading = useSelector(selectIsProfileLoading)
 	const isLoadingError = useSelector(selectIsProfileLoadingError)
 	const [title, setTitle] = useState('')
@@ -62,6 +63,14 @@ export const ProfilePage: React.FC = () => {
 				<Button className="btn" onClick={repeatLoading}>
 					Повторить загрузку
 				</Button>
+			</div>
+		)
+	}
+
+	if (!profileData) {
+		return (
+			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
+				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Профиля с таким id не существует</p>
 			</div>
 		)
 	}

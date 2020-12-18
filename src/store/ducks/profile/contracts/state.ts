@@ -33,11 +33,14 @@ export interface TeamInterface {
 		list: SimpleMemberUnitInterface[]
 	}
 }
+export interface ContractorInterface {
+	name: string
+}
 export interface ProfileDataInterface {
 	id: string
 	name: string
-	lastName: string
-	middleName: string
+	surname: string
+	patronymic: string
 	userType: string
 	position: string
 	department: string
@@ -52,21 +55,21 @@ export interface ProfileDataInterface {
 		corporateDays: string
 	}
 	contacts: {
-		birthDate: string
+		birthday: string
 		showBirthYear: string
 		email: string
-		mobile: string
-		phone: string
-		hireDate: string
-		size: string
+		mobilePhone: string
+		inPhone: string
+		employmentDate: string
+		tshirtSize: string
 		sshKeys: string[]
 	}
 	teams: UnitInterface[]
 	additional: {
 		lead: SimpleMemberUnitInterface
-		subordinates: SimpleMemberUnitInterface[]
+		subordinates: SimpleMemberUnitInterface[],
+		contractors: ContractorInterface[]
 	}
-	contractors: string[]
 }
 
 export interface ProfileStateInterface {

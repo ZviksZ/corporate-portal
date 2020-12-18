@@ -21,9 +21,12 @@ export function* getTeamDataRequest({ id }: GetTeamDataActionInterface) {
 	try {
 		yield put(setLoadingTeams(LoadingStatus.LOADING))
 		const team = yield call(TeamsApi.getTeamData, { id })
-
-		yield put(setTeamData(team))
-		yield put(setLoadingTeams(LoadingStatus.LOADED))
+		if (team && team.id) {
+			yield put(setTeamData(team))
+			yield put(setLoadingTeams(LoadingStatus.LOADED))
+		} else {
+			yield put(setLoadingTeams(LoadingStatus.NEVER))
+		}
 	} catch (error) {
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))

@@ -35,10 +35,14 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 				<img src={jira} alt="" width={'18px'} />
 				<span>Открытые задачи</span>
 			</a>
-			<div className="sectionSubtitle">Отпуск</div>
-			<p className={'sectionText status-' + time.vacation[0].status}>
-				c {getFormatedDate(time.vacation[0].dateStart)} по {getFormatedDate(time.vacation[0].dateEnd)}
-			</p>
+			{time.vacation && time.vacation[0] && (
+				<>
+					<div className="sectionSubtitle">Отпуск</div>
+					<p className={'sectionText status-' + time.vacation[0].status}>
+						c {getFormatedDate(time.vacation[0].dateStart)} по {getFormatedDate(time.vacation[0].dateEnd)}
+					</p>
+				</>
+			)}
 			{isMyProfile && (
 				<>
 					<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
@@ -55,16 +59,17 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 					</Button>
 
 					<div className={s.applications}>
-						{time.vacation.map((item, index) => {
-							if (index > 0) {
-								return (
-									<div key={item?.dateStart || index + index} className={s.appItem}>
-										<div className="sectionText no-margin-bottom">Заявление на отпуск от {item.dateStart}</div>
-										<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</div>
-									</div>
-								)
-							}
-						})}
+						{time.vacation &&
+							time.vacation.map((item, index) => {
+								if (index > 0) {
+									return (
+										<div key={item?.dateStart || index + index} className={s.appItem}>
+											<div className="sectionText no-margin-bottom">Заявление на отпуск от {item.dateStart}</div>
+											<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</div>
+										</div>
+									)
+								}
+							})}
 					</div>
 				</>
 			)}

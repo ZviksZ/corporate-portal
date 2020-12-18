@@ -48,6 +48,13 @@ export const TeamsDetailPage: React.FC = () => {
 			</div>
 		)
 	}
+	if (!teamDetail) {
+		return (
+			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
+				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Команда с таким id не существует</p>
+			</div>
+		)
+	}
 
 	return (
 		<>

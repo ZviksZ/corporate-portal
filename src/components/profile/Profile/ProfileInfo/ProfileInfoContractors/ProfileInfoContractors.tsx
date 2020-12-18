@@ -9,27 +9,26 @@ export const ProfileInfoContractors: React.FC = () => {
 	const [showMore, setShowMore] = useState<boolean>(false)
 	const { profileData } = useSelector(selectProfile)
 
-	if (!profileData) {
+	if (!profileData || !profileData?.additional?.contractors?.length) {
 		return <></>
 	}
 
-	const contractors = profileData.contractors
+	const contractors = profileData.additional.contractors
 
 	const toggleMoreItems = (e: React.MouseEvent<HTMLAnchorElement>) => {
 		e.preventDefault()
 		setShowMore((prev) => !prev)
 	}
-	//TODO число в показать еще
 
 	return (
 		<>
-			<h4 className={cn(s.profileTitle, 'margin-bottom-x2', 'margin-top-x2')}>Дополнительная информация</h4>
+			<h4 className={cn(s.profileTitle, 'margin-bottom-x2', 'margin-top-x2')}>Контрагенты</h4>
 			<div className={s.contractors}>
 				{contractors.map((item, index) => {
 					if (index < 4) {
 						return (
-							<div key={item + index} className={s.item}>
-								{item}
+							<div key={item.name + index} className={s.item}>
+								{item.name}
 							</div>
 						)
 					}
@@ -39,8 +38,8 @@ export const ProfileInfoContractors: React.FC = () => {
 						{contractors.map((item, index) => {
 							if (index >= 4) {
 								return (
-									<div key={item + index} className={s.item}>
-										{item}
+									<div key={item.name + index} className={s.item}>
+										{item.name}
 									</div>
 								)
 							}

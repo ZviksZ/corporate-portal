@@ -16,10 +16,10 @@ export interface GlobalMessageInterface {
 	type: 'success' | 'info' | 'warning' | 'error' | undefined
 }
 export interface SearchResultsInterface {
-	members: SimpleMemberUnitInterface[] | null
-	units: SimpleMemberUnitInterface[] | null
-	teams: SimpleMemberUnitInterface[] | null
-	projects: SimpleMemberUnitInterface[] | null
+	members?: SimpleMemberUnitInterface[] | null
+	units?: SimpleMemberUnitInterface[] | null
+	teams?: SimpleMemberUnitInterface[] | null
+	projects?: SimpleMemberUnitInterface[] | null
 }
 export interface GlobalStateInterface {
 	user: UserInterface | null

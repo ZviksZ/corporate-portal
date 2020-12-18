@@ -142,6 +142,9 @@ export function getInitialsFromName(name: string) {
 	return `${nameArray[0] && nameArray[0][0].toUpperCase() || ''}${nameArray[1] && nameArray[1][0].toUpperCase() || ''}`
 }
 export function getFormatedDate(dateString: string) {
+	if (!dateString) {
+		return `-`
+	}
 	let formatedDate = dateString.split('.').reverse().join('/')
 
 	const monthNames = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']

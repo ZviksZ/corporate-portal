@@ -10,7 +10,7 @@ import { getInitialsFromName } from '../../../../../services/helpers/utils'
 export const ProfileInfoAdditional: React.FC = () => {
 	const { profileData } = useSelector(selectProfile)
 
-	if (!profileData) {
+	if (!profileData || !profileData.additional || !profileData.additional.contractors.length || !profileData.additional.subordinates.length) {
 		return <></>
 	}
 
@@ -23,29 +23,34 @@ export const ProfileInfoAdditional: React.FC = () => {
 				<div className={s.item}>
 					<div className={s.position}>Подчинённые</div>
 					<div className={s.membersList}>
-						{additional.subordinates.map((item) => {
-							return (
-								<NavLink key={item.id} className={s.membersListItem} to={`/profile/${item.id}`}>
-									<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.photo} aria-controls="simple-menu" aria-haspopup="true">
-										{getInitialsFromName(item.name)}
-									</Avatar>
-									<span className={s.name}>{item.name}</span>
-								</NavLink>
-							)
-						})}
+						{additional.subordinates &&
+							additional.subordinates.map((item) => {
+								return (
+									<NavLink key={item.id} className={s.membersListItem} to={`/profile/${item.id}`}>
+										<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.photo} aria-controls="simple-menu" aria-haspopup="true">
+											{getInitialsFromName(item.name)}
+										</Avatar>
+										<span className={s.name}>{item.name}</span>
+									</NavLink>
+								)
+							})}
 					</div>
 				</div>
 
 				<div className={s.item}>
-					<div className={s.position}>Руководитель</div>
-					<div className={s.membersList}>
-						<NavLink className={s.membersListItem} to={`/profile/${additional.lead.id}`}>
-							<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={additional.lead.photo} aria-controls="simple-menu" aria-haspopup="true">
-								{getInitialsFromName(additional.lead.name)}
-							</Avatar>
-							<span className={s.name}>{additional.lead.name}</span>
-						</NavLink>
-					</div>
+					{additional.lead && (
+						<>
+							<div className={s.position}>Руководитель</div>
+							<div className={s.membersList}>
+								<NavLink className={s.membersListItem} to={`/profile/${additional.lead.id}`}>
+									<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={additional.lead.photo} aria-controls="simple-menu" aria-haspopup="true">
+										{getInitialsFromName(additional.lead.name)}
+									</Avatar>
+									<span className={s.name}>{additional.lead.name}</span>
+								</NavLink>
+							</div>
+						</>
+					)}
 				</div>
 			</div>
 		</>

@@ -9,7 +9,8 @@ export interface MemberDetailInterface {
 	position?: string
 	openTasksLink?: string
 	email?: string
-	mobile?: string
+	mobilePhone?: string
+	phone?: string
 	slackEmail?: string
 }
 export interface UnitInterface {

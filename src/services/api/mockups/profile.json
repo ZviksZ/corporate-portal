@@ -3,8 +3,8 @@
 	"data": {
 		"id": "5f625ff6bd97609c15525e2b4",
 		"name": "Иван",
-		"lastName": "Иванов",
-		"middleName": "Иванович",
+		"surname": "Иванов",
+		"patronymic": "Иванович",
 		"userType": "1",
 		"position": "Руководитель Департамента ИТ",
 		"department": "ООО ИА Банки.ру",
@@ -34,14 +34,17 @@
 			"corporateDays": "5"
 		},
 		"contacts": {
-			"birthDate": "05.02.1990",
+			"birthday": "05.02.1990",
 			"showBirthYear": "1",
 			"email": "example@mail.ru",
-			"mobile": "+7 900 000 00 00, +7 800 000 55 66",
-			"phone": "+7 495 000 77 55 (265)",
-			"hireDate": "12.02.2005",
-			"size": "XXL",
-			"sshKeys": ["KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H", "HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6"]
+			"mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
+			"inPhone": "+7 495 000 77 55 (265)",
+			"employmentDate": "12.02.2005",
+			"tshirtSize": "XXL",
+			"sshKeys": [
+				"KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H",
+				"HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6"
+			]
 		},
 		"teams": [
 			{
@@ -87,8 +90,21 @@
 					"id": "7f625ff6bd97609c15525e2b4",
 					"photo": "../img/1.jpg"
 				}
+			],
+			"contractors": [
+				{
+					"name": "ООО первое"
+				},
+				{
+					"name": "ООО второе"
+				},
+				{
+					"name": "ООО первое"
+				},
+				{
+					"name": "ООО второе"
+				}
 			]
-		},
-		"contractors": ["ООО первое", "ООО второе", "ООО третье", "ООО четвертое", "ООО первое", "ООО второе", "ООО третье", "ООО четвертое"]
+		}
 	}
 }

@@ -8,7 +8,7 @@ import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 export const ProfileInfoTeams: React.FC = () => {
 	const { profileData } = useSelector(selectProfile)
 
-	if (!profileData) {
+	if (!profileData || !profileData?.teams.length) {
 		return <></>
 	}
 
