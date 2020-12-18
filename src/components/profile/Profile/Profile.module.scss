@@ -18,24 +18,29 @@
             align-items: center;
             .avatarWrap {
                 position: relative;
-                &:hover {
-                    .avatarHover {
-                        display: flex;
-                    }
-                }
             }
             .avatarHover {
-                display: none;
                 position: absolute;
                 top: 0;
                 left: 0;
                 border-radius: 50%;
                 width: 184px;
                 height: 184px;
-                align-items: center;
-                justify-content: center;
-                background: rgba(255,255,255, 0.8);
-                cursor: pointer;
+                &:hover {
+                    .avatarHoverContent {
+                        display: flex;
+                    }
+                }
+                .avatarHoverContent {
+                    display: none;
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(255,255,255, 0.8);
+                    cursor: pointer;
+                }
                 .icon {
                     padding-top: 4px;
                 }
@@ -111,6 +116,27 @@
             }
         }
     }
+    .profileEdit {
+        cursor: pointer;
+        .editIcon {
+            opacity: 0;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        @include desktop {
+            &:hover {
+                color: #2A477D;
+                .editIcon {
+                    opacity: 1;
+                }
+            }
+        }
+        @include mobile {
+            .editIcon {
+                opacity: 1;
+            }
+        }
+    }
     .sshBlock {
         width: 100%;
         max-width: 708px;
@@ -161,7 +187,7 @@
                 width: 100%;
                 padding: 29px 15px 39px;
             }
-            .profilePhones {
+            .profileEdit {
                 flex-wrap: wrap;
             }
             .profileBirthday {
@@ -172,6 +198,22 @@
 
 }
 
+.editButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 10px;
+    background: $colorWhite;
+    z-index: 7;
+}
+.appbarBottom {
+    display: none !important;
+    top: auto !important;
+    bottom: 0 !important;
+    &.appbarBottomShow {
+        display: block !important;
+    }
+}
 .applications {
     border-top: 1px solid #C4C4C4;
     padding: 15px 0;

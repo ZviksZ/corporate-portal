@@ -25,7 +25,7 @@ import { TokenService } from '../helpers/token'
 import { store } from '../../store/store'
 import { logout } from '../../store/ducks/global/actionCreators'
 
-const BASE_URL = 'http://intranet.internetlab.ru/api'
+const BASE_URL = '/api'
 const DEV_MODE = true
 
 export const ACCESS_TKN = new TokenService()
@@ -114,7 +114,7 @@ export const UnitsApi = {
 		if (DEV_MODE) {
 			return unitDetail.data
 		}
-		const { data } = await instance.post<ResponseInterface<UnitDetailInterface>>(`/units/${requestData.id}`)
+		const { data } = await instance.get<ResponseInterface<UnitDetailInterface>>(`/units/${requestData.id}`)
 		return data.data
 	},
 }

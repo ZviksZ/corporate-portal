@@ -49,15 +49,19 @@ export const ProfileSidebarTop: React.FC = () => {
 					</Avatar>
 					{isPersonalProfile && (
 						<>
-							<div className={s.avatarDelete} onClick={handleClickOpen}>
-								<i className="icon-close-default"></i>
-							</div>
+							{profileData.photo && (
+								<div className={s.avatarDelete} onClick={handleClickOpen}>
+									<i className="icon-close-default"></i>
+								</div>
+							)}
 							<label className={s.avatarHover} htmlFor="upload-photo">
-								<input onChange={fileUpload} style={{ display: 'none' }} id="upload-photo" name="upload-photo" type="file" />
-								<span className={s.icon}>
-									<i className="icon-add"></i>
-								</span>
-								<span>Загрузить фото</span>
+								<div className={s.avatarHoverContent}>
+									<span className={s.icon}>
+										<i className="icon-add"></i>
+									</span>
+									<span>Загрузить фото</span>
+								</div>
+								<input accept="image/*" onChange={fileUpload} style={{ display: 'none' }} id="upload-photo" name="upload-photo" type="file" />
 							</label>
 						</>
 					)}

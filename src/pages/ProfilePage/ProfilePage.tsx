@@ -22,13 +22,15 @@ export const ProfilePage: React.FC = () => {
 
 	useEffect(() => {
 		if (id) {
-			dispatch(getProfile(id, false))
-			setTitle('Профиль')
-			setIsMyProfile(false)
-		} else if (id && user && id === user.id) {
-			dispatch(getProfile(user.id, true))
-			setTitle('Мой профиль')
-			setIsMyProfile(true)
+			if (user && id == user.id) {
+				dispatch(getProfile(user.id, true))
+				setTitle('Мой профиль')
+				setIsMyProfile(true)
+			} else {
+				dispatch(getProfile(id, false))
+				setTitle('Профиль')
+				setIsMyProfile(false)
+			}
 		} else if (user && user.id) {
 			dispatch(getProfile(user.id, true))
 			setTitle('Мой профиль')
@@ -41,10 +43,12 @@ export const ProfilePage: React.FC = () => {
 
 	const repeatLoading = () => {
 		if (id) {
-			dispatch(getProfile(id, false))
-		} else if (id && user && id === user.id) {
-			dispatch(getProfile(user.id, true))
-		} else if (user && user.id) {
+			if (user && id == user.id) {
+				dispatch(getProfile(user.id, true))
+			} else {
+				dispatch(getProfile(id, false))
+			}
+		}  else if (user && user.id) {
 			dispatch(getProfile(user.id, true))
 		}
 	}
@@ -53,6 +57,13 @@ export const ProfilePage: React.FC = () => {
 		return (
 			<div className="full-page d-flex ai-center jc-center">
 				<Loader />
+			</div>
+		)
+	}
+	if (profileData && !profileData.id) {
+		return (
+			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
+				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Профиля с таким id не существует</p>
 			</div>
 		)
 	}
@@ -67,13 +78,7 @@ export const ProfilePage: React.FC = () => {
 		)
 	}
 
-	if (!profileData) {
-		return (
-			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
-				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Профиля с таким id не существует</p>
-			</div>
-		)
-	}
+
 
 	return (
 		<section className="section">

@@ -26,10 +26,14 @@ export const UnitsItem: React.FC<Props> = ({ item }) => {
 
 	return (
 		<div className={cn(s.unit, { [s.unitOpen]: showSub })}>
-			<div onClick={toggleOpen} className={s.unitShowBtn}>
-				{showSub ? '-' : '+'}
-			</div>
-			<div className={s.unitBorder}></div>
+			{item.subUnits && item?.subUnits?.length > 0 && (
+				<>
+					<div onClick={toggleOpen} className={s.unitShowBtn}>
+						{showSub ? '-' : '+'}
+					</div>
+					<div className={s.unitBorder}></div>
+				</>
+			)}
 
 			<UnitCard key={item.id} item={item} linkPath={'units'} />
 

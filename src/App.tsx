@@ -37,7 +37,7 @@ export const App: React.FC = () => {
 			</div>
 		)
 	}
-	if (isLoadingError) {
+	if (isLoadingError && user) {
 		return <div className="full-page d-flex ai-center jc-center">Ошибка при загрузке приложения</div>
 	}
 

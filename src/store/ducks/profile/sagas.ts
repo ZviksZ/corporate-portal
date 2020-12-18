@@ -10,9 +10,10 @@ export function* getProfileRequest({ payload }: GetProfileActionInterface) {
 		yield put(setLoadingProfile(LoadingStatus.LOADING))
 		const profile = yield call(ProfileApi.getProfile, { id: payload.id })
 
-
-		yield put(setProfile(profile, payload.isPersonalProfile))
-		yield put(setLoadingProfile(LoadingStatus.LOADED))
+		if (profile && profile.id) {
+			yield put(setProfile(profile, payload.isPersonalProfile))
+			yield put(setLoadingProfile(LoadingStatus.LOADED))
+		}
 	} catch (error) {
 		yield put(setLoadingProfile(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))

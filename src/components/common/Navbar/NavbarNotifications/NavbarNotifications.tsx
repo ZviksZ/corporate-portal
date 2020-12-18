@@ -33,11 +33,16 @@ export const NavbarNotifications: React.FC = () => {
 	return (
 		<>
 			<IconButton className={s.notificationIcon} onClick={handleClick} aria-describedby={id}>
+				<Badge color="error">
+					<NotificationsNoneOutlinedIcon />
+				</Badge>
+			</IconButton>
+			{/*<IconButton className={s.notificationIcon} onClick={handleClick} aria-describedby={id}>
 				<Badge badgeContent={(notifications && notifications.newCount) || ''} color="error">
 					<NotificationsNoneOutlinedIcon />
 				</Badge>
 			</IconButton>
-			<Popover
+			Popover
 				id={id}
 				open={!!anchorEl}
 				anchorEl={anchorEl}
@@ -67,7 +72,7 @@ export const NavbarNotifications: React.FC = () => {
 						</div>
 					</div>
 				)}
-			</Popover>
+			</Popover>*/}
 
 			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title={(notificationDetail && notificationDetail.name) || ''}>
 				<NotificationForm onClose={setOpenForm} />

@@ -21,9 +21,13 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 				<NavLink to={`/units/`} className="breadcrumbsItem">
 					Подразделения
 				</NavLink>
-				<NavLink to={`/units/${unit.main}`} className="breadcrumbsItem">
-					{unit.mainName}
-				</NavLink>
+				{unit.main && (
+					<>
+						<NavLink to={`/units/${unit.main}`} className="breadcrumbsItem">
+							{unit.mainName}
+						</NavLink>
+					</>
+				)}
 				{unit.main !== unit.parent && (
 					<NavLink to={`/units/${unit.parent}`} className="breadcrumbsItem">
 						{unit.parentName}
@@ -32,10 +36,12 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 				<span className="breadcrumbsItem">{unit.name}</span>
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top">{unit.name}</h1>
-
-			<div className="sectionBigSubtitle text-uppercase">Руководитель</div>
-
-			<MemberCard member={unit.lead} />
+			{unit.lead && (
+				<>
+					<div className="sectionBigSubtitle text-uppercase">Руководитель</div>
+					<MemberCard member={unit.lead} />
+				</>
+			)}
 
 			{unit.subUnits && (
 				<>
@@ -46,7 +52,7 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 				</>
 			)}
 
-			{unit.members && unit.members.list && (
+			{unit.members && unit?.members?.list?.length > 0 && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">сотрудники ({unit.members.list.length})</div>
 					{unit.members.list.map((member) => (

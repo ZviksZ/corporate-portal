@@ -29,11 +29,17 @@ export const Team: React.FC<Props> = ({ team }) => {
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top">{team.name}</h1>
 
-			<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
 
-			<MemberCard member={team.lead} />
+			{team.lead && (
+				<>
+					<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
 
-			{team.members && team.members.list && (
+					<MemberCard member={team.lead} />
+				</>
+			)}
+
+
+			{team.members && team?.members?.list?.length > 0 && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">
 						<span>сотрудники ({team.members.list.length})</span>

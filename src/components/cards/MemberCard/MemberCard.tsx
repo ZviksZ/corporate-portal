@@ -10,6 +10,9 @@ type Props = {
 }
 
 export const MemberCard: React.FC<Props> = ({ member }) => {
+	if (!member) {
+		return <></>
+	}
 	return (
 		<NavLink to={`/profile/${member.id}`} className={s.member}>
 			<MemberCardMain member={member} />
