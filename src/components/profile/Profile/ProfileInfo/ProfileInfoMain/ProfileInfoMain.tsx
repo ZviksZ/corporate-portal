@@ -44,10 +44,12 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 
 	const openPhoneEdit = () => {
 		setOpenFormButtons(true)
+		setEditSize(false)
 		setEditPhone(true)
 	}
 	const openSizeEdit = () => {
 		setOpenFormButtons(true)
+		setEditPhone(false)
 		setEditSize(true)
 	}
 
@@ -173,14 +175,6 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 					</Button>
 				</Toolbar>
 			</AppBar>
-			{/*<div className={cn(s.editButtons, { [s.editButtonsShow]: openFormButtons })}>
-				<Button size="large" className="btn btn-default text-uppercase" onClick={closeEdit}>
-					ОТМЕНА
-				</Button>
-				<Button size="large" className="btn margin-left-x3 text-uppercase">
-					Сохранить
-				</Button>
-			</div>*/}
 		</>
 	)
 }
