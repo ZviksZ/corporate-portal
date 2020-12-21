@@ -73,6 +73,8 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 		}
 		dispatch(updateProfile(data, profileData.id, isPersonalProfile))
 		setOpenFormButtons(false)
+		setEditPhone(false)
+		setEditSize(false)
 	}
 
 	const main = profileData.contacts
@@ -102,24 +104,25 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 						</p>
 					</>
 				)}
-				{main.mobilePhone && (
+				{editPhone ? (
+					<TextField variant="outlined" value={phone} onChange={handleChangePhone} fullWidth label="Мобильный телефон" name="mobilePhone" autoFocus className="form-input margin-bottom-x2" />
+				) : (
 					<>
-						{editPhone ? (
-							<TextField variant="outlined" value={phone} onChange={handleChangePhone} fullWidth label="Мобильный телефон" name="mobilePhone" autoFocus className="form-input margin-bottom-x2" />
-						) : (
+						{isMyProfile ? (
 							<>
 								<div className="sectionSubtitle">Мобильный телефон</div>
-								{isMyProfile ? (
-									<>
-										<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openPhoneEdit}>
-											{main.mobilePhone}
-											<i className={cn('icon-edit', s.editIcon)}></i>
-										</p>
-									</>
-								) : (
-									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)}>{main.mobilePhone}</p>
-								)}
+								<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openPhoneEdit}>
+									{main.mobilePhone || 'Не указан'}
+									<i className={cn('icon-edit', s.editIcon)}></i>
+								</p>
 							</>
+						) : (
+							main.mobilePhone && (
+								<>
+									<div className="sectionSubtitle">Мобильный телефон</div>
+									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)}>{main.mobilePhone}</p>
+								</>
+							)
 						)}
 					</>
 				)}
@@ -138,28 +141,36 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 						<p className="sectionText">c {getFormatedDate(main.employmentDate)}</p>
 					</>
 				)}
-				{main.tshirtSize && (
+				{editSize ? (
 					<>
-						{editSize ? (
-							<>
-								<FormControl fullWidth variant="outlined" className="margin-bottom-x2">
-									<InputLabel id="simple-select-outlined-label">Размер футболки</InputLabel>
-									<Select labelId="simple-select-outlined-label" id="simple-select-outlined" value={size} onChange={handleChangeSize} label="Размер футболки">
-										<MenuItem value={'S'}>S</MenuItem>
-										<MenuItem value={'M'}>M</MenuItem>
-										<MenuItem value={'L'}>L</MenuItem>
-										<MenuItem value={'XL'}>XL</MenuItem>
-										<MenuItem value={'XXL'}>XXL</MenuItem>
-									</Select>
-								</FormControl>
-							</>
-						) : (
+						<FormControl fullWidth variant="outlined" className="margin-bottom-x2">
+							<InputLabel id="simple-select-outlined-label">Размер футболки</InputLabel>
+							<Select labelId="simple-select-outlined-label" id="simple-select-outlined" value={size} onChange={handleChangeSize} label="Размер футболки">
+								<MenuItem value="" disabled>
+									Не выбран
+								</MenuItem>
+								<MenuItem value={'S'}>S</MenuItem>
+								<MenuItem value={'M'}>M</MenuItem>
+								<MenuItem value={'L'}>L</MenuItem>
+								<MenuItem value={'XL'}>XL</MenuItem>
+								<MenuItem value={'XXL'}>XXL</MenuItem>
+							</Select>
+						</FormControl>
+					</>
+				) : isMyProfile ? (
+					<>
+						<div className="sectionSubtitle">Размер футболки</div>
+						<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openSizeEdit}>
+							{main.tshirtSize || 'Не указан'}
+							<i className={cn('icon-edit', s.editIcon)}></i>
+						</p>
+					</>
+				) : (
+					<>
+						{main.tshirtSize && (
 							<>
 								<div className="sectionSubtitle">Размер футболки</div>
-								<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openSizeEdit}>
-									{main.tshirtSize}
-									<i className={cn('icon-edit', s.editIcon)}></i>
-								</p>
+								<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)}>{main.tshirtSize}</p>
 							</>
 						)}
 					</>

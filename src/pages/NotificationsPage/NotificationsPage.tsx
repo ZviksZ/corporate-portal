@@ -3,25 +3,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
-import { selectIsNotificationsLoading, selectIsNotificationsLoadingError, selectNotifications } from '../../store/ducks/notifications/selectors'
-import { getAllNotifications, setAllNotifications } from '../../store/ducks/notifications/actionCreators'
+import { selectIsAbsencesLoading, selectIsAbsencesLoadingError, selectAbsences } from '../../store/ducks/absences/selectors'
+import { getAllAbsences, setAllAbsences } from '../../store/ducks/absences/actionCreators'
 import { NotificationCard } from '../../components/cards/NotificationCard/NotificationCard'
 
 export const NotificationsPage: React.FC = () => {
 	const dispatch = useDispatch()
-	const { allNotifications } = useSelector(selectNotifications)
-	const isLoading = useSelector(selectIsNotificationsLoading)
-	const isLoadingError = useSelector(selectIsNotificationsLoadingError)
+	const { allAbsences } = useSelector(selectAbsences)
+	const isLoading = useSelector(selectIsAbsencesLoading)
+	const isLoadingError = useSelector(selectIsAbsencesLoadingError)
 	useEffect(() => {
-		dispatch(getAllNotifications())
+		dispatch(getAllAbsences())
 
 		return () => {
-			dispatch(setAllNotifications(null))
+			dispatch(setAllAbsences(null))
 		}
 	}, [])
 
 	const repeatLoading = () => {
-		dispatch(getAllNotifications())
+		dispatch(getAllAbsences())
 	}
 
 	if (isLoading) {
@@ -47,9 +47,9 @@ export const NotificationsPage: React.FC = () => {
 			<div className="container">
 				<h1 className="section-title-small">Список уведомлений</h1>
 
-				{allNotifications && allNotifications.list.length > 0 ? (
+				{allAbsences && allAbsences.list.length > 0 ? (
 					<>
-						{allNotifications.list.map((notification) => (
+						{allAbsences.list.map((notification) => (
 							<NotificationCard item={notification} key={notification.id} />
 						))}
 					</>

@@ -3,7 +3,7 @@ import { SquadMemberInterface } from '../../teams/contracts/state'
 import { LoadingStatus } from '../../../types'
 
 export interface UserInterface {
-	id: string
+	id: number
 	name: string
 	surname: string
 	token: string

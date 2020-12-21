@@ -11,22 +11,22 @@ import teamSquad from './mockups/team-squad.json'
 import projects from './mockups/projects.json'
 import project from './mockups/project-detail.json'
 import notifications from './mockups/notifications.json'
-import allNotifications from './mockups/all-notifications.json'
+import allAbsences from './mockups/all-notifications.json'
 import notificationDetail from './mockups/notification-detail.json'
 import allMembers from './mockups/all-members.json'
 import searchResults from './mockups/search-results.json'
 import { UnitInterface, UnitDetailInterface } from '../../store/ducks/units/contracts/state'
 import { ProjectInterface, ProjectDetailInterface } from '../../store/ducks/projects/contracts/state'
 import { SquadMemberInterface } from '../../store/ducks/teams/contracts/state'
-import { LoginRequestInterface, ResponseErrorInterface, ResponseInterface, SearchRequestInterface, StandartRequestInterface } from './interfaces'
+import { LoginRequestInterface, ResponseErrorInterface, ResponseInterface, SearchRequestInterface, StandartRequestInterface, UpdateUserPhotoInterface, CreateUserPhotoInterface } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
-import { AllNotificationDataInterface, NotificationDataInterface, NotificationDetailInterface } from '../../store/ducks/notifications/contracts/state'
+import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface } from '../../store/ducks/absences/contracts/state'
 import { TokenService } from '../helpers/token'
 import { store } from '../../store/store'
 import { logout } from '../../store/ducks/global/actionCreators'
 
 const BASE_URL = '/api'
-const DEV_MODE = true
+const DEV_MODE = false
 
 export const ACCESS_TKN = new TokenService()
 
@@ -74,19 +74,24 @@ export const GlobalApi = {
 	},
 }
 
-export const NotificationsApi = {
-	async getNotifications(): Promise<NotificationDataInterface | ResponseErrorInterface> {
+export const AbsencesApi = {
+	async getAbsences(): Promise<AbsenceDataInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login')
 		//return data.data
 		return notifications.data
 	},
-	async getAllNotifications(): Promise<AllNotificationDataInterface | ResponseErrorInterface> {
+	async getAllAbsences(): Promise<AllAbsenceDataInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
-		return allNotifications.data
+		return allAbsences.data
 	},
-	async getNotificationData(requestData: StandartRequestInterface): Promise<NotificationDetailInterface | ResponseErrorInterface> {
+	async getAbsenceData(requestData: StandartRequestInterface): Promise<AbsenceDetailInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
+		//return data.data
+		return notificationDetail.data
+	},
+	async createAbsence(requestData: AbsenceCreateInterface): Promise<any> {
+		const { data } = await instance.post<ResponseInterface<any>>('/absences', requestData)
 		//return data.data
 		return notificationDetail.data
 	},
@@ -102,6 +107,12 @@ export const ProfileApi = {
 	},
 	async updateProfile(requestData: any, profileId: number) {
 		await instance.put<ResponseInterface<string>>(`/users/${profileId}`, requestData)
+	},
+	async createUserPhoto(requestData: CreateUserPhotoInterface) {
+		await instance.post(`/createUserPhoto`, requestData)
+	},
+	async updateUserPhoto(requestData: UpdateUserPhotoInterface) {
+		await instance.post(`/updateUserPhoto`, requestData)
 	},
 	async uploadPhoto(requestData: FormData): Promise<string> {
 		const { data } = await instance.post<ResponseInterface<string>>(`/fileLoader`, requestData)

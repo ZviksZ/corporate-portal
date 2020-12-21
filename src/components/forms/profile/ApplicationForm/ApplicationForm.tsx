@@ -17,6 +17,8 @@ import { FormControl, MenuItem } from '@material-ui/core'
 import InputLabel from '@material-ui/core/InputLabel'
 import Select from '@material-ui/core/Select'
 import FormHelperText from '@material-ui/core/FormHelperText'
+import { AbsenceCreateInterface } from '../../../../store/ducks/absences/contracts/state'
+import { createAbsence } from '../../../../store/ducks/absences/actionCreators'
 
 interface IFormInputs {
 	dateFrom: dateFns
@@ -30,6 +32,7 @@ type Props = {
 
 export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 	const { user } = useSelector(selectGlobal)
+	const dispatch = useDispatch()
 
 	const { control, register, handleSubmit, errors, getValues } = useForm<IFormInputs>({
 		resolver: yupResolver(profileApplicationSchema),
@@ -52,7 +55,6 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 		}
 	}, [type, selectedDateFrom])
 
-
 	const handleDateFromChange = (date: any) => {
 		if (date < selectedDateTo) {
 			setSelectedDateFrom(date)
@@ -68,15 +70,19 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 	}
 
 	const onSubmit = (data: IFormInputs) => {
-		const formData = {
-			dateTo: formatDate(selectedDateTo, true),
-			dateFrom: formatDate(selectedDateFrom, true),
-			user: (user && user.id) || null,
-			type: data.type,
-		}
-		console.log(formData)
+		if (user && user.id) {
+			const formData: AbsenceCreateInterface = {
+				dateEnd: formatDate(selectedDateTo, true),
+				dateStart: formatDate(selectedDateFrom, true),
+				user: user.id,
+				absencseType: data.type,
+				status: 'new',
+			}
+			dispatch(createAbsence(formData))
 
-		onClose(false)
+			onClose(false)
+		}
+
 	}
 
 	useEffect(() => {
@@ -109,10 +115,9 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 									label="Тип отсутствия"
 									labelId="demo-simple-select-label"
 								>
-									<MenuItem value="1">Оплачиваемый отпуск</MenuItem>
-									<MenuItem value="2">Отпуск за свой счет</MenuItem>
-									<MenuItem value="3">Больничный</MenuItem>
-									<MenuItem value="4">Корпоративный день</MenuItem>
+									<MenuItem value="vacancy">Оплачиваемый отпуск</MenuItem>
+									<MenuItem value="dayOff">Выходной</MenuItem>
+									<MenuItem value="sick">Больничный</MenuItem>
 								</Select>
 							)}
 						/>

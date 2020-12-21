@@ -28,8 +28,9 @@ export interface SetProfileActionInterface extends Action<ProfileActionsType> {
 }
 export interface UpdateProfilePhotoActionInterface extends Action<ProfileActionsType> {
 	type: ProfileActionsType.UPDATE_PROFILE_PHOTO
-	payload: File,
-	profileId: number
+	payload: File | null,
+	profileId: number,
+	isCreate: boolean
 }
 export interface UpdateProfileActionInterface extends Action<ProfileActionsType> {
 	type: ProfileActionsType.UPDATE_PROFILE

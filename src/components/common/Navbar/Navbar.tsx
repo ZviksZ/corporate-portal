@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import s from './Navbar.module.scss'
-import { NavLink, useLocation, useParams, useRouteMatch } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { NavbarProfile } from './NavbarProfile/NavbarProfile'
 import { NavbarNotifications } from './NavbarNotifications/NavbarNotifications'
 import { NavbarLeft } from './NavbarLeft/NavbarLeft'

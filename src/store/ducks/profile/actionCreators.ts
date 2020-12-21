@@ -29,10 +29,11 @@ export const setLoadingProfile = (payload: LoadingStatus): SetLoadingProfileActi
 	type: ProfileActionsType.SET_LOADING_STATE,
 	payload,
 })
-export const updateProfilePhoto = (payload: File, profileId: number): UpdateProfilePhotoActionInterface => ({
+export const updateProfilePhoto = (payload: File | null, profileId: number, isCreate: boolean): UpdateProfilePhotoActionInterface => ({
 	type: ProfileActionsType.UPDATE_PROFILE_PHOTO,
 	payload,
-	profileId
+	profileId,
+	isCreate
 })
 export const updateProfile = (payload: any, profileId: number, isPersonalProfile: boolean): UpdateProfileActionInterface => ({
 	type: ProfileActionsType.UPDATE_PROFILE,

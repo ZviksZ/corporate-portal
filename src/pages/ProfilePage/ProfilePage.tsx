@@ -18,12 +18,12 @@ export const ProfilePage: React.FC = () => {
 	const [title, setTitle] = useState('')
 	const [isMyProfile, setIsMyProfile] = useState(true)
 	const params: { id?: string } = useParams()
-	const id = params.id
+	const id = params && params.id
 
 	useEffect(() => {
 		if (id) {
-			if (user && id == user.id) {
-				dispatch(getProfile(user.id, true))
+			if (user && id == user.id.toString()) {
+				dispatch(getProfile(user.id.toString(), true))
 				setTitle('Мой профиль')
 				setIsMyProfile(true)
 			} else {
@@ -32,7 +32,7 @@ export const ProfilePage: React.FC = () => {
 				setIsMyProfile(false)
 			}
 		} else if (user && user.id) {
-			dispatch(getProfile(user.id, true))
+			dispatch(getProfile(user.id.toString(), true))
 			setTitle('Мой профиль')
 			setIsMyProfile(true)
 		}
@@ -43,13 +43,13 @@ export const ProfilePage: React.FC = () => {
 
 	const repeatLoading = () => {
 		if (id) {
-			if (user && id == user.id) {
-				dispatch(getProfile(user.id, true))
+			if (user && id == user.id.toString()) {
+				dispatch(getProfile(user.id.toString(), true))
 			} else {
 				dispatch(getProfile(id, false))
 			}
-		}  else if (user && user.id) {
-			dispatch(getProfile(user.id, true))
+		} else if (user && user.id) {
+			dispatch(getProfile(user.id.toString(), true))
 		}
 	}
 
@@ -77,9 +77,6 @@ export const ProfilePage: React.FC = () => {
 			</div>
 		)
 	}
-
-
-
 	return (
 		<section className="section">
 			<div className="container">

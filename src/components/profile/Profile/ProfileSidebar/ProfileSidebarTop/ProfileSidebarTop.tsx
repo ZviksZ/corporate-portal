@@ -23,7 +23,13 @@ export const ProfileSidebarTop: React.FC = () => {
 
 	useEffect(() => {
 		if (profileData && profileData.id && files && files[0]) {
-			dispatch(updateProfilePhoto(files[0], profileData.id))
+			if (!profileData.photo) {
+				dispatch(updateProfilePhoto(files[0], profileData.id, true))
+			} else {
+				dispatch(updateProfilePhoto(files[0], profileData.id, false))
+			}
+
+
 		}
 	}, [files])
 
@@ -32,7 +38,7 @@ export const ProfileSidebarTop: React.FC = () => {
 	}
 
 	const deleteImage = () => {
-
+		dispatch(updateProfilePhoto(null, profileData.id, false))
 	}
 
 	const handleClickOpen = () => {
@@ -49,8 +55,6 @@ export const ProfileSidebarTop: React.FC = () => {
 
 		setFiles(filesArr)
 	}
-
-
 
 	return (
 		<>
