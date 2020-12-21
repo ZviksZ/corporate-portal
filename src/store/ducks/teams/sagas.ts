@@ -13,6 +13,7 @@ export function* getTeamsRequest() {
 		yield put(setTeams(teams))
 		yield put(setLoadingTeams(LoadingStatus.LOADED))
 	} catch (error) {
+		console.log(error)
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
@@ -28,6 +29,7 @@ export function* getTeamDataRequest({ id }: GetTeamDataActionInterface) {
 			yield put(setLoadingTeams(LoadingStatus.NEVER))
 		}
 	} catch (error) {
+		console.log(error)
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}

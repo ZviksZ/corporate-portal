@@ -10,7 +10,10 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import Button from '@material-ui/core/Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { ProfileApi } from '../../../../../services/api/api'
+import { setGlobalMessage } from '../../../../../store/ducks/global/actionCreators'
+import { updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
@@ -18,11 +21,19 @@ export const ProfileSidebarTop: React.FC = () => {
 	const [open, setOpen] = useState(false)
 	const [files, setFiles] = useState<any>(null)
 
+	useEffect(() => {
+		if (profileData && profileData.id && files && files[0]) {
+			dispatch(updateProfilePhoto(files[0], profileData.id))
+		}
+	}, [files])
+
 	if (!profileData) {
 		return <></>
 	}
 
-	const deleteImage = () => {}
+	const deleteImage = () => {
+
+	}
 
 	const handleClickOpen = () => {
 		setOpen(true)
@@ -38,6 +49,8 @@ export const ProfileSidebarTop: React.FC = () => {
 
 		setFiles(filesArr)
 	}
+
+
 
 	return (
 		<>

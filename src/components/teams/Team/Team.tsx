@@ -29,7 +29,6 @@ export const Team: React.FC<Props> = ({ team }) => {
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top">{team.name}</h1>
 
-
 			{team.lead && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
@@ -38,12 +37,15 @@ export const Team: React.FC<Props> = ({ team }) => {
 				</>
 			)}
 
-
 			{team.members && team?.members?.list?.length > 0 && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">
 						<span>сотрудники ({team.members.list.length})</span>
-						{user && <Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">Управление составом</Button>}
+						{user && (
+							<Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">
+								Управление составом
+							</Button>
+						)}
 					</div>
 					{team.members.list.map((member) => (
 						<MemberCard member={member} key={member.id} />

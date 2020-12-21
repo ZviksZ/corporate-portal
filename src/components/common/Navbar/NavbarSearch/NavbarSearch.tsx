@@ -11,7 +11,6 @@ import { useEffect, useRef, useState } from 'react'
 import Popper from '@material-ui/core/Popper'
 import { NavbarSearchItem } from './NavbarSearchItem/NavbarSearchItem'
 import cn from 'classnames'
-import Fade from '@material-ui/core/Fade'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 
 export const NavbarSearch: React.FC = () => {
@@ -23,7 +22,7 @@ export const NavbarSearch: React.FC = () => {
 	const dispatch = useDispatch()
 	const { searchResults } = useSelector(selectGlobal)
 	const body = document.querySelector('body')
-	const bodyOverflowClass = 'overflow-hidden-body';
+	const bodyOverflowClass = 'overflow-hidden-body'
 
 	const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.value) {
@@ -104,6 +103,9 @@ export const NavbarSearch: React.FC = () => {
 				<ClickAwayListener onClickAway={clickAwayHandler}>
 					<Popper className={s.popper} placement={'bottom-end'} id={'transitions-popper'} anchorEl={anchorEl} open={open}>
 						<div className={s.popperContent}>
+							{!searchResults?.members?.length && !searchResults?.units?.length && !searchResults?.teams?.length && !searchResults?.projects?.length && (
+								<div className={cn(s.searchTitle, 'text-align-center')}>По вашему запросу ничего не найдено</div>
+							)}
 							{searchResults.members && searchResults.members.length > 0 && (
 								<>
 									<div className={cn(s.searchTitle, 'no-margin-top')}>Сотрудники</div>

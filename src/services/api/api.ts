@@ -18,7 +18,7 @@ import searchResults from './mockups/search-results.json'
 import { UnitInterface, UnitDetailInterface } from '../../store/ducks/units/contracts/state'
 import { ProjectInterface, ProjectDetailInterface } from '../../store/ducks/projects/contracts/state'
 import { SquadMemberInterface } from '../../store/ducks/teams/contracts/state'
-import { LoginRequestInterface, ResponseInterface, SearchRequestInterface, StandartRequestInterface } from './interfaces'
+import { LoginRequestInterface, ResponseErrorInterface, ResponseInterface, SearchRequestInterface, StandartRequestInterface } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllNotificationDataInterface, NotificationDataInterface, NotificationDetailInterface } from '../../store/ducks/notifications/contracts/state'
 import { TokenService } from '../helpers/token'
@@ -58,14 +58,14 @@ instance.interceptors.response.use(
 	},
 )
 export const GlobalApi = {
-	async login(requestData: LoginRequestInterface): Promise<UserInterface> {
+	async login(requestData: LoginRequestInterface): Promise<UserInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return user.data
 		}
 		const { data } = await instance.post<ResponseInterface<UserInterface>>('/login', requestData)
 		return data.data
 	},
-	async getSearch(requestData: SearchRequestInterface): Promise<SearchResultsInterface> {
+	async getSearch(requestData: SearchRequestInterface): Promise<SearchResultsInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return searchResults.data
 		}
@@ -75,17 +75,17 @@ export const GlobalApi = {
 }
 
 export const NotificationsApi = {
-	async getNotifications(): Promise<NotificationDataInterface> {
+	async getNotifications(): Promise<NotificationDataInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login')
 		//return data.data
 		return notifications.data
 	},
-	async getAllNotifications(): Promise<AllNotificationDataInterface> {
+	async getAllNotifications(): Promise<AllNotificationDataInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return allNotifications.data
 	},
-	async getNotificationData(requestData: StandartRequestInterface): Promise<NotificationDetailInterface> {
+	async getNotificationData(requestData: StandartRequestInterface): Promise<NotificationDetailInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return notificationDetail.data
@@ -93,24 +93,31 @@ export const NotificationsApi = {
 }
 
 export const ProfileApi = {
-	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface> {
+	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return profile.data
 		}
 		const { data } = await instance.get<ResponseInterface<ProfileDataInterface>>(`/users/${requestData.id}`)
 		return data.data
 	},
+	async updateProfile(requestData: any, profileId: number) {
+		await instance.put<ResponseInterface<string>>(`/users/${profileId}`, requestData)
+	},
+	async uploadPhoto(requestData: FormData): Promise<string> {
+		const { data } = await instance.post<ResponseInterface<string>>(`/fileLoader`, requestData)
+		return data.data
+	},
 }
 
 export const UnitsApi = {
-	async getUnits(): Promise<UnitInterface[]> {
+	async getUnits(): Promise<UnitInterface[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return units.data
 		}
 		const { data } = await instance.get('/units')
 		return data.data
 	},
-	async getUnitData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
+	async getUnitData(requestData: StandartRequestInterface): Promise<UnitDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return unitDetail.data
 		}
@@ -120,40 +127,44 @@ export const UnitsApi = {
 }
 
 export const TeamsApi = {
-	async getAllMembers(): Promise<SquadMemberInterface[]> {
-		/*const { data } = await instance.get('/teams')
-		return data.data*/
-		return allMembers.data
+	async getAllMembers(): Promise<SquadMemberInterface[] | ResponseErrorInterface> {
+		if (DEV_MODE) {
+			return allMembers.data
+		}
+		const { data } = await instance.get('/users')
+		return data.data
 	},
-	async getTeams(): Promise<UnitInterface[]> {
+	async getTeams(): Promise<UnitInterface[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return teams.data
 		}
 		const { data } = await instance.get<ResponseInterface<UnitInterface[]>>('/teams')
 		return data.data
 	},
-	async getTeamData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
+	async getTeamData(requestData: StandartRequestInterface): Promise<UnitDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return teamDetail.data
 		}
 		const { data } = await instance.get<ResponseInterface<UnitDetailInterface>>(`/teams/${requestData.id}`)
 		return data.data
 	},
-	async getTeamSquadData(requestData: StandartRequestInterface): Promise<UnitDetailInterface> {
+	async getTeamSquadData(requestData: StandartRequestInterface): Promise<UnitDetailInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return teamSquad.data
 	},
 }
 export const ProjectsApi = {
-	async getProjects(): Promise<ProjectInterface[]> {
+	async getProjects(): Promise<ProjectInterface[] | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return projects.data
 	},
-	async getProjectData(requestData: StandartRequestInterface): Promise<ProjectDetailInterface> {
+	async getProjectData(requestData: StandartRequestInterface): Promise<ProjectDetailInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
 		//return data.data
 		return project.data
 	},
 }
+
+export const SlackApi = {}

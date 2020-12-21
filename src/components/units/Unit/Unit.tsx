@@ -43,7 +43,7 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 				</>
 			)}
 
-			{unit.subUnits && (
+			{unit?.subUnits?.length && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">Подотделы ({unit.subUnits.length})</div>
 					{unit.subUnits.map((sub) => (

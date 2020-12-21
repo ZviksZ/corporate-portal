@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { GetProfileActionInterface, ProfileActionsType } from './contracts/actionTypes'
+import { GetProfileActionInterface, ProfileActionsType, UpdateProfileActionInterface, UpdateProfilePhotoActionInterface } from './contracts/actionTypes'
 import { ProfileApi } from '../../../services/api/api'
 import { setLoadingProfile, setProfile } from './actionCreators'
 import { setGlobalMessage } from '../global/actionCreators'
@@ -13,13 +13,46 @@ export function* getProfileRequest({ payload }: GetProfileActionInterface) {
 		if (profile && profile.id) {
 			yield put(setProfile(profile, payload.isPersonalProfile))
 			yield put(setLoadingProfile(LoadingStatus.LOADED))
+		} else {
+			yield put(setLoadingProfile(LoadingStatus.ERROR))
+			yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 		}
 	} catch (error) {
 		yield put(setLoadingProfile(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
+export function* updateProfilePhotoRequest({ payload, profileId }: UpdateProfilePhotoActionInterface) {
+	try {
+		const formData = new FormData()
+		if (payload) {
+			formData.append('file', payload)
+		}
+		const uploadImage = yield call(ProfileApi.uploadPhoto, formData)
+		if (uploadImage) {
+			yield call(ProfileApi.updateProfile, { photo: uploadImage }, profileId)
+		}
+	} catch (error) {
+		yield put(setLoadingProfile(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке фотографии. Попробуйте снова', type: 'error' }))
+	}
+}
+export function* updateProfileRequest({ payload, profileId, isPersonalProfile }: UpdateProfileActionInterface) {
+	try {
+		yield call(ProfileApi.updateProfile, payload, profileId)
+		const profile = yield call(ProfileApi.getProfile, { id: profileId })
+
+		if (profile && profile.id) {
+			yield put(setProfile(profile, isPersonalProfile))
+		}
+	} catch (error) {
+		yield put(setLoadingProfile(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при обновлении профиля. Попробуйте снова', type: 'error' }))
+	}
+}
 
 export function* profileSaga() {
 	yield takeLatest(ProfileActionsType.GET_PROFILE, getProfileRequest)
+	yield takeLatest(ProfileActionsType.UPDATE_PROFILE_PHOTO, updateProfilePhotoRequest)
+	yield takeLatest(ProfileActionsType.UPDATE_PROFILE, updateProfileRequest)
 }

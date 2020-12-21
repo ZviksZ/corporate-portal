@@ -7,6 +7,8 @@ export enum ProfileActionsType {
 	GET_PROFILE = 'profile/GET_PROFILE',
 	SET_PROFILE = 'profile/SET_PROFILE',
 	SET_LOADING_STATE = 'profile/SET_LOADING_STATE',
+	UPDATE_PROFILE_PHOTO = 'profile/UPDATE_PROFILE_PHOTO',
+	UPDATE_PROFILE = 'profile/UPDATE_PROFILE',
 }
 
 export interface GetProfileActionInterface extends Action<ProfileActionsType> {
@@ -23,6 +25,17 @@ export interface SetProfileActionInterface extends Action<ProfileActionsType> {
 		profileData: ProfileDataInterface | null
 		isPersonalProfile: boolean
 	}
+}
+export interface UpdateProfilePhotoActionInterface extends Action<ProfileActionsType> {
+	type: ProfileActionsType.UPDATE_PROFILE_PHOTO
+	payload: File,
+	profileId: number
+}
+export interface UpdateProfileActionInterface extends Action<ProfileActionsType> {
+	type: ProfileActionsType.UPDATE_PROFILE
+	payload: any,
+	profileId: number,
+	isPersonalProfile: boolean
 }
 
 export interface SetLoadingProfileActionInterface extends Action<ProfileActionsType> {

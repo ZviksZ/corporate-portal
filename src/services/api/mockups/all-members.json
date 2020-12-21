@@ -6,21 +6,21 @@
       "id": "8f625ff6bd97609c15525e2b4",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "position": "Руководитель",
-      "department": "Департамент 1166"
+      "departament": "Департамент 1166"
     },
     {
       "name": "Колесников Иван",
       "id": "8f625ff6bd97209c15525e2b4",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "position": "Руководитель",
-      "department": "Департамент 1165"
+      "departament": "Департамент 1165"
     },
     {
       "name": "Колесников Павел",
       "id": "8f625ff6bd9409c15525e2b4",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "position": "Руководитель",
-      "department": "Департамент 1164"
+      "departament": "Департамент 1164"
     }
   ]
 }

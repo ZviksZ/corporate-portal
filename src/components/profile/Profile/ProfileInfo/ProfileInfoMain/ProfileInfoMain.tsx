@@ -4,7 +4,7 @@ import cn from 'classnames'
 import { FormControlLabel, TextField } from '@material-ui/core'
 import Checkbox from '@material-ui/core/Checkbox'
 import { ClipboardCopy } from '../../../../common/ClipboardCopy/ClipboardCopy'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 import { getFormatedDate } from '../../../../../services/helpers/utils'
 import { useEffect, useState } from 'react'
@@ -15,12 +15,14 @@ import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import { updateProfile } from '../../../../../store/ducks/profile/actionCreators'
 
 type Props = {
 	isMyProfile: boolean
 }
 export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
-	const { profileData } = useSelector(selectProfile)
+	const dispatch = useDispatch()
+	const { profileData, isPersonalProfile } = useSelector(selectProfile)
 	const [openFormButtons, setOpenFormButtons] = useState(false)
 	const [size, setSize] = React.useState('')
 	const [phone, setPhone] = React.useState('')
@@ -38,8 +40,11 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 	const handleChangePhone = (event: React.ChangeEvent<{ value: unknown }>) => {
 		setPhone(event.target.value as string)
 	}
-	const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+	const handleChangeSize = (event: React.ChangeEvent<{ value: unknown }>) => {
 		setSize(event.target.value as string)
+	}
+	const handleChangeShowbirth = (event: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(updateProfile({ showBirthYear: event.target.checked }, profileData.id, isPersonalProfile))
 	}
 
 	const openPhoneEdit = () => {
@@ -59,12 +64,20 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 		setEditSize(false)
 	}
 
+	const saveChanges = () => {
+		let data
+		if (editPhone) {
+			data = { mobile: phone }
+		} else if (editSize) {
+			data = { size: size }
+		}
+		dispatch(updateProfile(data, profileData.id, isPersonalProfile))
+		setOpenFormButtons(false)
+	}
+
 	const main = profileData.contacts
 	const isShowBirthday = +main.showBirthYear
 
-
-
-	const showDateChange = () => {}
 	return (
 		<>
 			<div className={s.profileMain}>
@@ -74,7 +87,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 						<div className="sectionSubtitle">День рождения</div>
 						<p className={cn('sectionText', 'sectionTextWith', s.profileBirthday)}>
 							<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
-							{isMyProfile && <FormControlLabel control={<Checkbox onChange={showDateChange} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />}
+							{isMyProfile && <FormControlLabel control={<Checkbox onChange={handleChangeShowbirth} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />}
 						</p>
 					</>
 				)}
@@ -131,7 +144,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 							<>
 								<FormControl fullWidth variant="outlined" className="margin-bottom-x2">
 									<InputLabel id="simple-select-outlined-label">Размер футболки</InputLabel>
-									<Select labelId="simple-select-outlined-label" id="simple-select-outlined" value={size} onChange={handleChange} label="Размер футболки">
+									<Select labelId="simple-select-outlined-label" id="simple-select-outlined" value={size} onChange={handleChangeSize} label="Размер футболки">
 										<MenuItem value={'S'}>S</MenuItem>
 										<MenuItem value={'M'}>M</MenuItem>
 										<MenuItem value={'L'}>L</MenuItem>
@@ -165,12 +178,12 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 					</>
 				)}
 			</div>
-			<AppBar className={cn('navbar',s.appbarBottom, { [s.appbarBottomShow]: openFormButtons })} position="fixed" color="default">
+			<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: openFormButtons })} position="fixed" color="default">
 				<Toolbar className={cn(s.editButtons)}>
 					<Button size="large" className="btn btn-default text-uppercase" onClick={closeEdit}>
 						ОТМЕНА
 					</Button>
-					<Button size="large" className="btn margin-left-x3 text-uppercase">
+					<Button size="large" className="btn margin-left-x3 text-uppercase" onClick={saveChanges}>
 						Сохранить
 					</Button>
 				</Toolbar>

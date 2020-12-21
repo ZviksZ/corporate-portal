@@ -1,6 +1,6 @@
 import produce, { Draft } from 'immer'
 import { ProfileStateInterface } from './contracts/state'
-import { GlobalActions } from './actionCreators'
+import { ProfileActions } from './actionCreators'
 import { ProfileActionsType } from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
 
@@ -9,7 +9,7 @@ const initialProfileState: ProfileStateInterface = {
 	isPersonalProfile: true,
 	LoadingStatus: LoadingStatus.NEVER,
 }
-export const profileReducer = produce((draft: Draft<ProfileStateInterface>, action: GlobalActions) => {
+export const profileReducer = produce((draft: Draft<ProfileStateInterface>, action: ProfileActions) => {
 	switch (action.type) {
 		case ProfileActionsType.SET_PROFILE:
 			draft.profileData = action.payload.profileData

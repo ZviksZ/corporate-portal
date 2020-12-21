@@ -25,7 +25,6 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 			yield put(setGlobalLoading(LoadingStatus.ERROR))
 			yield put(setGlobalMessage({ text: 'Ошибка авторизации. Попробуйте еще раз', type: 'error' }))
 		}
-
 	} catch (error) {
 		yield put(setGlobalLoading(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка авторизации. Попробуйте еще раз', type: 'error' }))
@@ -58,9 +57,7 @@ export function* getSearchRequest({ query }: GetSearchActionInterface) {
 		const results = yield call(GlobalApi.getSearch, { query })
 
 		yield put(setSearch(results))
-	} catch (error) {
-		//yield put(setGlobalMessage({ text: 'Error. Try again', type: 'error' }))
-	}
+	} catch (error) {}
 }
 
 export function* globalSaga() {

@@ -5,7 +5,8 @@ export interface SquadMemberInterface {
 	name: string
 	id: string
 	photo: string
-	department: string
+	departament?: string
+	department?: string
 	position: string
 	role?: string
 }

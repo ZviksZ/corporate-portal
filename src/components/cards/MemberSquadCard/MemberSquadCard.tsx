@@ -32,19 +32,19 @@ export const MemberSquadCard: React.FC<Props> = ({ member, showRole = false, isT
 	return (
 		<NavLink to={`/profile/${member.id}`} className={s.squadCard}>
 			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member?.photo || ''}>
-				{getInitialsFromName(member.name)}
+				{getInitialsFromName(member?.name)}
 			</Avatar>
 			<div className={s.squadCardItem}>
 				<div className={cn('sectionSubtitle', s.subtitle)}>ФИО</div>
-				<div className="sectionText sectionTextSmall no-margin-bottom">{member.name}</div>
+				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.name || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
 				<div className={cn('sectionSubtitle', s.subtitle)}>Подразделение</div>
-				<div className="sectionText sectionTextSmall no-margin-bottom">{member.department}</div>
+				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.department || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
 				<div className={cn('sectionSubtitle', s.subtitle)}>Должность</div>
-				<div className="sectionText sectionTextSmall no-margin-bottom">{member.position}</div>
+				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.position || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
 				{showRole && (

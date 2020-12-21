@@ -15,36 +15,47 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 	}
 	return (
 		<div className={s.memberContacts}>
-			<div className="sectionSubtitle">Контактный Email</div>
-			<p className={cn('sectionText', 'sectionTextWith')}>
-				<object type="owo/uwu">
-					<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.email} className="sectionTextContent">
-						{member.email}
-					</a>
-				</object>
-
-				<ClipboardCopy text={member.email || ''} />
-			</p>
-			<div className="sectionSubtitle">Мобильный телефон</div>
-			<object type="owo/uwu">
-				<p className={cn('sectionText', 'sectionTextWith', s.phones)}>
-					{member.mobilePhone &&
-						member.mobilePhone.split(',').map((item, index) => (
-							<a onClick={(e) => e.stopPropagation()} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
-								{item}
+			{member.email && (
+				<>
+					<div className="sectionSubtitle">Контактный Email</div>
+					<p className={cn('sectionText', 'sectionTextWith')}>
+						<object type="owo/uwu">
+							<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.email} className="sectionTextContent">
+								{member.email}
 							</a>
-						))}
-				</p>
-			</object>
-			<p className={cn('sectionText', 'sectionTextWith', 'no-margin-bottom')}>
-				<img src={slack} className="sectionTextLogo" alt="" />
-				<object type="owo/uwu">
-					<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.slackEmail} className="sectionTextContent">
-						{member.slackEmail}
-					</a>
-				</object>
-				<ClipboardCopy text={member.slackEmail || ''} />
-			</p>
+						</object>
+
+						<ClipboardCopy text={member.email || ''} />
+					</p>
+				</>
+			)}
+			{member.mobilePhone && (
+				<>
+					<div className="sectionSubtitle">Мобильный телефон</div>
+					<object type="owo/uwu">
+						<p className={cn('sectionText', 'sectionTextWith', s.phones)}>
+							{member.mobilePhone.split(',').map((item, index) => (
+								<a onClick={(e) => e.stopPropagation()} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
+									{item}
+								</a>
+							))}
+						</p>
+					</object>
+				</>
+			)}
+			{member.slackEmail && (
+				<>
+					<p className={cn('sectionText', 'sectionTextWith', 'no-margin-bottom')}>
+						<img src={slack} className="sectionTextLogo" alt="" />
+						<object type="owo/uwu">
+							<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.slackEmail} className="sectionTextContent">
+								{member.slackEmail}
+							</a>
+						</object>
+						<ClipboardCopy text={member.slackEmail || ''} />
+					</p>
+				</>
+			)}
 		</div>
 	)
 }

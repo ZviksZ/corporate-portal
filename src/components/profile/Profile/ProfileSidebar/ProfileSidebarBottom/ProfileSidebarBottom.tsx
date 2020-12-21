@@ -58,9 +58,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 						+ Заявление на отпуск/больничный
 					</Button>
 
-					<div className={s.applications}>
-						{time.vacation &&
-							time.vacation.map((item, index) => {
+					{time.vacation && (
+						<div className={s.applications}>
+							{time.vacation.map((item, index) => {
 								if (index > 0) {
 									return (
 										<div key={item?.dateStart || index + index} className={s.appItem}>
@@ -70,7 +70,8 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 									)
 								}
 							})}
-					</div>
+						</div>
+					)}
 				</>
 			)}
 		</div>
