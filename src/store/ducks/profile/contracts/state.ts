@@ -6,11 +6,15 @@ export interface SocialsInterface {
 	link: string
 }
 export interface FromToInterface {
+	from: string
+	to: string
+	status?: string
+}
+export interface StartEndInterface {
 	dateStart: string
 	dateEnd: string
 	status?: string
 }
-
 export interface BusyPeriodsInterface {
 	id: number
 	exchange_id: string
@@ -21,7 +25,7 @@ export interface BusyPeriodsInterface {
 export interface SimpleMemberUnitInterface {
 	name: string
 	id: string
-	photo?: string
+	photo?: string | null
 }
 export interface TeamInterface {
 	id: string

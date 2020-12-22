@@ -10,7 +10,7 @@ import {
 import { LoadingStatus } from '../../types'
 import { GlobalActionsType, SetLoadingActionInterface } from '../global/contracts/actionTypes'
 
-export const getProfile = (id: string, isPersonalProfile: boolean): GetProfileActionInterface => ({
+export const getProfile = (id: string | number, isPersonalProfile: boolean): GetProfileActionInterface => ({
 	type: ProfileActionsType.GET_PROFILE,
 	payload: {
 		id,
@@ -29,7 +29,7 @@ export const setLoadingProfile = (payload: LoadingStatus): SetLoadingProfileActi
 	type: ProfileActionsType.SET_LOADING_STATE,
 	payload,
 })
-export const updateProfilePhoto = (payload: File | null, profileId: number, isCreate: boolean): UpdateProfilePhotoActionInterface => ({
+export const updateProfilePhoto = (payload: File | string | null, profileId: number, isCreate: boolean): UpdateProfilePhotoActionInterface => ({
 	type: ProfileActionsType.UPDATE_PROFILE_PHOTO,
 	payload,
 	profileId,

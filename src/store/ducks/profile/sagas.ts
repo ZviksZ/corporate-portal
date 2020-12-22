@@ -38,7 +38,7 @@ export function* updateProfilePhotoRequest({ payload, profileId, isCreate }: Upd
 				}
 			}
 		} else {
-			yield call(ProfileApi.updateUserPhoto, { path: null, userId: profileId })
+			yield call(ProfileApi.updateUserPhoto, { path: '', userId: profileId })
 		}
 		const profile = yield call(ProfileApi.getProfile, { id: profileId })
 

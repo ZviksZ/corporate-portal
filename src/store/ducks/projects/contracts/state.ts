@@ -4,10 +4,9 @@ import { LoadingStatus } from '../../../types'
 export interface ProjectInterface {
 	id: string
 	name: string
-	lead: MemberDetailInterface
-	owner: MemberDetailInterface
-	wiki: string
-	jiraLink: string
+	lead: MemberDetailInterface | null
+	owner: MemberDetailInterface | null
+	wikilink: string | null
 	members: {
 		size: number
 		list: MemberDetailInterface[]
@@ -16,10 +15,9 @@ export interface ProjectInterface {
 export interface ProjectDetailInterface {
 	id: string
 	name: string
-	wiki: string
-	jiraLink: string
-	lead: MemberDetailInterface
-	owner: MemberDetailInterface
+	wikilink: string | null
+	lead: MemberDetailInterface | null
+	owner: MemberDetailInterface | null
 	members: {
 		size: number
 		list: MemberDetailInterface[]

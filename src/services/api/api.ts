@@ -76,9 +76,11 @@ export const GlobalApi = {
 
 export const AbsencesApi = {
 	async getAbsences(): Promise<AbsenceDataInterface | ResponseErrorInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login')
-		//return data.data
-		return notifications.data
+		if (DEV_MODE) {
+			return notifications.data
+		}
+		const { data } = await instance.get<ResponseInterface<any>>('/absences')
+		return data.data
 	},
 	async getAllAbsences(): Promise<AllAbsenceDataInterface | ResponseErrorInterface> {
 		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
@@ -167,14 +169,18 @@ export const TeamsApi = {
 }
 export const ProjectsApi = {
 	async getProjects(): Promise<ProjectInterface[] | ResponseErrorInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return projects.data
+		if (DEV_MODE) {
+			return projects.data
+		}
+		const { data } = await instance.get<ResponseInterface<ProjectInterface[]>>('/projects')
+		return data.data
 	},
 	async getProjectData(requestData: StandartRequestInterface): Promise<ProjectDetailInterface | ResponseErrorInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return project.data
+		if (DEV_MODE) {
+			return project.data
+		}
+		const { data } = await instance.get<ResponseInterface<ProjectDetailInterface>>(`/projects/${requestData.id}`)
+		return data.data
 	},
 }
 

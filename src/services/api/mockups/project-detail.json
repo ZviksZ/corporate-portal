@@ -3,8 +3,7 @@
   "data": {
     "id": "6f625ff6bd97609",
     "name": "Разработка мобильного приложения на iOS",
-    "wiki": "http://wiki.com",
-    "jiraLink": "http://jira.com",
+    "wikilink": "http://wiki.com",
     "owner": {
       "name": "Артем Иванов",
       "id": "10f625ff6bd97609c15525e2b4",

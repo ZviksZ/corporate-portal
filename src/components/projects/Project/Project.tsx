@@ -26,22 +26,28 @@ export const Project: React.FC<Props> = ({ project }) => {
 			</Breadcrumbs>
 			<h1 className="section-title-small no-margin-top no-margin-bottom">{project.name}</h1>
 			<div className="d-flex align-item-center margin-top-x2 margin-bottom">
-				<a href={project.wiki} className="link-with-icon" rel="noreferrer" target="_blank">
-					<img src={wiki} alt="" width={'18px'} />
-					<span>Страница в Wiki</span>
-				</a>
-				<a href={project.jiraLink} className="link-with-icon margin-left-x2" rel="noreferrer" target="_blank">
-					<img src={jira} alt="" width={'18px'} />
-					<span>Страница в Jira</span>
-				</a>
+				{project.wikilink && (
+					<a href={project.wikilink} className="link-with-icon" rel="noreferrer" target="_blank">
+						<img src={wiki} alt="" width={'18px'} />
+						<span>Страница в Wiki</span>
+					</a>
+				)}
 			</div>
 
-			<div className="sectionBigSubtitle margin-top-x3 text-uppercase">Технический руководитель</div>
-			<MemberCard member={project.lead} />
-			<div className="sectionBigSubtitle margin-top-x2 text-uppercase">Бизнес-владелец</div>
-			<MemberCard member={project.owner} />
+			{project.lead && (
+				<>
+					<div className="sectionBigSubtitle margin-top-x3 text-uppercase">Технический руководитель</div>
+					<MemberCard member={project.lead} />
+				</>
+			)}
+			{project.owner && (
+				<>
+					<div className="sectionBigSubtitle margin-top-x2 text-uppercase">Бизнес-владелец</div>
+					<MemberCard member={project.owner} />
+				</>
+			)}
 
-			{project.members && project.members.list && (
+			{project?.members?.list?.length > 0 && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">
 						<span>команда ({project.members.list.length})</span>

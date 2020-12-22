@@ -44,6 +44,9 @@
         .item + .item {
             margin-left: 90px;
         }
+        .item:first-child {
+            margin-left: auto;
+        }
         .memberItem {
             width: 238px;
         }
@@ -90,6 +93,9 @@
             .item + .item {
                 margin-left: 0;
                 margin-top: 10px;
+            }
+            .memberItem {
+                margin-left: 0;
             }
         }
     }

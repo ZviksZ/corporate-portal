@@ -4,15 +4,10 @@ import { Avatar, DialogActions } from '@material-ui/core'
 import cn from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
-import { MemberSocials } from '../../../../cards/MemberSocials/MemberSocials'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import Button from '@material-ui/core/Button'
 import { useEffect, useState } from 'react'
-import { ProfileApi } from '../../../../../services/api/api'
-import { setGlobalMessage } from '../../../../../store/ducks/global/actionCreators'
 import { updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
 
 export const ProfileSidebarTop: React.FC = () => {
@@ -23,13 +18,11 @@ export const ProfileSidebarTop: React.FC = () => {
 
 	useEffect(() => {
 		if (profileData && profileData.id && files && files[0]) {
-			if (!profileData.photo) {
+			if (profileData.photo == null) {
 				dispatch(updateProfilePhoto(files[0], profileData.id, true))
 			} else {
 				dispatch(updateProfilePhoto(files[0], profileData.id, false))
 			}
-
-
 		}
 	}, [files])
 
@@ -39,6 +32,7 @@ export const ProfileSidebarTop: React.FC = () => {
 
 	const deleteImage = () => {
 		dispatch(updateProfilePhoto(null, profileData.id, false))
+		setOpen(false)
 	}
 
 	const handleClickOpen = () => {

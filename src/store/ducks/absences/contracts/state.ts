@@ -1,8 +1,8 @@
-import { FromToInterface } from '../../profile/contracts/state'
+import { FromToInterface, StartEndInterface } from '../../profile/contracts/state'
 import { LoadingStatus } from '../../../types'
 
 export interface AbsenceCreateInterface {
-	absencseType: string
+	absenseType: string
 	dateStart: string
 	dateEnd: string
 	user: number
@@ -33,8 +33,8 @@ export interface AbsenceDetailInterface {
 	name: string
 	authorImage: string
 	authorId: string
-	applicationDates: FromToInterface
-	vacationGraphic: FromToInterface
+	applicationDates: StartEndInterface
+	vacationGraphic: StartEndInterface
 	vacationDays: string
 	corporateDays: string
 }

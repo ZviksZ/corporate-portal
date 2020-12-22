@@ -14,7 +14,7 @@ export enum ProfileActionsType {
 export interface GetProfileActionInterface extends Action<ProfileActionsType> {
 	type: ProfileActionsType.GET_PROFILE
 	payload: {
-		id: string
+		id: string | number
 		isPersonalProfile: boolean
 	}
 
@@ -28,7 +28,7 @@ export interface SetProfileActionInterface extends Action<ProfileActionsType> {
 }
 export interface UpdateProfilePhotoActionInterface extends Action<ProfileActionsType> {
 	type: ProfileActionsType.UPDATE_PROFILE_PHOTO
-	payload: File | null,
+	payload: File | string | null,
 	profileId: number,
 	isCreate: boolean
 }

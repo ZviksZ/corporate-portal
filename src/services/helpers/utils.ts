@@ -117,16 +117,13 @@ export function copyTextToClipboard(e) {
 export function getStatusText(status: string | number) {
 	let text = ''
 	switch (status) {
-		case '0':
-		case 0:
+		case 'new':
 			text = 'На согласовании'
 			break
-		case '1':
-		case 1:
+		case 'approved':
 			text = 'Согласовано'
 			break
-		case '2':
-		case 2:
+		case 'declined':
 			text = 'Не согласовано'
 			break
 		default:

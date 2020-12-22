@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Grid from '@material-ui/core/Grid'
 import { profileApplicationSchema } from '../../../../services/helpers/validations'
-import s from './ApplicationForm.module.scss'
+import s from './AbsencesForm.module.scss'
 import ruLocale from 'date-fns/locale/ru'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import { useEffect, useState } from 'react'
@@ -19,6 +19,8 @@ import Select from '@material-ui/core/Select'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { AbsenceCreateInterface } from '../../../../store/ducks/absences/contracts/state'
 import { createAbsence } from '../../../../store/ducks/absences/actionCreators'
+import { getProfile } from '../../../../store/ducks/profile/actionCreators'
+import { selectProfile } from '../../../../store/ducks/profile/selectors'
 
 interface IFormInputs {
 	dateFrom: dateFns
@@ -30,8 +32,9 @@ type Props = {
 	onClose: (param: boolean) => void
 }
 
-export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
+export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 	const { user } = useSelector(selectGlobal)
+	const { profileData, isPersonalProfile } = useSelector(selectProfile)
 	const dispatch = useDispatch()
 
 	const { control, register, handleSubmit, errors, getValues } = useForm<IFormInputs>({
@@ -43,7 +46,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 	const [maxDateTo, setMaxDateTo] = useState<any>(null)
 	const [type, setType] = useState('')
 
-	useEffect(() => {
+	/*useEffect(() => {
 		if (type == '4') {
 			const values = getValues()
 			const newDate = new Date(addDaysToDate(values.dateFrom, 3))
@@ -53,7 +56,7 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 		} else {
 			setMaxDateTo(null)
 		}
-	}, [type, selectedDateFrom])
+	}, [type, selectedDateFrom])*/
 
 	const handleDateFromChange = (date: any) => {
 		if (date < selectedDateTo) {
@@ -70,19 +73,19 @@ export const ApplicationForm: React.FC<Props> = ({ onClose }) => {
 	}
 
 	const onSubmit = (data: IFormInputs) => {
-		if (user && user.id) {
+		if (user && user.id && profileData) {
 			const formData: AbsenceCreateInterface = {
 				dateEnd: formatDate(selectedDateTo, true),
 				dateStart: formatDate(selectedDateFrom, true),
 				user: user.id,
-				absencseType: data.type,
+				absenseType: data.type,
 				status: 'new',
 			}
 			dispatch(createAbsence(formData))
+			dispatch(getProfile(profileData.id, isPersonalProfile))
 
 			onClose(false)
 		}
-
 	}
 
 	useEffect(() => {

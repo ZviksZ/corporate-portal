@@ -1,11 +1,11 @@
-import { FromToInterface } from '../../profile/contracts/state'
+import { FromToInterface, StartEndInterface } from '../../profile/contracts/state'
 import { LoadingStatus } from '../../../types'
 
 export interface MemberDetailInterface {
 	name: string
 	id: string
 	photo: string
-	employment?: FromToInterface[]
+	employment?: StartEndInterface[]
 	position?: string
 	openTasksLink?: string
 	email?: string

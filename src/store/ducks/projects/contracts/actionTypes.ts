@@ -1,7 +1,6 @@
 import { Action } from 'redux'
 import { ProjectInterface, ProjectDetailInterface } from './state'
 import { LoadingStatus } from '../../../types'
-import { ProfileActionsType } from '../../profile/contracts/actionTypes'
 
 export enum ProjectsActionsType {
 	GET_PROJECTS = 'projects/GET_PROJECTS',

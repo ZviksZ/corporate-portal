@@ -4,8 +4,7 @@
     {
       "id": "6f625ff6bd97609",
       "name": "Проект 1",
-      "wiki": "http://wiki.com",
-      "jiraLink": "http://jira.com",
+      "wikilink": "http://wiki.com",
       "owner": {
         "name": "Константинопольский Константин",
         "id": "8f625ff6afaf09c15525e2b4",
@@ -35,8 +34,7 @@
     {
       "id": "7f625ff6bd97609",
       "name": "Проект 2",
-      "wiki": "http://wiki.com",
-      "jiraLink": "http://jira.com",
+      "wikilink": "http://wiki.com",
       "owner": {
         "name": "Константинопольский Константин",
         "id": "8f625ff6afaf09c15525e2b4",
