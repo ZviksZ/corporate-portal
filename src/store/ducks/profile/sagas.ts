@@ -44,6 +44,7 @@ export function* updateProfilePhotoRequest({ payload, profileId, isCreate }: Upd
 
 		if (profile && profile.id) {
 			yield put(setProfile(profile, storeData.profile.isPersonalProfile))
+			yield put(setGlobalMessage({ text: 'Фотография профиля успешно обновлена', type: 'success' }))
 		}
 	} catch (error) {
 		yield put(setLoadingProfile(LoadingStatus.ERROR))
@@ -57,6 +58,7 @@ export function* updateProfileRequest({ payload, profileId, isPersonalProfile }:
 
 		if (profile && profile.id) {
 			yield put(setProfile(profile, isPersonalProfile))
+			yield put(setGlobalMessage({ text: 'Профиль успешно обновлен', type: 'success' }))
 		}
 	} catch (error) {
 		yield put(setLoadingProfile(LoadingStatus.ERROR))

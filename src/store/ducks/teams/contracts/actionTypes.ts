@@ -15,6 +15,8 @@ export enum TeamsActionsType {
 	SET_TEAM_SQUAD_SEARCH = 'teams/SET_TEAM_SQUAD_SEARCH',
 	GET_MEMBERS = 'teams/GET_MEMBERS',
 	SET_MEMBERS = 'teams/SET_MEMBERS',
+	GET_AVAILABLE_MEMBERS = 'teams/GET_AVAILABLE_MEMBERS',
+	SET_AVAILABLE_MEMBERS = 'teams/SET_AVAILABLE_MEMBERS',
 	ADD_TEAM_MEMBER = 'teams/ADD_TEAM_MEMBER',
 	REMOVE_TEAM_MEMBER = 'teams/REMOVE_TEAM_MEMBER',
 	SET_LOADING_STATE = 'teams/SET_LOADING_STATE',
@@ -71,4 +73,14 @@ export interface SetTeamSquadSearchActionInterface extends Action<TeamsActionsTy
 export interface SetLoadingTeamsActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_LOADING_STATE
 	payload: LoadingStatus
+}
+
+
+export interface GetAvailableAvailableMembersActionInterface extends Action<TeamsActionsType> {
+	type: TeamsActionsType.GET_AVAILABLE_MEMBERS,
+	teamId: string | number
+}
+export interface SetAvailableMembersActionInterface extends Action<TeamsActionsType> {
+	type: TeamsActionsType.SET_AVAILABLE_MEMBERS
+	payload: SquadMemberInterface[] | null
 }

@@ -28,5 +28,6 @@ export interface TeamsStateInterface {
 	teamSquadSearch: string
 	roleFormData: MemberDetailInterface | null
 	allMembers: SquadMemberInterface[] | null
+	availableMembers: SquadMemberInterface[] | null
 	LoadingStatus: LoadingStatus
 }

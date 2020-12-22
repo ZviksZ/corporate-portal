@@ -11,7 +11,7 @@ import { ModalBlock } from '../../common/ModalBlock/ModalBlock'
 import { useState } from 'react'
 import { TeamRoleForm } from '../../forms/team/TeamRoleForm/TeamRoleForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { filteredAllMembersList, selectTeams } from '../../../store/ducks/teams/selectors'
+import { filteredAvailableMembersList, filteredTeamMembersList, selectTeams } from '../../../store/ducks/teams/selectors'
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { setTeamSquadSearch } from '../../../store/ducks/teams/actionCreators'
 import AppBar from '@material-ui/core/AppBar'
@@ -21,7 +21,8 @@ export const TeamSquad: React.FC = () => {
 	const dispatch = useDispatch()
 	const [openForm, setOpenForm] = useState(false)
 	const { teamSquad } = useSelector(selectTeams)
-	const filteredMembers = useSelector(filteredAllMembersList)
+	const filteredMembers = useSelector(filteredTeamMembersList)
+	const filteredAvailableMembers = useSelector(filteredAvailableMembersList)
 
 	if (!teamSquad) {
 		return <></>
@@ -62,18 +63,18 @@ export const TeamSquad: React.FC = () => {
 					<MemberSquadCard teamId={teamSquad.id} member={teamSquad.lead} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 				</>
 			)}
-			{teamSquad?.members?.list?.length > 0 && (
+			{filteredMembers && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase margin-top-x2">сотрудники ({teamSquad.members.list.length})</div>
-					{teamSquad.members.list.map((member) => (
+					<div className="sectionBigSubtitle text-uppercase margin-top-x2">сотрудники ({filteredMembers.length})</div>
+					{filteredMembers.map((member) => (
 						<MemberSquadCard teamId={teamSquad.id} key={member.id} member={member} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 					))}
 				</>
 			)}
-			{filteredMembers && (
+			{filteredAvailableMembers && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase margin-top-x2">все сотрудники ({filteredMembers.length})</div>
-					{filteredMembers.map((member: SquadMemberInterface) => (
+					<div className="sectionBigSubtitle text-uppercase margin-top-x2">доступные сотрудники ({filteredAvailableMembers.length})</div>
+					{filteredAvailableMembers.map((member: SquadMemberInterface) => (
 						<MemberSquadCard key={member.id} teamId={teamSquad.id} member={member} openForm={setOpenForm} showRole={false} isTeamMember={false} />
 					))}
 				</>

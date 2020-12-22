@@ -13,6 +13,8 @@ import {
 	SetLoadingTeamsActionInterface,
 	AddTeamMemberActionInterface,
 	RemoveTeamMemberActionInterface,
+	GetAvailableAvailableMembersActionInterface,
+	SetAvailableMembersActionInterface,
 } from './contracts/actionTypes'
 import { UnitInterface, UnitDetailInterface, MemberDetailInterface } from '../units/contracts/state'
 import { SquadMemberInterface, TeamSquadInterface } from './contracts/state'
@@ -72,8 +74,18 @@ export const removeTeamMember = (team_id: string | number, member_id: string | n
 	team_id,
 	member_id,
 })
+export const getAvailableMembers = (teamId: string | number): GetAvailableAvailableMembersActionInterface => ({
+	type: TeamsActionsType.GET_AVAILABLE_MEMBERS,
+	teamId,
+})
+export const setAvailableMembers = (payload: SquadMemberInterface[] | null): SetAvailableMembersActionInterface => ({
+	type: TeamsActionsType.SET_AVAILABLE_MEMBERS,
+	payload,
+})
 
 export type TeamsActions =
+	| GetAvailableAvailableMembersActionInterface
+	| SetAvailableMembersActionInterface
 	| SetLoadingTeamsActionInterface
 	| SetTeamSquadSearchActionInterface
 	| GetMembersActionInterface

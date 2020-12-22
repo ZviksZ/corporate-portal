@@ -3,7 +3,7 @@ import { TeamSquad } from '../../components/teams/TeamSquad/TeamSquad'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { useEffect } from 'react'
-import { getTeamData, getTeamSquad, setTeamData, setTeamSquad } from '../../store/ducks/teams/actionCreators'
+import { getAvailableMembers, getTeamData, getTeamSquad, setTeamData, setTeamSquad } from '../../store/ducks/teams/actionCreators'
 import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsTeamsLoading, selectIsTeamsLoadingError } from '../../store/ducks/teams/selectors'
 import { Button } from '@material-ui/core'
@@ -18,6 +18,7 @@ export const TeamsSquadPage: React.FC = () => {
 	useEffect(() => {
 		if (id) {
 			dispatch(getTeamSquad(id))
+			dispatch(getAvailableMembers(id))
 		}
 		return () => {
 			dispatch(setTeamSquad(null))
@@ -27,6 +28,7 @@ export const TeamsSquadPage: React.FC = () => {
 	const repeatLoading = () => {
 		if (id) {
 			dispatch(getTeamSquad(id))
+			dispatch(getAvailableMembers(id))
 		}
 	}
 

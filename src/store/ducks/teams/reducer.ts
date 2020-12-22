@@ -12,6 +12,7 @@ const initialTeamsState: TeamsStateInterface = {
 	allMembers: null,
 	teamSquadSearch: '',
 	LoadingStatus: LoadingStatus.NEVER,
+	availableMembers: null
 }
 export const teamsReducer = produce((draft: Draft<TeamsStateInterface>, action: TeamsActions) => {
 	switch (action.type) {
@@ -32,6 +33,9 @@ export const teamsReducer = produce((draft: Draft<TeamsStateInterface>, action: 
 			break
 		case TeamsActionsType.SET_MEMBERS:
 			draft.allMembers = action.payload
+			break
+		case TeamsActionsType.SET_AVAILABLE_MEMBERS:
+			draft.availableMembers = action.payload
 			break
 		case TeamsActionsType.SET_TEAM_SQUAD_SEARCH:
 			draft.teamSquadSearch = action.query

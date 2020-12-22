@@ -1,9 +1,17 @@
-import { put, takeLatest, call } from 'redux-saga/effects'
-import { AddTeamMemberActionInterface, GetTeamDataActionInterface, GetTeamSquadActionInterface, RemoveTeamMemberActionInterface, TeamsActionsType } from './contracts/actionTypes'
+import { call, put, takeLatest } from 'redux-saga/effects'
+import {
+	AddTeamMemberActionInterface,
+	GetAvailableAvailableMembersActionInterface,
+	GetTeamDataActionInterface,
+	GetTeamSquadActionInterface,
+	RemoveTeamMemberActionInterface,
+	TeamsActionsType,
+} from './contracts/actionTypes'
 import { TeamsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
-import { getTeamSquad, setLoadingTeams, setMembers, setTeamData, setTeams, setTeamSquad } from './actionCreators'
+import { getAvailableMembers, getTeamSquad, setAvailableMembers, setLoadingTeams, setMembers, setTeamData, setTeams, setTeamSquad } from './actionCreators'
 import { LoadingStatus } from '../../types'
+import { store } from '../../store'
 
 export function* getTeamsRequest() {
 	try {
@@ -15,7 +23,7 @@ export function* getTeamsRequest() {
 	} catch (error) {
 		console.log(error)
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
-		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке списка команд. Попробуйте снова', type: 'error' }))
 	}
 }
 export function* getTeamDataRequest({ id }: GetTeamDataActionInterface) {
@@ -31,19 +39,22 @@ export function* getTeamDataRequest({ id }: GetTeamDataActionInterface) {
 	} catch (error) {
 		console.log(error)
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
-		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке данных команды. Попробуйте снова', type: 'error' }))
 	}
 }
 export function* getTeamSquadRequest({ id }: GetTeamSquadActionInterface) {
 	try {
-		yield put(setLoadingTeams(LoadingStatus.LOADING))
-		const squad = yield call(TeamsApi.getTeamSquadData, { id })
+		const state = store.getState()
+		if (state.teams.LoadingStatus !== LoadingStatus.LOADED) {
+			yield put(setLoadingTeams(LoadingStatus.LOADING))
+		}
+		const squad = yield call(TeamsApi.getTeamData, { id })
 
 		yield put(setTeamSquad(squad))
 		yield put(setLoadingTeams(LoadingStatus.LOADED))
 	} catch (error) {
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
-		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке состава команды. Попробуйте снова', type: 'error' }))
 	}
 }
 export function* getMembersRequest() {
@@ -61,6 +72,7 @@ export function* addMemberRequest({ member_id, team_id }: AddTeamMemberActionInt
 		yield call(TeamsApi.addTeamMember, { member_id, team_id })
 
 		yield put(getTeamSquad(team_id.toString()))
+		yield put(getAvailableMembers(team_id.toString()))
 		yield put(setGlobalMessage({ text: 'Сотрудник успешно добавлен в состав команды', type: 'success' }))
 	} catch (error) {
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
@@ -72,10 +84,22 @@ export function* removeMemberRequest({ member_id, team_id }: RemoveTeamMemberAct
 		yield call(TeamsApi.removeTeamMember, { member_id, team_id })
 
 		yield put(getTeamSquad(team_id.toString()))
+		yield put(getAvailableMembers(team_id.toString()))
 		yield put(setGlobalMessage({ text: 'Сотрудник успешно удален из состава команды', type: 'success' }))
 	} catch (error) {
 		yield put(setLoadingTeams(LoadingStatus.ERROR))
 		yield put(setGlobalMessage({ text: 'Ошибка при удалении члена команды. Попробуйте снова', type: 'error' }))
+	}
+}
+
+export function* getAvailableMembersRequest({ teamId }: GetAvailableAvailableMembersActionInterface) {
+	try {
+		const availableMembers = yield call(TeamsApi.getAvailableMembers, { id: teamId })
+
+		yield put(setAvailableMembers(availableMembers))
+	} catch (error) {
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке доступных сотрудников', type: 'error' }))
 	}
 }
 
@@ -86,4 +110,5 @@ export function* teamsSaga() {
 	yield takeLatest(TeamsActionsType.GET_TEAMS, getTeamsRequest)
 	yield takeLatest(TeamsActionsType.ADD_TEAM_MEMBER, addMemberRequest)
 	yield takeLatest(TeamsActionsType.REMOVE_TEAM_MEMBER, removeMemberRequest)
+	yield takeLatest(TeamsActionsType.GET_AVAILABLE_MEMBERS, getAvailableMembersRequest)
 }

@@ -23,18 +23,24 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 
 	return (
 		<div className={s.sidebarBottom}>
-			<div className="sectionSubtitle">Занятость на текущий день</div>
-			<ul className={cn('sectionList', s.employmentList)}>
-				{time.employment.map((item, key) => (
-					<li className="sectionListItem" key={key + item.from + item.to}>
-						с {item.from} до {item.to}
-					</li>
-				))}
-			</ul>
-			<a href={time.openTasksLink} className="link-with-icon margin-bottom">
-				<img src={jira} alt="" width={'18px'} />
-				<span>Открытые задачи</span>
-			</a>
+			{time.employment && time.employment.length > 0 && (
+				<>
+					<div className="sectionSubtitle">Занятость на текущий день</div>
+					<ul className={cn('sectionList', s.employmentList)}>
+						{time.employment.map((item, key) => (
+							<li className="sectionListItem" key={key + item.from + item.to}>
+								с {item.from} до {item.to}
+							</li>
+						))}
+					</ul>
+				</>
+			)}
+			{time.openTasksLink && (
+				<a href={time.openTasksLink} className="link-with-icon margin-bottom">
+					<img src={jira} alt="" width={'18px'} />
+					<span>Открытые задачи</span>
+				</a>
+			)}
 			{time.vacation && time.vacation[0] && (
 				<>
 					<div className="sectionSubtitle">Отсутствие</div>

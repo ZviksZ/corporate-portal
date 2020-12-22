@@ -4,7 +4,7 @@
     "id": "6f625ff6bd97609",
     "name": "Команда Б",
     "lead": {
-      "name": "Колесников Михаил",
+      "name": "Колесников Иван",
       "id": "8f625ff6bd97609fc15525e2b4",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
       "employment": [
@@ -23,7 +23,7 @@
       "size": 25,
       "list": [
         {
-          "name": "Колесников Михаил",
+          "name": "Колесников Петр",
           "id": "8f625ff6bd9a7609c15525e2b4",
           "photo": "../img/1.jpg",
           "employment": [
@@ -41,6 +41,38 @@
         {
           "name": "Колесников Михаил",
           "id": "8f625ff6bd9760f9c15525e2b4",
+          "photo": "../img/1.jpg",
+          "employment": [
+            {
+              "dateStart": "9:00",
+              "dateEnd": "10:30"
+            }
+          ],
+          "position": "Руководитель Департамента ИТ",
+          "openTasksLink": "https://atlassian.com/5f625ff6bd97609c15525e2b4",
+          "email": "example@mail.ru",
+          "mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
+          "slackEmail": "example@mail.ru"
+        },
+        {
+          "name": "Колесников Вероника",
+          "id": "8f625ff6bd9a247609c15525e2b4",
+          "photo": "../img/1.jpg",
+          "employment": [
+            {
+              "dateStart": "9:00",
+              "dateEnd": "10:30"
+            }
+          ],
+          "position": "Руководитель Департамента ИТ",
+          "openTasksLink": "https://atlassian.com/5f625ff6bd97609c15525e2b4",
+          "email": "example@mail.ru",
+          "mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
+          "slackEmail": "example@mail.ru"
+        },
+        {
+          "name": "Колесников Вероника",
+          "id": "8f625ff6bd9760f41429c15525e2b4",
           "photo": "../img/1.jpg",
           "employment": [
             {

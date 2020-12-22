@@ -156,6 +156,13 @@ export const TeamsApi = {
 		const { data } = await instance.get('/users')
 		return data.data
 	},
+	async getAvailableMembers(requestData: StandartRequestInterface): Promise<SquadMemberInterface[] | ResponseErrorInterface> {
+		if (DEV_MODE) {
+			return allMembers.data
+		}
+		const { data } = await instance.get(`/teams/${requestData.id}/avalibleUsers`)
+		return data.data
+	},
 	async getTeams(): Promise<UnitInterface[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return teams.data
@@ -170,18 +177,11 @@ export const TeamsApi = {
 		const { data } = await instance.get<ResponseInterface<UnitDetailInterface>>(`/teams/${requestData.id}`)
 		return data.data
 	},
-	async addTeamMember(requestData: AddRemoveMemberRequestInterface) {
+	async addTeamMember(requestData: AddRemoveMemberRequestInterface): Promise<any> {
 		await instance.post<ResponseInterface<string>>(`/teamMembers`, requestData)
 	},
-	async removeTeamMember(requestData: AddRemoveMemberRequestInterface) {
-		await instance.post<ResponseInterface<string>>(`/deleteTeamMembers`, requestData)
-	},
-	async getTeamSquadData(requestData: StandartRequestInterface): Promise<UnitDetailInterface | ResponseErrorInterface> {
-		if (DEV_MODE) {
-			return teamDetail.data
-		}
-		const { data } = await instance.get<ResponseInterface<UnitDetailInterface>>(`/teams/${requestData.id}`)
-		return data.data
+	async removeTeamMember(requestData: AddRemoveMemberRequestInterface): Promise<any> {
+		await instance.post<ResponseInterface<string>>(`/altDeleteTeamMember`, requestData)
 	},
 }
 export const ProjectsApi = {
