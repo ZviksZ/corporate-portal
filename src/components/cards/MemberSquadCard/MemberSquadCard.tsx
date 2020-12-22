@@ -5,17 +5,19 @@ import { Avatar } from '@material-ui/core'
 import { getInitialsFromName } from '../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setRoleFormData } from '../../../store/ducks/teams/actionCreators'
+import { addTeamMember, removeTeamMember, setRoleFormData } from '../../../store/ducks/teams/actionCreators'
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
+import { MemberDetailInterface } from '../../../store/ducks/units/contracts/state'
 
 type Props = {
-	member: SquadMemberInterface
+	member: MemberDetailInterface
 	showRole?: boolean
 	isTeamMember?: boolean
 	openForm?: (param: boolean) => void
+	teamId?: string | number
 }
 
-export const MemberSquadCard: React.FC<Props> = ({ member, showRole = false, isTeamMember = false, openForm }) => {
+export const MemberSquadCard: React.FC<Props> = ({ member, teamId, showRole = false, isTeamMember = false, openForm }) => {
 	const dispatch = useDispatch()
 
 	if (!member) {
@@ -29,6 +31,18 @@ export const MemberSquadCard: React.FC<Props> = ({ member, showRole = false, isT
 		openForm && openForm(true)
 	}
 
+	const addRemoveTeamHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+		e.stopPropagation()
+		e.preventDefault()
+		if (teamId) {
+			if (!isTeamMember) {
+				dispatch(addTeamMember(teamId, member.id))
+			} else {
+				dispatch(removeTeamMember(teamId, member.id))
+			}
+		}
+	}
+
 	return (
 		<NavLink to={`/profile/${member.id}`} className={s.squadCard}>
 			<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={member?.photo || ''}>
@@ -40,7 +54,7 @@ export const MemberSquadCard: React.FC<Props> = ({ member, showRole = false, isT
 			</div>
 			<div className={s.squadCardItem}>
 				<div className={cn('sectionSubtitle', s.subtitle)}>Подразделение</div>
-				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.department || '-'}</div>
+				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.departament || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
 				<div className={cn('sectionSubtitle', s.subtitle)}>Должность</div>
@@ -49,18 +63,20 @@ export const MemberSquadCard: React.FC<Props> = ({ member, showRole = false, isT
 			<div className={s.squadCardItem}>
 				{showRole && (
 					<>
-						<div className={cn('sectionSubtitle', s.subtitle)}>Роль в команде</div>
-						{
-							member.role ? <div className={s.text} onClick={openRoleForm}>
+						{/*<div className={cn('sectionSubtitle', s.subtitle)}>Роль в команде</div>*/}
+						{/*	{member.role ? (
+							<div className={s.text} onClick={openRoleForm}>
 								{member.role}
-							</div> : <div className={s.link} onClick={openRoleForm}>
+							</div>
+						) : (
+							<div className={s.link} onClick={openRoleForm}>
 								+ Добавить
 							</div>
-						}
+						)}*/}
 					</>
 				)}
 			</div>
-			<div className={cn(s.button, { [s.addedMember]: isTeamMember })}>{isTeamMember ? '-' : '+'}</div>
+			<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>{isTeamMember ? '-' : '+'}</div>
 		</NavLink>
 	)
 }

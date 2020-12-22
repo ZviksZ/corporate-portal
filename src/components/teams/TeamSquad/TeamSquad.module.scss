@@ -19,3 +19,15 @@
     background: $colorWhite;
     z-index: 7;
 }
+.appbarBottom {
+    top: auto !important;
+    bottom: 0 !important;
+}
+.editButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 10px;
+    background: $colorWhite;
+    z-index: 7;
+}

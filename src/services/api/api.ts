@@ -18,7 +18,16 @@ import searchResults from './mockups/search-results.json'
 import { UnitInterface, UnitDetailInterface } from '../../store/ducks/units/contracts/state'
 import { ProjectInterface, ProjectDetailInterface } from '../../store/ducks/projects/contracts/state'
 import { SquadMemberInterface } from '../../store/ducks/teams/contracts/state'
-import { LoginRequestInterface, ResponseErrorInterface, ResponseInterface, SearchRequestInterface, StandartRequestInterface, UpdateUserPhotoInterface, CreateUserPhotoInterface } from './interfaces'
+import {
+	LoginRequestInterface,
+	ResponseErrorInterface,
+	ResponseInterface,
+	SearchRequestInterface,
+	StandartRequestInterface,
+	UpdateUserPhotoInterface,
+	CreateUserPhotoInterface,
+	AddRemoveMemberRequestInterface,
+} from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface } from '../../store/ducks/absences/contracts/state'
 import { TokenService } from '../helpers/token'
@@ -161,10 +170,18 @@ export const TeamsApi = {
 		const { data } = await instance.get<ResponseInterface<UnitDetailInterface>>(`/teams/${requestData.id}`)
 		return data.data
 	},
+	async addTeamMember(requestData: AddRemoveMemberRequestInterface) {
+		await instance.post<ResponseInterface<string>>(`/teamMembers`, requestData)
+	},
+	async removeTeamMember(requestData: AddRemoveMemberRequestInterface) {
+		await instance.post<ResponseInterface<string>>(`/deleteTeamMembers`, requestData)
+	},
 	async getTeamSquadData(requestData: StandartRequestInterface): Promise<UnitDetailInterface | ResponseErrorInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return teamSquad.data
+		if (DEV_MODE) {
+			return teamDetail.data
+		}
+		const { data } = await instance.get<ResponseInterface<UnitDetailInterface>>(`/teams/${requestData.id}`)
+		return data.data
 	},
 }
 export const ProjectsApi = {

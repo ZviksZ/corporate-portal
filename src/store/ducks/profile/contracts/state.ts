@@ -18,7 +18,7 @@ export interface StartEndInterface {
 export interface BusyPeriodsInterface {
 	id: number
 	exchange_id: string
-	user_id: string
+	member_id: string
 	dateTimeStart: string
 	dateTimeEnd: string
 }

@@ -1,4 +1,4 @@
-import { UnitInterface, UnitDetailInterface } from '../../units/contracts/state'
+import { UnitInterface, UnitDetailInterface, MemberDetailInterface } from '../../units/contracts/state'
 import { LoadingStatus } from '../../../types'
 
 export interface SquadMemberInterface {
@@ -24,9 +24,9 @@ export interface TeamSquadInterface {
 export interface TeamsStateInterface {
 	teams: UnitInterface[] | null
 	teamDetail: UnitDetailInterface | null
-	teamSquad: TeamSquadInterface | null
+	teamSquad: UnitDetailInterface | null
 	teamSquadSearch: string
-	roleFormData: SquadMemberInterface | null
+	roleFormData: MemberDetailInterface | null
 	allMembers: SquadMemberInterface[] | null
 	LoadingStatus: LoadingStatus
 }

@@ -34,9 +34,9 @@ export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 	}
 
 	useEffect(() => {
-		if (roleFormData && roleFormData.role) {
+		/*if (roleFormData && roleFormData.role) {
 			setRole(roleFormData.role)
-		}
+		}*/
 		return () => {
 			dispatch(setRoleFormData(null))
 		}

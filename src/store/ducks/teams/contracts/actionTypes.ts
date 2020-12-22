@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { UnitInterface, UnitDetailInterface } from '../../units/contracts/state'
+import { UnitInterface, UnitDetailInterface, MemberDetailInterface } from '../../units/contracts/state'
 import { SquadMemberInterface, TeamSquadInterface } from './state'
 import { LoadingStatus } from '../../../types'
 import { ProjectsActionsType } from '../../projects/contracts/actionTypes'
@@ -15,9 +15,20 @@ export enum TeamsActionsType {
 	SET_TEAM_SQUAD_SEARCH = 'teams/SET_TEAM_SQUAD_SEARCH',
 	GET_MEMBERS = 'teams/GET_MEMBERS',
 	SET_MEMBERS = 'teams/SET_MEMBERS',
+	ADD_TEAM_MEMBER = 'teams/ADD_TEAM_MEMBER',
+	REMOVE_TEAM_MEMBER = 'teams/REMOVE_TEAM_MEMBER',
 	SET_LOADING_STATE = 'teams/SET_LOADING_STATE',
 }
-
+export interface AddTeamMemberActionInterface extends Action<TeamsActionsType> {
+	type: TeamsActionsType.ADD_TEAM_MEMBER
+	team_id: string | number
+	member_id: string | number
+}
+export interface RemoveTeamMemberActionInterface extends Action<TeamsActionsType> {
+	type: TeamsActionsType.REMOVE_TEAM_MEMBER
+	team_id: string | number
+	member_id: string | number
+}
 export interface GetTeamsActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.GET_TEAMS
 }
@@ -35,7 +46,7 @@ export interface SetTeamDataActionInterface extends Action<TeamsActionsType> {
 }
 export interface SetRoleFormDataActionInterface extends Action<TeamsActionsType> {
 	type: TeamsActionsType.SET_ROLE_FORM_DATA
-	payload: SquadMemberInterface | null
+	payload: MemberDetailInterface | null
 }
 
 export interface GetTeamSquadActionInterface extends Action<TeamsActionsType> {

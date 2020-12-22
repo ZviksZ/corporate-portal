@@ -12,9 +12,10 @@ import { useState } from 'react'
 import { TeamRoleForm } from '../../forms/team/TeamRoleForm/TeamRoleForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { filteredAllMembersList, selectTeams } from '../../../store/ducks/teams/selectors'
-import { selectGlobal } from '../../../store/ducks/global/selectors'
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { setTeamSquadSearch } from '../../../store/ducks/teams/actionCreators'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 
 export const TeamSquad: React.FC = () => {
 	const dispatch = useDispatch()
@@ -58,14 +59,14 @@ export const TeamSquad: React.FC = () => {
 			{teamSquad.lead && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
-					<MemberSquadCard member={teamSquad.lead} openForm={setOpenForm} showRole={true} isTeamMember={true} />
+					<MemberSquadCard teamId={teamSquad.id} member={teamSquad.lead} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 				</>
 			)}
-			{teamSquad.members.list && (
+			{teamSquad?.members?.list?.length > 0 && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">сотрудники ({teamSquad.members.list.length})</div>
 					{teamSquad.members.list.map((member) => (
-						<MemberSquadCard key={member.id} member={member} openForm={setOpenForm} showRole={true} isTeamMember={true} />
+						<MemberSquadCard teamId={teamSquad.id} key={member.id} member={member} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 					))}
 				</>
 			)}
@@ -73,19 +74,21 @@ export const TeamSquad: React.FC = () => {
 				<>
 					<div className="sectionBigSubtitle text-uppercase margin-top-x2">все сотрудники ({filteredMembers.length})</div>
 					{filteredMembers.map((member: SquadMemberInterface) => (
-						<MemberSquadCard key={member.id} member={member} openForm={setOpenForm} showRole={false} isTeamMember={false} />
+						<MemberSquadCard key={member.id} teamId={teamSquad.id} member={member} openForm={setOpenForm} showRole={false} isTeamMember={false} />
 					))}
 				</>
 			)}
 
-			<div className={s.squadButtons}>
-				<Button size="large" component={NavLink} to={`/teams/${teamSquad.id}`} className="btn btn-default text-uppercase">
-					ОТМЕНА
-				</Button>
-				<Button size="large" component={NavLink} to={`/teams/${teamSquad.id}`} className="btn margin-left-x3 text-uppercase">
-					Сохранить
-				</Button>
-			</div>
+			{/*<AppBar className={cn('navbar', s.appbarBottom)} position="fixed" color="default">
+				<Toolbar className={cn(s.editButtons)}>
+					<Button size="large" component={NavLink} to={`/teams/${teamSquad.id}`} className="btn btn-default text-uppercase">
+						ОТМЕНА
+					</Button>
+					<Button size="large" component={NavLink} to={`/teams/${teamSquad.id}`} className="btn margin-left-x3 text-uppercase">
+						Сохранить
+					</Button>
+				</Toolbar>
+			</AppBar>*/}
 
 			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title="Изменить роль в команде">
 				<TeamRoleForm onClose={setOpenForm} />

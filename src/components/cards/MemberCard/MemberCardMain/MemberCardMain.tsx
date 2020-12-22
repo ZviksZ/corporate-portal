@@ -27,7 +27,7 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 			<div className={s.memberMainData}>
 				<div className={s.name}>{member.name}</div>
 				<div className={s.position}>{member.position}</div>
-				{member.employment && (
+				{member.employment && member.employment.length > 0 && (
 					<>
 						<div className="sectionSubtitle">Занятость на текущий день:</div>
 						<ul className={cn('sectionList', s.employmentList, { [s.employmentListBig]: showEmployment })}>

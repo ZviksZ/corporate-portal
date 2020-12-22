@@ -1,8 +1,8 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { GetTeamDataActionInterface, GetTeamSquadActionInterface, TeamsActionsType } from './contracts/actionTypes'
+import { AddTeamMemberActionInterface, GetTeamDataActionInterface, GetTeamSquadActionInterface, RemoveTeamMemberActionInterface, TeamsActionsType } from './contracts/actionTypes'
 import { TeamsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
-import { setLoadingTeams, setMembers, setTeamData, setTeams, setTeamSquad } from './actionCreators'
+import { getTeamSquad, setLoadingTeams, setMembers, setTeamData, setTeams, setTeamSquad } from './actionCreators'
 import { LoadingStatus } from '../../types'
 
 export function* getTeamsRequest() {
@@ -56,10 +56,34 @@ export function* getMembersRequest() {
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке. Попробуйте снова', type: 'error' }))
 	}
 }
+export function* addMemberRequest({ member_id, team_id }: AddTeamMemberActionInterface) {
+	try {
+		yield call(TeamsApi.addTeamMember, { member_id, team_id })
+
+		yield put(getTeamSquad(team_id.toString()))
+		yield put(setGlobalMessage({ text: 'Сотрудник успешно добавлен в состав команды', type: 'success' }))
+	} catch (error) {
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при добавлении члена команды. Попробуйте снова', type: 'error' }))
+	}
+}
+export function* removeMemberRequest({ member_id, team_id }: RemoveTeamMemberActionInterface) {
+	try {
+		yield call(TeamsApi.removeTeamMember, { member_id, team_id })
+
+		yield put(getTeamSquad(team_id.toString()))
+		yield put(setGlobalMessage({ text: 'Сотрудник успешно удален из состава команды', type: 'success' }))
+	} catch (error) {
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при удалении члена команды. Попробуйте снова', type: 'error' }))
+	}
+}
 
 export function* teamsSaga() {
 	yield takeLatest(TeamsActionsType.GET_MEMBERS, getMembersRequest)
 	yield takeLatest(TeamsActionsType.GET_TEAM_SQUAD, getTeamSquadRequest)
 	yield takeLatest(TeamsActionsType.GET_TEAM_DATA, getTeamDataRequest)
 	yield takeLatest(TeamsActionsType.GET_TEAMS, getTeamsRequest)
+	yield takeLatest(TeamsActionsType.ADD_TEAM_MEMBER, addMemberRequest)
+	yield takeLatest(TeamsActionsType.REMOVE_TEAM_MEMBER, removeMemberRequest)
 }

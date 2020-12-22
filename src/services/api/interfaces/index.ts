@@ -27,3 +27,7 @@ export interface CreateUserPhotoInterface {
 	path: string
 	default: boolean
 }
+export interface AddRemoveMemberRequestInterface {
+	member_id: string | number
+	team_id: string | number
+}
