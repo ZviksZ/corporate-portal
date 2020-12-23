@@ -9,6 +9,7 @@ import Dialog from '@material-ui/core/Dialog'
 import Button from '@material-ui/core/Button'
 import { useEffect, useState } from 'react'
 import { updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
+import { NavLink } from 'react-router-dom'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
@@ -82,7 +83,9 @@ export const ProfileSidebarTop: React.FC = () => {
 					{profileData.surname || ''} {profileData.name || ''} {profileData.patronymic || ''}
 				</div>
 				<div className={s.position}>{profileData.position || ''}</div>
-				<div className={s.department}>{profileData.department || ''}</div>
+				<NavLink to={`/units/${profileData.departmentId || ''}`} className={s.department}>
+					{profileData.department || ''}
+				</NavLink>
 			</div>
 
 			<Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">

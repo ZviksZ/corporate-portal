@@ -48,6 +48,7 @@ export interface ProfileDataInterface {
 	userType: string
 	position: string
 	department: string
+	departmentId?: number
 	gender?: 'm' | 'f'
 	photo: string
 	worktime: {

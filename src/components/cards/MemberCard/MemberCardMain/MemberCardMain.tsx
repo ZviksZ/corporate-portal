@@ -6,6 +6,7 @@ import jira from '../../../../assets/images/icons/jira.svg'
 import { useState } from 'react'
 import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
 import { getInitialsFromName } from '../../../../services/helpers/utils'
+import { FromToInterface } from '../../../../store/ducks/profile/contracts/state'
 
 type Props = {
 	member: MemberDetailInterface
@@ -36,14 +37,14 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 									if (key < 3) {
 										return (
 											<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-												с {item.dateStart} до {item.dateEnd}
+												с {item.from} до {item.to}
 											</li>
 										)
 									}
 								} else {
 									return (
 										<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-											с {item.dateStart} до {item.dateEnd}
+											с {item.from} до {item.to}
 										</li>
 									)
 								}

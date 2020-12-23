@@ -9,6 +9,7 @@ import {
 	SetAbsenceDataActionInterface,
 	SetAbsencesActionInterface,
 	CreateAbsenceActionInterface,
+	ChangeAbsenceStatusActionInterface,
 } from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
 
@@ -18,14 +19,15 @@ export const setAbsencesLoading = (payload: LoadingStatus): SetLoadingActionInte
 })
 export const getAbsences = (userId: number): GetAbsencesActionInterface => ({
 	type: AbsencesActionsType.GET_ABSENCES,
-	userId
+	userId,
 })
 export const setAbsences = (payload: AbsenceDataInterface | null): SetAbsencesActionInterface => ({
 	type: AbsencesActionsType.SET_ABSENCES,
 	payload,
 })
-export const getAllAbsences = (): GetAllAbsencesActionInterface => ({
+export const getAllAbsences = (userId: number): GetAllAbsencesActionInterface => ({
 	type: AbsencesActionsType.GET_ALL_ABSENCES,
+	userId
 })
 export const setAllAbsences = (payload: AllAbsenceDataInterface | null): SetAllAbsencesActionInterface => ({
 	type: AbsencesActionsType.SET_ALL_ABSENCES,
@@ -34,6 +36,12 @@ export const setAllAbsences = (payload: AllAbsenceDataInterface | null): SetAllA
 export const getAbsenceData = (id: string): GetAbsenceDataActionInterface => ({
 	type: AbsencesActionsType.GET_ABSENCE_DATA,
 	id,
+})
+export const changeAbsenceStatus = (id: number, isApprove: boolean, userId: number): ChangeAbsenceStatusActionInterface => ({
+	type: AbsencesActionsType.CHANGE_ABSENCE_STATUS,
+	id,
+	isApprove,
+	userId,
 })
 export const setAbsenceData = (payload: AbsenceDetailInterface | null): SetAbsenceDataActionInterface => ({
 	type: AbsencesActionsType.SET_ABSENCE_DATA,
@@ -45,6 +53,7 @@ export const createAbsence = (payload: AbsenceCreateInterface): CreateAbsenceAct
 })
 
 export type AbsencesActions =
+	| ChangeAbsenceStatusActionInterface
 	| CreateAbsenceActionInterface
 	| SetAllAbsencesActionInterface
 	| GetAllAbsencesActionInterface

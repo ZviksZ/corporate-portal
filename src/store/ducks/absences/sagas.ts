@@ -1,6 +1,13 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { GetAbsenceDataActionInterface, AbsencesActionsType, CreateAbsenceActionInterface, GetAbsencesActionInterface } from './contracts/actionTypes'
-import { setAllAbsences, setAbsenceData, setAbsences, setAbsencesLoading } from './actionCreators'
+import {
+	GetAbsenceDataActionInterface,
+	AbsencesActionsType,
+	CreateAbsenceActionInterface,
+	GetAbsencesActionInterface,
+	ChangeAbsenceStatusActionInterface,
+	GetAllAbsencesActionInterface,
+} from './contracts/actionTypes'
+import { setAllAbsences, setAbsenceData, setAbsences, setAbsencesLoading, getAbsences } from './actionCreators'
 import { AbsencesApi } from '../../../services/api/api'
 import { LoadingStatus } from '../../types'
 import { setGlobalMessage } from '../global/actionCreators'
@@ -23,10 +30,10 @@ export function* getAbsenceDataRequest({ id }: GetAbsenceDataActionInterface) {
 		yield put(setGlobalMessage({ text: 'Ошибка при загрузке данных уведомления', type: 'error' }))
 	}
 }
-export function* getAllAbsencesRequest() {
+export function* getAllAbsencesRequest({ userId }: GetAllAbsencesActionInterface) {
 	try {
 		yield put(setAbsencesLoading(LoadingStatus.LOADING))
-		const allAbsences = yield call(AbsencesApi.getAllAbsences)
+		const allAbsences = yield call(AbsencesApi.getAllAbsences, { id: userId })
 
 		yield put(setAllAbsences(allAbsences))
 		yield put(setAbsencesLoading(LoadingStatus.LOADED))
@@ -46,9 +53,20 @@ export function* createAbsenceRequest({ payload }: CreateAbsenceActionInterface)
 	}
 }
 
+export function* changeAbsenceStatusRequest({ id, isApprove, userId }: ChangeAbsenceStatusActionInterface) {
+	try {
+		const status = isApprove ? 'approved' : 'declined'
+		yield call(AbsencesApi.changeAbsenceStatus, { id, status })
+		yield put(getAbsences(userId))
+	} catch (error) {
+		yield put(setGlobalMessage({ text: 'Ошибка при загрузке данных уведомления', type: 'error' }))
+	}
+}
+
 export function* absencesSaga() {
 	yield takeLatest(AbsencesActionsType.GET_ABSENCES, getAbsencesRequest)
 	yield takeLatest(AbsencesActionsType.GET_ABSENCE_DATA, getAbsenceDataRequest)
 	yield takeLatest(AbsencesActionsType.GET_ALL_ABSENCES, getAllAbsencesRequest)
 	yield takeLatest(AbsencesActionsType.CREATE_ABSENCE, createAbsenceRequest)
+	yield takeLatest(AbsencesActionsType.CHANGE_ABSENCE_STATUS, changeAbsenceStatusRequest)
 }

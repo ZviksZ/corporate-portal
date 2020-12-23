@@ -32,7 +32,7 @@ import {
 	UserResponseInterface,
 } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
-import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface } from '../../store/ducks/absences/contracts/state'
+import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceChangeInterface, AbsenceItemInterface } from '../../store/ducks/absences/contracts/state'
 import { TokenService } from '../helpers/token'
 import { store } from '../../store/store'
 import { logout } from '../../store/ducks/global/actionCreators'
@@ -105,10 +105,12 @@ export const AbsencesApi = {
 		const { data } = await instance.get<ResponseInterface<AbsenceDataInterface>>(`/userNotification/${requestData.id}`)
 		return data.data
 	},
-	async getAllAbsences(): Promise<AllAbsenceDataInterface | ResponseErrorInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return allAbsences.data
+	async getAllAbsences(requestData: StandartRequestInterface): Promise<AbsenceItemInterface[] | ResponseErrorInterface> {
+		if (DEV_MODE) {
+			return allAbsences.data
+		}
+		const { data } = await instance.post<ResponseInterface<AbsenceItemInterface[]>>(`/userAbsence/${requestData.id}`)
+		return data.data
 	},
 	async getAbsenceData(requestData: StandartRequestInterface): Promise<AbsenceDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
@@ -120,11 +122,13 @@ export const AbsencesApi = {
 	async createAbsence(requestData: AbsenceCreateInterface): Promise<string> {
 		return await instance.post('/absences', requestData)
 	},
+	async changeAbsenceStatus(requestData: AbsenceChangeInterface): Promise<string> {
+		return await instance.put(`/absences/${requestData.id}`, { status: requestData.status })
+	},
 }
 
 export const ProfileApi = {
 	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface | ResponseErrorInterface> {
-		console.log('getProfile')
 		if (DEV_MODE) {
 			return profile.data
 		}

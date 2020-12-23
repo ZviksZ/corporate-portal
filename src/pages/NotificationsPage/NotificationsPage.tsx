@@ -6,14 +6,18 @@ import { Button } from '@material-ui/core'
 import { selectIsAbsencesLoading, selectIsAbsencesLoadingError, selectAbsences } from '../../store/ducks/absences/selectors'
 import { getAllAbsences, setAllAbsences } from '../../store/ducks/absences/actionCreators'
 import { NotificationCard } from '../../components/cards/NotificationCard/NotificationCard'
+import { selectGlobal } from '../../store/ducks/global/selectors'
 
 export const NotificationsPage: React.FC = () => {
 	const dispatch = useDispatch()
+	const { user } = useSelector(selectGlobal)
 	const { allAbsences } = useSelector(selectAbsences)
 	const isLoading = useSelector(selectIsAbsencesLoading)
 	const isLoadingError = useSelector(selectIsAbsencesLoadingError)
 	useEffect(() => {
-		dispatch(getAllAbsences())
+		if (user) {
+			dispatch(getAllAbsences(user.id))
+		}
 
 		return () => {
 			dispatch(setAllAbsences(null))
@@ -21,7 +25,9 @@ export const NotificationsPage: React.FC = () => {
 	}, [])
 
 	const repeatLoading = () => {
-		dispatch(getAllAbsences())
+		if (user) {
+			dispatch(getAllAbsences(user.id))
+		}
 	}
 
 	if (isLoading) {

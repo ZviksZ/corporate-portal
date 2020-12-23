@@ -5,7 +5,7 @@ export interface MemberDetailInterface {
 	name: string
 	id: string
 	photo: string
-	employment?: StartEndInterface[]
+	employment?: FromToInterface[]
 	departament?: string
 	position?: string
 	openTasksLink?: string

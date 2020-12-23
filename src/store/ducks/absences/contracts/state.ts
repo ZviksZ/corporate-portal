@@ -8,6 +8,10 @@ export interface AbsenceCreateInterface {
 	user: number
 	status: string
 }
+export interface AbsenceChangeInterface {
+	status: string
+	id: number
+}
 
 export interface AbsenceItemInterface {
 	id: string
@@ -27,13 +31,13 @@ export interface AllAbsenceDataInterface {
 	list: AbsenceItemInterface[]
 }
 export interface AbsenceDetailInterface {
-	id: string
+	id: number
 	author: string
 	authorPosition: string
 	name: string
 	authorImage: string
 	authorId: string
-	applicationDates: StartEndInterface
+	applicationDates: string
 	vacationGraphic: StartEndInterface
 	vacationDays: string
 	corporateDays: string
