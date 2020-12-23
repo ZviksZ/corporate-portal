@@ -1,13 +1,13 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
-import { GetAbsenceDataActionInterface, AbsencesActionsType, CreateAbsenceActionInterface } from './contracts/actionTypes'
+import { GetAbsenceDataActionInterface, AbsencesActionsType, CreateAbsenceActionInterface, GetAbsencesActionInterface } from './contracts/actionTypes'
 import { setAllAbsences, setAbsenceData, setAbsences, setAbsencesLoading } from './actionCreators'
 import { AbsencesApi } from '../../../services/api/api'
 import { LoadingStatus } from '../../types'
 import { setGlobalMessage } from '../global/actionCreators'
 
-export function* getAbsencesRequest() {
+export function* getAbsencesRequest({ userId }: GetAbsencesActionInterface) {
 	try {
-		const absences = yield call(AbsencesApi.getAbsences)
+		const absences = yield call(AbsencesApi.getAbsences, { id: userId })
 
 		yield put(setAbsences(absences))
 	} catch (error) {
@@ -45,7 +45,6 @@ export function* createAbsenceRequest({ payload }: CreateAbsenceActionInterface)
 		yield put(setGlobalMessage({ text: 'Ошибка при отправке заявления. Попробуйте еще раз', type: 'error' }))
 	}
 }
-
 
 export function* absencesSaga() {
 	yield takeLatest(AbsencesActionsType.GET_ABSENCES, getAbsencesRequest)

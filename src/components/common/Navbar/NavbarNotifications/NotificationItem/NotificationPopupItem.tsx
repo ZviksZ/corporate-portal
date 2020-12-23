@@ -15,8 +15,8 @@ type Props = {
 export const NotificationPopupItem: React.FC<Props> = ({ item, handleClose }) => {
 	const dispatch = useDispatch()
 
-	const formatedDate = getReverseFormatDate(item.date)
-	const timeAgo = timeSince(formatedDate)
+	const formatedDate = item.date ? getReverseFormatDate(item.date) : ''
+	const timeAgo = item.date ? timeSince(formatedDate) : ''
 
 	const openAbsence = () => {
 		dispatch(getAbsenceData(item.id))
@@ -31,7 +31,7 @@ export const NotificationPopupItem: React.FC<Props> = ({ item, handleClose }) =>
 				</Avatar>
 				<div className={s.info}>
 					<div className={s.type}>{item.name}</div>
-					<div className={s.time}>{timeAgo} назад</div>
+					<div className={s.time}>{item.date ? `${timeAgo} назад` : ''}</div>
 				</div>
 				<i className={cn(s.openAbsence, 'icon-arrow-left')}></i>
 			</div>

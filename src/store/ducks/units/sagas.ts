@@ -9,7 +9,6 @@ export function* getUnitsRequest() {
 	try {
 		yield put(setLoadingUnits(LoadingStatus.LOADING))
 		const units = yield call(UnitsApi.getUnits)
-		console.log(units)
 
 		yield put(setUnits(units))
 		yield put(setLoadingUnits(LoadingStatus.LOADED))

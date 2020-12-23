@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { IconButton, Popover } from '@material-ui/core'
-import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined'
 import Badge from '@material-ui/core/Badge'
 import s from '../Navbar.module.scss'
 import { useEffect, useState } from 'react'
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { NotificationForm } from '../../../forms/common/NotificationForm/NotificationForm'
 import { selectAbsences } from '../../../../store/ducks/absences/selectors'
+import { NotificationPopupItem } from './NotificationItem/NotificationPopupItem'
 
 export const NavbarNotifications: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
@@ -32,16 +33,11 @@ export const NavbarNotifications: React.FC = () => {
 	return (
 		<>
 			<IconButton className={s.notificationIcon} onClick={handleClick} aria-describedby={id}>
-				<Badge color="error">
+				<Badge badgeContent={(absences && absences.newCount) || ''} color="error">
 					<NotificationsNoneOutlinedIcon />
 				</Badge>
 			</IconButton>
-			{/*<IconButton className={s.notificationIcon} onClick={handleClick} aria-describedby={id}>
-				<Badge badgeContent={(notifications && notifications.newCount) || ''} color="error">
-					<AbsencesNoneOutlinedIcon />
-				</Badge>
-			</IconButton>
-			Popover
+			<Popover
 				id={id}
 				open={!!anchorEl}
 				anchorEl={anchorEl}
@@ -55,23 +51,25 @@ export const NavbarNotifications: React.FC = () => {
 					horizontal: 'center',
 				}}
 			>
-				{notifications && (
+				{absences && (
 					<div className={s.notificationList}>
 						<div className={s.head}>
 							<span className={s.text}>Уведомление</span>
-							<span className={s.count}>{notifications.newCount} новых</span>
+							<span className={s.count}>{absences.newCount} новых</span>
 						</div>
 						<div className={s.list}>
 							{absences.lastFive.map((item) => (
-								<AbsencePopupItem handleClose={handleClose} key={item.id} item={item} />
+								<NotificationPopupItem handleClose={handleClose} key={item.id} item={item} />
 							))}
 						</div>
 						<div className={s.bottom}>
-							<NavLink to={'/notifications'} onClick={handleClose}>Посмотреть все</NavLink>
+							<NavLink to={'/notifications'} onClick={handleClose}>
+								Посмотреть все
+							</NavLink>
 						</div>
 					</div>
 				)}
-			</Popover>*/}
+			</Popover>
 
 			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title={(absenceDetail && absenceDetail.name) || ''}>
 				<NotificationForm onClose={setOpenForm} />

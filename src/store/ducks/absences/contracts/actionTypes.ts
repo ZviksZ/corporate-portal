@@ -14,7 +14,8 @@ export enum AbsencesActionsType {
 }
 
 export interface GetAbsencesActionInterface extends Action<AbsencesActionsType> {
-	type: AbsencesActionsType.GET_ABSENCES
+	type: AbsencesActionsType.GET_ABSENCES,
+	userId: number
 }
 export interface SetAbsencesActionInterface extends Action<AbsencesActionsType> {
 	type: AbsencesActionsType.SET_ABSENCES

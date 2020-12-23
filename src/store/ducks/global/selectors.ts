@@ -10,5 +10,6 @@ export const selectGlobalLoadingStatus = (state: RootStateInterface): LoadingSta
 
 export const selectIsGlobalLoading = (state: RootStateInterface): boolean => selectGlobalLoadingStatus(state) === LoadingStatus.LOADING
 export const selectIsGlobalLoaded = (state: RootStateInterface): boolean => selectGlobalLoadingStatus(state) === LoadingStatus.LOADED
+export const selectIsGlobalLoadingSuccess = (state: RootStateInterface): boolean => selectGlobalLoadingStatus(state) === LoadingStatus.SUCCESS
 export const selectIsGlobalLoadingError = (state: RootStateInterface): boolean => selectGlobalLoadingStatus(state) === LoadingStatus.ERROR
 export const selectIsGlobalLoadingNever = (state: RootStateInterface): boolean => selectGlobalLoadingStatus(state) === LoadingStatus.NEVER

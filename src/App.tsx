@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useRoutes } from './routes'
 import { Loader } from './components/common/Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectGlobal, selectIsGlobalLoading, selectIsGlobalLoadingError, selectIsGlobalLoadingNever } from './store/ducks/global/selectors'
+import { selectGlobal, selectIsGlobalLoading, selectIsGlobalLoadingError, selectIsGlobalLoadingNever, selectIsGlobalLoadingSuccess } from './store/ducks/global/selectors'
 import { getCookieUser } from './store/ducks/global/actionCreators'
 import { getMembers } from './store/ducks/teams/actionCreators'
 import { getAbsences } from './store/ducks/absences/actionCreators'
@@ -21,11 +21,11 @@ export const App: React.FC = () => {
 	}, [])
 
 	useEffect(() => {
-		if (isAuth) {
+		if (isAuth && user?.id) {
 			dispatch(getMembers())
-			dispatch(getAbsences())
+			dispatch(getAbsences(user.id))
 			setInterval(() => {
-				dispatch(getAbsences())
+				dispatch(getAbsences(user.id))
 			}, 60000)
 		}
 	}, [isAuth])

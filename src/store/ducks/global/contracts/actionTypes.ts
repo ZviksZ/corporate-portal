@@ -1,10 +1,12 @@
 import { Action } from 'redux'
 import { GlobalMessageInterface, SearchResultsInterface, UserInterface } from './state'
 import { LoadingStatus } from '../../../types'
+import { ProfileDataInterface } from '../../profile/contracts/state'
 
 export enum GlobalActionsType {
 	LOGIN = 'global/LOGIN',
 	SET_USER = 'global/SET_USER',
+	SET_USER_PROFILE = 'global/SET_USER_PROFILE',
 	LOGOUT = 'global/LOGOUT',
 	SET_GLOBAL_MESSAGE = 'global/SET_GLOBAL_MESSAGE',
 	SET_LOADING_STATE = 'global/SET_LOADING_STATE',
@@ -30,6 +32,10 @@ export interface LoginActionInterface extends Action<GlobalActionsType> {
 export interface SetUserActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_USER
 	payload: UserInterface | null
+}
+export interface SetUserProfileActionInterface extends Action<GlobalActionsType> {
+	type: GlobalActionsType.SET_USER_PROFILE
+	payload: ProfileDataInterface | null
 }
 export interface SetGlobalMessageActionInterface extends Action<GlobalActionsType> {
 	type: GlobalActionsType.SET_GLOBAL_MESSAGE

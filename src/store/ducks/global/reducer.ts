@@ -6,6 +6,7 @@ import { LoadingStatus } from '../../types'
 
 const initialGlobalState: GlobalStateInterface = {
 	user: null,
+	userProfile: null,
 	globalMessage: null,
 	LoadingStatus: LoadingStatus.NEVER,
 	searchResults: null,
@@ -15,6 +16,9 @@ export const globalReducer = produce((draft: Draft<GlobalStateInterface>, action
 		case GlobalActionsType.SET_USER:
 			draft.user = action.payload
 			draft.LoadingStatus = LoadingStatus.SUCCESS
+			break
+		case GlobalActionsType.SET_USER_PROFILE:
+			draft.userProfile = action.payload
 			break
 		case GlobalActionsType.SET_GLOBAL_MESSAGE:
 			draft.globalMessage = action.payload

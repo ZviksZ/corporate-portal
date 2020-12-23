@@ -15,6 +15,13 @@ export interface LoginRequestInterface {
 export interface StandartRequestInterface {
 	id: string | number
 }
+export interface RefreshTokenRequestInterface {
+	refreshToken: string
+}
+export interface RefreshTokenResponseInterface {
+	refreshToken: string
+	token: string
+}
 export interface SearchRequestInterface {
 	query: string
 }
@@ -30,4 +37,24 @@ export interface CreateUserPhotoInterface {
 export interface AddRemoveMemberRequestInterface {
 	member_id: string | number
 	team_id: string | number
+}
+
+export interface UserResponseInterface {
+	id: number
+	name: string
+	surname: string
+	token: string
+	refreshToken: string
+	userType: number
+	email?: string
+	image?: {
+		id: number
+		photo: string
+		userId: number
+		photoDefault: boolean
+		__initializer__: any
+		__cloner__: any
+		__isInitialized__: any
+	}
+	role?: string[]
 }

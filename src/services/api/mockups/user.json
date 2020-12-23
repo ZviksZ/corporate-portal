@@ -1,12 +1,24 @@
 {
-	"status": "success",
-	"data": {
-		"id": 87,
-		"name": "Иван",
-		"surname": "Иванов",
-		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImNvbmZpcm1lZCI6dHJ1ZSwiY2F0ZWdvcnkiOiJhZG1pbiIsInB1cmNoYXNlcyI6W10sIl9pZCI6IjVmYmEyNmU1OTE4YWFmM2VmNDA4NWRjMyIsImVtYWlsIjoiYWRtaW5AcmVhY3QucnUiLCJ1c2VybmFtZSI6ImFkbWluIiwiZnVsbG5hbWUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjAtMTEtMjJUMDg6NTI6NTMuODAxWiIsInVwZGF0ZWRBdCI6IjIwMjAtMTEtMjJUMDg6NTI6NTMuODAxWiIsIl9fdiI6MH0sImlhdCI6MTYwNjA1MTczMCwiZXhwIjoxNjA4NjQzNzMwfQ.0gsbHLS4MNXxxC2lpI6Z28Xpc2b2K3ChppStGi9efZk",
-		"userType": "1",
-		"photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
-		"email": "444"
+	"status":"success",
+	"data":{
+		"id":902,
+		"name":"\u0415\u0432\u0433\u0435\u043d\u0438\u0439",
+		"surname":"\u041e\u0440\u043b\u043e\u0432",
+		"role":[
+			"ROLE_USER"
+		],
+		"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDg3MDUxNzgsImV4cCI6MTYwODcxMjM3OCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoib3Jsb3ZAYmFua2kucnUifQ.gcpMg3bQoFSbYJdCtYR7AjbAggAMKyxjXbNypkyzKO5ut-ySb0pF0HYHA7W1FPcNTOqI_yk_lHEmxZ0BpKDrS_1oKLqsn1WdYwtGlipkQkCA0PFgFLNjp2Y2xfVANv-8oAHzxQ-6bEBVr9T4TC_bmmlHfb_P5ADE15OhEkrwPHWTJld9LEQM61WLybfJZF70rpohn159gPnljS8B69_CigyQ9pc78WkIxZufZowdjNG0Uiu_P7hYq_q3suDL-OZY8erMDnJvIlY7Bx1UBfGqnxv0zt209SEg1GAn5cDdQtfDtVqjNmO_MwsGo_ZB-ZlcY4iM6r3T5fgIwIE5MfDTOUjZV67iwL515pCcm1LhNbyRoI8Z4BF94EvHDA_1lkpzJNcjhmbcWQG1FJbPlhNCeb0NX99fpzel1ENFmgH9zVqsNm6OOQRQ8UIHp1kEjXpl9I_vw0b0vvrCACDKnnTRfecxu7xA8VgSwMRCE5itPGDJ0e_QrhGJQXMWc7cn5jDYCUAWKwekrNgXjJUiqOd2TJtTXO8ZHwGgibkwBXLTriQ-ipBwHsmD_Vbu6Eo-THHP01uVNuOk-SxBg3zIQFH-mZ89fVphkPM5OpHHxQKHHcUiIqqBGsVFyfkPqDYJEX7kLZzuUhyNL5qBsXhZnKzZeRAo32ajsYHaBFkMvunZBFo",
+		"refreshToken":"0ea1f13f3bbe4988de14d84ff968a44702f93545f64e36422521a3942a33add8f89d9165544f46aa8a6b0ebb563f8c01100d6a5bf44024eca61d8a81a6c68886",
+		"userType":0,
+		"image":{
+			"id":1,
+			"photo":"\/upload\/users\/photo\/fbead826826c1cb1028580f5edf40c51.png",
+			"userId":902,
+			"photoDefault":true,
+			"__initializer__":null,
+			"__cloner__":null,
+			"__isInitialized__":true
+		},
+		"email":"orlov@banki.ru"
 	}
 }

@@ -9,7 +9,7 @@ import { selectGlobal } from '../../../../store/ducks/global/selectors'
 
 export const NavbarProfile: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null)
-	const { user } = useSelector(selectGlobal)
+	const { userProfile } = useSelector(selectGlobal)
 
 	const dispatch = useDispatch()
 
@@ -32,11 +32,11 @@ export const NavbarProfile: React.FC = () => {
 
 	return (
 		<>
-			{user && (
+			{userProfile && (
 				<>
-					<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={user.image} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-						{user.name[0]}
-						{user.surname[0]}
+					<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={userProfile?.photo || ''} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+						{userProfile.name[0] || ''}
+						{userProfile.surname[0] || ''}
 					</Avatar>
 
 					<Popover

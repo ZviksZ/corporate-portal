@@ -27,6 +27,9 @@ import {
 	UpdateUserPhotoInterface,
 	CreateUserPhotoInterface,
 	AddRemoveMemberRequestInterface,
+	RefreshTokenRequestInterface,
+	RefreshTokenResponseInterface,
+	UserResponseInterface,
 } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface } from '../../store/ducks/absences/contracts/state'
@@ -67,12 +70,23 @@ instance.interceptors.response.use(
 	},
 )
 export const GlobalApi = {
-	async login(requestData: LoginRequestInterface): Promise<UserInterface | ResponseErrorInterface> {
+	async login(requestData: LoginRequestInterface): Promise<UserResponseInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return user.data
 		}
-		const { data } = await instance.post<ResponseInterface<UserInterface>>('/login', requestData)
+		const { data } = await instance.post<ResponseInterface<UserResponseInterface>>('/login', requestData)
 		return data.data
+	},
+	async refreshToken(requestData: RefreshTokenRequestInterface): Promise<RefreshTokenResponseInterface> {
+		if (DEV_MODE) {
+			return {
+				token:
+					'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2MDg3MDUxNzgsImV4cCI6MTYwODcxMjM3OCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoib3Jsb3ZAYmFua2kucnUifQ.gcpMg3bQoFSbYJdCtYR7AjbAggAMKyxjXbNypkyzKO5ut-ySb0pF0HYHA7W1FPcNTOqI_yk_lHEmxZ0BpKDrS_1oKLqsn1WdYwtGlipkQkCA0PFgFLNjp2Y2xfVANv-8oAHzxQ-6bEBVr9T4TC_bmmlHfb_P5ADE15OhEkrwPHWTJld9LEQM61WLybfJZF70rpohn159gPnljS8B69_CigyQ9pc78WkIxZufZowdjNG0Uiu_P7hYq_q3suDL-OZY8erMDnJvIlY7Bx1UBfGqnxv0zt209SEg1GAn5cDdQtfDtVqjNmO_MwsGo_ZB-ZlcY4iM6r3T5fgIwIE5MfDTOUjZV67iwL515pCcm1LhNbyRoI8Z4BF94EvHDA_1lkpzJNcjhmbcWQG1FJbPlhNCeb0NX99fpzel1ENFmgH9zVqsNm6OOQRQ8UIHp1kEjXpl9I_vw0b0vvrCACDKnnTRfecxu7xA8VgSwMRCE5itPGDJ0e_QrhGJQXMWc7cn5jDYCUAWKwekrNgXjJUiqOd2TJtTXO8ZHwGgibkwBXLTriQ-ipBwHsmD_Vbu6Eo-THHP01uVNuOk-SxBg3zIQFH-mZ89fVphkPM5OpHHxQKHHcUiIqqBGsVFyfkPqDYJEX7kLZzuUhyNL5qBsXhZnKzZeRAo32ajsYHaBFkMvunZBFo',
+				refreshToken: '0ea1f13f3bbe4988de14d84ff968a44702f93545f64e36422521a3942a33add8f89d9165544f46aa8a6b0ebb563f8c01100d6a5bf44024eca61d8a81a6c68886',
+			}
+		}
+		const { data } = await instance.post('/token/refresh', requestData)
+		return data
 	},
 	async getSearch(requestData: SearchRequestInterface): Promise<SearchResultsInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
@@ -84,11 +98,11 @@ export const GlobalApi = {
 }
 
 export const AbsencesApi = {
-	async getAbsences(): Promise<AbsenceDataInterface | ResponseErrorInterface> {
+	async getAbsences(requestData: StandartRequestInterface): Promise<AbsenceDataInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
 			return notifications.data
 		}
-		const { data } = await instance.get<ResponseInterface<any>>('/absences')
+		const { data } = await instance.get<ResponseInterface<AbsenceDataInterface>>(`/userNotification/${requestData.id}`)
 		return data.data
 	},
 	async getAllAbsences(): Promise<AllAbsenceDataInterface | ResponseErrorInterface> {
@@ -97,19 +111,20 @@ export const AbsencesApi = {
 		return allAbsences.data
 	},
 	async getAbsenceData(requestData: StandartRequestInterface): Promise<AbsenceDetailInterface | ResponseErrorInterface> {
-		//const { data } = await instance.post<ResponseInterface<any>>('/auth/login', requestData)
-		//return data.data
-		return notificationDetail.data
+		if (DEV_MODE) {
+			return notificationDetail.data
+		}
+		const { data } = await instance.get<ResponseInterface<AbsenceDetailInterface>>(`/absences/${requestData.id}`)
+		return data.data
 	},
-	async createAbsence(requestData: AbsenceCreateInterface): Promise<any> {
-		const { data } = await instance.post<ResponseInterface<any>>('/absences', requestData)
-		//return data.data
-		return notificationDetail.data
+	async createAbsence(requestData: AbsenceCreateInterface): Promise<string> {
+		return await instance.post('/absences', requestData)
 	},
 }
 
 export const ProfileApi = {
 	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface | ResponseErrorInterface> {
+		console.log('getProfile')
 		if (DEV_MODE) {
 			return profile.data
 		}

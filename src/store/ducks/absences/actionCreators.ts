@@ -16,8 +16,9 @@ export const setAbsencesLoading = (payload: LoadingStatus): SetLoadingActionInte
 	type: AbsencesActionsType.SET_LOADING_STATE,
 	payload,
 })
-export const getAbsences = (): GetAbsencesActionInterface => ({
+export const getAbsences = (userId: number): GetAbsencesActionInterface => ({
 	type: AbsencesActionsType.GET_ABSENCES,
+	userId
 })
 export const setAbsences = (payload: AbsenceDataInterface | null): SetAbsencesActionInterface => ({
 	type: AbsencesActionsType.SET_ABSENCES,

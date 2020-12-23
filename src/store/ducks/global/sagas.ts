@@ -1,8 +1,8 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
 import { GetSearchActionInterface, GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
-import { setGlobalMessage, setGlobalLoading, setSearch, setUser } from './actionCreators'
+import { setGlobalMessage, setGlobalLoading, setSearch, setUser, setUserProfile } from './actionCreators'
 import { Cookie } from '../../../services/helpers/cookie'
-import { ACCESS_TKN, GlobalApi } from '../../../services/api/api'
+import { ACCESS_TKN, GlobalApi, ProfileApi } from '../../../services/api/api'
 import { LoadingStatus } from '../../types'
 
 export function* loginRequest({ payload }: LoginActionInterface) {
@@ -10,15 +10,17 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 		yield put(setGlobalLoading(LoadingStatus.LOADING))
 		const user = yield call(GlobalApi.login, { login: payload.login, pass: payload.password })
 
-
-		//TODO убирать токены из данных стейта + сохранять рефреш в куки + обычный в класс
 		if (user && user.token) {
-			const jsonResponse = JSON.stringify(user)
-			Cookie.setCookie('userData', jsonResponse, { expires: 2147483647 })
+			const jsonResponseRefreshToken = JSON.stringify({
+				refreshToken: user.refreshToken,
+				id: user.id,
+				role: user.role[0],
+			})
+			Cookie.setCookie('refreshUserData', jsonResponseRefreshToken, { expires: 2147483647 })
 
 			ACCESS_TKN.setToken(user.token)
 
-			yield put(setUser(user))
+			yield put(setUser({ id: user.id, role: user.role[0] }))
 			yield put(setGlobalLoading(LoadingStatus.LOADED))
 			yield put(setGlobalMessage({ text: 'Авторизация прошла успешно', type: 'success' }))
 		} else {
@@ -33,12 +35,24 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 export function* getUserCookieRequest() {
 	try {
 		yield put(setGlobalLoading(LoadingStatus.LOADING))
-		const cookies = Cookie.getCookie('userData')
-		const user = cookies && JSON.parse(cookies + '')
+		const refresh_data = Cookie.getCookie('refreshUserData')
+		const refreshDataParsed = refresh_data && JSON.parse(refresh_data + '')
 
-		if (user) {
-			ACCESS_TKN.setToken(user.token)
-			yield put(setUser(user))
+		if (refreshDataParsed) {
+			const tokens = yield call(GlobalApi.refreshToken, { refreshToken: refreshDataParsed.refreshToken })
+
+			ACCESS_TKN.setToken(tokens.token)
+			const jsonResponseRefreshToken = JSON.stringify({
+				refreshToken: tokens.refreshToken,
+				id: refreshDataParsed.id,
+				role: refreshDataParsed.role,
+			})
+			Cookie.setCookie('refreshUserData', jsonResponseRefreshToken, { expires: 2147483647 })
+			if (tokens.token) {
+				const profile = yield call(ProfileApi.getProfile, { id: refreshDataParsed.id })
+				yield put(setUserProfile(profile))
+			}
+			yield put(setUser({ id: refreshDataParsed.id, role: refreshDataParsed.role }))
 		}
 		yield put(setGlobalLoading(LoadingStatus.LOADED))
 	} catch (error) {
@@ -47,9 +61,10 @@ export function* getUserCookieRequest() {
 }
 export function* logoutRequest() {
 	try {
-		Cookie.deleteCookie('userData')
+		Cookie.deleteCookie('refreshUserData')
 		ACCESS_TKN.setToken(null)
 		yield put(setUser(null))
+		yield put(setUserProfile(null))
 	} catch (error) {}
 }
 export function* getSearchRequest({ query }: GetSearchActionInterface) {
