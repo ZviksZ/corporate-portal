@@ -89,10 +89,10 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			)}
 			{isMyProfile && (
 				<>
-					<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
+					{/*<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
 						<img src={printer} alt="" width={'20px'} />
 						<span>Заявление на отпуск.pdf</span>
-					</a>
+					</a>*/}
 					<div className="sectionSubtitle">Накоплено дней отпуска</div>
 					<p className="sectionText">{time.vacationDays}</p>
 

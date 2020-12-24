@@ -33,9 +33,11 @@ export const useRoutes = (isAuthenticated = false, userRole: string) => {
 					<Route path="/teams/:id" exact>
 						<TeamsDetailPage />
 					</Route>
-					<Route path="/teams/:id/squad" exact>
-						<TeamsSquadPage />
-					</Route>
+					{userRole === 'ROLE_ADMIN' && (
+						<Route path="/teams/:id/squad" exact>
+							<TeamsSquadPage />
+						</Route>
+					)}
 					<Route path="/units" exact>
 						<UnitsPage />
 					</Route>
@@ -49,7 +51,7 @@ export const useRoutes = (isAuthenticated = false, userRole: string) => {
 						<ProjectsDetailPage />
 					</Route>
 					<Route path="/notifications" exact>
-						<NotificationsPage/>
+						<NotificationsPage />
 					</Route>
 					<Route path="/" render={() => <Redirect to="/profile" />} />
 				</Switch>
