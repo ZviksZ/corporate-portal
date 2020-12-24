@@ -6,6 +6,7 @@ import {
 	GetTeamSquadActionInterface,
 	RemoveTeamMemberActionInterface,
 	TeamsActionsType,
+	UpdateTeamMemberActionInterface,
 } from './contracts/actionTypes'
 import { TeamsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
@@ -91,7 +92,18 @@ export function* removeMemberRequest({ member_id, team_id }: RemoveTeamMemberAct
 		yield put(setGlobalMessage({ text: 'Ошибка при удалении члена команды. Попробуйте снова', type: 'error' }))
 	}
 }
+export function* updateMemberRequest({ team_id, member_id, teamRole }: UpdateTeamMemberActionInterface) {
+	try {
+		yield call(TeamsApi.updateTeamMember, { team_id, member_id, update: { teamRole } })
 
+		yield put(getTeamSquad(team_id.toString()))
+		yield put(getAvailableMembers(team_id.toString()))
+		yield put(setGlobalMessage({ text: 'Роль успешно изменена', type: 'success' }))
+	} catch (error) {
+		yield put(setLoadingTeams(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при изменении роли. Попробуйте снова', type: 'error' }))
+	}
+}
 export function* getAvailableMembersRequest({ teamId }: GetAvailableAvailableMembersActionInterface) {
 	try {
 		const availableMembers = yield call(TeamsApi.getAvailableMembers, { id: teamId })
@@ -111,4 +123,5 @@ export function* teamsSaga() {
 	yield takeLatest(TeamsActionsType.ADD_TEAM_MEMBER, addMemberRequest)
 	yield takeLatest(TeamsActionsType.REMOVE_TEAM_MEMBER, removeMemberRequest)
 	yield takeLatest(TeamsActionsType.GET_AVAILABLE_MEMBERS, getAvailableMembersRequest)
+	yield takeLatest(TeamsActionsType.UPDATE_TEAM_MEMBER_ROLE, updateMemberRequest)
 }

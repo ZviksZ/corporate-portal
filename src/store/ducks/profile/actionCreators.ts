@@ -4,11 +4,10 @@ import {
 	ProfileActionsType,
 	SetLoadingProfileActionInterface,
 	SetProfileActionInterface,
-	UpdateProfileActionInterface,
+	UpdateProfileActionInterface, UpdateProfileDayoffActionInterface,
 	UpdateProfilePhotoActionInterface,
 } from './contracts/actionTypes'
 import { LoadingStatus } from '../../types'
-import { GlobalActionsType, SetLoadingActionInterface } from '../global/contracts/actionTypes'
 
 export const getProfile = (id: string | number, isPersonalProfile: boolean): GetProfileActionInterface => ({
 	type: ProfileActionsType.GET_PROFILE,
@@ -35,6 +34,11 @@ export const updateProfilePhoto = (payload: File | string | null, profileId: num
 	profileId,
 	isCreate
 })
+export const updateProfileDayoff = (user_id: number | string, value: number | string): UpdateProfileDayoffActionInterface => ({
+	type: ProfileActionsType.UPDATE_PROFILE_DAYOFF,
+	user_id,
+	value
+})
 export const updateProfile = (payload: any, profileId: number, isPersonalProfile: boolean): UpdateProfileActionInterface => ({
 	type: ProfileActionsType.UPDATE_PROFILE,
 	payload,
@@ -42,4 +46,4 @@ export const updateProfile = (payload: any, profileId: number, isPersonalProfile
 	isPersonalProfile,
 })
 
-export type ProfileActions = UpdateProfileActionInterface | UpdateProfilePhotoActionInterface | SetLoadingProfileActionInterface | GetProfileActionInterface | SetProfileActionInterface
+export type ProfileActions = UpdateProfileDayoffActionInterface | UpdateProfileActionInterface | UpdateProfilePhotoActionInterface | SetLoadingProfileActionInterface | GetProfileActionInterface | SetProfileActionInterface

@@ -33,9 +33,11 @@ export const NavbarNotifications: React.FC = () => {
 	return (
 		<>
 			<IconButton className={s.notificationIcon} onClick={handleClick} aria-describedby={id}>
-				<Badge badgeContent={(absences && absences.newCount) || ''} color="error">
-					<NotificationsNoneOutlinedIcon />
-				</Badge>
+				{(absences && absences.newCount && (
+					<Badge badgeContent={absences.newCount} color="error">
+						<NotificationsNoneOutlinedIcon />
+					</Badge>
+				)) || <NotificationsNoneOutlinedIcon />}
 			</IconButton>
 			<Popover
 				id={id}
@@ -61,6 +63,7 @@ export const NavbarNotifications: React.FC = () => {
 							{absences.lastFive.map((item) => (
 								<NotificationPopupItem handleClose={handleClose} key={item.id} item={item} />
 							))}
+							{!absences.lastFive || (absences.lastFive.length === 0 && <p className="sectionSubtitle text-align-center margin-bottom margin-top text-uppercase">уведомлений пока нет</p>)}
 						</div>
 						<div className={s.bottom}>
 							<NavLink to={'/notifications'} onClick={handleClose}>

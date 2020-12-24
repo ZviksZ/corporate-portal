@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { GetProfileActionInterface, ProfileActionsType, UpdateProfileActionInterface, UpdateProfilePhotoActionInterface } from './contracts/actionTypes'
+import { GetProfileActionInterface, ProfileActionsType, UpdateProfileActionInterface, UpdateProfileDayoffActionInterface, UpdateProfilePhotoActionInterface } from './contracts/actionTypes'
 import { ProfileApi } from '../../../services/api/api'
 import { setLoadingProfile, setProfile } from './actionCreators'
 import { setGlobalMessage } from '../global/actionCreators'
@@ -65,9 +65,25 @@ export function* updateProfileRequest({ payload, profileId, isPersonalProfile }:
 		yield put(setGlobalMessage({ text: 'Ошибка при обновлении профиля. Попробуйте снова', type: 'error' }))
 	}
 }
+export function* updateProfileDayoffRequest({ user_id, value }: UpdateProfileDayoffActionInterface) {
+	try {
+		const storeData = store.getState()
+		yield call(ProfileApi.updateDayoff, { user_id, year: new Date().getFullYear(), update: { value } })
+		const profile = yield call(ProfileApi.getProfile, { id: user_id })
+
+		if (profile && profile.id) {
+			yield put(setProfile(profile, storeData.profile.isPersonalProfile))
+			yield put(setGlobalMessage({ text: 'Количество корпоративных дней изменено', type: 'success' }))
+		}
+	} catch (error) {
+		yield put(setLoadingProfile(LoadingStatus.ERROR))
+		yield put(setGlobalMessage({ text: 'Ошибка при изменении количества корпоративных дней. Попробуйте снова', type: 'error' }))
+	}
+}
 
 export function* profileSaga() {
 	yield takeLatest(ProfileActionsType.GET_PROFILE, getProfileRequest)
 	yield takeLatest(ProfileActionsType.UPDATE_PROFILE_PHOTO, updateProfilePhotoRequest)
 	yield takeLatest(ProfileActionsType.UPDATE_PROFILE, updateProfileRequest)
+	yield takeLatest(ProfileActionsType.UPDATE_PROFILE_DAYOFF, updateProfileDayoffRequest)
 }

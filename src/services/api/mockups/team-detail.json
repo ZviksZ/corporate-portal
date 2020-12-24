@@ -68,7 +68,8 @@
           "openTasksLink": "https://atlassian.com/5f625ff6bd97609c15525e2b4",
           "email": "example@mail.ru",
           "mobilePhone": "+7 900 000 00 00, +7 800 000 55 66",
-          "slackEmail": "example@mail.ru"
+          "slackEmail": "example@mail.ru",
+          "role": "developer"
         },
         {
           "name": "Колесников Вероника",

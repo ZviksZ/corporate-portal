@@ -14,19 +14,29 @@ export const NotificationsPage: React.FC = () => {
 	const { allAbsences } = useSelector(selectAbsences)
 	const isLoading = useSelector(selectIsAbsencesLoading)
 	const isLoadingError = useSelector(selectIsAbsencesLoadingError)
+
+	let interval: any
+
 	useEffect(() => {
 		if (user) {
 			dispatch(getAllAbsences(user.id))
+			interval = setInterval(() => {
+				dispatch(getAllAbsences(user.id))
+			}, 60000)
 		}
-
 		return () => {
 			dispatch(setAllAbsences(null))
+			clearInterval(interval)
 		}
 	}, [])
 
 	const repeatLoading = () => {
 		if (user) {
+			clearInterval(interval)
 			dispatch(getAllAbsences(user.id))
+			interval = setInterval(() => {
+				dispatch(getAllAbsences(user.id))
+			}, 60000)
 		}
 	}
 
@@ -53,9 +63,9 @@ export const NotificationsPage: React.FC = () => {
 			<div className="container">
 				<h1 className="section-title-small">Список уведомлений</h1>
 
-				{allAbsences && allAbsences.list.length > 0 ? (
+				{allAbsences && allAbsences.length > 0 ? (
 					<>
-						{allAbsences.list.map((notification) => (
+						{allAbsences.map((notification) => (
 							<NotificationCard item={notification} key={notification.id} />
 						))}
 					</>

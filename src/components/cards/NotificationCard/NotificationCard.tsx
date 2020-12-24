@@ -3,7 +3,7 @@ import { AbsenceItemInterface } from '../../../store/ducks/absences/contracts/st
 import s from './NotificationCard.module.scss'
 import { Avatar } from '@material-ui/core'
 import cn from 'classnames'
-import { getInitialsFromName, getReverseFormatDate, timeSince } from '../../../services/helpers/utils'
+import { getInitialsFromName, getReverseFormatDate, getStatusText, timeSince } from '../../../services/helpers/utils'
 import { useDispatch } from 'react-redux'
 import { getAbsenceData } from '../../../store/ducks/absences/actionCreators'
 
@@ -14,7 +14,9 @@ export const NotificationCard: React.FC<Props> = ({ item }) => {
 	const dispatch = useDispatch()
 
 	const openAbsence = () => {
-		dispatch(getAbsenceData(item.id))
+		if (item?.status && item?.status === 'new') {
+			dispatch(getAbsenceData(item.id))
+		}
 	}
 
 	return (
@@ -26,9 +28,11 @@ export const NotificationCard: React.FC<Props> = ({ item }) => {
 				<div className={s.type}>
 					{item.author} - <b>{item.name}</b>
 				</div>
-				<div className={s.time}>{item.date}</div>
+				<div className={s.time}>
+					{item.date} {item.date && ' - '} <span className={`status-${item.status}`}>{getStatusText(item?.status || '')}</span>
+				</div>
 			</div>
-			<i className={cn(s.openAbsence, 'icon-arrow-left')}></i>
+			{item?.status === 'new' && <i className={cn(s.openAbsence, 'icon-arrow-left')}></i>}
 		</div>
 	)
 }

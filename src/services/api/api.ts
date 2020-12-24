@@ -29,7 +29,7 @@ import {
 	AddRemoveMemberRequestInterface,
 	RefreshTokenRequestInterface,
 	RefreshTokenResponseInterface,
-	UserResponseInterface,
+	UserResponseInterface, UpdateMemberRequestInterface, UpdateDayoffRequestInterface,
 } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceChangeInterface, AbsenceItemInterface } from '../../store/ducks/absences/contracts/state'
@@ -109,7 +109,7 @@ export const AbsencesApi = {
 		if (DEV_MODE) {
 			return allAbsences.data
 		}
-		const { data } = await instance.post<ResponseInterface<AbsenceItemInterface[]>>(`/userAbsence/${requestData.id}`)
+		const { data } = await instance.get<ResponseInterface<AbsenceItemInterface[]>>(`/userAbsence/${requestData.id}`)
 		return data.data
 	},
 	async getAbsenceData(requestData: StandartRequestInterface): Promise<AbsenceDetailInterface | ResponseErrorInterface> {
@@ -147,6 +147,9 @@ export const ProfileApi = {
 	async uploadPhoto(requestData: FormData): Promise<string> {
 		const { data } = await instance.post<ResponseInterface<string>>(`/fileLoader`, requestData)
 		return data.data
+	},
+	async updateDayoff(requestData: UpdateDayoffRequestInterface) {
+		await instance.post(`/altUserUpdateDayOff`, requestData)
 	},
 }
 
@@ -199,6 +202,9 @@ export const TeamsApi = {
 	async addTeamMember(requestData: AddRemoveMemberRequestInterface): Promise<any> {
 		await instance.post<ResponseInterface<string>>(`/teamMembers`, requestData)
 	},
+	async updateTeamMember(requestData: UpdateMemberRequestInterface): Promise<any> {
+		await instance.post<ResponseInterface<string>>(`/altUpdateTeamMember`, requestData)
+	},
 	async removeTeamMember(requestData: AddRemoveMemberRequestInterface): Promise<any> {
 		await instance.post<ResponseInterface<string>>(`/altDeleteTeamMember`, requestData)
 	},
@@ -219,5 +225,3 @@ export const ProjectsApi = {
 		return data.data
 	},
 }
-
-export const SlackApi = {}

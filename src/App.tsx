@@ -14,7 +14,7 @@ export const App: React.FC = () => {
 	const isLoadingNever = useSelector(selectIsGlobalLoadingNever)
 	const dispatch = useDispatch()
 	const isAuth = !!user
-	const routes = useRoutes(isAuth, '')
+	const routes = useRoutes(isAuth, (user && user.role) || '')
 
 	useEffect(() => {
 		dispatch(getCookieUser())
@@ -25,6 +25,7 @@ export const App: React.FC = () => {
 			dispatch(getMembers())
 			dispatch(getAbsences(user.id))
 			setInterval(() => {
+				dispatch(getCookieUser())
 				dispatch(getAbsences(user.id))
 			}, 60000)
 		}

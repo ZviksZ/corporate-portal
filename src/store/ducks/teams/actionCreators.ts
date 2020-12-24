@@ -15,6 +15,7 @@ import {
 	RemoveTeamMemberActionInterface,
 	GetAvailableAvailableMembersActionInterface,
 	SetAvailableMembersActionInterface,
+	UpdateTeamMemberActionInterface,
 } from './contracts/actionTypes'
 import { UnitInterface, UnitDetailInterface, MemberDetailInterface } from '../units/contracts/state'
 import { SquadMemberInterface, TeamSquadInterface } from './contracts/state'
@@ -64,6 +65,12 @@ export const setLoadingTeams = (payload: LoadingStatus): SetLoadingTeamsActionIn
 	payload,
 })
 
+export const updateTeamMember = (team_id: string | number, member_id: string | number, teamRole: string): UpdateTeamMemberActionInterface => ({
+	type: TeamsActionsType.UPDATE_TEAM_MEMBER_ROLE,
+	team_id,
+	member_id,
+	teamRole
+})
 export const addTeamMember = (team_id: string | number, member_id: string | number): AddTeamMemberActionInterface => ({
 	type: TeamsActionsType.ADD_TEAM_MEMBER,
 	team_id,
@@ -84,6 +91,7 @@ export const setAvailableMembers = (payload: SquadMemberInterface[] | null): Set
 })
 
 export type TeamsActions =
+	| UpdateTeamMemberActionInterface
 	| GetAvailableAvailableMembersActionInterface
 	| SetAvailableMembersActionInterface
 	| SetLoadingTeamsActionInterface

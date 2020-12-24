@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface } from './state'
+import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceItemInterface } from './state'
 import { LoadingStatus } from '../../../types'
 
 export enum AbsencesActionsType {
@@ -28,7 +28,7 @@ export interface GetAllAbsencesActionInterface extends Action<AbsencesActionsTyp
 }
 export interface SetAllAbsencesActionInterface extends Action<AbsencesActionsType> {
 	type: AbsencesActionsType.SET_ALL_ABSENCES
-	payload: AllAbsenceDataInterface | null
+	payload: AbsenceItemInterface[] | null
 }
 export interface GetAbsenceDataActionInterface extends Action<AbsencesActionsType> {
 	type: AbsencesActionsType.GET_ABSENCE_DATA

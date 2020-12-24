@@ -38,7 +38,20 @@ export interface AddRemoveMemberRequestInterface {
 	member_id: string | number
 	team_id: string | number
 }
-
+export interface UpdateDayoffRequestInterface {
+	user_id: string | number
+	year: any
+	update: {
+		value: string | number
+	}
+}
+export interface UpdateMemberRequestInterface {
+	update: {
+		teamRole: string
+	}
+	member_id: string | number
+	team_id: string | number
+}
 export interface UserResponseInterface {
 	id: number
 	name: string

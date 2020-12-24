@@ -1,9 +1,10 @@
 import { put, takeLatest, call } from 'redux-saga/effects'
 import { GetSearchActionInterface, GlobalActionsType, LoginActionInterface } from './contracts/actionTypes'
-import { setGlobalMessage, setGlobalLoading, setSearch, setUser, setUserProfile } from './actionCreators'
+import { setGlobalMessage, setGlobalLoading, setSearch, setUser, setUserProfile, logout } from './actionCreators'
 import { Cookie } from '../../../services/helpers/cookie'
 import { ACCESS_TKN, GlobalApi, ProfileApi } from '../../../services/api/api'
 import { LoadingStatus } from '../../types'
+import { store } from '../../store'
 
 export function* loginRequest({ payload }: LoginActionInterface) {
 	try {
@@ -33,8 +34,11 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 	}
 }
 export function* getUserCookieRequest() {
+	const storeData = store.getState()
 	try {
-		yield put(setGlobalLoading(LoadingStatus.LOADING))
+		if (!storeData.global.user) {
+			yield put(setGlobalLoading(LoadingStatus.LOADING))
+		}
 		const refresh_data = Cookie.getCookie('refreshUserData')
 		const refreshDataParsed = refresh_data && JSON.parse(refresh_data + '')
 
@@ -56,6 +60,7 @@ export function* getUserCookieRequest() {
 		}
 		yield put(setGlobalLoading(LoadingStatus.LOADED))
 	} catch (error) {
+		yield put(logout())
 		yield put(setGlobalLoading(LoadingStatus.ERROR))
 	}
 }

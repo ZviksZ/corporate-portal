@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import cn from 'classnames'
 import Button from '@material-ui/core/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { setRoleFormData } from '../../../../store/ducks/teams/actionCreators'
+import { setRoleFormData, updateTeamMember } from '../../../../store/ducks/teams/actionCreators'
 import { selectTeams } from '../../../../store/ducks/teams/selectors'
 import { getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
@@ -17,7 +17,7 @@ type Props = {
 
 export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 	const dispatch = useDispatch()
-	const { roleFormData } = useSelector(selectTeams)
+	const { roleFormData, teamSquad } = useSelector(selectTeams)
 	const [role, setRole] = useState('')
 
 	const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,13 +30,16 @@ export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 	}
 
 	const saveRoleHandler = () => {
-		//dispatch(saveRoleHandler(role))
+		if (teamSquad && roleFormData) {
+			dispatch(updateTeamMember(teamSquad.id, roleFormData.id, role))
+			onClose(false)
+		}
 	}
 
 	useEffect(() => {
-		/*if (roleFormData && roleFormData.role) {
+		if (roleFormData && roleFormData.role) {
 			setRole(roleFormData.role)
-		}*/
+		}
 		return () => {
 			dispatch(setRoleFormData(null))
 		}

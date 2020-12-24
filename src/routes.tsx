@@ -13,7 +13,7 @@ import { ProjectsPage } from './pages/ProjectsPage/ProjectsPage'
 import { ProjectsDetailPage } from './pages/ProjectsDetailPage/ProjectsDetailPage'
 import { NotificationsPage } from './pages/NotificationsPage/NotificationsPage'
 
-export const useRoutes = (isAuthenticated = false, userType = '') => {
+export const useRoutes = (isAuthenticated = false, userRole: string) => {
 	if (isAuthenticated) {
 		return (
 			<div>

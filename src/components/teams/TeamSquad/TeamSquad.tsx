@@ -14,8 +14,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { filteredAvailableMembersList, filteredTeamMembersList, selectTeams } from '../../../store/ducks/teams/selectors'
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { setTeamSquadSearch } from '../../../store/ducks/teams/actionCreators'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 
 export const TeamSquad: React.FC = () => {
 	const dispatch = useDispatch()
@@ -42,6 +40,7 @@ export const TeamSquad: React.FC = () => {
 				</NavLink>
 				<span className="breadcrumbsItem">Управление составом</span>
 			</Breadcrumbs>
+
 			<h1 className="section-title-small no-margin-top">Управление составом</h1>
 
 			<FormControl fullWidth variant="outlined" className={s.searchInput}>

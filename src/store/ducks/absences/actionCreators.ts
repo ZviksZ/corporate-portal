@@ -1,4 +1,4 @@
-import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface } from './contracts/state'
+import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceItemInterface } from './contracts/state'
 import {
 	GetAllAbsencesActionInterface,
 	GetAbsenceDataActionInterface,
@@ -29,7 +29,7 @@ export const getAllAbsences = (userId: number): GetAllAbsencesActionInterface =>
 	type: AbsencesActionsType.GET_ALL_ABSENCES,
 	userId
 })
-export const setAllAbsences = (payload: AllAbsenceDataInterface | null): SetAllAbsencesActionInterface => ({
+export const setAllAbsences = (payload: AbsenceItemInterface[] | null): SetAllAbsencesActionInterface => ({
 	type: AbsencesActionsType.SET_ALL_ABSENCES,
 	payload,
 })

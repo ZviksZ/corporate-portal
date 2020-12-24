@@ -86,6 +86,13 @@ export const ProfileSidebarTop: React.FC = () => {
 				<NavLink to={`/units/${profileData.departmentId || ''}`} className={s.department}>
 					{profileData.department || ''}
 				</NavLink>
+				{
+					profileData.contacts.slackStatus && <div className={s.slackBlock}>
+						<div className={s.slackTitle}>Статус в Slack</div>
+						<div className={s.slackStatus}>{profileData.contacts.slackStatus}</div>
+					</div>
+				}
+
 			</div>
 
 			<Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">

@@ -13,6 +13,7 @@ export interface MemberDetailInterface {
 	mobilePhone?: string
 	phone?: string
 	slackEmail?: string
+	role?: string
 }
 export interface UnitInterface {
 	id: string

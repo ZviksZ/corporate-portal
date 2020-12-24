@@ -63,8 +63,8 @@ export const MemberSquadCard: React.FC<Props> = ({ member, teamId, showRole = fa
 			<div className={s.squadCardItem}>
 				{showRole && (
 					<>
-						{/*<div className={cn('sectionSubtitle', s.subtitle)}>Роль в команде</div>*/}
-						{/*	{member.role ? (
+						<div className={cn('sectionSubtitle', s.subtitle)}>Роль в команде</div>
+						{member.role ? (
 							<div className={s.text} onClick={openRoleForm}>
 								{member.role}
 							</div>
@@ -72,7 +72,7 @@ export const MemberSquadCard: React.FC<Props> = ({ member, teamId, showRole = fa
 							<div className={s.link} onClick={openRoleForm}>
 								+ Добавить
 							</div>
-						)}*/}
+						)}
 					</>
 				)}
 			</div>

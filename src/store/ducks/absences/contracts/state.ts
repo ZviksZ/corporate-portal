@@ -19,6 +19,7 @@ export interface AbsenceItemInterface {
 	name: string
 	date: string
 	authorImage: string
+	status?: string
 }
 export interface AbsenceDataInterface {
 	total: number
@@ -45,6 +46,6 @@ export interface AbsenceDetailInterface {
 export interface AbsencesStateInterface {
 	LoadingStatus: LoadingStatus
 	absences: AbsenceDataInterface | null
-	allAbsences: AllAbsenceDataInterface | null
+	allAbsences: AbsenceItemInterface[] | null
 	absenceDetail: AbsenceDetailInterface | null
 }
