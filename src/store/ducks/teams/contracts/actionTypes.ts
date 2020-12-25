@@ -20,6 +20,7 @@ export enum TeamsActionsType {
 	ADD_TEAM_MEMBER = 'teams/ADD_TEAM_MEMBER',
 	REMOVE_TEAM_MEMBER = 'teams/REMOVE_TEAM_MEMBER',
 	UPDATE_TEAM_MEMBER_ROLE = 'teams/UPDATE_TEAM_MEMBER_ROLE',
+	UPDATE_TEAM_LEAD = 'teams/UPDATE_TEAM_LEAD',
 	SET_LOADING_STATE = 'teams/SET_LOADING_STATE',
 }
 export interface UpdateTeamMemberActionInterface extends Action<TeamsActionsType> {

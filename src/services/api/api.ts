@@ -208,6 +208,9 @@ export const TeamsApi = {
 	async removeTeamMember(requestData: AddRemoveMemberRequestInterface): Promise<any> {
 		await instance.post<ResponseInterface<string>>(`/altDeleteTeamMember`, requestData)
 	},
+	async updateTeamLead(requestData: AddRemoveMemberRequestInterface): Promise<any> {
+		await instance.put<ResponseInterface<string>>(`/teams`, requestData)
+	},
 }
 export const ProjectsApi = {
 	async getProjects(): Promise<ProjectInterface[] | ResponseErrorInterface> {

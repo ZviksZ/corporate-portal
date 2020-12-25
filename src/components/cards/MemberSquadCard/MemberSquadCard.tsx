@@ -30,8 +30,10 @@ export const MemberSquadCard: React.FC<Props> = ({ isLeadCard = false, member, t
 	const openRoleForm = (e: React.MouseEvent<HTMLDivElement>) => {
 		e.stopPropagation()
 		e.preventDefault()
-		dispatch(setRoleFormData(member))
-		openForm && openForm(true)
+		if (!isLeadCard) {
+			dispatch(setRoleFormData(member))
+			openForm && openForm(true)
+		}
 	}
 
 	const addRemoveTeamHandler = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -87,7 +89,7 @@ export const MemberSquadCard: React.FC<Props> = ({ isLeadCard = false, member, t
 					</>
 				)}
 			</div>
-			{isLeadCard ? (
+			{/*{isLeadCard ? (
 				<>
 					{user && user.role == 'ROLE_ADMIN' && (
 						<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>
@@ -101,6 +103,12 @@ export const MemberSquadCard: React.FC<Props> = ({ isLeadCard = false, member, t
 						{isTeamMember ? '-' : '+'}
 					</div>
 				</>
+			)}*/}
+
+			{!isLeadCard && (
+				<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>
+					{isTeamMember ? '-' : '+'}
+				</div>
 			)}
 		</NavLink>
 	)
