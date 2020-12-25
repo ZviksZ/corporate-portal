@@ -4,8 +4,9 @@ import { Loader } from './components/common/Loader/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectGlobal, selectIsGlobalLoading, selectIsGlobalLoadingError, selectIsGlobalLoadingNever, selectIsGlobalLoadingSuccess } from './store/ducks/global/selectors'
 import { getCookieUser } from './store/ducks/global/actionCreators'
-import { getMembers } from './store/ducks/teams/actionCreators'
 import { getAbsences } from './store/ducks/absences/actionCreators'
+
+let interval: any = null
 
 export const App: React.FC = () => {
 	const { user } = useSelector(selectGlobal)
@@ -22,12 +23,14 @@ export const App: React.FC = () => {
 
 	useEffect(() => {
 		if (isAuth && user?.id) {
-			dispatch(getMembers())
 			dispatch(getAbsences(user.id))
-			setInterval(() => {
+			//dispatch(getCookieUser())
+			interval = setInterval(() => {
 				dispatch(getCookieUser())
 				dispatch(getAbsences(user.id))
 			}, 60000)
+		} else {
+			clearInterval(interval)
 		}
 	}, [isAuth])
 

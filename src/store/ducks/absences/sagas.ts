@@ -8,9 +8,11 @@ import {
 	GetAllAbsencesActionInterface,
 } from './contracts/actionTypes'
 import { setAllAbsences, setAbsenceData, setAbsences, setAbsencesLoading, getAbsences } from './actionCreators'
-import { AbsencesApi } from '../../../services/api/api'
+import { AbsencesApi, ProfileApi } from '../../../services/api/api'
 import { LoadingStatus } from '../../types'
-import { setGlobalMessage } from '../global/actionCreators'
+import { setGlobalMessage, setUserProfile } from '../global/actionCreators'
+import { store } from '../../store'
+import { setProfile } from '../profile/actionCreators'
 
 export function* getAbsencesRequest({ userId }: GetAbsencesActionInterface) {
 	try {
@@ -35,7 +37,7 @@ export function* getAllAbsencesRequest({ userId }: GetAllAbsencesActionInterface
 		yield put(setAbsencesLoading(LoadingStatus.LOADING))
 		const allAbsences = yield call(AbsencesApi.getAllAbsences, { id: userId })
 
-		yield put(setAllAbsences(allAbsences))
+		yield put(setAllAbsences(allAbsences || []))
 		yield put(setAbsencesLoading(LoadingStatus.LOADED))
 	} catch (error) {
 		yield put(setAbsencesLoading(LoadingStatus.ERROR))
@@ -44,9 +46,15 @@ export function* getAllAbsencesRequest({ userId }: GetAllAbsencesActionInterface
 }
 
 export function* createAbsenceRequest({ payload }: CreateAbsenceActionInterface) {
+	const storeData = store.getState()
+	const userId = storeData?.profile?.profileData?.id
+	const isMyProfile = storeData?.profile?.isPersonalProfile
 	try {
 		yield call(AbsencesApi.createAbsence, payload)
-
+		if (storeData?.profile?.profileData?.id) {
+			const profile = yield call(ProfileApi.getProfile, { id: storeData.profile.profileData.id })
+			yield put(setProfile(profile, isMyProfile))
+		}
 		yield put(setGlobalMessage({ text: 'Заявление успешно отправлено', type: 'success' }))
 	} catch (error) {
 		yield put(setGlobalMessage({ text: 'Ошибка при отправке заявления. Попробуйте еще раз', type: 'error' }))
@@ -59,7 +67,7 @@ export function* changeAbsenceStatusRequest({ id, isApprove, userId }: ChangeAbs
 		yield call(AbsencesApi.changeAbsenceStatus, { id, status })
 		yield put(getAbsences(userId))
 	} catch (error) {
-		yield put(setGlobalMessage({ text: 'Ошибка при загрузке данных уведомления', type: 'error' }))
+		yield put(setGlobalMessage({ text: 'Ошибка при изменении статуса заявления', type: 'error' }))
 	}
 }
 

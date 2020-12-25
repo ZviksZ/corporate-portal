@@ -23,7 +23,7 @@ export function setFormData(args) {
 }
 
 export function addDaysToDate(data, day) {
-	data = data.split('/')
+	data = data.split('.')
 	data = new Date(data[2], +data[1] - 1, +data[0] + day, 0, 0, 0, 0)
 	data = data.toLocaleDateString().split('.').reverse().join('/')
 

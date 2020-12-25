@@ -42,31 +42,25 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 	})
 
 	const [selectedDateFrom, setSelectedDateFrom] = useState<any>(new Date())
-	const [selectedDateTo, setSelectedDateTo] = useState<any>(new Date())
-	const [maxDateTo, setMaxDateTo] = useState<any>(null)
+	const [selectedDateTo, setSelectedDateTo] = useState<any>(new Date(addDaysToDate(new Date().toLocaleDateString(), 1)))
+	const [minDate, setMinDate] = useState<any>(new Date())
+	const [minDateTo, setMinDateTo] = useState<any>(new Date())
+	const [maxDateTo, setMaxDateTo] = useState<any>(new Date(addDaysToDate(new Date().toLocaleDateString(), 365)))
 	const [type, setType] = useState('')
 
-	/*useEffect(() => {
-		if (type == '4') {
-			const values = getValues()
-			const newDate = new Date(addDaysToDate(values.dateFrom, 3))
-
-			setMaxDateTo(newDate)
-			setSelectedDateTo(newDate)
-		} else {
-			setMaxDateTo(null)
-		}
-	}, [type, selectedDateFrom])*/
-
 	const handleDateFromChange = (date: any) => {
-		if (date < selectedDateTo) {
-			setSelectedDateFrom(date)
+		const newDateMax = new Date(addDaysToDate(date.toLocaleDateString(), 365))
+		const newDateMin = new Date(addDaysToDate(date.toLocaleDateString(), 1))
+		setSelectedDateFrom(date)
+		if (date > selectedDateTo) {
+			setSelectedDateTo(newDateMin)
 		}
+		setMaxDateTo(newDateMax)
+		setMinDateTo(newDateMin)
 	}
+
 	const handleDateToChange = (date: any) => {
-		if (date > selectedDateFrom) {
-			setSelectedDateTo(date)
-		}
+		setSelectedDateTo(date)
 	}
 	const selectHandler = (e: React.ChangeEvent<{ value: unknown }>) => {
 		setType(e.target.value as string)
@@ -82,7 +76,6 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 				status: 'new',
 			}
 			dispatch(createAbsence(formData))
-			dispatch(getProfile(profileData.id, isPersonalProfile))
 
 			onClose(false)
 		}
@@ -145,7 +138,7 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 							value={selectedDateFrom}
 							onChange={handleDateFromChange}
 							error={!!errors.dateFrom}
-							maxDate={selectedDateTo}
+							minDate={minDate}
 							helperText={errors.dateFrom ? (errors.dateFrom as any).message : ''}
 							name="dateFrom"
 							inputRef={register}
@@ -169,7 +162,7 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 							value={selectedDateTo}
 							onChange={handleDateToChange}
 							error={!!errors.dateTo}
-							minDate={selectedDateFrom}
+							minDate={minDateTo}
 							maxDate={maxDateTo}
 							helperText={errors.dateTo ? (errors.dateTo as any).message : ''}
 							name="dateTo"

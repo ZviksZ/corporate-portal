@@ -21,6 +21,11 @@ export function* loginRequest({ payload }: LoginActionInterface) {
 
 			ACCESS_TKN.setToken(user.token)
 
+			if (user.token) {
+				const profile = yield call(ProfileApi.getProfile, { id: user.id })
+				yield put(setUserProfile(profile))
+			}
+
 			yield put(setUser({ id: user.id, role: user.role[0] }))
 			yield put(setGlobalLoading(LoadingStatus.LOADED))
 			yield put(setGlobalMessage({ text: 'Авторизация прошла успешно', type: 'success' }))

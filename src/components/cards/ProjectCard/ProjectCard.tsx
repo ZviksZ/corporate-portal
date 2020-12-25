@@ -21,7 +21,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 				{project.wikilink && (
 					<object type="owo/uwu">
 						<div className={cn('d-flex align-item-center', s.links)}>
-							<a href={project.wikilink} className="link-with-icon" rel="noreferrer" target="_blank">
+							<a onClick={(e) => e.stopPropagation()} href={project.wikilink} className="link-with-icon" rel="noreferrer" target="_blank">
 								<img src={wiki} alt="" width={'18px'} />
 								<span>Страница в Wiki</span>
 							</a>

@@ -9,6 +9,7 @@ export interface FromToInterface {
 	from: string
 	to: string
 	status?: string
+	name?: string
 }
 export interface StartEndInterface {
 	dateStart: string

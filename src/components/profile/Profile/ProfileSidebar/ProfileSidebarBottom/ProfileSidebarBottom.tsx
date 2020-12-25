@@ -59,6 +59,10 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 
 	const time = profileData.worktime
 
+	if (!time?.employment?.length && !time?.openTasksLink && !time?.vacation?.length && !time?.corporateDays && !time?.vacationDays) {
+		return <></>
+	}
+
 	return (
 		<div className={s.sidebarBottom}>
 			{time.employment && time.employment.length > 0 && (
@@ -138,7 +142,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 								if (index != 0) {
 									return (
 										<div key={item?.from + index} className={s.appItem}>
-											<div className="sectionText no-margin-bottom">Заявление на отсутствие от {item.to}</div>
+											<div className="sectionText no-margin-bottom">{item.name || 'Заявление'} от {item.to}</div>
 											<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</div>
 										</div>
 									)

@@ -107,10 +107,10 @@ export const AbsencesApi = {
 	},
 	async getAllAbsences(requestData: StandartRequestInterface): Promise<AbsenceItemInterface[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return allAbsences.data
+			return allAbsences.data.lastFive
 		}
-		const { data } = await instance.get<ResponseInterface<AbsenceItemInterface[]>>(`/userAbsence/${requestData.id}`)
-		return data.data
+		const { data } = await instance.get<ResponseInterface<AbsenceDataInterface>>(`/userNotifications/${requestData.id}`)
+		return data.data.lastFive
 	},
 	async getAbsenceData(requestData: StandartRequestInterface): Promise<AbsenceDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {

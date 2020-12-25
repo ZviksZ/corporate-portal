@@ -6,7 +6,7 @@ export interface MemberDetailInterface {
 	id: string
 	photo: string
 	employment?: FromToInterface[]
-	departament?: string
+	department?: string
 	position?: string
 	openTasksLink?: string
 	email?: string

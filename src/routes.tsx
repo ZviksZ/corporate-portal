@@ -33,11 +33,9 @@ export const useRoutes = (isAuthenticated = false, userRole: string) => {
 					<Route path="/teams/:id" exact>
 						<TeamsDetailPage />
 					</Route>
-					{userRole === 'ROLE_ADMIN' && (
-						<Route path="/teams/:id/squad" exact>
-							<TeamsSquadPage />
-						</Route>
-					)}
+					<Route path="/teams/:id/squad" exact>
+						<TeamsSquadPage />
+					</Route>
 					<Route path="/units" exact>
 						<UnitsPage />
 					</Route>

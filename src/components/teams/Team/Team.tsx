@@ -37,21 +37,17 @@ export const Team: React.FC<Props> = ({ team }) => {
 				</>
 			)}
 
-			{team.members && team?.members?.list?.length > 0 && (
-				<>
-					<div className="sectionBigSubtitle text-uppercase margin-top-x2">
-						<span>сотрудники ({team.members.list.length})</span>
-						{user && user.role === 'ROLE_ADMIN' && (
-							<Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">
-								Управление составом
-							</Button>
-						)}
-					</div>
-					{team.members.list.map((member) => (
-						<MemberCard member={member} key={member.id} />
-					))}
-				</>
-			)}
+			<div className="sectionBigSubtitle text-uppercase margin-top-x2">
+				<span>сотрудники ({team?.members?.list?.length || 0})</span>
+				{((user && user.role === 'ROLE_ADMIN') || (user && user.id.toString() == team?.lead?.id)) && (
+					<Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">
+						Управление составом
+					</Button>
+				)}
+			</div>
+			{team.members && team?.members?.list?.length > 0 && team.members.list.map((member) => (
+				<MemberCard member={member} key={member.id} />
+			))}
 		</div>
 	)
 }

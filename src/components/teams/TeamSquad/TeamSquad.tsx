@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Breadcrumbs, FormControl } from '@material-ui/core'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { MemberSquadCard } from '../../cards/MemberSquadCard/MemberSquadCard'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -14,21 +14,29 @@ import { useDispatch, useSelector } from 'react-redux'
 import { filteredAvailableMembersList, filteredTeamMembersList, selectTeams } from '../../../store/ducks/teams/selectors'
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { setTeamSquadSearch } from '../../../store/ducks/teams/actionCreators'
+import { selectGlobal } from '../../../store/ducks/global/selectors'
 
 export const TeamSquad: React.FC = () => {
 	const dispatch = useDispatch()
 	const [openForm, setOpenForm] = useState(false)
 	const { teamSquad } = useSelector(selectTeams)
+	const { user } = useSelector(selectGlobal)
 	const filteredMembers = useSelector(filteredTeamMembersList)
 	const filteredAvailableMembers = useSelector(filteredAvailableMembersList)
 
 	if (!teamSquad) {
 		return <></>
 	}
+	if (user && user.role !== 'ROLE_ADMIN' && teamSquad?.lead?.id) {
+		if (user.id.toString() != teamSquad?.lead?.id) {
+			return <Redirect to={`/teams/${teamSquad.id}`} />
+		}
+	}
 
 	const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setTeamSquadSearch(e.target.value))
 	}
+
 	return (
 		<div className={s.teamSquad}>
 			<Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
@@ -59,12 +67,12 @@ export const TeamSquad: React.FC = () => {
 			{teamSquad.lead && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
-					<MemberSquadCard teamId={teamSquad.id} member={teamSquad.lead} openForm={setOpenForm} showRole={true} isTeamMember={true} />
+					<MemberSquadCard isLeadCard={true} teamId={teamSquad.id} member={teamSquad.lead} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 				</>
 			)}
 			{filteredMembers && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase margin-top-x2">сотрудники ({filteredMembers.length})</div>
+					<div className="sectionBigSubtitle text-uppercase margin-top-x2">команда ({filteredMembers.length})</div>
 					{filteredMembers.map((member) => (
 						<MemberSquadCard teamId={teamSquad.id} key={member.id} member={member} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 					))}

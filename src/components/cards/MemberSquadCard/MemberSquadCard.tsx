@@ -4,21 +4,24 @@ import cn from 'classnames'
 import { Avatar } from '@material-ui/core'
 import { getInitialsFromName } from '../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addTeamMember, removeTeamMember, setRoleFormData } from '../../../store/ducks/teams/actionCreators'
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { MemberDetailInterface } from '../../../store/ducks/units/contracts/state'
+import { selectGlobal } from '../../../store/ducks/global/selectors'
 
 type Props = {
 	member: MemberDetailInterface
 	showRole?: boolean
 	isTeamMember?: boolean
+	isLeadCard?: boolean
 	openForm?: (param: boolean) => void
 	teamId?: string | number
 }
 
-export const MemberSquadCard: React.FC<Props> = ({ member, teamId, showRole = false, isTeamMember = false, openForm }) => {
+export const MemberSquadCard: React.FC<Props> = ({ isLeadCard = false, member, teamId, showRole = false, isTeamMember = false, openForm }) => {
 	const dispatch = useDispatch()
+	const { user } = useSelector(selectGlobal)
 
 	if (!member) {
 		return <></>
@@ -36,9 +39,17 @@ export const MemberSquadCard: React.FC<Props> = ({ member, teamId, showRole = fa
 		e.preventDefault()
 		if (teamId) {
 			if (!isTeamMember) {
-				dispatch(addTeamMember(teamId, member.id))
+				if (isLeadCard) {
+					dispatch(addTeamMember(teamId, member.id))
+				} else {
+					dispatch(addTeamMember(teamId, member.id))
+				}
 			} else {
-				dispatch(removeTeamMember(teamId, member.id))
+				if (isLeadCard) {
+					dispatch(removeTeamMember(teamId, member.id))
+				} else {
+					dispatch(removeTeamMember(teamId, member.id))
+				}
 			}
 		}
 	}
@@ -54,7 +65,7 @@ export const MemberSquadCard: React.FC<Props> = ({ member, teamId, showRole = fa
 			</div>
 			<div className={s.squadCardItem}>
 				<div className={cn('sectionSubtitle', s.subtitle)}>Подразделение</div>
-				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.departament || '-'}</div>
+				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.department || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
 				<div className={cn('sectionSubtitle', s.subtitle)}>Должность</div>
@@ -76,7 +87,21 @@ export const MemberSquadCard: React.FC<Props> = ({ member, teamId, showRole = fa
 					</>
 				)}
 			</div>
-			<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>{isTeamMember ? '-' : '+'}</div>
+			{isLeadCard ? (
+				<>
+					{user && user.role == 'ROLE_ADMIN' && (
+						<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>
+							{isTeamMember ? '-' : '+'}
+						</div>
+					)}
+				</>
+			) : (
+				<>
+					<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>
+						{isTeamMember ? '-' : '+'}
+					</div>
+				</>
+			)}
 		</NavLink>
 	)
 }
