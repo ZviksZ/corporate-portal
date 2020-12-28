@@ -34,10 +34,11 @@ export const updateProfilePhoto = (payload: File | string | null, profileId: num
 	profileId,
 	isCreate
 })
-export const updateProfileDayoff = (user_id: number | string, value: number | string): UpdateProfileDayoffActionInterface => ({
+export const updateProfileDayoff = (user_id: number | string, value: number | string, isNewDayoff: boolean): UpdateProfileDayoffActionInterface => ({
 	type: ProfileActionsType.UPDATE_PROFILE_DAYOFF,
 	user_id,
-	value
+	value,
+	isNewDayoff
 })
 export const updateProfile = (payload: any, profileId: number, isPersonalProfile: boolean): UpdateProfileActionInterface => ({
 	type: ProfileActionsType.UPDATE_PROFILE,

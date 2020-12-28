@@ -26,6 +26,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 	const [corporate, setCorporate] = useState(false)
 	const [days, setDays] = useState('')
 	const [error, setError] = useState('')
+	const leadId = profileData?.additional?.lead?.id || 'no lead id'
+	const userId = (user && user?.id) || 'no user id'
+	const isSubordinatesProfile = userId == leadId
 
 	useEffect(() => {
 		if (profileData) {
@@ -50,7 +53,11 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			const daysValue = +days
 			if (daysValue) {
 				setCorporate(false)
-				dispatch(updateProfileDayoff(profileData.id, days))
+				if (!profileData?.worktime?.corporateDays) {
+					dispatch(updateProfileDayoff(profileData.id, days, true))
+				} else {
+					dispatch(updateProfileDayoff(profileData.id, days, false))
+				}
 			} else {
 				setError('Введите числовое значение')
 			}
@@ -59,7 +66,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 
 	const time = profileData.worktime
 
-	if (!time?.employment?.length && !time?.openTasksLink && !time?.vacation?.length && !time?.corporateDays && !time?.vacationDays) {
+	if (!time?.employment?.length && !time?.openTasksLink && !time?.vacation?.length && !time?.corporateDays && !time?.vacationDays && !isSubordinatesProfile) {
 		return <></>
 	}
 
@@ -91,7 +98,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 					</p>
 				</>
 			)}
-			{isMyProfile && (
+			{isMyProfile ? (
 				<>
 					{/*<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
 						<img src={printer} alt="" width={'20px'} />
@@ -115,7 +122,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 						/>
 					) : (
 						<>
-							{user && user.role === 'ROLE_ADMIN' ? (
+							{(user && user.role === 'ROLE_ADMIN') || isSubordinatesProfile ? (
 								<>
 									<div className="sectionSubtitle">Корпоративных дней</div>
 									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
@@ -142,7 +149,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 								if (index != 0) {
 									return (
 										<div key={item?.from + index} className={s.appItem}>
-											<div className="sectionText no-margin-bottom">{item.name || 'Заявление'} от {item.to}</div>
+											<div className="sectionText no-margin-bottom">
+												{item.name || 'Заявление'} от {item.to}
+											</div>
 											<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</div>
 										</div>
 									)
@@ -151,6 +160,42 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 						</div>
 					)}
 				</>
+			) : isSubordinatesProfile ? (
+				<>
+					{corporate ? (
+						<TextField
+							variant="outlined"
+							error={!!error}
+							helperText={error || ''}
+							value={days}
+							onChange={handleChangeDays}
+							fullWidth
+							label="Количество дней"
+							name="days"
+							autoFocus
+							className="form-input margin-bottom-x2"
+						/>
+					) : (
+						<>
+							{(user && user.role === 'ROLE_ADMIN') || isSubordinatesProfile ? (
+								<>
+									<div className="sectionSubtitle">Корпоративных дней</div>
+									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
+										{time.corporateDays || '0'}
+										<i className={cn('icon-edit', s.editIcon)}></i>
+									</p>
+								</>
+							) : (
+								<>
+									<div className="sectionSubtitle">Корпоративных дней</div>
+									<p className="sectionText">{time.corporateDays || '0'}</p>
+								</>
+							)}
+						</>
+					)}
+				</>
+			) : (
+				<></>
 			)}
 
 			<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: corporate })} position="fixed" color="default">

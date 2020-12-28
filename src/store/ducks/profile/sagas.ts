@@ -65,10 +65,15 @@ export function* updateProfileRequest({ payload, profileId, isPersonalProfile }:
 		yield put(setGlobalMessage({ text: 'Ошибка при обновлении профиля. Попробуйте снова', type: 'error' }))
 	}
 }
-export function* updateProfileDayoffRequest({ user_id, value }: UpdateProfileDayoffActionInterface) {
+export function* updateProfileDayoffRequest({ user_id, value, isNewDayoff }: UpdateProfileDayoffActionInterface) {
 	try {
 		const storeData = store.getState()
-		yield call(ProfileApi.updateDayoff, { user_id, year: new Date().getFullYear(), update: { value } })
+		if(isNewDayoff) {
+			yield call(ProfileApi.createDayoff, { user_id, year: new Date().getFullYear(), value })
+		}else {
+			yield call(ProfileApi.updateDayoff, { user_id, year: new Date().getFullYear(), update: { value } })
+		}
+
 		const profile = yield call(ProfileApi.getProfile, { id: user_id })
 
 		if (profile && profile.id) {

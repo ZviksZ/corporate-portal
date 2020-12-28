@@ -45,6 +45,11 @@ export interface UpdateDayoffRequestInterface {
 		value: string | number
 	}
 }
+export interface CreateDayoffRequestInterface {
+	user_id: string | number
+	year: any
+	value: string | number
+}
 export interface UpdateMemberRequestInterface {
 	update: {
 		teamRole: string

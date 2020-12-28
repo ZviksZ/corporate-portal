@@ -1,6 +1,6 @@
 import * as React from 'react'
 import s from '../../Profile.module.scss'
-import { Avatar, DialogActions } from '@material-ui/core'
+import { Avatar, DialogActions, TextField } from '@material-ui/core'
 import cn from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
@@ -8,14 +8,24 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
 import Button from '@material-ui/core/Button'
 import { useEffect, useState } from 'react'
-import { updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
+import { updateProfile, updateProfileDayoff, updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
 import { NavLink } from 'react-router-dom'
+import { selectGlobal } from '../../../../../store/ducks/global/selectors'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
 	const { profileData, isPersonalProfile } = useSelector(selectProfile)
+	const { user } = useSelector(selectGlobal)
+	const [editStatus, setEditStatus] = useState(false)
+	const [status, setStatus] = useState('')
 	const [open, setOpen] = useState(false)
 	const [files, setFiles] = useState<any>(null)
+
+	useEffect(() => {
+		setStatus(profileData?.contacts?.slackStatus || '')
+	}, [profileData])
 
 	useEffect(() => {
 		if (profileData && profileData.id && files && files[0]) {
@@ -49,6 +59,21 @@ export const ProfileSidebarTop: React.FC = () => {
 		const filesArr = Array.prototype.slice.call(files)
 
 		setFiles(filesArr)
+	}
+
+	const handleChangeStatus = (event: React.ChangeEvent<{ value: unknown }>) => {
+		setStatus(event.target.value as string)
+	}
+
+	const closeEdit = () => {
+		setEditStatus(false)
+	}
+
+	const saveChanges = () => {
+		if (profileData && profileData.id) {
+			setEditStatus(false)
+			dispatch(updateProfile({ slackStatus: status }, profileData.id, isPersonalProfile))
+		}
 	}
 
 	return (
@@ -86,13 +111,34 @@ export const ProfileSidebarTop: React.FC = () => {
 				<NavLink to={`/units/${profileData.departmentId || ''}`} className={s.department}>
 					{profileData.department || ''}
 				</NavLink>
-				{
-					profileData.contacts.slackStatus && <div className={s.slackBlock}>
-						<div className={s.slackTitle}>Статус в Slack</div>
-						<div className={s.slackStatus}>{profileData.contacts.slackStatus}</div>
-					</div>
-				}
 
+				{editStatus ? (
+					<TextField variant="outlined" value={status} onChange={handleChangeStatus} fullWidth label="Статус" name="status" autoFocus className="form-input margin-top margin-bottom-x2" />
+				) : (
+					<>
+						{(user && user.role === 'ROLE_ADMIN') || isPersonalProfile ? (
+							<>
+								<div className={s.slackBlock}>
+									<div className={s.slackTitle}>Статус в Slack</div>
+									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit, s.slackStatus)} onClick={() => setEditStatus(true)}>
+										{profileData.contacts.slackStatus || <span className={cn('color-gray', s.slackEmpty)}>установить статус</span>}
+										<i className={cn('icon-edit', s.editIcon)}></i>
+									</p>
+								</div>
+							</>
+						) : (
+							<>
+								{
+									profileData.contacts.slackStatus && <div className={s.slackBlock}>
+										<div className={s.slackTitle}>Статус в Slack</div>
+										<div className={s.slackStatus}>{profileData.contacts.slackStatus}</div>
+									</div>
+								}
+
+							</>
+						)}
+					</>
+				)}
 			</div>
 
 			<Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
@@ -106,6 +152,17 @@ export const ProfileSidebarTop: React.FC = () => {
 					</Button>
 				</DialogActions>
 			</Dialog>
+
+			<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: editStatus })} position="fixed" color="default">
+				<Toolbar className={cn(s.editButtons)}>
+					<Button size="large" className="btn btn-default text-uppercase" onClick={closeEdit}>
+						ОТМЕНА
+					</Button>
+					<Button size="large" className="btn margin-left-x3 text-uppercase" onClick={saveChanges}>
+						Сохранить
+					</Button>
+				</Toolbar>
+			</AppBar>
 		</>
 	)
 }

@@ -29,7 +29,7 @@ import {
 	AddRemoveMemberRequestInterface,
 	RefreshTokenRequestInterface,
 	RefreshTokenResponseInterface,
-	UserResponseInterface, UpdateMemberRequestInterface, UpdateDayoffRequestInterface,
+	UserResponseInterface, UpdateMemberRequestInterface, UpdateDayoffRequestInterface, CreateDayoffRequestInterface,
 } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceChangeInterface, AbsenceItemInterface } from '../../store/ducks/absences/contracts/state'
@@ -150,6 +150,9 @@ export const ProfileApi = {
 	},
 	async updateDayoff(requestData: UpdateDayoffRequestInterface) {
 		await instance.post(`/altUserUpdateDayOff`, requestData)
+	},
+	async createDayoff(requestData: CreateDayoffRequestInterface) {
+		await instance.post(`/dayOff`, requestData)
 	},
 }
 

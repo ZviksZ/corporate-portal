@@ -52,7 +52,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 					<p className={cn('sectionText', 'sectionTextWith', 'no-margin-bottom')}>
 						<img src={slack} className="sectionTextLogo" alt="" />
 						<object type="owo/uwu">
-							<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.slackEmail} className="sectionTextContent">
+							<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.email || ''} className="sectionTextContent">
 								{member.slackEmail}
 							</a>
 						</object>

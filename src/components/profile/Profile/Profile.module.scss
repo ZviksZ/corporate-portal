@@ -31,8 +31,22 @@
                     text-align: center;
                 }
                 .slackStatus {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    position: relative;
                     font-size: 20px;
+                    line-height: 24px;
                     text-align: center;
+                    i {
+                        position: absolute;
+                        right: -24px;
+                        top: -2px;
+                    }
+                    .slackEmpty {
+                        font-size: 15px;
+                        line-height: 17px;
+                    }
                 }
             }
             .avatarWrap {

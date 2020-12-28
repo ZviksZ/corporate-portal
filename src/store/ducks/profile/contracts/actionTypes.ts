@@ -41,6 +41,7 @@ export interface UpdateProfileDayoffActionInterface extends Action<ProfileAction
 	type: ProfileActionsType.UPDATE_PROFILE_DAYOFF
 	user_id: number | string
 	value: number | string
+	isNewDayoff: boolean
 }
 
 export interface SetLoadingProfileActionInterface extends Action<ProfileActionsType> {
