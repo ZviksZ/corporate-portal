@@ -22,6 +22,7 @@ export const ProfileSidebarTop: React.FC = () => {
 	const [status, setStatus] = useState('')
 	const [open, setOpen] = useState(false)
 	const [files, setFiles] = useState<any>(null)
+	const roleAdmin = user && user.role === 'ROLE_ADMIN'
 
 	useEffect(() => {
 		setStatus(profileData?.contacts?.slackStatus || '')
@@ -84,7 +85,7 @@ export const ProfileSidebarTop: React.FC = () => {
 						{profileData.name && profileData.name[0]}
 						{profileData.surname && profileData.surname[0]}
 					</Avatar>
-					{isPersonalProfile && (
+					{(isPersonalProfile || roleAdmin) && (
 						<>
 							{profileData.photo && (
 								<div className={s.avatarDelete} onClick={handleClickOpen}>
@@ -116,7 +117,7 @@ export const ProfileSidebarTop: React.FC = () => {
 					<TextField variant="outlined" value={status} onChange={handleChangeStatus} fullWidth label="Статус" name="status" autoFocus className="form-input margin-top margin-bottom-x2" />
 				) : (
 					<>
-						{(user && user.role === 'ROLE_ADMIN') || isPersonalProfile ? (
+						{isPersonalProfile || roleAdmin ? (
 							<>
 								<div className={s.slackBlock}>
 									<div className={s.slackTitle}>Статус в Slack</div>
@@ -128,13 +129,12 @@ export const ProfileSidebarTop: React.FC = () => {
 							</>
 						) : (
 							<>
-								{
-									profileData.contacts.slackStatus && <div className={s.slackBlock}>
+								{profileData.contacts.slackStatus && (
+									<div className={s.slackBlock}>
 										<div className={s.slackTitle}>Статус в Slack</div>
 										<div className={s.slackStatus}>{profileData.contacts.slackStatus}</div>
 									</div>
-								}
-
+								)}
 							</>
 						)}
 					</>

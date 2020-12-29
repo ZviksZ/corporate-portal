@@ -16,6 +16,7 @@ import Select from '@material-ui/core/Select'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { updateProfile } from '../../../../../store/ducks/profile/actionCreators'
+import { selectGlobal } from '../../../../../store/ducks/global/selectors'
 
 type Props = {
 	isMyProfile: boolean
@@ -23,11 +24,13 @@ type Props = {
 export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 	const dispatch = useDispatch()
 	const { profileData, isPersonalProfile } = useSelector(selectProfile)
+	const { user } = useSelector(selectGlobal)
 	const [openFormButtons, setOpenFormButtons] = useState(false)
 	const [size, setSize] = React.useState('')
 	const [phone, setPhone] = React.useState('')
 	const [editPhone, setEditPhone] = useState(false)
 	const [editSize, setEditSize] = useState(false)
+	const roleAdmin = user && user.role === 'ROLE_ADMIN'
 
 	useEffect(() => {
 		setSize(profileData?.contacts?.tshirtSize || '')
@@ -84,12 +87,14 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 		<>
 			<div className={s.profileMain}>
 				<h4 className={cn('sectionTitle', 'margin-bottom-x2')}>Контактная информация</h4>
-				{main.birthday && (
+				{main.birthday && main.showBirthYear && (
 					<>
 						<div className="sectionSubtitle">День рождения</div>
 						<p className={cn('sectionText', 'sectionTextWith', s.profileBirthday)}>
 							<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
-							{isMyProfile && <FormControlLabel control={<Checkbox onChange={handleChangeShowbirth} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />}
+							{(isMyProfile || roleAdmin) && (
+								<FormControlLabel control={<Checkbox onChange={handleChangeShowbirth} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />
+							)}
 						</p>
 					</>
 				)}
@@ -108,7 +113,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 					<TextField variant="outlined" value={phone} onChange={handleChangePhone} fullWidth label="Мобильный телефон" name="mobilePhone" autoFocus className="form-input margin-bottom-x2" />
 				) : (
 					<>
-						{isMyProfile ? (
+						{isMyProfile || roleAdmin ? (
 							<>
 								<div className="sectionSubtitle">Мобильный телефон</div>
 								<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openPhoneEdit}>
@@ -157,7 +162,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 							</Select>
 						</FormControl>
 					</>
-				) : isMyProfile ? (
+				) : isMyProfile || roleAdmin ? (
 					<>
 						<div className="sectionSubtitle">Размер футболки</div>
 						<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openSizeEdit}>
@@ -175,7 +180,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 						)}
 					</>
 				)}
-				{isMyProfile && main.sshKeys && (
+				{(isMyProfile || roleAdmin) && main.sshKeys && (
 					<>
 						<div className="sectionSubtitle">SSH ключ</div>
 
