@@ -28,6 +28,16 @@
         "id": "8f6254f6bd97609c15525e2b4"
       }
     ],
+    "contractor": [
+      {
+        "name": "contractor 1",
+        "id": "8f625ff6bd97609c15525e2b4"
+      },
+      {
+        "name": "contractor 2",
+        "id": "8f6254f6bd97609c15525e2b4"
+      }
+    ],
     "teams": [
       {
         "name": "Команда тестирования мобильного приложения на iOS",

@@ -54,7 +54,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			const daysValue = +days
 			if (daysValue || daysValue === 0) {
 				setCorporate(false)
-				if (!profileData?.worktime?.corporateDays) {
+				if (profileData?.worktime?.corporateDays === null) {
 					dispatch(updateProfileDayoff(profileData.id, days, true))
 				} else {
 					dispatch(updateProfileDayoff(profileData.id, days, false))

@@ -36,6 +36,7 @@ export interface SearchResultsInterface {
 	units?: SimpleMemberUnitInterface[] | null
 	teams?: SimpleMemberUnitInterface[] | null
 	projects?: SimpleMemberUnitInterface[] | null
+	contractor?: SimpleMemberUnitInterface[] | null
 }
 export interface GlobalStateInterface {
 	user: UserInterface | null

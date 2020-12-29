@@ -146,6 +146,16 @@ export const NavbarSearch: React.FC = () => {
 									</div>
 								</>
 							)}
+							{/*{searchResults.contractor && searchResults.contractor.length > 0 && (
+								<>
+									<div className={s.searchTitle}>Контрагенты</div>
+									<div className={cn(s.searchWrap)}>
+										{searchResults.contractor.map((project) => (
+											<NavbarSearchItem clickFn={clickLinkHandler} key={project.id} path={'projects'} item={project} />
+										))}
+									</div>
+								</>
+							)}*/}
 						</div>
 					</Popper>
 				</ClickAwayListener>

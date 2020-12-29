@@ -173,7 +173,7 @@
 }
 .popper {
     margin-top: 20px;
-    z-index: 88;
+    z-index: 200;
     @include mobile {
         margin-top: 0;
         overflow: auto;
