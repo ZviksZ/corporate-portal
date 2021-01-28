@@ -8,6 +8,7 @@ import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 export const ProfileInfoContractors: React.FC = () => {
 	const [showMore, setShowMore] = useState<boolean>(false)
 	const { profileData } = useSelector(selectProfile)
+	const FIRST_SHOW_LIMIT = 4
 
 	if (!profileData || !profileData?.additional?.contractors?.length) {
 		return <></>
@@ -25,7 +26,7 @@ export const ProfileInfoContractors: React.FC = () => {
 			<h4 className={cn(s.profileTitle, 'margin-bottom-x2', 'margin-top-x2')}>Контрагенты</h4>
 			<div className={s.contractors}>
 				{contractors.map((item, index) => {
-					if (index < 4) {
+					if (index < FIRST_SHOW_LIMIT) {
 						return (
 							<div key={item.name + index} className={s.item}>
 								{item.name}
@@ -36,7 +37,7 @@ export const ProfileInfoContractors: React.FC = () => {
 				{showMore && (
 					<>
 						{contractors.map((item, index) => {
-							if (index >= 4) {
+							if (index >= FIRST_SHOW_LIMIT) {
 								return (
 									<div key={item.name + index} className={s.item}>
 										{item.name}
@@ -46,10 +47,10 @@ export const ProfileInfoContractors: React.FC = () => {
 						})}
 					</>
 				)}
-				{contractors.length > 4 && (
-					<a href="#" className={s.showMore} onClick={toggleMoreItems}>
-						{showMore ? 'скрыть' : `показать еще ${contractors.length - 4}`}
-					</a>
+				{contractors.length > FIRST_SHOW_LIMIT && (
+					<span className={s.showMore} onClick={toggleMoreItems}>
+						{showMore ? 'скрыть' : `показать еще ${contractors.length - FIRST_SHOW_LIMIT}`}
+					</span>
 				)}
 			</div>
 		</>

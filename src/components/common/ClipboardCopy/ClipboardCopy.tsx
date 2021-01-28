@@ -3,6 +3,7 @@ import copy from '../../../assets/images/icons/copy.svg'
 import { copyTextToClipboard } from '../../../services/helpers/utils'
 import { Popover, Tooltip } from '@material-ui/core'
 import cn from 'classnames'
+import s from './ClipboardCopy.module.scss'
 
 type Props = {
 	text: string
@@ -34,7 +35,7 @@ export const ClipboardCopy: React.FC<Props> = ({ text, isBigIcon = false }) => {
 	return (
 		<>
 			<Tooltip title="Скопировать текст" aria-describedby={id}>
-				<img className={cn('copy-icon', { ['copy-icon__big']: isBigIcon })} src={copy} alt="" data-copy={text} onClick={handleClick} />
+				<img className={cn(s.copyIcon, { [s.copyIconBig]: isBigIcon })} src={copy} alt="" data-copy={text} onClick={handleClick} />
 			</Tooltip>
 			<Popover
 				id={id}
@@ -51,7 +52,7 @@ export const ClipboardCopy: React.FC<Props> = ({ text, isBigIcon = false }) => {
 				}}
 			>
 				<div className="container">
-					<p className="copy-text">Текст скопирован в буфер обмена</p>
+					<p className={s.copyText}>Текст скопирован в буфер обмена</p>
 				</div>
 			</Popover>
 		</>

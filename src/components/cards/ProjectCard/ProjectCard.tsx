@@ -3,7 +3,7 @@ import s from './ProjectCard.module.scss'
 import { NavLink } from 'react-router-dom'
 import { Avatar } from '@material-ui/core'
 import cn from 'classnames'
-import { getInitialsFromName } from '../../../services/helpers/utils'
+import { getInitialsFromName, stopPropagation } from '../../../services/helpers/utils'
 import { AvatarGroup } from '@material-ui/lab'
 import wiki from '../../../assets/images/icons/wiki.svg'
 import jira from '../../../assets/images/icons/jira.svg'
@@ -21,7 +21,7 @@ export const ProjectCard: React.FC<Props> = ({ project }) => {
 				{project.wikilink && (
 					<object type="owo/uwu">
 						<div className={cn('d-flex align-item-center', s.links)}>
-							<a onClick={(e) => e.stopPropagation()} href={project.wikilink} className="link-with-icon" rel="noreferrer" target="_blank">
+							<a onClick={stopPropagation} href={project.wikilink} className="link-with-icon" rel="noreferrer" target="_blank">
 								<img src={wiki} alt="" width={'18px'} />
 								<span>Страница в Wiki</span>
 							</a>

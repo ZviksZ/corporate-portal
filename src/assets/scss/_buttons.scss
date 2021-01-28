@@ -5,30 +5,38 @@
     transition: background 0.2s linear;
     white-space: nowrap;
     font-size: 14px !important;
+
     &.btn-default {
         background: $colorButtonWhite !important;
         color: $colorText !important;
     }
+
     &.btn-dangerous {
-        background: $colorDangerous!important;
+        background: $colorDangerous !important;
     }
+
     &.btn-secondary {
         background: $colorSecondary !important;
     }
+
     &.btn-full-width {
         width: 100%;
     }
+
     @include desktop {
         &:hover {
             background: $colorPrimaryDarken !important;
+
             &.btn-default {
                 background: $colorButtonWhite !important;
                 color: $colorText !important;
                 opacity: 0.7;
             }
+
             &.btn-dangerous {
                 background: $colorDangerousDarken !important;
             }
+
             &.btn-secondary {
                 background: $colorSecondaryDarken !important;
             }

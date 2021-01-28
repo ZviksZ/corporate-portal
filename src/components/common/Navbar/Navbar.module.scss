@@ -17,6 +17,7 @@
     @include mobile {
         padding: 6px !important;
     }
+
     .logo {
         display: block;
         width: 185px;
@@ -25,6 +26,7 @@
             width: 106px;
         }
     }
+
     .logoText {
         margin: 0 29px 0 17px;
         max-width: 95px;
@@ -39,12 +41,14 @@
             display: none;
         }
     }
+
     .navbarContent {
         display: flex;
         align-items: center;
         width: 100%;
         height: 100%;
     }
+
     .nav {
         display: flex;
         align-items: center;
@@ -53,6 +57,7 @@
             display: none;
         }
     }
+
     .link {
         position: relative;
         font-size: 16px;
@@ -65,9 +70,11 @@
         align-items: center;
         @extend %link-shared;
     }
+
     .link + .link {
         margin-left: 19px;
     }
+
     .activeLink {
         &:before {
             position: absolute;
@@ -80,6 +87,7 @@
             background: $colorPrimaryDarken;
         }
     }
+
     .searchInput {
         margin-left: auto;
         max-width: 212px;
@@ -110,12 +118,14 @@
             &.searchInputShow {
                 transform: translateY(0);
                 opacity: 1;
+
                 & > div {
                     width: 100%;
                 }
             }
         }
     }
+
     .searchIcon {
         margin-left: auto;
         padding: 6px !important;
@@ -125,6 +135,7 @@
     }
 
 }
+
 .searchTitle {
     font-weight: bold;
     font-size: 12px;
@@ -132,32 +143,42 @@
     letter-spacing: -0.0428571px;
     color: #000000;
     margin: 13px 0;
+
+    &:first-child {
+        margin-top: 0;
+    }
 }
+
 .searchWrap {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+
     .searchItem {
         width: 100%;
         display: flex;
         align-items: center;
         @extend %link-shared;
+
         .avatar {
             width: 20px;
             height: 20px;
             margin-right: 9px;
             font-size: 11px;
         }
+
         .name {
             font-size: 12px;
             line-height: 14px;
             color: $colorGray2;
         }
     }
+
     .searchItem + .searchItem {
         margin-top: 13px;
     }
+
     &.searchWrapDouble {
         .searchItem {
             width: 48%;
@@ -166,11 +187,13 @@
                 width: 100%;
             }
         }
+
         .searchItem + .searchItem {
             margin-top: 0;
         }
     }
 }
+
 .popper {
     margin-top: 20px;
     z-index: 200;
@@ -183,6 +206,7 @@
         left: 0;
         height: 100vh;
     }
+
     .popperContent {
         background: #FFFFFF;
         box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
@@ -197,13 +221,16 @@
         }
     }
 }
+
 .profileAvatar {
     cursor: pointer;
 }
+
 .profileList {
     display: flex;
     flex-direction: column;
     padding: 16px 18px;
+
     .smallLink {
         font-size: 14px;
         line-height: 16px;
@@ -212,10 +239,12 @@
         cursor: pointer;
         @extend %link-shared;
     }
+
     .smallLink + .smallLink {
         margin-top: 15px;
     }
 }
+
 .notificationIcon {
     margin: 0 23px !important;
     @include mobile {
@@ -223,12 +252,14 @@
         margin: 0 15px 0 0 !important;
     }
 }
+
 .notificationList {
     width: 330px;
     overflow: hidden;
     @include mobile {
         width: 290px;
     }
+
     .head {
         display: flex;
         align-items: center;
@@ -237,6 +268,7 @@
         background: $colorButtonWhite;
         border-radius: 4px 4px 0 0;
         padding: 0 16px;
+
         .text {
             font-weight: 500;
             font-size: 16px;
@@ -244,6 +276,7 @@
             letter-spacing: -0.05px;
             color: $colorText;
         }
+
         .count {
             font-size: 12px;
             line-height: 18px;
@@ -251,6 +284,7 @@
             color: $colorGray;
         }
     }
+
     .bottom {
         display: flex;
         justify-content: center;
@@ -262,6 +296,7 @@
         transition: 0.2s ease;
         padding: 0 16px;
         @extend %link-shared;
+
         a {
             font-weight: 500;
             font-size: 13px;
@@ -271,6 +306,7 @@
             color: $colorText;
         }
     }
+
     .item {
         display: flex;
         align-items: center;
@@ -279,15 +315,18 @@
         cursor: pointer;
         transition: 0.2s ease;
         @extend %link-shared;
+
         .image {
             margin-right: 16px;
         }
+
         .type {
             font-size: 14px;
             line-height: 21px;
             letter-spacing: -0.05px;
             color: $colorText;
         }
+
         .time {
             font-size: 12px;
             line-height: 18px;
@@ -295,6 +334,7 @@
             color: $colorMuted;
 
         }
+
         .openAbsence {
             margin-left: auto;
             color: $colorMuted;
@@ -303,6 +343,7 @@
         }
     }
 }
+
 .navbarMobileOverlay {
     position: fixed;
     top: 0;
@@ -313,11 +354,13 @@
     background: rgba(0, 0, 0, 0.8);
     transform: translateX(-100%);
     opacity: 0;
+
     &.navbarOpen {
         transform: translateX(0);
         opacity: 1;
     }
 }
+
 .navbarMobile {
     position: fixed;
     left: 0;
@@ -329,10 +372,12 @@
     transition: 0.3s ease;
     transform: translateX(-100%);
     opacity: 0;
+
     &.navbarOpen {
         transform: translateX(0);
         opacity: 1;
     }
+
     .head {
         width: 100%;
         height: 64px;
@@ -340,11 +385,13 @@
         align-items: center;
         padding: 0 6px;
     }
+
     .nav {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         padding: 22px;
+
         .link {
             height: auto;
             font-size: 16px;
@@ -353,6 +400,7 @@
             letter-spacing: 0.444444px;
             margin-left: 0;
         }
+
         .link + .link {
             margin-top: 12px;
             margin-left: 0;

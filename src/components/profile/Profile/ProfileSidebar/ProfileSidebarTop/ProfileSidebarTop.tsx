@@ -156,7 +156,7 @@ export const ProfileSidebarTop: React.FC = () => {
 			<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: editStatus })} position="fixed" color="default">
 				<Toolbar className={cn(s.editButtons)}>
 					<Button size="large" className="btn btn-default text-uppercase" onClick={closeEdit}>
-						ОТМЕНА
+						Отмена
 					</Button>
 					<Button size="large" className="btn margin-left-x3 text-uppercase" onClick={saveChanges}>
 						Сохранить

@@ -5,7 +5,7 @@ import cn from 'classnames'
 import jira from '../../../../assets/images/icons/jira.svg'
 import { useState } from 'react'
 import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
-import { getInitialsFromName } from '../../../../services/helpers/utils'
+import { getInitialsFromName, stopPropagation } from '../../../../services/helpers/utils'
 import { FromToInterface } from '../../../../store/ducks/profile/contracts/state'
 
 type Props = {
@@ -14,6 +14,7 @@ type Props = {
 
 export const MemberCardMain: React.FC<Props> = ({ member }) => {
 	const [showEmployment, setShowEmployment] = useState(false)
+	const FIRST_SHOW_LIMIT = 3
 
 	const showMoreTimes = (e: React.MouseEvent<HTMLLIElement>) => {
 		e.stopPropagation()
@@ -33,15 +34,7 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 						<div className="sectionSubtitle">Занятость на текущий день:</div>
 						<ul className={cn('sectionList', s.employmentList, { [s.employmentListBig]: showEmployment })}>
 							{member.employment.map((item, key) => {
-								if (!showEmployment) {
-									if (key < 3) {
-										return (
-											<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-												с {item.from} до {item.to}
-											</li>
-										)
-									}
-								} else {
+								if (showEmployment || (!showEmployment && key < FIRST_SHOW_LIMIT)) {
 									return (
 										<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
 											с {item.from} до {item.to}
@@ -49,7 +42,7 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 									)
 								}
 							})}
-							{!showEmployment && member.employment && member.employment.length > 3 && (
+							{!showEmployment && member.employment && member.employment.length > FIRST_SHOW_LIMIT && (
 								<li onClick={showMoreTimes}>
 									<span>еще</span>
 								</li>
@@ -58,15 +51,14 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 					</>
 				)}
 
-				{
-					member.openTasksLink && 	<object type="owo/uwu">
-						<a onClick={(e) => e.stopPropagation()} href={member.openTasksLink} className="link-with-icon margin-bottom">
+				{member.openTasksLink && (
+					<object type="owo/uwu">
+						<a onClick={stopPropagation} href={member.openTasksLink} className="link-with-icon margin-bottom">
 							<img src={jira} alt="" width={'18px'} />
 							<span>Открытые задачи</span>
 						</a>
 					</object>
-				}
-
+				)}
 			</div>
 		</div>
 	)

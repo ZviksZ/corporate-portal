@@ -11,15 +11,18 @@
     transition: 0.2s ease;
     background: $colorWhite;
     @extend %link-shared;
+
     .image {
         margin-right: 16px;
     }
+
     .type {
         font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.05px;
         color: $colorText;
     }
+
     .time {
         font-size: 12px;
         line-height: 18px;
@@ -27,6 +30,7 @@
         color: $colorMuted;
 
     }
+
     .openAbsence {
         margin-left: auto;
         color: $colorMuted;
@@ -34,6 +38,7 @@
         margin-top: 4px;
     }
 }
+
 .item + .item {
     margin-top: 14px;
 }

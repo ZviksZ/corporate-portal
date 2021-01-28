@@ -10,6 +10,7 @@
     height: 92px;
     color: $colorText;
     text-decoration: none;
+
     .info {
         .name {
             font-size: 16px;
@@ -17,22 +18,26 @@
             margin-bottom: 6px;
         }
     }
+
     .projectTeam {
         margin-left: auto;
         display: flex;
         align-items: center;
+
         .position {
             font-size: 10px;
             line-height: 12px;
             color: $colorGray2;
             margin-bottom: 7px;
         }
+
         .teamInfo {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: $colorText;
             @extend %link-shared;
+
             .name {
                 display: inline-block;
                 margin-left: 6px;
@@ -41,12 +46,15 @@
                 line-height: 14px;
             }
         }
+
         .item + .item {
             margin-left: 90px;
         }
+
         .item:first-child {
             margin-left: auto;
         }
+
         .memberItem {
             width: 238px;
         }
@@ -69,13 +77,16 @@
             .name {
                 margin-bottom: 12px;
             }
+
             .links {
                 flex-wrap: wrap;
                 margin-top: 5px;
+
                 a {
                     width: 100%;
                     margin-left: 0 !important;
                 }
+
                 a + a {
                     margin-top: 5px;
                 }
@@ -84,22 +95,27 @@
         .projectTeam {
             flex-wrap: wrap;
             margin-top: 20px;
+
             .item {
                 width: 100%;
+
                 .image:first-child {
                     margin-left: 0;
                 }
             }
+
             .item + .item {
                 margin-left: 0;
                 margin-top: 10px;
             }
+
             .memberItem {
                 margin-left: 0;
             }
         }
     }
 }
+
 .projectItem + .projectItem {
     margin-top: 18px;
 }

@@ -11,6 +11,7 @@
     align-items: center;
     padding: 15px 28px;
     color: $colorText;
+
     .squadCardItem {
         display: flex;
         flex-direction: column;
@@ -18,17 +19,21 @@
         width: 197px;
         min-width: 197px;
     }
+
     .squadCardItem + .squadCardItem {
         margin-left: 70px;
     }
+
     .avatar {
         margin-right: 15px;
         width: 40px;
         height: 40px;
     }
+
     .subtitle {
         margin-bottom: 5px;
     }
+
     .link {
         font-size: 14px;
         line-height: 24px;
@@ -37,6 +42,7 @@
         cursor: pointer;
         @extend %link-shared;
     }
+
     .text {
         font-weight: 500;
         font-size: 14px;
@@ -69,6 +75,7 @@
                 color: $colorWhite;
             }
         }
+
         &.addedMember {
             background: $colorPrimary;
             color: $colorWhite;
@@ -119,6 +126,7 @@
         }
     }
 }
+
 .squadCard + .squadCard {
     margin-top: 14px;
 }

@@ -39,20 +39,13 @@ export const MemberSquadCard: React.FC<Props> = ({ isLeadCard = false, member, t
 	const addRemoveTeamHandler = (e: React.MouseEvent<HTMLDivElement>) => {
 		e.stopPropagation()
 		e.preventDefault()
-		if (teamId) {
-			if (!isTeamMember) {
-				if (isLeadCard) {
-					dispatch(addTeamMember(teamId, member.id))
-				} else {
-					dispatch(addTeamMember(teamId, member.id))
-				}
-			} else {
-				if (isLeadCard) {
-					dispatch(removeTeamMember(teamId, member.id))
-				} else {
-					dispatch(removeTeamMember(teamId, member.id))
-				}
-			}
+
+		if (!teamId) return
+
+		if (!isTeamMember) {
+			dispatch(addTeamMember(teamId, member.id))
+		} else {
+			dispatch(removeTeamMember(teamId, member.id))
 		}
 	}
 

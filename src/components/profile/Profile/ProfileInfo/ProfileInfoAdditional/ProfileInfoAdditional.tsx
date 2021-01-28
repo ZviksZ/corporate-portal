@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 import { getInitialsFromName } from '../../../../../services/helpers/utils'
+import { ProfileInfoMemberLink } from './ProfileInfoMemberLink/ProfileInfoMemberLink'
 
 export const ProfileInfoAdditional: React.FC = () => {
 	const { profileData } = useSelector(selectProfile)
@@ -27,16 +28,9 @@ export const ProfileInfoAdditional: React.FC = () => {
 					<div className={s.item}>
 						<div className={s.position}>Подчинённые</div>
 						<div className={s.membersList}>
-							{additional.subordinates.map((item) => {
-								return (
-									<NavLink key={item.id} className={s.membersListItem} to={`/profile/${item.id}`}>
-										<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={item.photo || ''} aria-controls="simple-menu" aria-haspopup="true">
-											{getInitialsFromName(item.name)}
-										</Avatar>
-										<span className={s.name}>{item.name}</span>
-									</NavLink>
-								)
-							})}
+							{additional.subordinates.map((item) => (
+								<ProfileInfoMemberLink key={item.id} member={item} />
+							))}
 						</div>
 					</div>
 				)}
@@ -46,12 +40,14 @@ export const ProfileInfoAdditional: React.FC = () => {
 						<div className={s.item}>
 							<div className={s.position}>Руководитель</div>
 							<div className={s.membersList}>
-								<NavLink className={s.membersListItem} to={`/profile/${additional.lead.id}`}>
+								{/*<NavLink className={s.membersListItem} to={`/profile/${additional.lead.id}`}>
 									<Avatar className={cn(s.image, 'avatar-bg')} alt="" src={additional.lead.photo || ''} aria-controls="simple-menu" aria-haspopup="true">
 										{getInitialsFromName(additional.lead.name)}
 									</Avatar>
 									<span className={s.name}>{additional.lead.name}</span>
-								</NavLink>
+								</NavLink>*/}
+
+								<ProfileInfoMemberLink member={additional.lead} />
 							</div>
 						</div>
 					</>

@@ -10,11 +10,13 @@
     height: 92px;
     color: $colorText;
     text-decoration: none;
+
     .info {
         .name {
             font-size: 16px;
             line-height: 19px;
         }
+
         .role {
             font-size: 14px;
             line-height: 16px;
@@ -22,22 +24,26 @@
             margin-top: 12px;
         }
     }
+
     .team {
         margin-left: auto;
         display: flex;
         align-items: center;
+
         .position {
             font-size: 10px;
             line-height: 12px;
             color: $colorGray2;
             margin-bottom: 7px;
         }
+
         .teamInfo {
             display: flex;
             align-items: center;
             text-decoration: none;
             color: $colorText;
             @extend %link-shared;
+
             .name {
                 display: inline-block;
                 margin-left: 6px;
@@ -46,12 +52,15 @@
                 line-height: 14px;
             }
         }
+
         .item {
             width: 150px;
         }
+
         .item + .item {
             margin-left: 60px;
         }
+
         .memberItem {
             width: 238px;
             @include mobile {
@@ -67,6 +76,7 @@
         .info {
             width: 100%;
             margin-bottom: 10px;
+
             .role {
                 margin-top: 4px;
             }
@@ -75,25 +85,31 @@
             flex-wrap: wrap;
             justify-content: flex-start;
             margin-left: 0;
+
             .teamInfo {
                 width: 100%;
             }
+
             .item {
                 width: 100%;
             }
+
             .item + .item {
                 margin-left: 0;
                 margin-top: 12px;
             }
+
             .memberItem {
                 width: 100%;
             }
+
             .image:first-child {
                 margin-left: 0;
             }
         }
     }
 }
+
 .teamItem + .teamItem {
     margin-top: 8px;
 }

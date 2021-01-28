@@ -28,18 +28,23 @@
 .display-block {
     display: block !important;
 }
+
 .display-none {
     display: none !important;
 }
+
 .display-flex {
     display: flex !important;
 }
+
 .align-item-center {
     align-items: center !important;
 }
+
 .display-inline-flex {
     display: inline-flex !important;
 }
+
 .hide {
     display: none !important;
 }
@@ -47,10 +52,12 @@
 .no-margin {
     margin: 0 !important;
 }
+
 .no-margin-vertical {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
+
 .no-margin-horizontal {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -59,12 +66,15 @@
 .no-margin-top {
     margin-top: 0 !important;
 }
+
 .margin-top {
     margin-top: 12px !important;
 }
+
 .margin-top-x2 {
     margin-top: 24px !important;
 }
+
 .margin-top-x3 {
     margin-top: 36px !important;
 }
@@ -84,15 +94,19 @@
 .no-margin-bottom {
     margin-bottom: 0 !important;
 }
+
 .margin-bottom {
     margin-bottom: 12px !important;
 }
+
 .margin-bottom-x2 {
     margin-bottom: 24px !important;
 }
+
 .margin-bottom-x3 {
     margin-bottom: 36px !important;
 }
+
 .margin-bottom-x4 {
     margin-bottom: 64px !important;
 }
@@ -115,15 +129,19 @@
 .no-margin-left {
     margin-left: 0 !important;
 }
+
 .margin-left {
     margin-left: 12px !important;
 }
+
 .margin-left-x2 {
     margin-left: 24px !important;
 }
+
 .margin-left-x3 {
     margin-left: 36px !important;
 }
+
 .margin-right {
     margin-right: 12px !important;
 }
@@ -137,10 +155,12 @@
 .no-padding {
     padding: 0 !important;
 }
+
 .no-padding-vertical {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
 .no-padding-horizontal {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -149,12 +169,15 @@
 .no-padding-top {
     padding-top: 0 !important;
 }
+
 .padding-top {
     padding-top: 12px !important;
 }
+
 .padding-top-x2 {
     padding-top: 24px !important;
 }
+
 .padding-top-x3 {
     padding-top: 36px !important;
 }
@@ -162,12 +185,15 @@
 .no-padding-bottom {
     padding-bottom: 0 !important;
 }
+
 .padding-bottom {
     padding-bottom: 12px !important;
 }
+
 .padding-bottom-x2 {
     padding-bottom: 24px !important;
 }
+
 .padding-bottom-x3 {
     padding-bottom: 36px !important;
 }
@@ -175,9 +201,11 @@
 .text-align-left {
     text-align: left !important;
 }
+
 .text-align-right {
     text-align: right !important;
 }
+
 .text-align-center {
     text-align: center !important;
 }
@@ -189,6 +217,7 @@
 .overflow-visible {
     overflow: visible !important;
 }
+
 .overflow-hidden {
     overflow: hidden !important;
 }
@@ -196,18 +225,23 @@
 .color-text {
     color: $colorText !important;
 }
+
 .color-white {
     color: $colorWhite !important;
 }
+
 .color-gray {
     color: $colorGray !important;
 }
+
 .color-muted {
     color: $colorMuted !important;
 }
+
 .color-primary {
     color: $colorPrimary !important;
 }
+
 .text-italic {
     font-style: italic !important;
 }
@@ -219,15 +253,19 @@
 .bold-text {
     font-weight: 600 !important;
 }
+
 .normal-text {
     font-weight: normal !important;
 }
+
 .text-uppercase {
     text-transform: uppercase !important;
 }
+
 .text-initial {
     text-transform: initial !important;
 }
+
 .text-underline {
     text-decoration: underline !important;
 }
@@ -236,27 +274,35 @@
     display: flex;
     align-items: center;
 }
+
 .flex-wrap {
     flex-wrap: wrap;
 }
+
 .ai-center {
     align-items: center;
 }
+
 .ai-start {
     align-items: flex-start;
 }
+
 .ai-end {
     align-items: flex-end;
 }
+
 .jc-center {
     justify-content: center;
 }
+
 .jc-start {
     justify-content: flex-start;
 }
+
 .jc-end {
     justify-content: flex-end;
 }
+
 .flex-column {
     flex-direction: column;
 }
@@ -266,17 +312,24 @@
     min-height: calc(100vh - 64px);
     background: #F5F6F7;
 }
+
 .full-width {
     width: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 
 .status-new {
     color: #FFB800;
 }
+
 .status-approved {
     color: #00BD1E;
 }
+
 .status-declined {
     color: #FF0000;
 }

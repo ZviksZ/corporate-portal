@@ -197,7 +197,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 			<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: openFormButtons })} position="fixed" color="default">
 				<Toolbar className={cn(s.editButtons)}>
 					<Button size="large" className="btn btn-default text-uppercase" onClick={closeEdit}>
-						ОТМЕНА
+						Отмена
 					</Button>
 					<Button size="large" className="btn margin-left-x3 text-uppercase" onClick={saveChanges}>
 						Сохранить

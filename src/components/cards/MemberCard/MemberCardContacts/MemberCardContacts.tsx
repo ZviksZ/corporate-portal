@@ -4,6 +4,7 @@ import cn from 'classnames'
 import { ClipboardCopy } from '../../../common/ClipboardCopy/ClipboardCopy'
 import slack from '../../../../assets/images/icons/slack.svg'
 import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
+import { stopPropagation } from '../../../../services/helpers/utils'
 
 type Props = {
 	member: MemberDetailInterface
@@ -20,7 +21,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 					<div className="sectionSubtitle">Контактный Email</div>
 					<p className={cn('sectionText', 'sectionTextWith')}>
 						<object type="owo/uwu">
-							<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.email} className="sectionTextContent">
+							<a onClick={stopPropagation} href={'mailto:' + member.email} className="sectionTextContent">
 								{member.email}
 							</a>
 						</object>
@@ -37,7 +38,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 							{member.mobilePhone.split(',').map((item, index) => {
 								if (item) {
 									return (
-										<a onClick={(e) => e.stopPropagation()} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
+										<a onClick={stopPropagation} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
 											{item}
 										</a>
 									)
@@ -52,7 +53,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 					<p className={cn('sectionText', 'sectionTextWith', 'no-margin-bottom')}>
 						<img src={slack} className="sectionTextLogo" alt="" />
 						<object type="owo/uwu">
-							<a onClick={(e) => e.stopPropagation()} href={'mailto:' + member.email || ''} className="sectionTextContent">
+							<a onClick={stopPropagation} href={'mailto:' + member.email || ''} className="sectionTextContent">
 								{member.slackEmail}
 							</a>
 						</object>

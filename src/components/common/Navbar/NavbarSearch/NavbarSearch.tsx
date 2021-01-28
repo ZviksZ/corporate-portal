@@ -12,6 +12,7 @@ import Popper from '@material-ui/core/Popper'
 import { NavbarSearchItem } from './NavbarSearchItem/NavbarSearchItem'
 import cn from 'classnames'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
+import { NavbarSearchBlock } from './NavbarSearchBlock/NavbarSearchBlock'
 
 export const NavbarSearch: React.FC = () => {
 	const [anchorEl, setAnchorEl] = useState<any>(null)
@@ -101,61 +102,19 @@ export const NavbarSearch: React.FC = () => {
 			</FormControl>
 			{searchResults && (
 				<ClickAwayListener onClickAway={clickAwayHandler}>
-					<Popper className={s.popper} placement={'bottom-end'} id={'transitions-popper'} anchorEl={anchorEl} open={open}>
+					<Popper className={s.popper} placement={'bottom-end'} anchorEl={anchorEl} open={open}>
 						<div className={s.popperContent}>
 							{!searchResults?.members?.length && !searchResults?.units?.length && !searchResults?.teams?.length && !searchResults?.projects?.length && (
 								<div className={cn(s.searchTitle, 'text-align-center')}>По вашему запросу ничего не найдено</div>
 							)}
 							{searchResults.members && searchResults.members.length > 0 && (
-								<>
-									<div className={cn(s.searchTitle, 'no-margin-top')}>Сотрудники</div>
-									<div className={cn(s.searchWrap, s.searchWrapDouble)}>
-										{searchResults.members.map((member) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={member.id} path={'profile'} item={member} />
-										))}
-									</div>
-								</>
+								<NavbarSearchBlock isDouble={true} path={'profile'} title={'Сотрудники'} clickFn={clickLinkHandler} searchResults={searchResults.members} />
 							)}
-							{searchResults.units && searchResults.units.length > 0 && (
-								<>
-									<div className={s.searchTitle}>Подразделения</div>
-									<div className={cn(s.searchWrap)}>
-										{searchResults.units.map((unit) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={unit.id} path={'units'} item={unit} />
-										))}
-									</div>
-								</>
-							)}
-							{searchResults.teams && searchResults.teams.length > 0 && (
-								<>
-									<div className={s.searchTitle}>Команды</div>
-									<div className={cn(s.searchWrap)}>
-										{searchResults.teams.map((team) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={team.id} path={'teams'} item={team} />
-										))}
-									</div>
-								</>
-							)}
+							{searchResults.units && searchResults.units.length > 0 && <NavbarSearchBlock path={'units'} title={'Подразделения'} clickFn={clickLinkHandler} searchResults={searchResults.units} />}
+							{searchResults.teams && searchResults.teams.length > 0 && <NavbarSearchBlock path={'teams'} title={'Команды'} clickFn={clickLinkHandler} searchResults={searchResults.teams} />}
 							{searchResults.projects && searchResults.projects.length > 0 && (
-								<>
-									<div className={s.searchTitle}>Проекты</div>
-									<div className={cn(s.searchWrap)}>
-										{searchResults.projects.map((project) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={project.id} path={'projects'} item={project} />
-										))}
-									</div>
-								</>
+								<NavbarSearchBlock path={'projects'} title={'Проекты'} clickFn={clickLinkHandler} searchResults={searchResults.projects} />
 							)}
-							{/*{searchResults.contractor && searchResults.contractor.length > 0 && (
-								<>
-									<div className={s.searchTitle}>Контрагенты</div>
-									<div className={cn(s.searchWrap)}>
-										{searchResults.contractor.map((project) => (
-											<NavbarSearchItem clickFn={clickLinkHandler} key={project.id} path={'projects'} item={project} />
-										))}
-									</div>
-								</>
-							)}*/}
 						</div>
 					</Popper>
 				</ClickAwayListener>

@@ -4,7 +4,7 @@ import s from './Profile.module.scss'
 import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 import { AbsencesForm } from '../../forms/profile/AbsencesForm/AbsencesForm'
 import { ModalBlock } from '../../common/ModalBlock/ModalBlock'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 type Props = {
 	isMyProfile: boolean
@@ -12,13 +12,17 @@ type Props = {
 export const Profile: React.FC<Props> = ({ isMyProfile }) => {
 	const [openForm, setOpenForm] = useState(false)
 
+	const closeFormHandler = useCallback(() => {
+		setOpenForm(false)
+	}, [])
+
 	return (
 		<>
 			<div className={s.profile}>
 				<ProfileSidebar isMyProfile={isMyProfile} setOpenForm={setOpenForm} />
 				<ProfileInfo isMyProfile={isMyProfile} />
 			</div>
-			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title="Заявление на отпуск/больничный">
+			<ModalBlock visible={openForm} onClose={closeFormHandler} title="Заявление на отпуск/больничный">
 				<AbsencesForm onClose={setOpenForm} />
 			</ModalBlock>
 		</>

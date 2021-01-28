@@ -7,6 +7,7 @@ h1, .h1 {
     letter-spacing: -0.24px;
     color: $colorText;
 }
+
 h2, .h2 {
     font-weight: 500;
     font-size: 29px;
@@ -14,6 +15,7 @@ h2, .h2 {
     letter-spacing: -0.24px;
     color: $colorText;
 }
+
 h3, .h3 {
     font-weight: 500;
     font-size: 24px;
@@ -21,6 +23,7 @@ h3, .h3 {
     letter-spacing: -0.05px;
     color: $colorText;
 }
+
 h4, .h4 {
     font-weight: 500;
     font-size: 20px;
@@ -28,6 +31,7 @@ h4, .h4 {
     letter-spacing: -0.05px;
     color: $colorText;
 }
+
 h5, .h5 {
     font-weight: 500;
     font-size: 16px;
@@ -35,6 +39,7 @@ h5, .h5 {
     letter-spacing: -0.05px;
     color: $colorText;
 }
+
 h6, .h6 {
     font-weight: 500;
     font-size: 14px;
@@ -48,14 +53,17 @@ p {
     line-height: 21px;
     letter-spacing: -0.05px;
     color: $colorText;
+
     &.text12 {
         font-size: 12px;
         line-height: 18px;
     }
+
     &.text14 {
         font-size: 12px;
         line-height: 18px;
     }
+
     &.text16 {
         font-size: 12px;
         line-height: 18px;

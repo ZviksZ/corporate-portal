@@ -6,6 +6,7 @@
     max-width: 470px;
     padding: 40px 77px;
     background: $colorWhite;
+
     .formTitle {
         font-weight: 400;
         font-size: 30px;
@@ -14,6 +15,7 @@
         color: #000000;
         margin-bottom: 15px;
     }
+
     @include mobile {
         margin: 64px 0;
         padding: 20px 30px;

@@ -8,6 +8,7 @@
     overflow: hidden;
     height: auto;
     margin-top: 18px;
+
     .unitBorder {
         display: none;
         position: absolute;
@@ -17,6 +18,7 @@
         left: 6px;
         border-left: 1px dashed $colorGray3;
     }
+
     .unitShowBtn {
         position: absolute;
         left: 0;
@@ -33,10 +35,12 @@
         color: $colorPrimary;
         border: 1px solid $colorPrimary;
     }
+
     &.unitOpen {
         & > .unitBorder {
             display: block;
         }
+
         & > .unitShowBtn {
             color: $colorGray2;
             border: 1px solid $colorGray2;

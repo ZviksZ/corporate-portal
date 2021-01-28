@@ -6,16 +6,19 @@
     display: flex;
     padding-bottom: 50px;
     overflow: hidden;
+
     .sidebar {
         width: 341px;
         min-width: 341px;
         margin-right: 30px;
+
         .sidebarTop {
             background: $colorWhite;
             padding: 32px 47px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
+
             .slackBlock {
                 width: 100%;
                 margin-top: 15px;
@@ -24,12 +27,14 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+
                 .slackTitle {
                     color: #B3B3B3;
                     font-size: 13px;
                     margin-bottom: 5px;
                     text-align: center;
                 }
+
                 .slackStatus {
                     display: flex;
                     justify-content: center;
@@ -38,20 +43,24 @@
                     font-size: 20px;
                     line-height: 24px;
                     text-align: center;
+
                     i {
                         position: absolute;
                         right: -24px;
                         top: -2px;
                     }
+
                     .slackEmpty {
                         font-size: 15px;
                         line-height: 17px;
                     }
                 }
             }
+
             .avatarWrap {
                 position: relative;
             }
+
             .avatarHover {
                 position: absolute;
                 top: 0;
@@ -59,11 +68,13 @@
                 border-radius: 50%;
                 width: 184px;
                 height: 184px;
+
                 &:hover {
                     .avatarHoverContent {
                         display: flex;
                     }
                 }
+
                 .avatarHoverContent {
                     display: none;
                     border-radius: 50%;
@@ -71,22 +82,26 @@
                     height: 100%;
                     align-items: center;
                     justify-content: center;
-                    background: rgba(255,255,255, 0.8);
+                    background: rgba(255, 255, 255, 0.8);
                     cursor: pointer;
                 }
+
                 .icon {
                     padding-top: 4px;
                 }
+
                 i {
                     color: $colorPrimary;
                     font-size: 14px;
                 }
+
                 span {
                     margin-left: 5px;
                     color: $colorPrimary;
                     font-size: 14px;
                 }
             }
+
             .avatarDelete {
                 position: absolute;
                 top: 0;
@@ -103,28 +118,33 @@
                 transition: 0.1s ease;
                 cursor: pointer;
                 z-index: 5;
+
                 i {
                     color: $colorWhite;
                     font-size: 15px;
                 }
+
                 @include desktop {
                     &:hover {
                         background: #546E7A;
                     }
                 }
             }
+
             .avatar {
                 width: 184px;
                 height: 184px;
                 font-size: 40px;
                 line-height: 13px;
             }
+
             .name {
                 font-size: 30px;
                 line-height: 35px;
                 text-align: center;
                 margin-top: 8px;
             }
+
             .position {
                 font-size: 14px;
                 line-height: 16px;
@@ -132,6 +152,7 @@
                 color: rgba(0, 0, 0, 0.87);
                 margin: 26px 0 10px;
             }
+
             .department {
                 font-size: 14px;
                 line-height: 16px;
@@ -139,6 +160,7 @@
                 color: #B3B3B3;
             }
         }
+
         .sidebarBottom {
             background: $colorWhite;
             padding: 30px 27px 22px;
@@ -149,16 +171,20 @@
             }
         }
     }
+
     .profileEdit {
         cursor: pointer;
+
         .editIcon {
             opacity: 0;
             display: inline-block;
             margin-left: 10px;
         }
+
         @include desktop {
             &:hover {
                 color: #2A477D;
+
                 .editIcon {
                     opacity: 1;
                 }
@@ -170,6 +196,7 @@
             }
         }
     }
+
     .sshBlock {
         width: 100%;
         max-width: 708px;
@@ -181,6 +208,7 @@
         box-sizing: border-box;
         border-radius: 4px;
         padding: 18px 14px;
+
         .text {
             white-space: nowrap;
             margin-right: 10px;
@@ -189,11 +217,14 @@
             line-height: 19px;
         }
     }
+
     .sshBlock + .sshBlock {
         margin-top: 11px;
     }
+
     .profileInfo {
         width: 100%;
+
         .profileMain {
             padding: 29px 44px 39px;
             background: $colorWhite;
@@ -207,22 +238,27 @@
             min-width: auto;
             margin-bottom: 26px;
             margin-right: 0;
+
             .sidebarTop {
                 padding: 32px 15px 15px;
             }
+
             .sidebarBottom {
                 padding: 30px 15px 22px;
             }
         }
         .profileInfo {
             width: 100%;
+
             .profileMain {
                 width: 100%;
                 padding: 29px 15px 39px;
             }
+
             .profileEdit {
                 flex-wrap: wrap;
             }
+
             .profileBirthday {
                 flex-wrap: wrap;
             }
@@ -239,30 +275,35 @@
     background: $colorWhite;
     z-index: 7;
 }
+
 .appbarBottom {
     display: none !important;
     top: auto !important;
     bottom: 0 !important;
+
     &.appbarBottomShow {
         display: block !important;
     }
 }
+
 .applications {
     border-top: 1px solid #C4C4C4;
     padding: 15px 0;
     margin-top: 15px;
+
     .appItem {
         margin-bottom: 5px;
+
         .appText {
             font-size: 16px;
             line-height: 19px;
         }
+
         .appText + .appText {
             margin-top: 2px;
         }
     }
 }
-
 
 
 .teamAdditional {
@@ -271,16 +312,19 @@
     @include mobile {
         padding: 24px 15px;
     }
+
     .item {
         .position {
             font-size: 12px;
             line-height: 14px;
             color: $colorGray2;
         }
+
         .membersList {
             display: flex;
             flex-wrap: wrap;
             margin: 12px -11px 0;
+
             .membersListItem {
                 width: calc(33.333333333333% - 22px);
                 margin: 0 11px 22px;
@@ -288,6 +332,7 @@
                 align-items: center;
                 color: $colorText;
                 @extend %link-shared;
+
                 .name {
                     display: inline-block;
                     font-size: 14px;
@@ -295,6 +340,7 @@
                     margin-left: 9px;
                 }
             }
+
             @include mobile {
                 flex-wrap: wrap;
                 .membersListItem {
@@ -315,17 +361,21 @@
 .contractors {
     padding: 20px 45px;
     background: $colorWhite;
+
     .item {
         font-size: 14px;
         line-height: 16px;
         margin-bottom: 10px;
     }
+
     .showMore {
         font-size: 14px;
         line-height: 16px;
         text-decoration: none;
         color: $colorPrimary;
+        cursor: pointer;
     }
+
     @include mobile {
         padding: 20px 15px;
     }

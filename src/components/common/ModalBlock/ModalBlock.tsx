@@ -20,21 +20,18 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({ title, onClose, fullWidt
 	}
 
 	return (
-		<Dialog fullWidth={fullWidth}
-						maxWidth={'sm'}
-						open={visible}
-						onClose={onClose}
-						scroll={'body'}
-						aria-labelledby="form-dialog-title" className={s.dialog}>
+		<Dialog fullWidth={fullWidth} maxWidth={'sm'} open={visible} onClose={onClose} scroll={'body'} aria-labelledby="form-dialog-title" className={s.dialog}>
 			<DialogTitle id="form-dialog-title">
 				<div className={s.dialogHeader}>
 					<span>{title}</span>
 					<IconButton onClick={onClose} className={s.dialogHeaderCloseBtn} color="secondary" aria-label="close">
-						<CloseIcon style={{ fontSize: 26 }} color="primary" className={s.dialogHeaderClose}/>
+						<CloseIcon style={{ fontSize: 26 }} color="primary" className={s.dialogHeaderClose} />
 					</IconButton>
 				</div>
 			</DialogTitle>
-			<DialogContent dividers className={s.dialogContent}>{children}</DialogContent>
+			<DialogContent dividers className={s.dialogContent}>
+				{children}
+			</DialogContent>
 		</Dialog>
 	)
 }

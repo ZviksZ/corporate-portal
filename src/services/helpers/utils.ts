@@ -1,4 +1,4 @@
-// @ts-nocheck
+ // @ts-nocheck
 /* eslint-disable */
 
 export function declOfNum(number, titles) {
@@ -151,4 +151,9 @@ export function getFormatedDate(dateString: string) {
 	let year = date.getFullYear()
 
 	return `${day} ${monthNames[month]} ${year}`
+}
+
+export function stopPropagation(e) {
+	e.stopPropagation()
+	return
 }

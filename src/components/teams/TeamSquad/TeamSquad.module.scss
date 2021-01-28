@@ -7,6 +7,7 @@
     min-height: 100vh;
     padding-bottom: 100px;
 }
+
 .squadButtons {
     position: fixed;
     bottom: 0;
@@ -19,10 +20,12 @@
     background: $colorWhite;
     z-index: 7;
 }
+
 .appbarBottom {
     top: auto !important;
     bottom: 0 !important;
 }
+
 .editButtons {
     display: flex;
     justify-content: center;
