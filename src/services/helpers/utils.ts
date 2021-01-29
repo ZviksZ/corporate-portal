@@ -1,4 +1,4 @@
- // @ts-nocheck
+// @ts-nocheck
 /* eslint-disable */
 
 export function declOfNum(number, titles) {
@@ -114,6 +114,7 @@ export function copyTextToClipboard(e) {
 	}
 	textArea.remove()
 }
+
 export function getStatusText(status: string | number) {
 	let text = ''
 	switch (status) {
@@ -138,6 +139,7 @@ export function getInitialsFromName(name: string) {
 
 	return `${nameArray[0] && nameArray[0][0].toUpperCase() || ''}${nameArray[1] && nameArray[1][0].toUpperCase() || ''}`
 }
+
 export function getFormatedDate(dateString: string) {
 	if (!dateString) {
 		return `-`
