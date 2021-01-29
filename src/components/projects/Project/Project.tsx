@@ -24,7 +24,7 @@ export const Project: React.FC<Props> = ({ project }) => {
 				</NavLink>
 				<span className="breadcrumbsItem">{project.name}</span>
 			</Breadcrumbs>
-			<h1 className="section-title-small no-margin-top no-margin-bottom">{project.name}</h1>
+			<h1 className="section-title section-title-small no-margin-top no-margin-bottom">{project.name}</h1>
 			<div className="d-flex align-item-center margin-top-x2 margin-bottom">
 				{project.wikilink && (
 					<a href={project.wikilink} className="link-with-icon" rel="noreferrer" target="_blank">

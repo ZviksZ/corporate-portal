@@ -49,7 +49,7 @@ export const TeamSquad: React.FC = () => {
 				<span className="breadcrumbsItem">Управление составом</span>
 			</Breadcrumbs>
 
-			<h1 className="section-title-small no-margin-top">Управление составом</h1>
+			<h1 className="section-title section-title-small no-margin-top">Управление составом</h1>
 
 			<FormControl fullWidth variant="outlined" className={s.searchInput}>
 				<OutlinedInput

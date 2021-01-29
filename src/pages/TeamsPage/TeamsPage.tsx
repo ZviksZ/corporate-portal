@@ -45,7 +45,7 @@ const TeamsPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="section-title-small">Команды</h1>
+				<h1 className="section-title section-title-small">Команды</h1>
 
 				<Teams/>
 			</div>

@@ -333,3 +333,17 @@
 .status-declined {
     color: #FF0000;
 }
+
+
+
+body.overflow-hidden-body,
+html.overflow-hidden-body {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    touch-action: none !important;
+    -ms-touch-action: none !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+}

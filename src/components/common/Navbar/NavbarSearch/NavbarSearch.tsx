@@ -9,7 +9,6 @@ import { getSearch, setSearch } from '../../../../store/ducks/global/actionCreat
 import { selectGlobal } from '../../../../store/ducks/global/selectors'
 import { useEffect, useRef, useState } from 'react'
 import Popper from '@material-ui/core/Popper'
-import { NavbarSearchItem } from './NavbarSearchItem/NavbarSearchItem'
 import cn from 'classnames'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 import { NavbarSearchBlock } from './NavbarSearchBlock/NavbarSearchBlock'
@@ -100,6 +99,7 @@ export const NavbarSearch: React.FC = () => {
 					<CloseOutlinedIcon />
 				</IconButton>
 			</FormControl>
+
 			{searchResults && (
 				<ClickAwayListener onClickAway={clickAwayHandler}>
 					<Popper className={s.popper} placement={'bottom-end'} anchorEl={anchorEl} open={open}>

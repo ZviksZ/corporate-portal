@@ -35,7 +35,7 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 				)}
 				<span className="breadcrumbsItem">{unit.name}</span>
 			</Breadcrumbs>
-			<h1 className="section-title-small no-margin-top">{unit.name}</h1>
+			<h1 className="section-title section-title-small no-margin-top">{unit.name}</h1>
 			{unit.lead && (
 				<>
 					<div className="sectionBigSubtitle text-uppercase">Руководитель</div>

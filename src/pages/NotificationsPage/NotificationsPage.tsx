@@ -62,7 +62,7 @@ const NotificationsPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="section-title-small">Список уведомлений</h1>
+				<h1 className="section-title section-title-small">Список уведомлений</h1>
 
 				{allAbsences && allAbsences.length > 0 ? (
 					<>

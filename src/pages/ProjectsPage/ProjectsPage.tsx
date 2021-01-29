@@ -47,7 +47,7 @@ const ProjectsPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="section-title-small">Проекты</h1>
+				<h1 className="section-title section-title-small">Проекты</h1>
 
 				<Projects />
 			</div>

@@ -28,7 +28,7 @@ export const Team: React.FC<Props> = ({ team }) => {
 				</NavLink>
 				<span className="breadcrumbsItem">{team.name}</span>
 			</Breadcrumbs>
-			<h1 className="section-title-small no-margin-top">{team.name}</h1>
+			<h1 className="section-title section-title-small no-margin-top">{team.name}</h1>
 
 			{team.lead && (
 				<>
