@@ -14,6 +14,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { updateProfile, updateProfileDayoff } from '../../../../../store/ducks/profile/actionCreators'
 import { DatePicker } from '@material-ui/pickers'
+import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
@@ -47,6 +48,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 
 	const closeEdit = () => {
 		setCorporate(false)
+		setDays(profileData.worktime.corporateDays)
 	}
 
 	const saveChanges = () => {
@@ -205,16 +207,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 				<></>
 			)}
 
-			<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: corporate })} position="fixed" color="default">
-				<Toolbar className={cn(s.editButtons)}>
-					<Button size="large" className="btn btn-default text-uppercase" onClick={closeEdit}>
-						Отмена
-					</Button>
-					<Button size="large" className="btn margin-left-x3 text-uppercase" onClick={saveChanges}>
-						Сохранить
-					</Button>
-				</Toolbar>
-			</AppBar>
+			<BottomBarCustom isOpen={corporate} onCancel={closeEdit} onSave={saveChanges} />
 		</div>
 	)
 }

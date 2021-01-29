@@ -13,13 +13,14 @@ import { NavLink } from 'react-router-dom'
 import { selectGlobal } from '../../../../../store/ducks/global/selectors'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
 	const { profileData, isPersonalProfile } = useSelector(selectProfile)
 	const { user } = useSelector(selectGlobal)
 	const [editStatus, setEditStatus] = useState(false)
-	const [status, setStatus] = useState('')
+	const [status, setStatus] = useState<string | undefined>('')
 	const [open, setOpen] = useState(false)
 	const [files, setFiles] = useState<any>(null)
 	const roleAdmin = user && user.role === 'ROLE_ADMIN'
@@ -68,6 +69,7 @@ export const ProfileSidebarTop: React.FC = () => {
 
 	const closeEdit = () => {
 		setEditStatus(false)
+		setStatus(profileData.contacts.slackStatus)
 	}
 
 	const saveChanges = () => {
@@ -153,16 +155,7 @@ export const ProfileSidebarTop: React.FC = () => {
 				</DialogActions>
 			</Dialog>
 
-			<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: editStatus })} position="fixed" color="default">
-				<Toolbar className={cn(s.editButtons)}>
-					<Button size="large" className="btn btn-default text-uppercase" onClick={closeEdit}>
-						Отмена
-					</Button>
-					<Button size="large" className="btn margin-left-x3 text-uppercase" onClick={saveChanges}>
-						Сохранить
-					</Button>
-				</Toolbar>
-			</AppBar>
+			<BottomBarCustom isOpen={editStatus} onCancel={closeEdit} onSave={saveChanges} />
 		</>
 	)
 }

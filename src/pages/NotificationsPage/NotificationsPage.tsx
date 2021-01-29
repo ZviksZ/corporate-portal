@@ -8,7 +8,7 @@ import { getAllAbsences, setAllAbsences } from '../../store/ducks/absences/actio
 import { NotificationCard } from '../../components/cards/NotificationCard/NotificationCard'
 import { selectGlobal } from '../../store/ducks/global/selectors'
 
-export const NotificationsPage: React.FC = () => {
+const NotificationsPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const { user } = useSelector(selectGlobal)
 	const { allAbsences } = useSelector(selectAbsences)
@@ -76,3 +76,5 @@ export const NotificationsPage: React.FC = () => {
 		</section>
 	)
 }
+
+export default NotificationsPage

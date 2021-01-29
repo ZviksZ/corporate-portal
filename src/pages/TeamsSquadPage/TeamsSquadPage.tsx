@@ -8,7 +8,7 @@ import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsTeamsLoading, selectIsTeamsLoadingError } from '../../store/ducks/teams/selectors'
 import { Button } from '@material-ui/core'
 
-export const TeamsSquadPage: React.FC = () => {
+const TeamsSquadPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const params: { id?: string } = useParams()
 	const id = params.id
@@ -58,3 +58,5 @@ export const TeamsSquadPage: React.FC = () => {
 		</section>
 	)
 }
+
+export default TeamsSquadPage

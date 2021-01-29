@@ -8,7 +8,7 @@ import { selectIsProjectsLoading, selectIsProjectsLoadingError } from '../../sto
 import { getTeamData } from '../../store/ducks/teams/actionCreators'
 import { Button } from '@material-ui/core'
 
-export const ProjectsPage: React.FC = () => {
+const ProjectsPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const isLoading = useSelector(selectIsProjectsLoading)
 	const isLoadingError = useSelector(selectIsProjectsLoadingError)
@@ -53,3 +53,5 @@ export const ProjectsPage: React.FC = () => {
 		</section>
 	)
 }
+
+export default ProjectsPage

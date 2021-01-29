@@ -8,7 +8,7 @@ import { selectIsUnitsLoading, selectIsUnitsLoadingError } from '../../store/duc
 import { Button } from '@material-ui/core'
 import { getProfile } from '../../store/ducks/profile/actionCreators'
 
-export const UnitsPage: React.FC = () => {
+const UnitsPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const isLoading = useSelector(selectIsUnitsLoading)
 	const isLoadingError = useSelector(selectIsUnitsLoadingError)
@@ -51,3 +51,5 @@ export const UnitsPage: React.FC = () => {
 		</section>
 	)
 }
+
+export default UnitsPage

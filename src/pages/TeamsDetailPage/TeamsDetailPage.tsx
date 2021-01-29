@@ -8,7 +8,7 @@ import { getTeamData, getTeams, setTeamData } from '../../store/ducks/teams/acti
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
 
-export const TeamsDetailPage: React.FC = () => {
+const TeamsDetailPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const { teamDetail, LoadingStatus } = useSelector(selectTeams)
 	const isLoading = useSelector(selectIsTeamsLoading)
@@ -66,3 +66,5 @@ export const TeamsDetailPage: React.FC = () => {
 		</>
 	)
 }
+
+export default TeamsDetailPage

@@ -8,7 +8,7 @@ import { Project } from '../../components/projects/Project/Project'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
 
-export const ProjectsDetailPage: React.FC = () => {
+const ProjectsDetailPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const { projectDetail } = useSelector(selectProjects)
 	const isLoading = useSelector(selectIsProjectsLoading)
@@ -59,3 +59,5 @@ export const ProjectsDetailPage: React.FC = () => {
 		</>
 	)
 }
+
+export default ProjectsDetailPage

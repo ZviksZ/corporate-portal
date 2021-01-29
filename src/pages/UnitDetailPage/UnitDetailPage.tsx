@@ -9,7 +9,7 @@ import { Units } from '../../components/units/Units/Units'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
 
-export const UnitDetailPage: React.FC = () => {
+const UnitDetailPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const { unitDetail } = useSelector(selectUnits)
 	const isLoading = useSelector(selectIsUnitsLoading)
@@ -57,7 +57,8 @@ export const UnitDetailPage: React.FC = () => {
 					<Unit unit={unitDetail} />
 				</div>
 			</section>
-
 		</>
 	)
 }
+
+export default UnitDetailPage

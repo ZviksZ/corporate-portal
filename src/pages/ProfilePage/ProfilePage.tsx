@@ -9,7 +9,7 @@ import { selectIsProfileLoading, selectIsProfileLoadingError, selectProfile } fr
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
 
-export const ProfilePage: React.FC = () => {
+const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()
 	const { user } = useSelector(selectGlobal)
 	const { profileData } = useSelector(selectProfile)
@@ -86,3 +86,5 @@ export const ProfilePage: React.FC = () => {
 		</section>
 	)
 }
+
+export default ProfilePage

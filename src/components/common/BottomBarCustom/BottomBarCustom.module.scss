@@ -1,0 +1,21 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
+
+.appbarBottom {
+    display: none !important;
+    top: auto !important;
+    bottom: 0 !important;
+
+    &.appbarBottomShow {
+        display: block !important;
+    }
+}
+.editButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 10px;
+    background: $colorWhite;
+    z-index: 7;
+}

@@ -7,7 +7,7 @@ import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsTeamsLoading, selectIsTeamsLoadingError } from '../../store/ducks/teams/selectors'
 import { Button } from '@material-ui/core'
 
-export const TeamsPage: React.FC = () => {
+const TeamsPage: React.FC = () => {
 	const dispatch = useDispatch()
 	const isLoading = useSelector(selectIsTeamsLoading)
 	const isLoadingError = useSelector(selectIsTeamsLoadingError)
@@ -51,3 +51,5 @@ export const TeamsPage: React.FC = () => {
 		</section>
 	)
 }
+
+export default TeamsPage
