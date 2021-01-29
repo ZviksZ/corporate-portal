@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import { loginSchema } from '../../../../services/helpers/validations'
 import s from './LoginForm.module.scss'
 import { login } from '../../../../store/ducks/global/actionCreators'
+import { AppButton } from '../../../common/AppButton/AppButton'
 interface IFormInputs {
 	login: string
 	password: string
@@ -60,9 +61,9 @@ export const LoginForm: React.FC = () => {
 						autoComplete="current-password"
 					/>
 				</Grid>
-				<Button className="btn margin-top" type="submit" color="primary" size="medium" variant="contained">
+				<AppButton size={'medium'} type="submit" additionalClasses={'margin-top'} variant="contained">
 					Войти
-				</Button>
+				</AppButton>
 			</Grid>
 		</form>
 	)

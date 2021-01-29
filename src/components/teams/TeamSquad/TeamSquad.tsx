@@ -87,17 +87,6 @@ export const TeamSquad: React.FC = () => {
 				</>
 			)}
 
-			{/*<AppBar className={cn('navbar', s.appbarBottom)} position="fixed" color="default">
-				<Toolbar className={cn(s.editButtons)}>
-					<Button size="large" component={NavLink} to={`/teams/${teamSquad.id}`} className="btn btn-default text-uppercase">
-						Отмена
-					</Button>
-					<Button size="large" component={NavLink} to={`/teams/${teamSquad.id}`} className="btn margin-left-x3 text-uppercase">
-						Сохранить
-					</Button>
-				</Toolbar>
-			</AppBar>*/}
-
 			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title="Изменить роль в команде">
 				<TeamRoleForm onClose={setOpenForm} />
 			</ModalBlock>

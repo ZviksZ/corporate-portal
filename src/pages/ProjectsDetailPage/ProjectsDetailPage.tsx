@@ -7,6 +7,7 @@ import { getProjectData, getProjects, setProjectData } from '../../store/ducks/p
 import { Project } from '../../components/projects/Project/Project'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
+import { AppButton } from '../../components/common/AppButton/AppButton'
 
 const ProjectsDetailPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -42,9 +43,9 @@ const ProjectsDetailPage: React.FC = () => {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
 				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
-				<Button className="btn" onClick={repeatLoading}>
+				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
-				</Button>
+				</AppButton>
 			</div>
 		)
 	}

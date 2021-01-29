@@ -5,11 +5,11 @@ import cn from 'classnames'
 import { Avatar } from '@material-ui/core'
 import { getFormatedDate, getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
 import { selectAbsences } from '../../../../store/ducks/absences/selectors'
 import { useEffect } from 'react'
 import { changeAbsenceStatus, setAbsenceData } from '../../../../store/ducks/absences/actionCreators'
 import { selectGlobal } from '../../../../store/ducks/global/selectors'
+import { AppButton } from '../../../common/AppButton/AppButton'
 
 type Props = {
 	onClose: (param: boolean) => void
@@ -85,12 +85,12 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 				</>
 			)}
 			<div className={s.footer}>
-				<Button className="btn btn-dangerous" onClick={declineAbsence}>
-					отказать
-				</Button>
-				<Button className="btn" onClick={approveAbsence}>
+				<AppButton size={'large'} onClick={declineAbsence} additionalType={'dangerous'}>
+					Отказать
+				</AppButton>
+				<AppButton size={'large'} onClick={approveAbsence} >
 					Согласовать
-				</Button>
+				</AppButton>
 			</div>
 		</div>
 	)

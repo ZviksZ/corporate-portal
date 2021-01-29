@@ -14,6 +14,7 @@ import { selectGlobal } from '../../../../../store/ducks/global/selectors'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
+import { AppButton } from '../../../../common/AppButton/AppButton'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
@@ -146,12 +147,12 @@ export const ProfileSidebarTop: React.FC = () => {
 			<Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
 				<DialogTitle id="alert-dialog-title">{'Вы уверены, что хотите удалить фотографию?'}</DialogTitle>
 				<DialogActions>
-					<Button onClick={handleClose} className="btn btn-default">
+					<AppButton size={'large'} onClick={handleClose} additionalType={'default'}>
 						Отмена
-					</Button>
-					<Button onClick={deleteImage} className="btn margin-left-x2">
+					</AppButton>
+					<AppButton size={'large'} additionalClasses={'margin-left-x2'} onClick={deleteImage}>
 						Удалить
-					</Button>
+					</AppButton>
 				</DialogActions>
 			</Dialog>
 

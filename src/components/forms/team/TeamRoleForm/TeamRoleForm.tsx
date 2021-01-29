@@ -10,6 +10,7 @@ import { setRoleFormData, updateTeamMember } from '../../../../store/ducks/teams
 import { selectTeams } from '../../../../store/ducks/teams/selectors'
 import { getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
+import { AppButton } from '../../../common/AppButton/AppButton'
 
 type Props = {
 	onClose: (param: boolean) => void
@@ -78,12 +79,12 @@ export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 				</Grid>
 			</Grid>
 			<div className={s.formFooter}>
-				<Button className="btn btn-default text-uppercase" onClick={closeFormHandler}>
+				<AppButton size={'large'} additionalClasses={'text-uppercase'} onClick={closeFormHandler} additionalType={'default'}>
 					отмена
-				</Button>
-				<Button className="btn text-uppercase margin-left-x2" onClick={saveRoleHandler}>
+				</AppButton>
+				<AppButton size={'large'} additionalClasses={'text-uppercase margin-left-x2'} onClick={saveRoleHandler}>
 					сохранить
-				</Button>
+				</AppButton>
 			</div>
 		</div>
 	)

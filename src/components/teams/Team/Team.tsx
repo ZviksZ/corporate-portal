@@ -7,6 +7,7 @@ import { MemberCard } from '../../cards/MemberCard/MemberCard'
 import Button from '@material-ui/core/Button'
 import { useSelector } from 'react-redux'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
+import { AppButton } from '../../common/AppButton/AppButton'
 
 type Props = {
 	team: UnitDetailInterface | null
@@ -40,9 +41,9 @@ export const Team: React.FC<Props> = ({ team }) => {
 			<div className="sectionBigSubtitle text-uppercase margin-top-x2">
 				<span>сотрудники ({team?.members?.list?.length || 0})</span>
 				{((user && user.role === 'ROLE_ADMIN') || (user && user.id.toString() == team?.lead?.id)) && (
-					<Button component={NavLink} to={`/teams/${team.id}/squad`} className="btn">
+					<AppButton size={'large'} to={`/teams/${team.id}/squad`} component={NavLink}>
 						Управление составом
-					</Button>
+					</AppButton>
 				)}
 			</div>
 			{team.members && team?.members?.list?.length > 0 && team.members.list.map((member) => (

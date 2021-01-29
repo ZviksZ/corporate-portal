@@ -7,6 +7,7 @@ import { selectIsAbsencesLoading, selectIsAbsencesLoadingError, selectAbsences }
 import { getAllAbsences, setAllAbsences } from '../../store/ducks/absences/actionCreators'
 import { NotificationCard } from '../../components/cards/NotificationCard/NotificationCard'
 import { selectGlobal } from '../../store/ducks/global/selectors'
+import { AppButton } from '../../components/common/AppButton/AppButton'
 
 const NotificationsPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -51,9 +52,9 @@ const NotificationsPage: React.FC = () => {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
 				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
-				<Button className="btn" onClick={repeatLoading}>
+				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
-				</Button>
+				</AppButton>
 			</div>
 		)
 	}

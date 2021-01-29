@@ -1,3 +1,7 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/media";
+@import "../../../assets/scss/infographic";
+
 .btn {
     background: $colorPrimary !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14);
@@ -6,20 +10,28 @@
     white-space: nowrap;
     font-size: 14px !important;
 
-    &.btn-default {
-        background: $colorButtonWhite !important;
-        color: $colorText !important;
+    * {
+        color: $colorWhite !important;
     }
 
-    &.btn-dangerous {
+    &.default {
+        background: $colorButtonWhite !important;
+        color: $colorText !important;
+
+        * {
+            color: $colorText !important;
+        }
+    }
+
+    &.dangerous {
         background: $colorDangerous !important;
     }
 
-    &.btn-secondary {
+    &.secondary {
         background: $colorSecondary !important;
     }
 
-    &.btn-full-width {
+    &.fullWidth {
         width: 100%;
     }
 
@@ -27,17 +39,22 @@
         &:hover {
             background: $colorPrimaryDarken !important;
 
-            &.btn-default {
+            &.default {
                 background: $colorButtonWhite !important;
                 color: $colorText !important;
                 opacity: 0.7;
+
+                * {
+                    color: $colorText !important;
+                    opacity: 0.7;
+                }
             }
 
-            &.btn-dangerous {
+            &.dangerous {
                 background: $colorDangerousDarken !important;
             }
 
-            &.btn-secondary {
+            &.secondary {
                 background: $colorSecondaryDarken !important;
             }
         }

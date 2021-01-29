@@ -3,7 +3,7 @@ import cn from 'classnames'
 import s from './BottomBarCustom.module.scss'
 import { AppBar } from '@material-ui/core'
 import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
+import { AppButton } from '../AppButton/AppButton'
 
 type Props = {
 	onCancel: () => void
@@ -15,12 +15,12 @@ export const BottomBarCustom: React.FC<Props> = ({ onCancel, onSave, isOpen }) =
 	return (
 		<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: isOpen })} position="fixed" color="default">
 			<Toolbar className={cn(s.editButtons)}>
-				<Button size="large" className="btn btn-default text-uppercase" onClick={onCancel}>
+				<AppButton size={'large'} onClick={onCancel} additionalClasses={'text-uppercase'} additionalType={'default'}>
 					Отмена
-				</Button>
-				<Button size="large" className="btn margin-left-x3 text-uppercase" onClick={onSave}>
+				</AppButton>
+				<AppButton size={'large'} onClick={onSave} additionalClasses={'margin-left-x3 text-uppercase'}>
 					Сохранить
-				</Button>
+				</AppButton>
 			</Toolbar>
 		</AppBar>
 	)

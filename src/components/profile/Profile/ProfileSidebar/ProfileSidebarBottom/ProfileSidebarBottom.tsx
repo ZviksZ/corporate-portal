@@ -15,6 +15,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import { updateProfile, updateProfileDayoff } from '../../../../../store/ducks/profile/actionCreators'
 import { DatePicker } from '@material-ui/pickers'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
+import { AppButton } from '../../../../common/AppButton/AppButton'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
@@ -65,6 +66,10 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 				setError('Введите числовое значение')
 			}
 		}
+	}
+
+	const openFormHandler = () => {
+		setOpenForm(true)
 	}
 
 	const time = profileData.worktime
@@ -147,9 +152,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 					)}
 
 					{isMyProfile && (
-						<Button className="btn btn-full-width margin-top text-initial" onClick={() => setOpenForm(true)}>
+						<AppButton size={'large'} onClick={openFormHandler} additionalClasses={'margin-top text-initial'} additionalType={'fullWidth'}>
 							+ Заявление на отпуск/больничный
-						</Button>
+						</AppButton>
 					)}
 
 					{time.vacation && time.vacation.length > 1 && (

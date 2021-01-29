@@ -21,6 +21,7 @@ import { AbsenceCreateInterface } from '../../../../store/ducks/absences/contrac
 import { createAbsence } from '../../../../store/ducks/absences/actionCreators'
 import { getProfile } from '../../../../store/ducks/profile/actionCreators'
 import { selectProfile } from '../../../../store/ducks/profile/selectors'
+import { AppButton } from '../../../common/AppButton/AppButton'
 
 interface IFormInputs {
 	dateFrom: dateFns
@@ -84,6 +85,10 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 	useEffect(() => {
 		register({ name: 'type' }, { required: true })
 	}, [register])
+
+	const closeHandler = () => {
+		onClose(false)
+	}
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={s.form}>
@@ -171,12 +176,12 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 					</MuiPickersUtilsProvider>
 				</Grid>
 				<div className={s.footer}>
-					<Button className="btn btn-default" onClick={() => onClose(false)}>
+					<AppButton size={'large'} onClick={closeHandler} additionalType={'default'}>
 						отмена
-					</Button>
-					<Button className="btn" type="submit" color="primary" size="medium">
+					</AppButton>
+					<AppButton size={'large'} type="submit">
 						отправить на согласование
-					</Button>
+					</AppButton>
 				</div>
 			</Grid>
 		</form>

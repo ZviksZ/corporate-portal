@@ -7,6 +7,7 @@ import { getAvailableMembers, getTeamData, getTeamSquad, setTeamData, setTeamSqu
 import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsTeamsLoading, selectIsTeamsLoadingError } from '../../store/ducks/teams/selectors'
 import { Button } from '@material-ui/core'
+import { AppButton } from '../../components/common/AppButton/AppButton'
 
 const TeamsSquadPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -43,9 +44,9 @@ const TeamsSquadPage: React.FC = () => {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
 				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
-				<Button className="btn" onClick={repeatLoading}>
+				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
-				</Button>
+				</AppButton>
 			</div>
 		)
 	}
