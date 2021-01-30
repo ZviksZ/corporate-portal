@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import s from './Navbar.module.scss'
 import { NavLink } from 'react-router-dom'
 import { NavbarProfile } from './NavbarProfile/NavbarProfile'
@@ -18,8 +18,12 @@ export const Navbar: React.FC = () => {
 	const [openMobile, setOpenMobile] = useState(false)
 	const { user } = useSelector(selectGlobal)
 
+	const closeHandler = useCallback(() => {
+		setOpenMobile(false)
+	}, [])
+
 	return (
-		<ClickAwayListener onClickAway={() => setOpenMobile(false)}>
+		<ClickAwayListener onClickAway={closeHandler}>
 			<AppBar position="fixed" className="navbar" color="default">
 				<Toolbar className={s.navbar}>
 					<NavbarLeft setOpenMobile={setOpenMobile} isAuth={!!user} />
@@ -28,7 +32,7 @@ export const Navbar: React.FC = () => {
 						<>
 							<NavbarMobile openMobile={openMobile} setOpenMobile={setOpenMobile} />
 
-							<div onClick={() => setOpenMobile(false)} className={cn({ [s.navbarOpen]: openMobile }, s.navbarMobileOverlay)}></div>
+							<div onClick={closeHandler} className={cn({ [s.navbarOpen]: openMobile }, s.navbarMobileOverlay)}></div>
 
 							<div className={s.navbarContent}>
 								<div className={s.nav}>

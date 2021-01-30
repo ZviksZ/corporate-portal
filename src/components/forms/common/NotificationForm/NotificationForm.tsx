@@ -6,7 +6,7 @@ import { Avatar } from '@material-ui/core'
 import { getFormatedDate, getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
 import { selectAbsences } from '../../../../store/ducks/absences/selectors'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { changeAbsenceStatus, setAbsenceData } from '../../../../store/ducks/absences/actionCreators'
 import { selectGlobal } from '../../../../store/ducks/global/selectors'
 import { AppButton } from '../../../common/AppButton/AppButton'
@@ -30,9 +30,9 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 		return <></>
 	}
 
-	const closeForm = () => {
+	const closeForm = useCallback(() => {
 		onClose(false)
-	}
+	}, [])
 
 	const approveAbsence = () => {
 		if (user && user.id) {
