@@ -6,22 +6,6 @@ export function declOfNum(number, titles) {
 	return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]]
 }
 
-export function setFormData(args) {
-	const formData = new FormData()
-
-	for (const key in args) {
-		if (Array.isArray(args[key])) {
-			for (let i = 0; i < args[key].length; i++) {
-				formData.append(key + '[]', args[key][i])
-			}
-		} else {
-			formData.append(key, args[key])
-		}
-	}
-
-	return formData
-}
-
 export function addDaysToDate(data, day) {
 	data = data.split('.')
 	data = new Date(data[2], +data[1] - 1, +data[0] + day, 0, 0, 0, 0)
@@ -83,19 +67,6 @@ export function formatDate(data, fullYear) {
 	return dd + '.' + mm + '.' + yy
 }
 
-export function addObjectToArray(obj) {
-	const array = []
-	for (const key in obj) {
-		array.push({ id: key, title: obj[key] })
-	}
-
-	return array
-}
-
-export function numberWithSpace(x) {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-}
-
 export function copyTextToClipboard(e) {
 	let text = e.currentTarget.dataset['copy']
 	let textArea = document.createElement('textarea')
@@ -104,15 +75,11 @@ export function copyTextToClipboard(e) {
 	textArea.select()
 	try {
 		let successful = document.execCommand('copy')
-		if (successful) {
-			// SuccessCode
-		}
-		let msg = successful ? 'successful' : 'unsuccessful'
-		console.log('Copying text command was ' + msg)
 	} catch (err) {
-		console.log('Oops, unable to copy')
 	}
 	textArea.remove()
+
+	return text
 }
 
 export function getStatusText(status: string | number) {
