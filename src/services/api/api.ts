@@ -38,7 +38,7 @@ import { store } from '../../store/store'
 import { logout } from '../../store/ducks/global/actionCreators'
 
 const BASE_URL = '/api'
-const DEV_MODE = false
+const DEV_MODE = true
 
 export const ACCESS_TKN = new TokenService()
 

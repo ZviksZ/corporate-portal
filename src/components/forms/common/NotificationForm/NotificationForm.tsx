@@ -26,13 +26,13 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 		}
 	}, [])
 
-	if (!absenceDetail) {
-		return <></>
-	}
-
 	const closeForm = useCallback(() => {
 		onClose(false)
 	}, [])
+
+	if (!absenceDetail) {
+		return <></>
+	}
 
 	const approveAbsence = () => {
 		if (user && user.id) {

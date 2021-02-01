@@ -5,7 +5,7 @@ import './index.scss'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, CssBaseline } from '@material-ui/core'
-import theme from './theme'
+import { theme, GlobalStyles } from './theme'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 
@@ -14,6 +14,7 @@ ReactDOM.render(
 		<Provider store={store}>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
+				<GlobalStyles />
 				<App />
 			</ThemeProvider>
 		</Provider>
