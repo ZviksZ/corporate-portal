@@ -10,7 +10,7 @@ import {
 import { setAllAbsences, setAbsenceData, setAbsences, setAbsencesLoading, getAbsences } from './actionCreators'
 import { AbsencesApi, ProfileApi } from '../../../services/api/api'
 import { LoadingStatus } from '../../types'
-import { setGlobalMessage, setUserProfile } from '../global/actionCreators'
+import { setGlobalMessage } from '../global/actionCreators'
 import { store } from '../../store'
 import { setProfile } from '../profile/actionCreators'
 

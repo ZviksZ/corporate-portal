@@ -5,6 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import { Select } from '@material-ui/core'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
+import { AppIcon } from '../../../../../common/AppIcon/AppIcon'
 
 type Props = {
 	editSize: boolean
@@ -43,7 +44,7 @@ export const ProfileInfoMainSize: React.FC<Props> = ({ setSize, tshirtSize, open
 					<div className="sectionSubtitle">Размер футболки</div>
 					<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openSizeEdit}>
 						{tshirtSize || 'Не указан'}
-						<i className={cn('icon-edit', s.editIcon)}></i>
+						<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
 					</p>
 				</>
 			) : (

@@ -15,6 +15,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 import { AppButton } from '../../../../common/AppButton/AppButton'
+import { AppIcon } from '../../../../common/AppIcon/AppIcon'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
@@ -92,13 +93,13 @@ export const ProfileSidebarTop: React.FC = () => {
 						<>
 							{profileData.photo && (
 								<div className={s.avatarDelete} onClick={handleClickOpen}>
-									<i className="icon-close-default"></i>
+									<AppIcon iconClass={'icon-close-default'} classNames={s.editIcon} />
 								</div>
 							)}
 							<label className={s.avatarHover} htmlFor="upload-photo">
 								<div className={s.avatarHoverContent}>
 									<span className={s.icon}>
-										<i className="icon-add"></i>
+										<AppIcon iconClass={'icon-add'} />
 									</span>
 									<span>Загрузить фото</span>
 								</div>
@@ -126,7 +127,7 @@ export const ProfileSidebarTop: React.FC = () => {
 									<div className={s.slackTitle}>Статус в Slack</div>
 									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit, s.slackStatus)} onClick={() => setEditStatus(true)}>
 										{profileData.contacts.slackStatus || <span className={cn('color-gray', s.slackEmpty)}>установить статус</span>}
-										<i className={cn('icon-edit', s.editIcon)}></i>
+										<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
 									</p>
 								</div>
 							</>

@@ -16,11 +16,7 @@ const ProjectsDetailPage = lazy(() => import('./pages/ProjectsDetailPage/Project
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage/NotificationsPage'))
 
 export const useRoutes = (isAuthenticated = false, userRole: string) => {
-	const renderFullPageLoader = () => (
-		<div className="full-page d-flex ai-center jc-center">
-			<Loader />
-		</div>
-	)
+
 
 	if (isAuthenticated) {
 		return (
@@ -28,7 +24,9 @@ export const useRoutes = (isAuthenticated = false, userRole: string) => {
 				<Navbar />
 				<GlobalMessage />
 				<div className="header-margin"></div>
-				<Suspense fallback={renderFullPageLoader}>
+				<Suspense fallback={<div className="full-page d-flex ai-center jc-center">
+					<Loader />
+				</div>}>
 					<Switch>
 						<Route path="/profile/" exact>
 							<ProfilePage />
@@ -71,7 +69,9 @@ export const useRoutes = (isAuthenticated = false, userRole: string) => {
 		<div>
 			<Navbar />
 			<GlobalMessage />
-			<Suspense fallback={renderFullPageLoader}>
+			<Suspense fallback={<div className="full-page d-flex ai-center jc-center">
+				<Loader />
+			</div>}>
 				<Switch>
 					<Route path="/">
 						<AuthPage />

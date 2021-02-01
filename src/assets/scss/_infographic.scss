@@ -53,11 +53,9 @@
     }
 
     &.MuiOutlinedInput-root {
-        @include desktop {
-            &:hover {
-                fieldset {
-                    border-width: 1px !important;
-                }
+        &:hover {
+            fieldset {
+                border: 1px solid $colorPrimary !important;
             }
         }
     }

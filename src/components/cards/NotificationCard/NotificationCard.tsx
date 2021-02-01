@@ -6,6 +6,7 @@ import cn from 'classnames'
 import { getInitialsFromName, getReverseFormatDate, getStatusText, timeSince } from '../../../services/helpers/utils'
 import { useDispatch } from 'react-redux'
 import { getAbsenceData } from '../../../store/ducks/absences/actionCreators'
+import { AppIcon } from '../../common/AppIcon/AppIcon'
 
 type Props = {
 	item: AbsenceItemInterface
@@ -32,7 +33,7 @@ export const NotificationCard: React.FC<Props> = ({ item }) => {
 					{item.date} {item.date && ' - '} <span className={`status-${item.status}`}>{getStatusText(item?.status || '')}</span>
 				</div>
 			</div>
-			{item?.status === 'new' && <i className={cn(s.openAbsence, 'icon-arrow-left')}></i>}
+			{item?.status === 'new' && <AppIcon iconClass={'icon-arrow-left'} classNames={s.openAbsence} />}
 		</div>
 	)
 }

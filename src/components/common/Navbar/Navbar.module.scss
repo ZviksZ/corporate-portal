@@ -200,12 +200,14 @@
     @include mobile {
         margin-top: 0;
         overflow: auto;
-        padding: 64px 0 10px;
+        padding: 64px 0 0;
         position: fixed !important;
         top: 0;
         left: 0;
         height: 100vh;
         transform: translate3d(0px, 0px, 0px) !important;
+        z-index: 999;
+        width: 100%;
     }
 
     .popperContent {
@@ -214,13 +216,20 @@
         border-radius: 4px;
         width: 492px;
         padding: 17px 25px;
+
         @include mobile {
             padding: 17px 17px 25px;
             width: auto;
             border: 1px solid $colorGray2;
-            /*margin-left: 10px;*/
         }
     }
+}
+
+.popover {
+    @include desktop {
+        display: none;
+    }
+    z-index: -1 !important;
 }
 
 .profileAvatar {
@@ -407,4 +416,11 @@
             margin-left: 0;
         }
     }
+}
+
+.clr {
+    top: auto !important;
+    bottom: 0 !important;
+    height: 1px !important;
+    background: transparent !important;
 }

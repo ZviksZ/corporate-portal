@@ -20,7 +20,6 @@ import {
 import { UnitInterface, UnitDetailInterface, MemberDetailInterface } from '../units/contracts/state'
 import { SquadMemberInterface, TeamSquadInterface } from './contracts/state'
 import { LoadingStatus } from '../../types'
-import { ProjectsActionsType, SetLoadingProjectsActionInterface } from '../projects/contracts/actionTypes'
 
 export const getTeams = (): GetTeamsActionInterface => ({
 	type: TeamsActionsType.GET_TEAMS,

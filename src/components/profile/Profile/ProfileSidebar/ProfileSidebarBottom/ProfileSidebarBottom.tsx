@@ -1,8 +1,6 @@
 import * as React from 'react'
 import s from '../../Profile.module.scss'
 import jira from '../../../../../assets/images/icons/jira.svg'
-import printer from '../../../../../assets/images/icons/printer.svg'
-import Button from '@material-ui/core/Button'
 import cn from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { reselectProfileData, selectProfile } from '../../../../../store/ducks/profile/selectors'
@@ -10,12 +8,10 @@ import { getFormatedDate, getStatusText } from '../../../../../services/helpers/
 import { selectGlobal } from '../../../../../store/ducks/global/selectors'
 import { TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import { updateProfile, updateProfileDayoff } from '../../../../../store/ducks/profile/actionCreators'
-import { DatePicker } from '@material-ui/pickers'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 import { AppButton } from '../../../../common/AppButton/AppButton'
+import { AppIcon } from '../../../../common/AppIcon/AppIcon'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
@@ -139,7 +135,8 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 									<div className="sectionSubtitle">Корпоративных дней</div>
 									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
 										{time.corporateDays || '0'}
-										<i className={cn('icon-edit', s.editIcon)}></i>
+
+										<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
 									</p>
 								</>
 							) : (
@@ -196,7 +193,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 									<div className="sectionSubtitle">Корпоративных дней</div>
 									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
 										{time.corporateDays || '0'}
-										<i className={cn('icon-edit', s.editIcon)}></i>
+										<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
 									</p>
 								</>
 							) : (

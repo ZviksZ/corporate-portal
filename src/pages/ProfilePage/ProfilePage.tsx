@@ -7,7 +7,6 @@ import { selectGlobal } from '../../store/ducks/global/selectors'
 import { getProfile, setProfile } from '../../store/ducks/profile/actionCreators'
 import { selectIsProfileLoading, selectIsProfileLoadingError, selectProfile } from '../../store/ducks/profile/selectors'
 import { Loader } from '../../components/common/Loader/Loader'
-import { Button } from '@material-ui/core'
 import { AppButton } from '../../components/common/AppButton/AppButton'
 
 const ProfilePage: React.FC = () => {

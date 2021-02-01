@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { getInitialsFromName, getReverseFormatDate, timeSince } from '../../../../../services/helpers/utils'
 import { AbsenceItemInterface } from '../../../../../store/ducks/absences/contracts/state'
 import { getAbsenceData } from '../../../../../store/ducks/absences/actionCreators'
+import { AppIcon } from '../../../AppIcon/AppIcon'
 
 type Props = {
 	item: AbsenceItemInterface
@@ -33,7 +34,7 @@ export const NotificationPopupItem: React.FC<Props> = ({ item, handleClose }) =>
 					<div className={s.type}>{item.name}</div>
 					<div className={s.time}>{item.date ? `${timeAgo} назад` : ''}</div>
 				</div>
-				<i className={cn(s.openAbsence, 'icon-arrow-left')}></i>
+				<AppIcon iconClass={'icon-arrow-left'} classNames={s.openAbsence} />
 			</div>
 		</>
 	)

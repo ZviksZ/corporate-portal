@@ -15,6 +15,7 @@ import { filteredAvailableMembersList, filteredTeamMembersList, selectTeams } fr
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { setTeamSquadSearch } from '../../../store/ducks/teams/actionCreators'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
+import { AppIcon } from '../../common/AppIcon/AppIcon'
 
 export const TeamSquad: React.FC = () => {
 	const dispatch = useDispatch()
@@ -58,7 +59,7 @@ export const TeamSquad: React.FC = () => {
 					className={cn('search-input', 'margin-bottom-x2', 'search-input-big')}
 					startAdornment={
 						<InputAdornment position="start">
-							<i className="icon-search"></i>
+							<AppIcon iconClass={'icon-search'} />
 						</InputAdornment>
 					}
 				/>

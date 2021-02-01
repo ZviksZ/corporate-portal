@@ -21,13 +21,9 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 				<NavLink to={`/units/`} className="breadcrumbsItem">
 					Подразделения
 				</NavLink>
-				{unit.main && (
-					<>
-						<NavLink to={`/units/${unit.main}`} className="breadcrumbsItem">
-							{unit.mainName}
-						</NavLink>
-					</>
-				)}
+				{unit.main && <NavLink to={`/units/${unit.main}`} className="breadcrumbsItem">
+					{unit.mainName}
+				</NavLink>}
 				{unit.main !== unit.parent && (
 					<NavLink to={`/units/${unit.parent}`} className="breadcrumbsItem">
 						{unit.parentName}

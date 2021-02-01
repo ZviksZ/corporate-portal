@@ -12,30 +12,32 @@ import Popper from '@material-ui/core/Popper'
 import cn from 'classnames'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 import { NavbarSearchBlock } from './NavbarSearchBlock/NavbarSearchBlock'
+import { AppIcon } from '../../AppIcon/AppIcon'
 
 export const NavbarSearch: React.FC = () => {
 	const [anchorEl, setAnchorEl] = useState<any>(null)
+	const anchorRef = useRef<any>()
+
 	const [open, setOpen] = useState<boolean>(false)
 	const [value, setValue] = useState<string>('')
 	const [openSearch, setOpenSearch] = useState<boolean>(false)
-	const anchorRef = useRef<any>()
+
 	const dispatch = useDispatch()
 	const { searchResults } = useSelector(selectGlobal)
-	const body = document.querySelector('body')
-	const bodyOverflowClass = 'overflow-hidden-body'
+
+	const isMobile = window.innerWidth < 1000
 
 	const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setValue(e.target.value)
 		if (e.target.value) {
-			setValue(e.target.value)
 			dispatch(getSearch(e.target.value))
 		} else {
-			setValue(e.target.value)
 			dispatch(setSearch(null))
 		}
 	}
 
 	const clickAwayHandler = () => {
-		if (window.innerWidth >= 1000) {
+		if (!isMobile) {
 			setValue('')
 			setOpen(false)
 			dispatch(setSearch(null))
@@ -47,25 +49,16 @@ export const NavbarSearch: React.FC = () => {
 		setOpen(false)
 		dispatch(setSearch(null))
 		setOpenSearch(false)
-		if (body) {
-			body.classList.remove(bodyOverflowClass)
-		}
 	}
 
 	const openSearchMobile = () => {
 		setOpenSearch(true)
-		if (body) {
-			body.classList.add(bodyOverflowClass)
-		}
 	}
 	const closeSearchMobile = () => {
 		setOpenSearch(false)
 		setValue('')
 		setOpen(false)
 		dispatch(setSearch(null))
-		if (body) {
-			body.classList.remove(bodyOverflowClass)
-		}
 	}
 
 	useEffect(() => {
@@ -91,7 +84,7 @@ export const NavbarSearch: React.FC = () => {
 					value={value}
 					startAdornment={
 						<InputAdornment position="start">
-							<i className="icon-search"></i>
+							<AppIcon iconClass={'icon-search'} />
 						</InputAdornment>
 					}
 				/>

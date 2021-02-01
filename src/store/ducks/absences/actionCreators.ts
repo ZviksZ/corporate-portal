@@ -1,4 +1,4 @@
-import { AllAbsenceDataInterface, AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceItemInterface } from './contracts/state'
+import { AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceItemInterface } from './contracts/state'
 import {
 	GetAllAbsencesActionInterface,
 	GetAbsenceDataActionInterface,

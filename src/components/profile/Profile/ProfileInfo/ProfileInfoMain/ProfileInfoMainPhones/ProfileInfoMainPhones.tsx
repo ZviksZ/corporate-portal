@@ -4,6 +4,7 @@ import s from '../../../Profile.module.scss'
 import { TextField } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
+import { AppIcon } from '../../../../../common/AppIcon/AppIcon'
 
 type Props = {
 	isMyProfile: boolean
@@ -38,7 +39,7 @@ export const ProfileInfoMainPhones: React.FC<Props> = ({ openPhoneEdit, isMyProf
 							<div className="sectionSubtitle">Мобильный телефон</div>
 							<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openPhoneEdit}>
 								{main.mobilePhone || 'Не указан'}
-								<i className={cn('icon-edit', s.editIcon)}></i>
+								<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
 							</p>
 						</>
 					) : (
