@@ -22,6 +22,12 @@
 
     .squadCardItem + .squadCardItem {
         margin-left: 70px;
+        @include desktop-medium {
+            margin-left: 30px;
+        }
+        @include desktop-smaller {
+            margin-left: 18px;
+        }
     }
 
     .avatar {

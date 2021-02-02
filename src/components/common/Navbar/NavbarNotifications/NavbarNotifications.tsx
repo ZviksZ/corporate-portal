@@ -3,7 +3,7 @@ import { IconButton, Popover } from '@material-ui/core'
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined'
 import Badge from '@material-ui/core/Badge'
 import s from '../Navbar.module.scss'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { ModalBlock } from '../../ModalBlock/ModalBlock'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -27,6 +27,10 @@ export const NavbarNotifications: React.FC = () => {
 	const handleClose = () => {
 		setAnchorEl(null)
 	}
+
+	const closeFormHandler = useCallback(() => {
+		setOpenForm(false)
+	}, [])
 
 	const id = !!anchorEl ? 'simple-popover' : undefined
 
@@ -74,7 +78,7 @@ export const NavbarNotifications: React.FC = () => {
 				)}
 			</Popover>
 
-			<ModalBlock visible={openForm} onClose={() => setOpenForm(false)} title={(absenceDetail && absenceDetail.name) || ''}>
+			<ModalBlock visible={openForm} onClose={closeFormHandler} title={(absenceDetail && absenceDetail.name) || ''}>
 				<NotificationForm onClose={setOpenForm} />
 			</ModalBlock>
 		</>

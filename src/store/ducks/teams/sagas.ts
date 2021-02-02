@@ -17,7 +17,8 @@ import { store } from '../../store'
 export function* getTeamsRequest() {
 	try {
 		yield put(setLoadingTeams(LoadingStatus.LOADING))
-		const teams = yield call(TeamsApi.getTeams)
+		const data = yield call(TeamsApi.getTeams)
+		const teams = data.map((team:any) => team.data)
 
 		yield put(setTeams(teams))
 		yield put(setLoadingTeams(LoadingStatus.LOADED))

@@ -9,7 +9,8 @@ import { LoadingStatus } from '../../types'
 export function* getProjectsRequest() {
 	try {
 		yield put(setLoadingProjects(LoadingStatus.LOADING))
-		const projects = yield call(ProjectsApi.getProjects)
+		const data = yield call(ProjectsApi.getProjects)
+		const projects = data.map((project:any) => project.data)
 
 		yield put(setProjects(projects))
 		yield put(setLoadingProjects(LoadingStatus.LOADED))

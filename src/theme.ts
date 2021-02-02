@@ -82,6 +82,10 @@ const useGlobalStyles = makeStyles(() =>
 					borderWidth: '2px',
 				},
 			},
+			'.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+				borderColor: COLORS.MAIN,
+				borderWidth: '2px',
+			},
 		},
 	}),
 )

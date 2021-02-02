@@ -8,7 +8,8 @@ import { LoadingStatus } from '../../types'
 export function* getUnitsRequest() {
 	try {
 		yield put(setLoadingUnits(LoadingStatus.LOADING))
-		const units = yield call(UnitsApi.getUnits)
+		const data = yield call(UnitsApi.getUnits)
+		const units = data.map((unit:any) => unit.data)
 
 		yield put(setUnits(units))
 		yield put(setLoadingUnits(LoadingStatus.LOADED))

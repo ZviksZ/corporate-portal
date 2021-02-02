@@ -23,11 +23,18 @@ export interface BusyPeriodsInterface {
 	dateTimeStart: string
 	dateTimeEnd: string
 }
+
+export interface SubordinatesMembersInterface {
+	status: string
+	data: SimpleMemberUnitInterface
+}
+
 export interface SimpleMemberUnitInterface {
 	name: string
 	id: string
 	photo?: string | null
 }
+
 export interface TeamInterface {
 	id: string
 	name: string
@@ -38,6 +45,7 @@ export interface TeamInterface {
 		list: SimpleMemberUnitInterface[]
 	}
 }
+
 export interface ContractorInterface {
 	name: string
 }
@@ -74,7 +82,7 @@ export interface ProfileDataInterface {
 	teams: UnitInterface[]
 	additional: {
 		lead: SimpleMemberUnitInterface
-		subordinates: SimpleMemberUnitInterface[],
+		subordinates: SubordinatesMembersInterface[],
 		contractors: ContractorInterface[]
 	}
 }

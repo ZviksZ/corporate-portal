@@ -2,6 +2,12 @@ export interface ResponseInterface<T> {
 	status: string
 	data: T
 }
+
+export interface ResponsePayloadInterface<T> {
+	status?: string
+	payload: T
+}
+
 export interface ResponseErrorInterface {
 	code: string
 	message: string
