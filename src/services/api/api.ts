@@ -144,8 +144,8 @@ export const ProfileApi = {
 		await instance.post(`/updateUserPhoto`, requestData)
 	},
 	async uploadPhoto(requestData: FormData): Promise<string> {
-		const { data } = await instance.post<ResponseInterface<string>>(`/fileLoader`, requestData)
-		return data.data
+		const { data } = await instance.post<ResponsePayloadInterface<string>>(`/fileLoader`, requestData)
+		return data.payload
 	},
 	async updateDayoff(requestData: UpdateDayoffRequestInterface) {
 		await instance.post(`/altUserUpdateDayOff`, requestData)

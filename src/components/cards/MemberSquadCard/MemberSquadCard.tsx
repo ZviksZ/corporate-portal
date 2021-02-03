@@ -82,21 +82,6 @@ export const MemberSquadCard: React.FC<Props> = ({ isLeadCard = false, member, t
 					</>
 				)}
 			</div>
-			{/*{isLeadCard ? (
-				<>
-					{user && user.role == 'ROLE_ADMIN' && (
-						<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>
-							{isTeamMember ? '-' : '+'}
-						</div>
-					)}
-				</>
-			) : (
-				<>
-					<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>
-						{isTeamMember ? '-' : '+'}
-					</div>
-				</>
-			)}*/}
 
 			{!isLeadCard && (
 				<div onClick={addRemoveTeamHandler} className={cn(s.button, { [s.addedMember]: isTeamMember })}>

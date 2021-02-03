@@ -14,6 +14,7 @@ import { ProfileInfoMainSsh } from './ProfileInfoMainSsh/ProfileInfoMainSsh'
 import { ProfileInfoMainSize } from './ProfileInfoMainSize/ProfileInfoMainSize'
 import { AppSectionTitle } from '../../../../common/ui/AppSectionTitle/AppSectionTitle'
 import { AppSectionSubtitle } from '../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionText } from '../../../../common/ui/AppSectionText/AppSectionText'
 
 type Props = {
 	isMyProfile: boolean
@@ -84,7 +85,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 				{main.employmentDate && (
 					<>
 						<AppSectionSubtitle>Дата трудоустройства</AppSectionSubtitle>
-						<p className="sectionText">c {getFormatedDate(main.employmentDate)}</p>
+						<AppSectionText>c {getFormatedDate(main.employmentDate)}</AppSectionText>
 					</>
 				)}
 

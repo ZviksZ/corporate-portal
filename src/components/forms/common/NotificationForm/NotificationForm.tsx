@@ -50,14 +50,14 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 	}
 	return (
 		<div className={s.notification}>
-			<NavLink onClick={closeForm} to={`/profile/${absenceDetail.authorId}`} className={s.author}>
-				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={absenceDetail.authorImage || ''}>
-					{getInitialsFromName(absenceDetail.author || '')}
+			<NavLink onClick={closeForm} to={`/profile/${absenceDetail.userId}`} className={s.author}>
+				<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={absenceDetail.userPhoto || ''}>
+					{getInitialsFromName(absenceDetail.user || '')}
 				</Avatar>
 				<div className={s.info}>
 					<AppSectionSubtitle>Сотрудник</AppSectionSubtitle>
-					<AppSectionText additionalClasses={s.author}>{absenceDetail.author || ''}</AppSectionText>
-					<AppSectionSubtitle isBigSubtitle={true}>{absenceDetail.authorPosition || ''}</AppSectionSubtitle>
+					<AppSectionText additionalClasses={s.author}>{absenceDetail.user || ''}</AppSectionText>
+					<AppSectionSubtitle isBigSubtitle={true}>{absenceDetail.userTitle || ''}</AppSectionSubtitle>
 				</div>
 			</NavLink>
 			{absenceDetail.applicationDates && (
@@ -77,24 +77,20 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 			{absenceDetail.vacationDays && (
 				<>
 					<AppSectionSubtitle>Накоплено дней отпуска</AppSectionSubtitle>
-					<AppSectionText additionalClasses={'margin-bottom'}>
-						{absenceDetail.vacationDays}
-					</AppSectionText>
+					<AppSectionText additionalClasses={'margin-bottom'}>{absenceDetail.vacationDays}</AppSectionText>
 				</>
 			)}
 			{absenceDetail.corporateDays !== null && (
 				<>
 					<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
-					<AppSectionText additionalClasses={'margin-bottom'}>
-						{absenceDetail.corporateDays}
-					</AppSectionText>
+					<AppSectionText additionalClasses={'margin-bottom'}>{absenceDetail.corporateDays}</AppSectionText>
 				</>
 			)}
 			<div className={s.footer}>
 				<AppButton size={'large'} onClick={declineAbsence} additionalType={'dangerous'}>
 					Отказать
 				</AppButton>
-				<AppButton size={'large'} onClick={approveAbsence} >
+				<AppButton size={'large'} onClick={approveAbsence}>
 					Согласовать
 				</AppButton>
 			</div>

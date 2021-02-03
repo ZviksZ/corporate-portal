@@ -2,11 +2,11 @@
   "status": "success",
   "payload": {
     "id": 1,
-    "author": "Иванов Иван Иванович",
-    "authorId": "5f625ff6faa9c15525e2b4",
+    "user": "Иванов Иван Иванович",
+    "userId": "5f625ff6faa9c15525e2b4",
     "name": "Заявление на отпуск",
-    "authorImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
-    "authorPosition": "Разработчик ПО",
+    "userPhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU",
+    "userTitle": "Разработчик ПО",
     "applicationDates": "12.02.2021",
     "vacationGraphic": {
       "dateStart": "12.02.2021",

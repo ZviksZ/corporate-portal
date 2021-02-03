@@ -197,6 +197,10 @@
 .popper {
     margin-top: 20px;
     z-index: 200;
+    @include desktop {
+        max-height: 80vh;
+        overflow: auto;
+    }
     @include mobile {
         margin-top: 0;
         overflow: auto;

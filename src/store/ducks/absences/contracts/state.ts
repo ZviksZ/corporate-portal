@@ -33,11 +33,11 @@ export interface AllAbsenceDataInterface {
 }
 export interface AbsenceDetailInterface {
 	id: number
-	author: string
-	authorPosition: string
+	user: string
+	userTitle: string
 	name: string
-	authorImage: string
-	authorId: string
+	userPhoto: string
+	userId: string
 	applicationDates: string
 	vacationGraphic: StartEndInterface
 	vacationDays: string

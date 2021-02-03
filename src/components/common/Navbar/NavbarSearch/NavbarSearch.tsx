@@ -29,7 +29,7 @@ export const NavbarSearch: React.FC = () => {
 
 	const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
-		if (e.target.value) {
+		if (e.target.value && e.target.value.length > 1) {
 			dispatch(getSearch(e.target.value))
 		} else {
 			dispatch(setSearch(null))
