@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Controller, FieldError, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import Button from '@material-ui/core/Button'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Grid from '@material-ui/core/Grid'
 import { profileApplicationSchema } from '../../../../services/helpers/validations'
@@ -10,7 +9,6 @@ import ruLocale from 'date-fns/locale/ru'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import { useEffect, useState } from 'react'
 import DateFnsUtils from '@date-io/date-fns'
-import cn from 'classnames'
 import { addDaysToDate, formatDate } from '../../../../services/helpers/utils'
 import { selectGlobal } from '../../../../store/ducks/global/selectors'
 import { FormControl, MenuItem } from '@material-ui/core'
@@ -19,7 +17,6 @@ import Select from '@material-ui/core/Select'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { AbsenceCreateInterface } from '../../../../store/ducks/absences/contracts/state'
 import { createAbsence } from '../../../../store/ducks/absences/actionCreators'
-import { getProfile } from '../../../../store/ducks/profile/actionCreators'
 import { selectProfile } from '../../../../store/ducks/profile/selectors'
 import { AppButton } from '../../../common/ui/AppButton/AppButton'
 import { AppSectionSubtitle } from '../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
@@ -36,7 +33,7 @@ type Props = {
 
 export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 	const { user } = useSelector(selectGlobal)
-	const { profileData, isPersonalProfile } = useSelector(selectProfile)
+	const { profileData } = useSelector(selectProfile)
 	const dispatch = useDispatch()
 
 	const { control, register, handleSubmit, errors, getValues } = useForm<IFormInputs>({
@@ -50,12 +47,37 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 	const [maxDateTo, setMaxDateTo] = useState<any>(new Date(addDaysToDate(new Date().toLocaleDateString(), 365)))
 	const [type, setType] = useState('')
 
+	useEffect(() => {
+		const values = getValues()
+		const newDateMin = new Date(addDaysToDate(values.dateFrom, 1))
+		if (type == 'dayOff') {
+			const newDate = new Date(addDaysToDate(values.dateFrom, 3))
+
+			setMaxDateTo(newDate)
+			setSelectedDateTo(newDate)
+		} else {
+			setMaxDateTo(new Date(addDaysToDate(values.dateFrom, 365)))
+			setMaxDateTo(new Date(addDaysToDate(values.dateFrom, 365)))
+		}
+		setMinDateTo(newDateMin)
+	}, [type])
+
 	const handleDateFromChange = (date: any) => {
-		const newDateMax = new Date(addDaysToDate(date.toLocaleDateString(), 365))
+		let newDateMax
+		if (type == 'dayOff') {
+			newDateMax = new Date(addDaysToDate(date.toLocaleDateString(), 3))
+			setSelectedDateTo(newDateMax)
+		} else {
+			newDateMax = new Date(addDaysToDate(date.toLocaleDateString(), 365))
+		}
 		const newDateMin = new Date(addDaysToDate(date.toLocaleDateString(), 1))
 		setSelectedDateFrom(date)
 		if (date > selectedDateTo) {
-			setSelectedDateTo(newDateMin)
+			if (type == 'dayOff') {
+				setSelectedDateTo(newDateMax)
+			} else {
+				setSelectedDateTo(newDateMin)
+			}
 		}
 		setMaxDateTo(newDateMax)
 		setMinDateTo(newDateMin)
@@ -126,7 +148,9 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 						<FormHelperText>{errors.type && (errors.type as FieldError).message}</FormHelperText>
 					</FormControl>
 				</Grid>
-				<AppSectionSubtitle isBigSubtitle={true} additionalClasses={s.subtitle}>дата отсутствия</AppSectionSubtitle>
+				<AppSectionSubtitle isBigSubtitle={true} additionalClasses={s.subtitle}>
+					дата отсутствия
+				</AppSectionSubtitle>
 				<Grid item xs={12} sm={6}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
 						<DatePicker

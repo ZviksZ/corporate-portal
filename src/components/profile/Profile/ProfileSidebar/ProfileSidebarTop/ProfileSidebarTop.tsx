@@ -6,13 +6,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
-import Button from '@material-ui/core/Button'
 import { useCallback, useEffect, useState } from 'react'
-import { updateProfile, updateProfileDayoff, updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
+import { updateProfile, updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
 import { NavLink } from 'react-router-dom'
 import { selectGlobal } from '../../../../../store/ducks/global/selectors'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 import { AppButton } from '../../../../common/ui/AppButton/AppButton'
 import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
@@ -91,8 +88,8 @@ export const ProfileSidebarTop: React.FC = () => {
 			<div className={s.sidebarTop}>
 				<div className={s.avatarWrap}>
 					<Avatar className={cn(s.avatar, 'avatar-bg')} alt="" src={profileData.photo}>
-						{profileData.name && profileData.name[0]}
 						{profileData.surname && profileData.surname[0]}
+						{profileData.name && profileData.name[0]}
 					</Avatar>
 					{(isPersonalProfile || roleAdmin) && (
 						<>

@@ -7,7 +7,11 @@ export function declOfNum(number, titles) {
 }
 
 export function addDaysToDate(data, day) {
-	data = data.split('.')
+	if (data.indexOf('/') !== -1) {
+		data = data.split('/')
+	} else {
+		data = data.split('.')
+	}
 	data = new Date(data[2], +data[1] - 1, +data[0] + day, 0, 0, 0, 0)
 	data = data.toLocaleDateString().split('.').reverse().join('/')
 

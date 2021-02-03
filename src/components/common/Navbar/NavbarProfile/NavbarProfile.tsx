@@ -35,8 +35,8 @@ export const NavbarProfile: React.FC = () => {
 			{userProfile && (
 				<>
 					<Avatar aria-describedby={id} className={cn(s.profileAvatar, 'avatar-bg')} alt="" src={userProfile?.photo || ''} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-						{userProfile.name[0] || ''}
 						{userProfile.surname[0] || ''}
+						{userProfile.name[0] || ''}
 					</Avatar>
 
 					<Popover
