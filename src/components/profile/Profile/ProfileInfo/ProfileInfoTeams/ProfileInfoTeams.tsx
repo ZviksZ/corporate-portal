@@ -18,7 +18,7 @@ export const ProfileInfoTeams: React.FC = () => {
 		<>
 			<h4 className={cn(s.profileTitle, 'margin-bottom-x2', 'margin-top-x2')}>Команды</h4>
 			{teams.map((item) => (
-				<UnitCard key={item.id} item={item} showRole={true} linkPath={'teams'} />
+				<UnitCard key={item.data.id} item={item.data} showRole={true} linkPath={'teams'} />
 			))}
 		</>
 	)

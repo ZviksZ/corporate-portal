@@ -24,9 +24,9 @@ export interface BusyPeriodsInterface {
 	dateTimeEnd: string
 }
 
-export interface SubordinatesMembersInterface {
+export interface ArrayItemsInterface<T> {
 	status: string
-	data: SimpleMemberUnitInterface
+	data: T
 }
 
 export interface SimpleMemberUnitInterface {
@@ -79,10 +79,10 @@ export interface ProfileDataInterface {
 		sshKeys: string[]
 		slackStatus?: string
 	}
-	teams: UnitInterface[]
+	teams: ArrayItemsInterface<UnitInterface>[]
 	additional: {
 		lead: SimpleMemberUnitInterface
-		subordinates: SubordinatesMembersInterface[],
+		subordinates: ArrayItemsInterface<SimpleMemberUnitInterface>[],
 		contractors: ContractorInterface[]
 	}
 }
