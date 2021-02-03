@@ -10,7 +10,7 @@ import { setRoleFormData, updateTeamMember } from '../../../../store/ducks/teams
 import { selectTeams } from '../../../../store/ducks/teams/selectors'
 import { getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
-import { AppButton } from '../../../common/AppButton/AppButton'
+import { AppButton } from '../../../common/ui/AppButton/AppButton'
 
 type Props = {
 	onClose: (param: boolean) => void

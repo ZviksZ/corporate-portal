@@ -7,7 +7,9 @@ import { MemberCard } from '../../cards/MemberCard/MemberCard'
 import Button from '@material-ui/core/Button'
 import { useSelector } from 'react-redux'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
-import { AppButton } from '../../common/AppButton/AppButton'
+import { AppButton } from '../../common/ui/AppButton/AppButton'
+import { AppBreadcrumbs } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbs'
+import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'
 
 type Props = {
 	team: UnitDetailInterface | null
@@ -22,12 +24,10 @@ export const Team: React.FC<Props> = ({ team }) => {
 
 	return (
 		<div className={s.team}>
-			<Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
-				<NavLink to={`/teams/`} className="breadcrumbsItem">
-					Команды
-				</NavLink>
-				<span className="breadcrumbsItem">{team.name}</span>
-			</Breadcrumbs>
+			<AppBreadcrumbs>
+				<AppBreadcrumbsItem href={`/teams/`}>Команды</AppBreadcrumbsItem>
+				<AppBreadcrumbsItem isLink={false}>{team.name}</AppBreadcrumbsItem>
+			</AppBreadcrumbs>
 			<h1 className="section-title section-title-small no-margin-top">{team.name}</h1>
 
 			{team.lead && (

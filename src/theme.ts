@@ -86,6 +86,12 @@ const useGlobalStyles = makeStyles(() =>
 				borderColor: COLORS.MAIN,
 				borderWidth: '2px',
 			},
+			'.MuiBreadcrumbs-root .MuiBreadcrumbs-ol': {
+				display: 'flex',
+				alignItems: 'center',
+				overflow: 'auto',
+				flexWrap: 'nowrap',
+			},
 		},
 	}),
 )

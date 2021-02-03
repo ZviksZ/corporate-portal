@@ -1,0 +1,23 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/media";
+@import "../../../../assets/scss/infographic";
+
+
+.breadcrumbs {
+	padding: 24px 0;
+	.breadcrumbsItem {
+		color: $colorText;
+		font-size: 14px;
+		line-height: 16px;
+		white-space: nowrap;
+	}
+
+	a.breadcrumbsItem {
+		transition: 0.2s ease;
+		@include desktop {
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+	}
+}

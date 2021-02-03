@@ -7,7 +7,7 @@ import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsUnitsLoading, selectIsUnitsLoadingError } from '../../store/ducks/units/selectors'
 import { Button } from '@material-ui/core'
 import { getProfile } from '../../store/ducks/profile/actionCreators'
-import { AppButton } from '../../components/common/AppButton/AppButton'
+import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 
 const UnitsPage: React.FC = () => {
 	const dispatch = useDispatch()

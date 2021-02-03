@@ -14,8 +14,8 @@ import { selectGlobal } from '../../../../../store/ducks/global/selectors'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
-import { AppButton } from '../../../../common/AppButton/AppButton'
-import { AppIcon } from '../../../../common/AppIcon/AppIcon'
+import { AppButton } from '../../../../common/ui/AppButton/AppButton'
+import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()

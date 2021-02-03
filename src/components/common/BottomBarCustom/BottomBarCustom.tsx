@@ -3,7 +3,7 @@ import cn from 'classnames'
 import s from './BottomBarCustom.module.scss'
 import { AppBar } from '@material-ui/core'
 import Toolbar from '@material-ui/core/Toolbar'
-import { AppButton } from '../AppButton/AppButton'
+import { AppButton } from '../ui/AppButton/AppButton'
 
 type Props = {
 	onCancel: () => void

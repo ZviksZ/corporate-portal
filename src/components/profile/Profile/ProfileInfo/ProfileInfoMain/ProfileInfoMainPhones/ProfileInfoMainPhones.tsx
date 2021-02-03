@@ -4,7 +4,7 @@ import s from '../../../Profile.module.scss'
 import { TextField } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
-import { AppIcon } from '../../../../../common/AppIcon/AppIcon'
+import { AppIcon } from '../../../../../common/ui/AppIcon/AppIcon'
 
 type Props = {
 	isMyProfile: boolean

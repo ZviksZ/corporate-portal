@@ -12,7 +12,7 @@ import Popper from '@material-ui/core/Popper'
 import cn from 'classnames'
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 import { NavbarSearchBlock } from './NavbarSearchBlock/NavbarSearchBlock'
-import { AppIcon } from '../../AppIcon/AppIcon'
+import { AppIcon } from '../../ui/AppIcon/AppIcon'
 
 export const NavbarSearch: React.FC = () => {
 	const [anchorEl, setAnchorEl] = useState<any>(null)

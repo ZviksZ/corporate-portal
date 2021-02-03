@@ -7,7 +7,7 @@ import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsProjectsLoading, selectIsProjectsLoadingError } from '../../store/ducks/projects/selectors'
 import { getTeamData } from '../../store/ducks/teams/actionCreators'
 import { Button } from '@material-ui/core'
-import { AppButton } from '../../components/common/AppButton/AppButton'
+import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 
 const ProjectsPage: React.FC = () => {
 	const dispatch = useDispatch()

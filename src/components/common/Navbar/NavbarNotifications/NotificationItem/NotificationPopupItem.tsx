@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { getInitialsFromName, getReverseFormatDate, timeSince } from '../../../../../services/helpers/utils'
 import { AbsenceItemInterface } from '../../../../../store/ducks/absences/contracts/state'
 import { getAbsenceData } from '../../../../../store/ducks/absences/actionCreators'
-import { AppIcon } from '../../../AppIcon/AppIcon'
+import { AppIcon } from '../../../ui/AppIcon/AppIcon'
 
 type Props = {
 	item: AbsenceItemInterface

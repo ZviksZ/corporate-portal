@@ -7,7 +7,7 @@ import { getProjectData, getProjects, setProjectData } from '../../store/ducks/p
 import { Project } from '../../components/projects/Project/Project'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
-import { AppButton } from '../../components/common/AppButton/AppButton'
+import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 
 const ProjectsDetailPage: React.FC = () => {
 	const dispatch = useDispatch()

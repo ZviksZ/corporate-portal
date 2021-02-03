@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { getInitialsFromName, getReverseFormatDate, getStatusText, timeSince } from '../../../services/helpers/utils'
 import { useDispatch } from 'react-redux'
 import { getAbsenceData } from '../../../store/ducks/absences/actionCreators'
-import { AppIcon } from '../../common/AppIcon/AppIcon'
+import { AppIcon } from '../../common/ui/AppIcon/AppIcon'
 
 type Props = {
 	item: AbsenceItemInterface

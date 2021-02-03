@@ -124,26 +124,4 @@
     }
 }
 
-.breadcrumbs {
-    padding: 24px 0;
-
-    .MuiBreadcrumbs-ol {
-        display: flex;
-        align-items: center;
-        overflow: auto;
-        flex-wrap: nowrap;
-    }
-
-    .breadcrumbsItem {
-        color: $colorText;
-        font-size: 14px;
-        line-height: 16px;
-        white-space: nowrap;
-    }
-
-    a.breadcrumbsItem {
-        @extend %link-shared;
-    }
-}
-
 

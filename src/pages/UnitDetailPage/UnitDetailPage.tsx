@@ -8,7 +8,7 @@ import { Unit } from '../../components/units/Unit/Unit'
 import { Units } from '../../components/units/Units/Units'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
-import { AppButton } from '../../components/common/AppButton/AppButton'
+import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 
 const UnitDetailPage: React.FC = () => {
 	const dispatch = useDispatch()

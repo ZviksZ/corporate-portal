@@ -7,7 +7,7 @@ import { selectIsAbsencesLoading, selectIsAbsencesLoadingError, selectAbsences }
 import { getAllAbsences, setAllAbsences } from '../../store/ducks/absences/actionCreators'
 import { NotificationCard } from '../../components/cards/NotificationCard/NotificationCard'
 import { selectGlobal } from '../../store/ducks/global/selectors'
-import { AppButton } from '../../components/common/AppButton/AppButton'
+import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 
 const NotificationsPage: React.FC = () => {
 	const dispatch = useDispatch()

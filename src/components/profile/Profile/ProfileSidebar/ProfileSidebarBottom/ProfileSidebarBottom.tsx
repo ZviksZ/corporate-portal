@@ -10,8 +10,8 @@ import { TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { updateProfile, updateProfileDayoff } from '../../../../../store/ducks/profile/actionCreators'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
-import { AppButton } from '../../../../common/AppButton/AppButton'
-import { AppIcon } from '../../../../common/AppIcon/AppIcon'
+import { AppButton } from '../../../../common/ui/AppButton/AppButton'
+import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
 
 type Props = {
 	setOpenForm: (param: boolean) => void

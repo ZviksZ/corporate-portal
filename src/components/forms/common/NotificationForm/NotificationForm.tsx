@@ -9,7 +9,7 @@ import { selectAbsences } from '../../../../store/ducks/absences/selectors'
 import { useCallback, useEffect } from 'react'
 import { changeAbsenceStatus, setAbsenceData } from '../../../../store/ducks/absences/actionCreators'
 import { selectGlobal } from '../../../../store/ducks/global/selectors'
-import { AppButton } from '../../../common/AppButton/AppButton'
+import { AppButton } from '../../../common/ui/AppButton/AppButton'
 
 type Props = {
 	onClose: (param: boolean) => void

@@ -32,7 +32,7 @@ export interface SubordinatesMembersInterface {
 export interface SimpleMemberUnitInterface {
 	name: string
 	id: string
-	photo?: string | null
+	photo?: string | undefined
 }
 
 export interface TeamInterface {

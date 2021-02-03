@@ -6,6 +6,8 @@ import { MemberCard } from '../../cards/MemberCard/MemberCard'
 import { ProjectDetailInterface } from '../../../store/ducks/projects/contracts/state'
 import wiki from '../../../assets/images/icons/wiki.svg'
 import jira from '../../../assets/images/icons/jira.svg'
+import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'
+import { AppBreadcrumbs } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbs'
 
 type Props = {
 	project: ProjectDetailInterface | null
@@ -18,12 +20,11 @@ export const Project: React.FC<Props> = ({ project }) => {
 
 	return (
 		<div className={s.project}>
-			<Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
-				<NavLink to={`/projects/`} className="breadcrumbsItem">
-					Проекты
-				</NavLink>
-				<span className="breadcrumbsItem">{project.name}</span>
-			</Breadcrumbs>
+			<AppBreadcrumbs>
+				<AppBreadcrumbsItem href={`/projects/`}>Проекты</AppBreadcrumbsItem>
+				<AppBreadcrumbsItem isLink={false}>{project.name}</AppBreadcrumbsItem>
+			</AppBreadcrumbs>
+
 			<h1 className="section-title section-title-small no-margin-top no-margin-bottom">{project.name}</h1>
 			<div className="d-flex align-item-center margin-top-x2 margin-bottom">
 				{project.wikilink && (

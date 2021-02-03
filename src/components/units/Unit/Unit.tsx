@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom'
 import { Breadcrumbs } from '@material-ui/core'
 import { MemberCard } from '../../cards/MemberCard/MemberCard'
 import { UnitCard } from '../../cards/UnitCard/UnitCard'
+import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'
+import { AppBreadcrumbs } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbs'
 
 type Props = {
 	unit: UnitDetailInterface | null
@@ -17,20 +19,13 @@ export const Unit: React.FC<Props> = ({ unit }) => {
 
 	return (
 		<div className={s.unit}>
-			<Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
-				<NavLink to={`/units/`} className="breadcrumbsItem">
-					Подразделения
-				</NavLink>
-				{unit.main && <NavLink to={`/units/${unit.main}`} className="breadcrumbsItem">
-					{unit.mainName}
-				</NavLink>}
-				{unit.main !== unit.parent && (
-					<NavLink to={`/units/${unit.parent}`} className="breadcrumbsItem">
-						{unit.parentName}
-					</NavLink>
-				)}
-				<span className="breadcrumbsItem">{unit.name}</span>
-			</Breadcrumbs>
+			<AppBreadcrumbs>
+				<AppBreadcrumbsItem href={`/units/`}>Подразделения</AppBreadcrumbsItem>
+				{unit.main && <AppBreadcrumbsItem href={`/units/${unit.main}`}>{unit.mainName}</AppBreadcrumbsItem>}
+				{unit.main !== unit.parent && <AppBreadcrumbsItem href={`/units/${unit.parent}`}>{unit.parentName}</AppBreadcrumbsItem>}
+				<AppBreadcrumbsItem isLink={false}>{unit.name}</AppBreadcrumbsItem>
+			</AppBreadcrumbs>
+
 			<h1 className="section-title section-title-small no-margin-top">{unit.name}</h1>
 			{unit.lead && (
 				<>

@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import { loginSchema } from '../../../../services/helpers/validations'
 import s from './LoginForm.module.scss'
 import { login } from '../../../../store/ducks/global/actionCreators'
-import { AppButton } from '../../../common/AppButton/AppButton'
+import { AppButton } from '../../../common/ui/AppButton/AppButton'
 interface IFormInputs {
 	login: string
 	password: string

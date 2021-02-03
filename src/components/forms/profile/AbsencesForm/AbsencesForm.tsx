@@ -21,7 +21,7 @@ import { AbsenceCreateInterface } from '../../../../store/ducks/absences/contrac
 import { createAbsence } from '../../../../store/ducks/absences/actionCreators'
 import { getProfile } from '../../../../store/ducks/profile/actionCreators'
 import { selectProfile } from '../../../../store/ducks/profile/selectors'
-import { AppButton } from '../../../common/AppButton/AppButton'
+import { AppButton } from '../../../common/ui/AppButton/AppButton'
 
 interface IFormInputs {
 	dateFrom: dateFns

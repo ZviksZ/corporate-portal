@@ -15,7 +15,9 @@ import { filteredAvailableMembersList, filteredTeamMembersList, selectTeams } fr
 import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { setTeamSquadSearch } from '../../../store/ducks/teams/actionCreators'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
-import { AppIcon } from '../../common/AppIcon/AppIcon'
+import { AppIcon } from '../../common/ui/AppIcon/AppIcon'
+import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'
+import { AppBreadcrumbs } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbs'
 
 export const TeamSquad: React.FC = () => {
 	const dispatch = useDispatch()
@@ -40,15 +42,11 @@ export const TeamSquad: React.FC = () => {
 
 	return (
 		<div className={s.teamSquad}>
-			<Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
-				<NavLink to={`/teams/`} className="breadcrumbsItem">
-					Команды
-				</NavLink>
-				<NavLink to={`/teams/${teamSquad.id}`} className="breadcrumbsItem">
-					{teamSquad.name}
-				</NavLink>
-				<span className="breadcrumbsItem">Управление составом</span>
-			</Breadcrumbs>
+			<AppBreadcrumbs>
+				<AppBreadcrumbsItem href={`/teams/`}>Команды</AppBreadcrumbsItem>
+				<AppBreadcrumbsItem href={`/teams/${teamSquad.id}`}>{teamSquad.name}</AppBreadcrumbsItem>
+				<AppBreadcrumbsItem isLink={false}>Управление составом</AppBreadcrumbsItem>
+			</AppBreadcrumbs>
 
 			<h1 className="section-title section-title-small no-margin-top">Управление составом</h1>
 
