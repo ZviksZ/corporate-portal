@@ -8,6 +8,7 @@ import { selectIsUnitsLoading, selectIsUnitsLoadingError } from '../../store/duc
 import { Button } from '@material-ui/core'
 import { getProfile } from '../../store/ducks/profile/actionCreators'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
+import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 const UnitsPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -46,7 +47,7 @@ const UnitsPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="section-title section-title-small">Подразделения</h1>
+				<AppSectionPageTitle isSmallPageTitle={true}>Подразделения</AppSectionPageTitle>
 				<Units />
 			</div>
 		</section>

@@ -10,6 +10,8 @@ import { selectGlobal } from '../../../store/ducks/global/selectors'
 import { AppButton } from '../../common/ui/AppButton/AppButton'
 import { AppBreadcrumbs } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbs'
 import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'
+import { AppSectionSubtitle } from '../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionPageTitle } from '../../common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 type Props = {
 	team: UnitDetailInterface | null
@@ -28,24 +30,23 @@ export const Team: React.FC<Props> = ({ team }) => {
 				<AppBreadcrumbsItem href={`/teams/`}>Команды</AppBreadcrumbsItem>
 				<AppBreadcrumbsItem isLink={false}>{team.name}</AppBreadcrumbsItem>
 			</AppBreadcrumbs>
-			<h1 className="section-title section-title-small no-margin-top">{team.name}</h1>
-
+			<AppSectionPageTitle isSmallPageTitle={true} additionalClasses={'no-margin-top'}>{team.name}</AppSectionPageTitle>
 			{team.lead && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
+					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase'}>Тимлид</AppSectionSubtitle>
 
 					<MemberCard member={team.lead} />
 				</>
 			)}
 
-			<div className="sectionBigSubtitle text-uppercase margin-top-x2">
+			<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase margin-top-x2'}>
 				<span>сотрудники ({team?.members?.list?.length || 0})</span>
 				{((user && user.role === 'ROLE_ADMIN') || (user && user.id.toString() == team?.lead?.id)) && (
 					<AppButton size={'large'} to={`/teams/${team.id}/squad`} component={NavLink}>
 						Управление составом
 					</AppButton>
 				)}
-			</div>
+			</AppSectionSubtitle>
 			{team.members && team?.members?.list?.length > 0 && team.members.list.map((member) => (
 				<MemberCard member={member} key={member.id} />
 			))}

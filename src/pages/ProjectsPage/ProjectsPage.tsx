@@ -8,6 +8,7 @@ import { selectIsProjectsLoading, selectIsProjectsLoadingError } from '../../sto
 import { getTeamData } from '../../store/ducks/teams/actionCreators'
 import { Button } from '@material-ui/core'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
+import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 const ProjectsPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const ProjectsPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="section-title section-title-small">Проекты</h1>
+				<AppSectionPageTitle isSmallPageTitle={true}>Проекты</AppSectionPageTitle>
 
 				<Projects />
 			</div>

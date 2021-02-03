@@ -8,6 +8,7 @@ import { getProfile, setProfile } from '../../store/ducks/profile/actionCreators
 import { selectIsProfileLoading, selectIsProfileLoadingError, selectProfile } from '../../store/ducks/profile/selectors'
 import { Loader } from '../../components/common/Loader/Loader'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
+import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -80,7 +81,7 @@ const ProfilePage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="h2 section-title">{title}</h1>
+				<AppSectionPageTitle additionalClasses={'h2'}>{title}</AppSectionPageTitle>
 				<Profile isMyProfile={isMyProfile} />
 			</div>
 		</section>

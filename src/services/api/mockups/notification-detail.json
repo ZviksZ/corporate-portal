@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "data": {
+  "payload": {
     "id": 1,
     "author": "Иванов Иван Иванович",
     "authorId": "5f625ff6faa9c15525e2b4",

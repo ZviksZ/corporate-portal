@@ -7,6 +7,7 @@ import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsTeamsLoading, selectIsTeamsLoadingError } from '../../store/ducks/teams/selectors'
 import { Button } from '@material-ui/core'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
+import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 const TeamsPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -45,7 +46,7 @@ const TeamsPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="section-title section-title-small">Команды</h1>
+				<AppSectionPageTitle isSmallPageTitle={true}>Команды</AppSectionPageTitle>
 
 				<Teams/>
 			</div>

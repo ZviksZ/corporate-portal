@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom'
 import { NotificationForm } from '../../../forms/common/NotificationForm/NotificationForm'
 import { selectAbsences } from '../../../../store/ducks/absences/selectors'
 import { NotificationPopupItem } from './NotificationItem/NotificationPopupItem'
+import { AppSectionSubtitle } from '../../ui/AppSectionSubtitle/AppSectionSubtitle'
 
 export const NavbarNotifications: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
@@ -67,7 +68,7 @@ export const NavbarNotifications: React.FC = () => {
 							{absences.lastFive.map((item) => (
 								<NotificationPopupItem handleClose={handleClose} key={item.id} item={item} />
 							))}
-							{!absences?.lastFive?.length && <p className="sectionSubtitle text-align-center margin-bottom margin-top text-uppercase">уведомлений пока нет</p>}
+							{!absences?.lastFive?.length && <AppSectionSubtitle additionalClasses={'text-align-center margin-bottom margin-top text-uppercase'}>уведомлений пока нет</AppSectionSubtitle>}
 						</div>
 						<div className={s.bottom}>
 							<NavLink to={'/notifications'} onClick={handleClose}>

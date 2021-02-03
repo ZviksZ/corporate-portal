@@ -8,6 +8,7 @@ import { getAllAbsences, setAllAbsences } from '../../store/ducks/absences/actio
 import { NotificationCard } from '../../components/cards/NotificationCard/NotificationCard'
 import { selectGlobal } from '../../store/ducks/global/selectors'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
+import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 const NotificationsPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -62,7 +63,7 @@ const NotificationsPage: React.FC = () => {
 	return (
 		<section className="section">
 			<div className="container">
-				<h1 className="section-title section-title-small">Список уведомлений</h1>
+				<AppSectionPageTitle isSmallPageTitle={true}>Список уведомлений</AppSectionPageTitle>
 
 				{allAbsences && allAbsences.length > 0 ? (
 					<>

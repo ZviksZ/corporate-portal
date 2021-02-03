@@ -5,6 +5,7 @@ import { TextField } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
 import { AppIcon } from '../../../../../common/ui/AppIcon/AppIcon'
+import { AppSectionSubtitle } from '../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	isMyProfile: boolean
@@ -36,7 +37,7 @@ export const ProfileInfoMainPhones: React.FC<Props> = ({ openPhoneEdit, isMyProf
 				<>
 					{isMyProfile || roleAdmin ? (
 						<>
-							<div className="sectionSubtitle">Мобильный телефон</div>
+							<AppSectionSubtitle>Мобильный телефон</AppSectionSubtitle>
 							<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openPhoneEdit}>
 								{main.mobilePhone || 'Не указан'}
 								<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
@@ -45,7 +46,7 @@ export const ProfileInfoMainPhones: React.FC<Props> = ({ openPhoneEdit, isMyProf
 					) : (
 						main.mobilePhone && (
 							<>
-								<div className="sectionSubtitle">Мобильный телефон</div>
+								<AppSectionSubtitle>Мобильный телефон</AppSectionSubtitle>
 								<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)}>{main.mobilePhone}</p>
 							</>
 						)
@@ -55,7 +56,7 @@ export const ProfileInfoMainPhones: React.FC<Props> = ({ openPhoneEdit, isMyProf
 
 			{main.inPhone && (
 				<>
-					<div className="sectionSubtitle">Внутренний телефон</div>
+					<AppSectionSubtitle>Внутренний телефон</AppSectionSubtitle>
 					<p className={cn('sectionText', 'sectionTextWith')}>
 						<span className={cn('sectionTextContent', 'sectionTextPhone')}>{main.inPhone}</span>
 					</p>

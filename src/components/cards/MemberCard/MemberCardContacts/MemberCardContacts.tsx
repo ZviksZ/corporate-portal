@@ -5,6 +5,7 @@ import { ClipboardCopy } from '../../../common/ClipboardCopy/ClipboardCopy'
 import slack from '../../../../assets/images/icons/slack.svg'
 import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
 import { stopPropagation } from '../../../../services/helpers/utils'
+import { AppSectionSubtitle } from '../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	member: MemberDetailInterface
@@ -18,7 +19,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 		<div className={s.memberContacts}>
 			{member.email && (
 				<>
-					<div className="sectionSubtitle">Контактный Email</div>
+					<AppSectionSubtitle>Контактный Email</AppSectionSubtitle>
 					<p className={cn('sectionText', 'sectionTextWith')}>
 						<object type="owo/uwu">
 							<a onClick={stopPropagation} href={'mailto:' + member.email} className="sectionTextContent">
@@ -32,7 +33,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 			)}
 			{member.mobilePhone && (
 				<>
-					<div className="sectionSubtitle">Мобильный телефон</div>
+					<AppSectionSubtitle>Мобильный телефон</AppSectionSubtitle>
 					<object type="owo/uwu">
 						<p className={cn('sectionText', 'sectionTextWith', s.phones)}>
 							{member.mobilePhone.split(',').map((item, index) => {

@@ -22,6 +22,7 @@ import { createAbsence } from '../../../../store/ducks/absences/actionCreators'
 import { getProfile } from '../../../../store/ducks/profile/actionCreators'
 import { selectProfile } from '../../../../store/ducks/profile/selectors'
 import { AppButton } from '../../../common/ui/AppButton/AppButton'
+import { AppSectionSubtitle } from '../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 interface IFormInputs {
 	dateFrom: dateFns
@@ -125,7 +126,7 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 						<FormHelperText>{errors.type && (errors.type as FieldError).message}</FormHelperText>
 					</FormControl>
 				</Grid>
-				<div className={cn('sectionBigSubtitle', s.subtitle)}>дата отсутствия</div>
+				<AppSectionSubtitle isBigSubtitle={true} additionalClasses={s.subtitle}>дата отсутствия</AppSectionSubtitle>
 				<Grid item xs={12} sm={6}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils} locale={ruLocale}>
 						<DatePicker

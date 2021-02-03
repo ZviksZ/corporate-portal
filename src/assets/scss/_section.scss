@@ -1,42 +1,4 @@
-.section-title {
-    margin: 38px 0;
-    &.section-title-small {
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 23px;
-        margin: 34px 0;
-    }
-}
 
-.sectionTitle {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 23px;
-}
-
-.sectionSubtitle {
-    font-size: 12px;
-    line-height: 14px;
-    color: $colorGray2;
-    margin-bottom: 6px;
-}
-
-.sectionBigSubtitle {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-    line-height: 16px;
-    color: $colorGray2;
-    margin-bottom: 18px;
-    @include only-mobile {
-        flex-wrap: wrap;
-        a {
-            margin-top: 12px !important;
-        }
-    }
-}
 
 .sectionText {
     font-size: 16px;
@@ -110,25 +72,3 @@
     }
 }
 
-.sectionListItem {
-    position: relative;
-    font-size: 16px;
-    line-height: 19px;
-    padding-left: 30px;
-    list-style: none;
-    &:before {
-        position: absolute;
-        left: 0;
-        top: 6px;
-        display: block;
-        content: '';
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: $colorDangerous;
-    }
-}
-
-.sectionListItem + .sectionListItem {
-    margin-top: 4px;
-}

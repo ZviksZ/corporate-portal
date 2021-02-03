@@ -6,9 +6,9 @@ import { getInitialsFromName } from '../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTeamMember, removeTeamMember, setRoleFormData } from '../../../store/ducks/teams/actionCreators'
-import { SquadMemberInterface } from '../../../store/ducks/teams/contracts/state'
 import { MemberDetailInterface } from '../../../store/ducks/units/contracts/state'
 import { selectGlobal } from '../../../store/ducks/global/selectors'
+import { AppSectionSubtitle } from '../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	member: MemberDetailInterface
@@ -55,21 +55,21 @@ export const MemberSquadCard: React.FC<Props> = ({ isLeadCard = false, member, t
 				{getInitialsFromName(member?.name)}
 			</Avatar>
 			<div className={s.squadCardItem}>
-				<div className={cn('sectionSubtitle', s.subtitle)}>ФИО</div>
+				<AppSectionSubtitle additionalClasses={s.subtitle}>ФИО</AppSectionSubtitle>
 				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.name || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
-				<div className={cn('sectionSubtitle', s.subtitle)}>Подразделение</div>
+				<AppSectionSubtitle additionalClasses={s.subtitle}>Подразделение</AppSectionSubtitle>
 				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.department || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
-				<div className={cn('sectionSubtitle', s.subtitle)}>Должность</div>
+				<AppSectionSubtitle additionalClasses={s.subtitle}>Должность</AppSectionSubtitle>
 				<div className="sectionText sectionTextSmall no-margin-bottom">{member?.position || '-'}</div>
 			</div>
 			<div className={s.squadCardItem}>
 				{showRole && (
 					<>
-						<div className={cn('sectionSubtitle', s.subtitle)}>Роль в команде</div>
+						<AppSectionSubtitle additionalClasses={s.subtitle}>Роль в команде</AppSectionSubtitle>
 						{member.role ? (
 							<div className={s.text} onClick={openRoleForm}>
 								{member.role}

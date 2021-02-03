@@ -6,7 +6,8 @@ import jira from '../../../../assets/images/icons/jira.svg'
 import { useState } from 'react'
 import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
 import { getInitialsFromName, stopPropagation } from '../../../../services/helpers/utils'
-import { FromToInterface } from '../../../../store/ducks/profile/contracts/state'
+import { AppSectionSubtitle } from '../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionListItem } from '../../../common/ui/AppSectionListItem/AppSectionListItem'
 
 type Props = {
 	member: MemberDetailInterface
@@ -31,14 +32,12 @@ export const MemberCardMain: React.FC<Props> = ({ member }) => {
 				<div className={s.position}>{member.position}</div>
 				{member.employment && member.employment.length > 0 && (
 					<>
-						<div className="sectionSubtitle">Занятость на текущий день:</div>
+						<AppSectionSubtitle>Занятость на текущий день:</AppSectionSubtitle>
 						<ul className={cn('sectionList', s.employmentList, { [s.employmentListBig]: showEmployment })}>
 							{member.employment.map((item, key) => {
 								if (showEmployment || (!showEmployment && key < FIRST_SHOW_LIMIT)) {
 									return (
-										<li className={cn('sectionListItem', s.employmentListItem)} key={key}>
-											с {item.from} до {item.to}
-										</li>
+										<AppSectionListItem key={key + item.from + item.to} additionalClasses={s.employmentListItem}>с {item.from} до {item.to}</AppSectionListItem>
 									)
 								}
 							})}

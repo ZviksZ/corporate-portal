@@ -1,6 +1,6 @@
 {
   "status": "success",
-  "data": {
+  "payload": {
     "id": "6f625ff26bd97609",
     "name": "Подразделение Б",
     "main": "7f625ff6bd97609",

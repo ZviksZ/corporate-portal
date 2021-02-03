@@ -12,6 +12,8 @@ import { updateProfile, updateProfileDayoff } from '../../../../../store/ducks/p
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 import { AppButton } from '../../../../common/ui/AppButton/AppButton'
 import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
+import { AppSectionSubtitle } from '../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionListItem } from '../../../../common/ui/AppSectionListItem/AppSectionListItem'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
@@ -78,12 +80,10 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 		<div className={s.sidebarBottom}>
 			{time.employment && time.employment.length > 0 && (
 				<>
-					<div className="sectionSubtitle">Занятость на текущий день</div>
+					<AppSectionSubtitle>Занятость на текущий день</AppSectionSubtitle>
 					<ul className={cn('sectionList', s.employmentList)}>
 						{time.employment.map((item, key) => (
-							<li className="sectionListItem" key={key + item.from + item.to}>
-								с {item.from} до {item.to}
-							</li>
+							<AppSectionListItem key={key + item.from + item.to}>с {item.from} до {item.to}</AppSectionListItem>
 						))}
 					</ul>
 				</>
@@ -96,7 +96,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			)}
 			{time.vacation && time.vacation[0] && (
 				<>
-					<div className="sectionSubtitle">Отсутствие</div>
+					<AppSectionSubtitle>Отсутствие</AppSectionSubtitle>
 					<p className={'sectionText status-' + time.vacation[0].status}>
 						c {getFormatedDate(time.vacation[0].from)} по {getFormatedDate(time.vacation[0].to)}
 					</p>
@@ -104,13 +104,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			)}
 			{isMyProfile || roleAdmin ? (
 				<>
-					{/*<a href={time.vacationApplicationLink} className="link-with-icon margin-bottom" rel="noreferrer" target="_blank" download>
-						<img src={printer} alt="" width={'20px'} />
-						<span>Заявление на отпуск.pdf</span>
-					</a>*/}
 					{time.vacationDays && (
 						<>
-							<div className="sectionSubtitle">Накоплено дней отпуска</div>
+							<AppSectionSubtitle>Накоплено дней отпуска</AppSectionSubtitle>
 							<p className="sectionText">{time.vacationDays}</p>
 						</>
 					)}
@@ -132,7 +128,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 						<>
 							{roleAdmin ? (
 								<>
-									<div className="sectionSubtitle">Корпоративных дней</div>
+									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
 									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
 										{time.corporateDays || '0'}
 
@@ -141,7 +137,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 								</>
 							) : (
 								<>
-									<div className="sectionSubtitle">Корпоративных дней</div>
+									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
 									<p className="sectionText">{time.corporateDays || '0'}</p>
 								</>
 							)}
@@ -190,7 +186,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 						<>
 							{roleAdmin || isSubordinatesProfile ? (
 								<>
-									<div className="sectionSubtitle">Корпоративных дней</div>
+									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
 									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
 										{time.corporateDays || '0'}
 										<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
@@ -198,7 +194,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 								</>
 							) : (
 								<>
-									<div className="sectionSubtitle">Корпоративных дней</div>
+									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
 									<p className="sectionText">{time.corporateDays || '0'}</p>
 								</>
 							)}

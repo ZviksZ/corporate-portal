@@ -1,0 +1,29 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/media";
+@import "../../../../assets/scss/infographic";
+
+
+.sectionListItem {
+    position: relative;
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 30px;
+    list-style: none;
+    &:before {
+        position: absolute;
+        left: 0;
+        top: 6px;
+        display: block;
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $colorDangerous;
+    }
+}
+
+.sectionListItem + .sectionListItem {
+    margin-top: 4px;
+}
+
+

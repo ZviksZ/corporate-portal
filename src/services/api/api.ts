@@ -37,7 +37,7 @@ import { store } from '../../store/store'
 import { logout } from '../../store/ducks/global/actionCreators'
 
 const BASE_URL = '/api'
-const DEV_MODE = false
+const DEV_MODE = true
 
 export const ACCESS_TKN = new TokenService()
 
@@ -99,24 +99,24 @@ export const GlobalApi = {
 export const AbsencesApi = {
 	async getAbsences(requestData: StandartRequestInterface): Promise<AbsenceDataInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return notifications.data
+			return notifications.payload
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<AbsenceDataInterface>>(`/userNotification/${requestData.id}`)
 		return data.payload
 	},
 	async getAllAbsences(requestData: StandartRequestInterface): Promise<AbsenceItemInterface[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return allAbsences.data.lastFive
+			return allAbsences.payload.lastFive
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<AbsenceDataInterface>>(`/userNotifications/${requestData.id}`)
 		return data.payload.lastFive
 	},
 	async getAbsenceData(requestData: StandartRequestInterface): Promise<AbsenceDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return notificationDetail.data
+			return notificationDetail.payload
 		}
-		const { data } = await instance.get<ResponseInterface<AbsenceDetailInterface>>(`/absences/${requestData.id}`)
-		return data.data
+		const { data } = await instance.get<ResponsePayloadInterface<AbsenceDetailInterface>>(`/absences/${requestData.id}`)
+		return data.payload
 	},
 	async createAbsence(requestData: AbsenceCreateInterface): Promise<string> {
 		return await instance.post('/absences', requestData)
@@ -129,7 +129,7 @@ export const AbsencesApi = {
 export const ProfileApi = {
 	async getProfile(requestData: StandartRequestInterface): Promise<ProfileDataInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return profile.data
+			return profile.payload
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<ProfileDataInterface>>(`/users/${requestData.id}`)
 		return data.payload
@@ -156,16 +156,16 @@ export const ProfileApi = {
 }
 
 export const UnitsApi = {
-	async getUnits(): Promise<UnitInterface[] | ResponseErrorInterface> {
+	async getUnits(): Promise<ResponseInterface<UnitInterface>[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return units.data
+			return units.payload
 		}
-		const { data } = await instance.get<ResponsePayloadInterface<UnitInterface[]>>('/units')
+		const { data } = await instance.get<ResponsePayloadInterface<ResponseInterface<UnitInterface>[]>>('/units')
 		return data.payload
 	},
 	async getUnitData(requestData: StandartRequestInterface): Promise<UnitDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return unitDetail.data
+			return unitDetail.payload
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<UnitDetailInterface>>(`/units/${requestData.id}`)
 		return data.payload
@@ -175,28 +175,28 @@ export const UnitsApi = {
 export const TeamsApi = {
 	async getAllMembers(): Promise<SquadMemberInterface[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return allMembers.data
+			return allMembers.payload
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<SquadMemberInterface[]>>('/users')
 		return data.payload
 	},
 	async getAvailableMembers(requestData: StandartRequestInterface): Promise<SquadMemberInterface[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return allMembers.data
+			return allMembers.payload
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<SquadMemberInterface[]>>(`/teams/${requestData.id}/avalibleUsers`)
 		return data.payload
 	},
-	async getTeams(): Promise<UnitInterface[] | ResponseErrorInterface> {
+	async getTeams(): Promise<ResponseInterface<UnitInterface>[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return teams.data
+			return teams.payload
 		}
-		const { data } = await instance.get<ResponsePayloadInterface<UnitInterface[]>>('/teams')
+		const { data } = await instance.get<ResponsePayloadInterface<ResponseInterface<UnitInterface>[]>>('/teams')
 		return data.payload
 	},
 	async getTeamData(requestData: StandartRequestInterface): Promise<UnitDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return teamDetail.data
+			return teamDetail.payload
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<UnitDetailInterface>>(`/teams/${requestData.id}`)
 		return data.payload
@@ -215,16 +215,16 @@ export const TeamsApi = {
 	},
 }
 export const ProjectsApi = {
-	async getProjects(): Promise<ProjectInterface[] | ResponseErrorInterface> {
+	async getProjects(): Promise<ResponseInterface<ProjectInterface>[] | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return projects.data
+			return projects.payload
 		}
-		const { data } = await instance.get<ResponsePayloadInterface<ProjectInterface[]>>('/projects')
+		const { data } = await instance.get<ResponsePayloadInterface<ResponseInterface<ProjectInterface>[]>>('/projects')
 		return data.payload
 	},
 	async getProjectData(requestData: StandartRequestInterface): Promise<ProjectDetailInterface | ResponseErrorInterface> {
 		if (DEV_MODE) {
-			return project.data
+			return project.payload
 		}
 		const { data } = await instance.get<ResponsePayloadInterface<ProjectDetailInterface>>(`/projects/${requestData.id}`)
 		return data.payload

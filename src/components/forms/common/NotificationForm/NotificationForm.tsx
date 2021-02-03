@@ -10,6 +10,7 @@ import { useCallback, useEffect } from 'react'
 import { changeAbsenceStatus, setAbsenceData } from '../../../../store/ducks/absences/actionCreators'
 import { selectGlobal } from '../../../../store/ducks/global/selectors'
 import { AppButton } from '../../../common/ui/AppButton/AppButton'
+import { AppSectionSubtitle } from '../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	onClose: (param: boolean) => void
@@ -53,20 +54,20 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 					{getInitialsFromName(absenceDetail.author || '')}
 				</Avatar>
 				<div className={s.info}>
-					<div className="sectionSubtitle">Сотрудник</div>
+					<AppSectionSubtitle>Сотрудник</AppSectionSubtitle>
 					<div className={cn('sectionText', s.author)}>{absenceDetail.author || ''}</div>
-					<div className="sectionBigSubtitle">{absenceDetail.authorPosition || ''}</div>
+					<AppSectionSubtitle isBigSubtitle={true}>{absenceDetail.authorPosition || ''}</AppSectionSubtitle>
 				</div>
 			</NavLink>
 			{absenceDetail.applicationDates && (
 				<>
-					<div className="sectionSubtitle">Дата подачи заявления</div>
+					<AppSectionSubtitle>Дата подачи заявления</AppSectionSubtitle>
 					<p className={'sectionText margin-bottom'}>{getFormatedDate(absenceDetail.applicationDates || '')}</p>
 				</>
 			)}
 			{absenceDetail.vacationGraphic && (
 				<>
-					<div className="sectionSubtitle">Заявление на даты</div>
+					<AppSectionSubtitle>Заявление на даты</AppSectionSubtitle>
 					<p className={'sectionText margin-bottom'}>
 						c {getFormatedDate(absenceDetail.vacationGraphic.dateStart)} по {getFormatedDate(absenceDetail.vacationGraphic.dateEnd)}
 					</p>
@@ -74,13 +75,13 @@ export const NotificationForm: React.FC<Props> = ({ onClose }) => {
 			)}
 			{absenceDetail.vacationDays && (
 				<>
-					<div className="sectionSubtitle">Накоплено дней отпуска</div>
+					<AppSectionSubtitle>Накоплено дней отпуска</AppSectionSubtitle>
 					<p className={'sectionText margin-bottom'}>{absenceDetail.vacationDays}</p>
 				</>
 			)}
 			{absenceDetail.corporateDays !== null && (
 				<>
-					<div className="sectionSubtitle">Корпоративных дней</div>
+					<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
 					<p className={'sectionText margin-bottom'}>{absenceDetail.corporateDays}</p>
 				</>
 			)}

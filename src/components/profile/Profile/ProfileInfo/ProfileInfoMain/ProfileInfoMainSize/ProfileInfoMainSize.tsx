@@ -6,6 +6,7 @@ import { Select } from '@material-ui/core'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import { AppIcon } from '../../../../../common/ui/AppIcon/AppIcon'
+import { AppSectionSubtitle } from '../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	editSize: boolean
@@ -41,7 +42,7 @@ export const ProfileInfoMainSize: React.FC<Props> = ({ setSize, tshirtSize, open
 				</>
 			) : isMyProfile || roleAdmin ? (
 				<>
-					<div className="sectionSubtitle">Размер футболки</div>
+					<AppSectionSubtitle>Размер футболки</AppSectionSubtitle>
 					<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openSizeEdit}>
 						{tshirtSize || 'Не указан'}
 						<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
@@ -51,7 +52,7 @@ export const ProfileInfoMainSize: React.FC<Props> = ({ setSize, tshirtSize, open
 				<>
 					{tshirtSize && (
 						<>
-							<div className="sectionSubtitle">Размер футболки</div>
+							<AppSectionSubtitle>Размер футболки</AppSectionSubtitle>
 							<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)}>{tshirtSize}</p>
 						</>
 					)}

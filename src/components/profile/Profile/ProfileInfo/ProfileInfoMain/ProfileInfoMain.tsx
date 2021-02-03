@@ -12,6 +12,8 @@ import { ProfileInfoMainTop } from './ProfileInfoMainTop/ProfileInfoMainTop'
 import { ProfileInfoMainPhones } from './ProfileInfoMainPhones/ProfileInfoMainPhones'
 import { ProfileInfoMainSsh } from './ProfileInfoMainSsh/ProfileInfoMainSsh'
 import { ProfileInfoMainSize } from './ProfileInfoMainSize/ProfileInfoMainSize'
+import { AppSectionTitle } from '../../../../common/ui/AppSectionTitle/AppSectionTitle'
+import { AppSectionSubtitle } from '../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	isMyProfile: boolean
@@ -73,14 +75,15 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 	return (
 		<>
 			<div className={s.profileMain}>
-				<h4 className={cn('sectionTitle', 'margin-bottom-x2')}>Контактная информация</h4>
+				<AppSectionTitle additionalClasses={'margin-bottom-x2'}>Контактная информация</AppSectionTitle>
+
 				<ProfileInfoMainTop isMyProfile={isMyProfile} roleAdmin={roleAdmin} />
 
 				<ProfileInfoMainPhones isMyProfile={isMyProfile} roleAdmin={roleAdmin} editPhone={editPhone} openPhoneEdit={openPhoneEdit} phone={phone} setPhone={setPhone} />
 
 				{main.employmentDate && (
 					<>
-						<div className="sectionSubtitle">Дата трудоустройства</div>
+						<AppSectionSubtitle>Дата трудоустройства</AppSectionSubtitle>
 						<p className="sectionText">c {getFormatedDate(main.employmentDate)}</p>
 					</>
 				)}

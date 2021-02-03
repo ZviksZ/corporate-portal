@@ -7,6 +7,11 @@
     }
 }
 
+.avatar-bg {
+    background-color: $colorPrimaryDarken !important;
+    color: $colorWhite !important;
+}
+
 .header-margin {
     width: 100%;
     height: 64px;
@@ -95,33 +100,8 @@
     }
 }
 
-.avatar-bg {
-    background-color: $colorPrimaryDarken !important;
-    color: $colorWhite !important;
-}
 
-.link-with-icon {
-    display: flex;
-    align-items: center;
 
-    img {
-        display: block;
-        max-width: 20px;
-        margin-right: 6px;
-    }
 
-    span {
-        font-size: 14px;
-        line-height: 16px;
-        text-decoration-line: underline;
-        color: $colorPrimary;
-    }
-
-    @include desktop {
-        &:hover {
-            opacity: 0.7;
-        }
-    }
-}
 
 

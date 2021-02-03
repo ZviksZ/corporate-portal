@@ -7,6 +7,7 @@ import { ClipboardCopy } from '../../../../../common/ClipboardCopy/ClipboardCopy
 import { updateProfile } from '../../../../../../store/ducks/profile/actionCreators'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
+import { AppSectionSubtitle } from '../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	isMyProfile: boolean
@@ -32,7 +33,7 @@ export const ProfileInfoMainTop: React.FC<Props> = ({ isMyProfile, roleAdmin }) 
 		<>
 			{main.birthday && main.showBirthYear && (
 				<>
-					<div className="sectionSubtitle">День рождения</div>
+					<AppSectionSubtitle>День рождения</AppSectionSubtitle>
 					<p className={cn('sectionText', 'sectionTextWith', s.profileBirthday)}>
 						<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
 						{(isMyProfile || roleAdmin) && (
@@ -43,7 +44,7 @@ export const ProfileInfoMainTop: React.FC<Props> = ({ isMyProfile, roleAdmin }) 
 			)}
 			{main.email && (
 				<>
-					<div className="sectionSubtitle">Контактный Email</div>
+					<AppSectionSubtitle>Контактный Email</AppSectionSubtitle>
 					<p className={cn('sectionText', 'sectionTextWith')}>
 						<a href={'mailto:' + main.email} className="sectionTextContent">
 							{main.email}

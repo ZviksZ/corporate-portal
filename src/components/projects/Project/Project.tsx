@@ -8,6 +8,8 @@ import wiki from '../../../assets/images/icons/wiki.svg'
 import jira from '../../../assets/images/icons/jira.svg'
 import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'
 import { AppBreadcrumbs } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbs'
+import { AppSectionSubtitle } from '../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionPageTitle } from '../../common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 type Props = {
 	project: ProjectDetailInterface | null
@@ -25,7 +27,8 @@ export const Project: React.FC<Props> = ({ project }) => {
 				<AppBreadcrumbsItem isLink={false}>{project.name}</AppBreadcrumbsItem>
 			</AppBreadcrumbs>
 
-			<h1 className="section-title section-title-small no-margin-top no-margin-bottom">{project.name}</h1>
+			<AppSectionPageTitle isSmallPageTitle={true} additionalClasses={'no-margin-top no-margin-bottom'}>{project.name}</AppSectionPageTitle>
+
 			<div className="d-flex align-item-center margin-top-x2 margin-bottom">
 				{project.wikilink && (
 					<a href={project.wikilink} className="link-with-icon" rel="noreferrer" target="_blank">
@@ -37,22 +40,26 @@ export const Project: React.FC<Props> = ({ project }) => {
 
 			{project.lead && (
 				<>
-					<div className="sectionBigSubtitle margin-top-x3 text-uppercase">Технический руководитель</div>
+					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase margin-top-x3'}>
+						Технический руководитель
+					</AppSectionSubtitle>
 					<MemberCard member={project.lead} />
 				</>
 			)}
 			{project.owner && (
 				<>
-					<div className="sectionBigSubtitle margin-top-x2 text-uppercase">Бизнес-владелец</div>
+					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase margin-top-x2'}>
+						Бизнес-владелец
+					</AppSectionSubtitle>
 					<MemberCard member={project.owner} />
 				</>
 			)}
 
 			{project?.members?.list?.length > 0 && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase margin-top-x2">
+					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase margin-top-x2'}>
 						<span>команда ({project.members.list.length})</span>
-					</div>
+					</AppSectionSubtitle>
 					{project.members.list.map((member) => (
 						<MemberCard member={member} key={member.id} />
 					))}

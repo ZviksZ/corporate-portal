@@ -18,6 +18,8 @@ import { selectGlobal } from '../../../store/ducks/global/selectors'
 import { AppIcon } from '../../common/ui/AppIcon/AppIcon'
 import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'
 import { AppBreadcrumbs } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbs'
+import { AppSectionSubtitle } from '../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionPageTitle } from '../../common/ui/AppSectionPageTitle/AppSectionPageTitle'
 
 export const TeamSquad: React.FC = () => {
 	const dispatch = useDispatch()
@@ -48,7 +50,9 @@ export const TeamSquad: React.FC = () => {
 				<AppBreadcrumbsItem isLink={false}>Управление составом</AppBreadcrumbsItem>
 			</AppBreadcrumbs>
 
-			<h1 className="section-title section-title-small no-margin-top">Управление составом</h1>
+			<AppSectionPageTitle isSmallPageTitle={true} additionalClasses={'no-margin-top'}>
+				Управление составом
+			</AppSectionPageTitle>
 
 			<FormControl fullWidth variant="outlined" className={s.searchInput}>
 				<OutlinedInput
@@ -65,13 +69,18 @@ export const TeamSquad: React.FC = () => {
 
 			{teamSquad.lead && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase">Тимлид</div>
+					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase'}>
+						Тимлид
+					</AppSectionSubtitle>
 					<MemberSquadCard isLeadCard={true} teamId={teamSquad.id} member={teamSquad.lead} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 				</>
 			)}
 			{filteredMembers && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase margin-top-x2">команда ({filteredMembers.length})</div>
+					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase margin-top-x2'}>
+						команда ({filteredMembers.length})
+					</AppSectionSubtitle>
+
 					{filteredMembers.map((member) => (
 						<MemberSquadCard teamId={teamSquad.id} key={member.id} member={member} openForm={setOpenForm} showRole={true} isTeamMember={true} />
 					))}
@@ -79,7 +88,10 @@ export const TeamSquad: React.FC = () => {
 			)}
 			{filteredAvailableMembers && (
 				<>
-					<div className="sectionBigSubtitle text-uppercase margin-top-x2">доступные сотрудники ({filteredAvailableMembers.length})</div>
+					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'text-uppercase margin-top-x2'}>
+						доступные сотрудники ({filteredAvailableMembers.length})
+					</AppSectionSubtitle>
+
 					{filteredAvailableMembers.map((member: SquadMemberInterface) => (
 						<MemberSquadCard key={member.id} teamId={teamSquad.id} member={member} openForm={setOpenForm} showRole={false} isTeamMember={false} />
 					))}

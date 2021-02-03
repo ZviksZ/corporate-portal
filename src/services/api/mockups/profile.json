@@ -1,6 +1,6 @@
 {
 	"status": "success",
-	"data": {
+	"payload": {
 		"id": 926,
 		"name": "Иван",
 		"surname": "Иванов",

@@ -1,6 +1,7 @@
 import React from 'react'
 import s from '../../../Profile.module.scss'
 import { ClipboardCopy } from '../../../../../common/ClipboardCopy/ClipboardCopy'
+import { AppSectionSubtitle } from '../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 
 type Props = {
 	isMyProfile: boolean
@@ -13,8 +14,7 @@ export const ProfileInfoMainSsh: React.FC<Props> = ({ isMyProfile, roleAdmin, ss
 		<>
 			{(isMyProfile || roleAdmin) && sshArray && (
 				<>
-					<div className="sectionSubtitle">SSH ключ</div>
-
+					<AppSectionSubtitle>SSH ключ</AppSectionSubtitle>
 					{sshArray &&
 						sshArray.map((item) => (
 							<div key={item} className={s.sshBlock}>

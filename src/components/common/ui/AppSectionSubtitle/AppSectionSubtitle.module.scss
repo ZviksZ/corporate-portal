@@ -1,0 +1,30 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/media";
+@import "../../../../assets/scss/infographic";
+
+
+.sectionSubtitle {
+    font-size: 12px;
+    line-height: 14px;
+    color: $colorGray2;
+    margin-bottom: 6px;
+
+    &.sectionBigSubtitle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        line-height: 16px;
+        color: $colorGray2;
+        margin-bottom: 18px;
+        @include only-mobile {
+            flex-wrap: wrap;
+            a {
+                margin-top: 12px !important;
+            }
+        }
+    }
+}
+
+
