@@ -3,11 +3,11 @@ import { TeamSquad } from '../../components/teams/TeamSquad/TeamSquad'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { useEffect } from 'react'
-import { getAvailableMembers, getTeamData, getTeamSquad, setTeamData, setTeamSquad } from '../../store/ducks/teams/actionCreators'
+import { getAvailableMembers, getTeamSquad, setTeamSquad } from '../../store/ducks/teams/actionCreators'
 import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsTeamsLoading, selectIsTeamsLoadingError } from '../../store/ducks/teams/selectors'
-import { Button } from '@material-ui/core'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
+import { AppSectionText } from '../../components/common/ui/AppSectionText/AppSectionText'
 
 const TeamsSquadPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -43,7 +43,7 @@ const TeamsSquadPage: React.FC = () => {
 	if (isLoadingError) {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
-				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
+				<AppSectionText additionalClasses={'full-width text-align-center margin-bottom-x2 text-uppercase'}>Ошибка при загрузке. Попробуйте повторить попытку</AppSectionText>
 				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
 				</AppButton>

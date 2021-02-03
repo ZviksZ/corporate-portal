@@ -74,6 +74,13 @@
 
     }
 
+    .textLogo {
+        display: block;
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+    }
+
     @include mobile {
         padding: 20px 15px;
         .memberMain {
@@ -106,6 +113,9 @@
             }
         }
     }
+
+
+
     @include only-mobile {
         flex-wrap: wrap;
         .memberMain {
@@ -140,6 +150,7 @@
 
         }
     }
+
 }
 
 .member + .member {

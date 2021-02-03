@@ -1,7 +1,5 @@
 import * as React from 'react'
 import s from './Project.module.scss'
-import { NavLink } from 'react-router-dom'
-import { Breadcrumbs } from '@material-ui/core'
 import { MemberCard } from '../../cards/MemberCard/MemberCard'
 import { ProjectDetailInterface } from '../../../store/ducks/projects/contracts/state'
 import wiki from '../../../assets/images/icons/wiki.svg'

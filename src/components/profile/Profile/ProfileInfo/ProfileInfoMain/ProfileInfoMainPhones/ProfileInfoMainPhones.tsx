@@ -1,11 +1,14 @@
 import React from 'react'
 import cn from 'classnames'
 import s from '../../../Profile.module.scss'
-import { TextField } from '@material-ui/core'
+import { Checkbox, FormControlLabel, TextField } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
 import { AppIcon } from '../../../../../common/ui/AppIcon/AppIcon'
 import { AppSectionSubtitle } from '../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { getFormatedDate } from '../../../../../../services/helpers/utils'
+import { AppSectionText } from '../../../../../common/ui/AppSectionText/AppSectionText'
+import { AppSectionTextContent } from '../../../../../common/ui/AppSectionText/AppSectionTextContent/AppSectionTextContent'
 
 type Props = {
 	isMyProfile: boolean
@@ -38,16 +41,18 @@ export const ProfileInfoMainPhones: React.FC<Props> = ({ openPhoneEdit, isMyProf
 					{isMyProfile || roleAdmin ? (
 						<>
 							<AppSectionSubtitle>Мобильный телефон</AppSectionSubtitle>
-							<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={openPhoneEdit}>
+							<AppSectionText isTextWith={true} additionalClasses={s.profileEdit} onClick={openPhoneEdit}>
 								{main.mobilePhone || 'Не указан'}
 								<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
-							</p>
+							</AppSectionText>
 						</>
 					) : (
 						main.mobilePhone && (
 							<>
 								<AppSectionSubtitle>Мобильный телефон</AppSectionSubtitle>
-								<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)}>{main.mobilePhone}</p>
+								<AppSectionText isTextWith={true} additionalClasses={s.profileEdit}>
+									{main.mobilePhone}
+								</AppSectionText>
 							</>
 						)
 					)}
@@ -57,9 +62,9 @@ export const ProfileInfoMainPhones: React.FC<Props> = ({ openPhoneEdit, isMyProf
 			{main.inPhone && (
 				<>
 					<AppSectionSubtitle>Внутренний телефон</AppSectionSubtitle>
-					<p className={cn('sectionText', 'sectionTextWith')}>
-						<span className={cn('sectionTextContent', 'sectionTextPhone')}>{main.inPhone}</span>
-					</p>
+					<AppSectionText isTextWith={true}>
+						<AppSectionTextContent isLink={false} isPhone={true}>{main.inPhone}</AppSectionTextContent>
+					</AppSectionText>
 				</>
 			)}
 		</>

@@ -9,6 +9,7 @@ import { selectIsProfileLoading, selectIsProfileLoadingError, selectProfile } fr
 import { Loader } from '../../components/common/Loader/Loader'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
+import { AppSectionText } from '../../components/common/ui/AppSectionText/AppSectionText'
 
 const ProfilePage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -64,14 +65,15 @@ const ProfilePage: React.FC = () => {
 	if (profileData && !profileData.id) {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
-				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Профиля с таким id не существует</p>
+				<AppSectionText additionalClasses={'full-width text-align-center margin-bottom-x2 text-uppercase'}>Профиля с таким id не существует</AppSectionText>
 			</div>
 		)
 	}
 	if (isLoadingError) {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
-				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
+				<AppSectionText additionalClasses={'full-width text-align-center margin-bottom-x2 text-uppercase'}>Ошибка при загрузке. Попробуйте повторить попытку</AppSectionText>
+
 				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
 				</AppButton>

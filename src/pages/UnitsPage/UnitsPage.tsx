@@ -5,10 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUnits, setUnits } from '../../store/ducks/units/actionCreators'
 import { Loader } from '../../components/common/Loader/Loader'
 import { selectIsUnitsLoading, selectIsUnitsLoadingError } from '../../store/ducks/units/selectors'
-import { Button } from '@material-ui/core'
-import { getProfile } from '../../store/ducks/profile/actionCreators'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
+import { AppSectionText } from '../../components/common/ui/AppSectionText/AppSectionText'
 
 const UnitsPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -36,7 +35,7 @@ const UnitsPage: React.FC = () => {
 	if (isLoadingError) {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
-				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
+				<AppSectionText additionalClasses={'full-width text-align-center margin-bottom-x2 text-uppercase'}>Ошибка при загрузке. Попробуйте повторить попытку</AppSectionText>
 				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
 				</AppButton>

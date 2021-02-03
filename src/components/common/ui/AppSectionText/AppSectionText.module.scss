@@ -1,0 +1,66 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/media";
+@import "../../../../assets/scss/infographic";
+
+
+.sectionText {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 22px;
+    @include mobile {
+        margin-bottom: 14px;
+    }
+
+    &.sectionTextSmall {
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: -0.05px;
+    }
+
+    &.sectionTextWith {
+        display: flex;
+        align-items: center;
+    }
+
+    i {
+        color: $colorPrimary;
+        font-size: 22px;
+        cursor: pointer;
+        @extend %link-shared;
+    }
+}
+
+.sectionTextContent {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+    color: $colorText;
+    margin-right: 20px;
+
+    &.sectionTextPhone:not(:last-child) {
+        margin-right: 10px;
+
+        &:after {
+            position: absolute;
+            right: -4px;
+            top: 0;
+            display: block;
+            content: ', ';
+        }
+    }
+
+    &.sectionTextPhone:last-of-type {
+        margin-right: 20px;
+
+        &:after {
+            display: none;
+        }
+    }
+}
+
+a.sectionTextContent {
+    @extend %link-shared;
+}
+

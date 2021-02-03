@@ -7,7 +7,7 @@ import { selectProfile } from '../../../../../store/ducks/profile/selectors'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
 import Button from '@material-ui/core/Button'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { updateProfile, updateProfileDayoff, updateProfilePhoto } from '../../../../../store/ducks/profile/actionCreators'
 import { NavLink } from 'react-router-dom'
 import { selectGlobal } from '../../../../../store/ducks/global/selectors'
@@ -16,6 +16,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 import { AppButton } from '../../../../common/ui/AppButton/AppButton'
 import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
+import { AppSectionText } from '../../../../common/ui/AppSectionText/AppSectionText'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
@@ -40,6 +41,10 @@ export const ProfileSidebarTop: React.FC = () => {
 			}
 		}
 	}, [files])
+
+	const openEditStatus = useCallback(() => {
+		setEditStatus(true)
+	}, [])
 
 	if (!profileData) {
 		return <></>
@@ -125,10 +130,10 @@ export const ProfileSidebarTop: React.FC = () => {
 							<>
 								<div className={s.slackBlock}>
 									<div className={s.slackTitle}>Статус в Slack</div>
-									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit, s.slackStatus)} onClick={() => setEditStatus(true)}>
+									<AppSectionText isTextWith={true} additionalClasses={cn(s.profileEdit, s.slackStatus)} onClick={openEditStatus}>
 										{profileData.contacts.slackStatus || <span className={cn('color-gray', s.slackEmpty)}>установить статус</span>}
 										<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
-									</p>
+									</AppSectionText>
 								</div>
 							</>
 						) : (

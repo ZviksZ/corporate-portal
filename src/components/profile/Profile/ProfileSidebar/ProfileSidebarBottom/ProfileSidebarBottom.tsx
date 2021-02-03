@@ -4,16 +4,18 @@ import jira from '../../../../../assets/images/icons/jira.svg'
 import cn from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { reselectProfileData, selectProfile } from '../../../../../store/ducks/profile/selectors'
-import { getFormatedDate, getStatusText } from '../../../../../services/helpers/utils'
+import { getFormatedDate, getStatusText, stopPropagation } from '../../../../../services/helpers/utils'
 import { selectGlobal } from '../../../../../store/ducks/global/selectors'
 import { TextField } from '@material-ui/core'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { updateProfile, updateProfileDayoff } from '../../../../../store/ducks/profile/actionCreators'
 import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
 import { AppButton } from '../../../../common/ui/AppButton/AppButton'
 import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
 import { AppSectionSubtitle } from '../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 import { AppSectionListItem } from '../../../../common/ui/AppSectionListItem/AppSectionListItem'
+import { ClipboardCopy } from '../../../../common/ClipboardCopy/ClipboardCopy'
+import { AppSectionText } from '../../../../common/ui/AppSectionText/AppSectionText'
 
 type Props = {
 	setOpenForm: (param: boolean) => void
@@ -36,6 +38,10 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			setDays(profileData.worktime.corporateDays)
 		}
 	}, [profileData])
+
+	const openCorporateForm = useCallback(() => {
+		setCorporate(true)
+	}, [])
 
 	if (!profileData) {
 		return <></>
@@ -70,6 +76,8 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 		setOpenForm(true)
 	}
 
+
+
 	const time = profileData.worktime
 
 	if (!time?.employment?.length && !time?.openTasksLink && !time?.vacation?.length && !time?.corporateDays && !time?.vacationDays && !roleAdmin) {
@@ -83,7 +91,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 					<AppSectionSubtitle>Занятость на текущий день</AppSectionSubtitle>
 					<ul className={cn('sectionList', s.employmentList)}>
 						{time.employment.map((item, key) => (
-							<AppSectionListItem key={key + item.from + item.to}>с {item.from} до {item.to}</AppSectionListItem>
+							<AppSectionListItem key={key + item.from + item.to}>
+								с {item.from} до {item.to}
+							</AppSectionListItem>
 						))}
 					</ul>
 				</>
@@ -97,9 +107,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 			{time.vacation && time.vacation[0] && (
 				<>
 					<AppSectionSubtitle>Отсутствие</AppSectionSubtitle>
-					<p className={'sectionText status-' + time.vacation[0].status}>
+					<AppSectionText additionalClasses={'status-' + time.vacation[0].status}>
 						c {getFormatedDate(time.vacation[0].from)} по {getFormatedDate(time.vacation[0].to)}
-					</p>
+					</AppSectionText>
 				</>
 			)}
 			{isMyProfile || roleAdmin ? (
@@ -107,7 +117,9 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 					{time.vacationDays && (
 						<>
 							<AppSectionSubtitle>Накоплено дней отпуска</AppSectionSubtitle>
-							<p className="sectionText">{time.vacationDays}</p>
+							<AppSectionText>
+								{time.vacationDays}
+							</AppSectionText>
 						</>
 					)}
 
@@ -129,16 +141,16 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 							{roleAdmin ? (
 								<>
 									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
-									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
+									<AppSectionText isTextWith={true} additionalClasses={s.profileEdit} onClick={openCorporateForm}>
 										{time.corporateDays || '0'}
 
 										<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
-									</p>
+									</AppSectionText>
 								</>
 							) : (
 								<>
 									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
-									<p className="sectionText">{time.corporateDays || '0'}</p>
+									<AppSectionText>{time.corporateDays || '0'}</AppSectionText>
 								</>
 							)}
 						</>
@@ -156,10 +168,10 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 								if (index != 0) {
 									return (
 										<div key={item?.from + index} className={s.appItem}>
-											<div className="sectionText no-margin-bottom">
+											<AppSectionText additionalClasses={'no-margin-bottom'}>
 												{item.name || 'Заявление'} от {item.to}
-											</div>
-											<div className={cn('sectionText', 'no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</div>
+											</AppSectionText>
+											<AppSectionText additionalClasses={cn('no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</AppSectionText>
 										</div>
 									)
 								}
@@ -187,15 +199,16 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 							{roleAdmin || isSubordinatesProfile ? (
 								<>
 									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
-									<p className={cn('sectionText', 'sectionTextWith', s.profileEdit)} onClick={() => setCorporate(true)}>
+									<AppSectionText isTextWith={true} additionalClasses={s.profileEdit} onClick={openCorporateForm}>
 										{time.corporateDays || '0'}
 										<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
-									</p>
+									</AppSectionText>
 								</>
 							) : (
 								<>
 									<AppSectionSubtitle>Корпоративных дней</AppSectionSubtitle>
-									<p className="sectionText">{time.corporateDays || '0'}</p>
+									<AppSectionText>{time.corporateDays || '0'}</AppSectionText>
+									<p className="sectionText"></p>
 								</>
 							)}
 						</>

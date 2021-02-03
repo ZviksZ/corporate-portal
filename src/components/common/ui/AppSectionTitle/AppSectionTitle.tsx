@@ -4,10 +4,11 @@ import s from './AppSectionTitle.module.scss'
 
 type Props = {
 	additionalClasses?: string
+	onClick?: any
 }
 
-export const AppSectionTitle: React.FC<Props> = ({ additionalClasses, children }) => {
+export const AppSectionTitle: React.FC<Props> = ({ onClick, additionalClasses, children }) => {
 	return (
-		<h4 className={cn(s.sectionTitle, additionalClasses)}>{children}</h4>
+		<h4 onClick={onClick} className={cn(s.sectionTitle, additionalClasses)}>{children}</h4>
 	)
 }

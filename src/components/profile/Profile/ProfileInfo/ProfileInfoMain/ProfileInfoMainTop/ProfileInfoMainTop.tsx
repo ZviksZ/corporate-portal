@@ -1,13 +1,16 @@
 import React from 'react'
 import cn from 'classnames'
 import s from '../../../Profile.module.scss'
-import { getFormatedDate } from '../../../../../../services/helpers/utils'
+import { getFormatedDate, stopPropagation } from '../../../../../../services/helpers/utils'
 import { Checkbox, FormControlLabel } from '@material-ui/core'
 import { ClipboardCopy } from '../../../../../common/ClipboardCopy/ClipboardCopy'
 import { updateProfile } from '../../../../../../store/ducks/profile/actionCreators'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
 import { AppSectionSubtitle } from '../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppIcon } from '../../../../../common/ui/AppIcon/AppIcon'
+import { AppSectionText } from '../../../../../common/ui/AppSectionText/AppSectionText'
+import { AppSectionTextContent } from '../../../../../common/ui/AppSectionText/AppSectionTextContent/AppSectionTextContent'
 
 type Props = {
 	isMyProfile: boolean
@@ -34,23 +37,21 @@ export const ProfileInfoMainTop: React.FC<Props> = ({ isMyProfile, roleAdmin }) 
 			{main.birthday && main.showBirthYear && (
 				<>
 					<AppSectionSubtitle>День рождения</AppSectionSubtitle>
-					<p className={cn('sectionText', 'sectionTextWith', s.profileBirthday)}>
-						<span className="sectionTextContent">{getFormatedDate(main.birthday)}</span>
+					<AppSectionText isTextWith={true} additionalClasses={s.profileBirthday}>
+						<AppSectionTextContent isLink={false}>{getFormatedDate(main.birthday)}</AppSectionTextContent>
 						{(isMyProfile || roleAdmin) && (
 							<FormControlLabel control={<Checkbox onChange={handleChangeShowbirth} checked={!!isShowBirthday} color="primary" name="showBirthDate" />} label="Показывать год" />
 						)}
-					</p>
+					</AppSectionText>
 				</>
 			)}
 			{main.email && (
 				<>
 					<AppSectionSubtitle>Контактный Email</AppSectionSubtitle>
-					<p className={cn('sectionText', 'sectionTextWith')}>
-						<a href={'mailto:' + main.email} className="sectionTextContent">
-							{main.email}
-						</a>
+					<AppSectionText isTextWith={true}>
+						<AppSectionTextContent href={'mailto:' + main.email}>{main.email}</AppSectionTextContent>
 						<ClipboardCopy text={main.email} />
-					</p>
+					</AppSectionText>
 				</>
 			)}
 		</>

@@ -6,6 +6,8 @@ import slack from '../../../../assets/images/icons/slack.svg'
 import { MemberDetailInterface } from '../../../../store/ducks/units/contracts/state'
 import { stopPropagation } from '../../../../services/helpers/utils'
 import { AppSectionSubtitle } from '../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionText } from '../../../common/ui/AppSectionText/AppSectionText'
+import { AppSectionTextContent } from '../../../common/ui/AppSectionText/AppSectionTextContent/AppSectionTextContent'
 
 type Props = {
 	member: MemberDetailInterface
@@ -20,46 +22,40 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 			{member.email && (
 				<>
 					<AppSectionSubtitle>Контактный Email</AppSectionSubtitle>
-					<p className={cn('sectionText', 'sectionTextWith')}>
+					<AppSectionText isTextWith={true}>
 						<object type="owo/uwu">
-							<a onClick={stopPropagation} href={'mailto:' + member.email} className="sectionTextContent">
-								{member.email}
-							</a>
+							<AppSectionTextContent onClick={stopPropagation} href={'mailto:' + member.email}>{member.email}</AppSectionTextContent>
 						</object>
 
 						<ClipboardCopy text={member.email || ''} />
-					</p>
+					</AppSectionText>
 				</>
 			)}
 			{member.mobilePhone && (
 				<>
 					<AppSectionSubtitle>Мобильный телефон</AppSectionSubtitle>
 					<object type="owo/uwu">
-						<p className={cn('sectionText', 'sectionTextWith', s.phones)}>
+						<AppSectionText isTextWith={true} additionalClasses={s.phones}>
 							{member.mobilePhone.split(',').map((item, index) => {
 								if (item) {
 									return (
-										<a onClick={stopPropagation} key={item + index} href={'tel:' + item} className={cn('sectionTextContent', 'sectionTextPhone')}>
-											{item}
-										</a>
+										<AppSectionTextContent key={item + index} isPhone={true} onClick={stopPropagation} href={'tel:' + item}>{item}</AppSectionTextContent>
 									)
 								}
 							})}
-						</p>
+						</AppSectionText>
 					</object>
 				</>
 			)}
 			{member.slackEmail && (
 				<>
-					<p className={cn('sectionText', 'sectionTextWith', 'no-margin-bottom')}>
-						<img src={slack} className="sectionTextLogo" alt="" />
+					<AppSectionText isTextWith={true} additionalClasses={'no-margin-bottom'}>
+						<img src={slack} className={s.textLogo} alt="" />
 						<object type="owo/uwu">
-							<a onClick={stopPropagation} href={'mailto:' + member.email || ''} className="sectionTextContent">
-								{member.slackEmail}
-							</a>
+							<AppSectionTextContent onClick={stopPropagation} href={'mailto:' + member.email || ''}>{member.slackEmail}</AppSectionTextContent>
 						</object>
 						<ClipboardCopy text={member.slackEmail || ''} />
-					</p>
+					</AppSectionText>
 				</>
 			)}
 		</div>

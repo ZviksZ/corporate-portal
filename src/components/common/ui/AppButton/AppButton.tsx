@@ -6,7 +6,7 @@ import s from './AppButton.module.scss'
 
 type Props = {
 	size?: 'small' | 'medium' | 'large'
-	onClick?: () => void
+	onClick?: any
 	additionalType?: 'default' | 'dangerous' | 'secondary' | 'fullWidth'
 	additionalClasses?: string
 	variant?: 'text' | 'outlined' | 'contained'

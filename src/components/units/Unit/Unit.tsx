@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { UnitDetailInterface } from '../../../store/ducks/units/contracts/state'
 import s from './Unit.module.scss'
-import { NavLink } from 'react-router-dom'
-import { Breadcrumbs } from '@material-ui/core'
 import { MemberCard } from '../../cards/MemberCard/MemberCard'
 import { UnitCard } from '../../cards/UnitCard/UnitCard'
 import { AppBreadcrumbsItem } from '../../common/ui/AppBreadcrumbs/AppBreadcrumbsItem/AppBreadcrumbsItem'

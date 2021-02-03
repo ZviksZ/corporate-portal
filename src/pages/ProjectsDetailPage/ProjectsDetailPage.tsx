@@ -8,6 +8,7 @@ import { Project } from '../../components/projects/Project/Project'
 import { Loader } from '../../components/common/Loader/Loader'
 import { Button } from '@material-ui/core'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
+import { AppSectionText } from '../../components/common/ui/AppSectionText/AppSectionText'
 
 const ProjectsDetailPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const ProjectsDetailPage: React.FC = () => {
 	if (isLoadingError) {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
-				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
+				<AppSectionText additionalClasses={'full-width text-align-center margin-bottom-x2 text-uppercase'}>Ошибка при загрузке. Попробуйте повторить попытку</AppSectionText>
 				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
 				</AppButton>

@@ -4,10 +4,11 @@ import s from './AppSectionListItem.module.scss'
 
 type Props = {
 	additionalClasses?: string
+	onClick?: any
 }
 
-export const AppSectionListItem: React.FC<Props> = ({ additionalClasses, children }) => {
-	return <li className={cn(s.sectionListItem, additionalClasses)}>
+export const AppSectionListItem: React.FC<Props> = ({ onClick, additionalClasses, children }) => {
+	return <li onClick={onClick} className={cn(s.sectionListItem, additionalClasses)}>
 		{children}
 	</li>
 }

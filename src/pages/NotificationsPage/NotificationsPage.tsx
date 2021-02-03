@@ -9,6 +9,7 @@ import { NotificationCard } from '../../components/cards/NotificationCard/Notifi
 import { selectGlobal } from '../../store/ducks/global/selectors'
 import { AppButton } from '../../components/common/ui/AppButton/AppButton'
 import { AppSectionPageTitle } from '../../components/common/ui/AppSectionPageTitle/AppSectionPageTitle'
+import { AppSectionText } from '../../components/common/ui/AppSectionText/AppSectionText'
 
 const NotificationsPage: React.FC = () => {
 	const dispatch = useDispatch()
@@ -52,7 +53,7 @@ const NotificationsPage: React.FC = () => {
 	if (isLoadingError) {
 		return (
 			<div className="full-page d-flex flex-column ai-center jc-center flex-wrap">
-				<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Ошибка при загрузке. Попробуйте повторить попытку</p>
+				<AppSectionText additionalClasses={'full-width text-align-center margin-bottom-x2 text-uppercase'}>Ошибка при загрузке. Попробуйте повторить попытку</AppSectionText>
 				<AppButton size={'large'} onClick={repeatLoading}>
 					Повторить загрузку
 				</AppButton>
@@ -72,7 +73,7 @@ const NotificationsPage: React.FC = () => {
 						))}
 					</>
 				) : (
-					<p className="full-width text-align-center margin-bottom-x2 sectionText text-uppercase">Уведомлений нет</p>
+					<AppSectionText additionalClasses={'full-width text-align-center margin-bottom-x2 text-uppercase'}>Уведомлений нет</AppSectionText>
 				)}
 			</div>
 		</section>

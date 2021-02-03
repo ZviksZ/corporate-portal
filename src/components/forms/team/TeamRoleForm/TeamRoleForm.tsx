@@ -12,6 +12,7 @@ import { getInitialsFromName } from '../../../../services/helpers/utils'
 import { NavLink } from 'react-router-dom'
 import { AppButton } from '../../../common/ui/AppButton/AppButton'
 import { AppSectionSubtitle } from '../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionText } from '../../../common/ui/AppSectionText/AppSectionText'
 
 type Props = {
 	onClose: (param: boolean) => void
@@ -58,7 +59,7 @@ export const TeamRoleForm: React.FC<Props> = ({ onClose }) => {
 					{getInitialsFromName(roleFormData.name)}
 				</Avatar>
 				<div className={s.info}>
-					<div className={cn('sectionText', 'no-margin', s.name)}>{roleFormData.name}</div>
+					<AppSectionText additionalClasses={cn('no-margin', s.name)}>{roleFormData.name}</AppSectionText>
 					<AppSectionSubtitle isBigSubtitle={true} additionalClasses={'no-margin'}>{roleFormData.position}</AppSectionSubtitle>
 				</div>
 			</NavLink>
