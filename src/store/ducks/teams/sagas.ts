@@ -13,12 +13,14 @@ import { setGlobalMessage } from '../global/actionCreators'
 import { getAvailableMembers, getTeamSquad, setAvailableMembers, setLoadingTeams, setMembers, setTeamData, setTeams, setTeamSquad } from './actionCreators'
 import { LoadingStatus } from '../../types'
 import { store } from '../../store'
+import { ResponseInterface } from '../../../services/api/interfaces'
+import { UnitInterface } from '../units/contracts/state'
 
 export function* getTeamsRequest() {
 	try {
 		yield put(setLoadingTeams(LoadingStatus.LOADING))
 		const data = yield call(TeamsApi.getTeams)
-		const teams = data.map((team:any) => team.data)
+		const teams = data.map((team: ResponseInterface<UnitInterface>) => team.data)
 
 		yield put(setTeams(teams))
 		yield put(setLoadingTeams(LoadingStatus.LOADED))

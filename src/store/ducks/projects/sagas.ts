@@ -4,13 +4,15 @@ import { ProjectsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
 import { setLoadingProjects, setProjectData, setProjects } from './actionCreators'
 import { LoadingStatus } from '../../types'
+import { ResponseInterface } from '../../../services/api/interfaces'
+import { ProjectInterface } from './contracts/state'
 
 
 export function* getProjectsRequest() {
 	try {
 		yield put(setLoadingProjects(LoadingStatus.LOADING))
 		const data = yield call(ProjectsApi.getProjects)
-		const projects = data.map((project:any) => project.data)
+		const projects = data.map((project: ResponseInterface<ProjectInterface>) => project.data)
 
 		yield put(setProjects(projects))
 		yield put(setLoadingProjects(LoadingStatus.LOADED))

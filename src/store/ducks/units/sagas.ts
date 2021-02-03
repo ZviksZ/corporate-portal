@@ -4,12 +4,14 @@ import { UnitsApi } from '../../../services/api/api'
 import { setGlobalMessage } from '../global/actionCreators'
 import { setLoadingUnits, setUnitData, setUnits } from './actionCreators'
 import { LoadingStatus } from '../../types'
+import { ResponseInterface } from '../../../services/api/interfaces'
+import { UnitInterface } from './contracts/state'
 
 export function* getUnitsRequest() {
 	try {
 		yield put(setLoadingUnits(LoadingStatus.LOADING))
 		const data = yield call(UnitsApi.getUnits)
-		const units = data.map((unit:any) => unit.data)
+		const units = data.map((unit: ResponseInterface<UnitInterface>) => unit.data)
 
 		yield put(setUnits(units))
 		yield put(setLoadingUnits(LoadingStatus.LOADED))
