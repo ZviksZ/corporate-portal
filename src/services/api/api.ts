@@ -6,7 +6,6 @@ import units from './mockups/units.json'
 import unitDetail from './mockups/unit-detail.json'
 import teams from './mockups/teams.json'
 import teamDetail from './mockups/team-detail.json'
-import teamSquad from './mockups/team-squad.json'
 import projects from './mockups/projects.json'
 import project from './mockups/project-detail.json'
 import notifications from './mockups/notifications.json'
@@ -28,7 +27,11 @@ import {
 	AddRemoveMemberRequestInterface,
 	RefreshTokenRequestInterface,
 	RefreshTokenResponseInterface,
-	UserResponseInterface, UpdateMemberRequestInterface, UpdateDayoffRequestInterface, CreateDayoffRequestInterface, ResponsePayloadInterface,
+	UserResponseInterface,
+	UpdateMemberRequestInterface,
+	UpdateDayoffRequestInterface,
+	CreateDayoffRequestInterface,
+	ResponsePayloadInterface,
 } from './interfaces'
 import { ProfileDataInterface } from '../../store/ducks/profile/contracts/state'
 import { AbsenceDataInterface, AbsenceDetailInterface, AbsenceCreateInterface, AbsenceChangeInterface, AbsenceItemInterface } from '../../store/ducks/absences/contracts/state'
@@ -134,23 +137,23 @@ export const ProfileApi = {
 		const { data } = await instance.get<ResponsePayloadInterface<ProfileDataInterface>>(`/users/${requestData.id}`)
 		return data.payload
 	},
-	async updateProfile(requestData: any, profileId: number) {
+	async updateProfile(requestData: any, profileId: number): Promise<any> {
 		await instance.put<ResponseInterface<string>>(`/users/${profileId}`, requestData)
 	},
-	async createUserPhoto(requestData: CreateUserPhotoInterface) {
+	async createUserPhoto(requestData: CreateUserPhotoInterface): Promise<any> {
 		await instance.post(`/createUserPhoto`, requestData)
 	},
-	async updateUserPhoto(requestData: UpdateUserPhotoInterface) {
+	async updateUserPhoto(requestData: UpdateUserPhotoInterface): Promise<any> {
 		await instance.post(`/updateUserPhoto`, requestData)
 	},
 	async uploadPhoto(requestData: FormData): Promise<string> {
 		const { data } = await instance.post<ResponsePayloadInterface<string>>(`/fileLoader`, requestData)
 		return data.payload
 	},
-	async updateDayoff(requestData: UpdateDayoffRequestInterface) {
+	async updateDayoff(requestData: UpdateDayoffRequestInterface): Promise<any> {
 		await instance.post(`/altUserUpdateDayOff`, requestData)
 	},
-	async createDayoff(requestData: CreateDayoffRequestInterface) {
+	async createDayoff(requestData: CreateDayoffRequestInterface): Promise<any> {
 		await instance.post(`/dayOff`, requestData)
 	},
 }

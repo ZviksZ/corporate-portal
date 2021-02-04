@@ -31,6 +31,7 @@ export const NotificationPopupItem: React.FC<Props> = ({ item, handleClose }) =>
 					{getInitialsFromName(item.author)}
 				</Avatar>
 				<div className={s.info}>
+					<div className={s.author}>{item.author}</div>
 					<div className={s.type}>{item.name}</div>
 					<div className={s.time}>{item.date ? `${timeAgo} назад` : ''}</div>
 				</div>

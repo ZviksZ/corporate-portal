@@ -336,16 +336,24 @@
             margin-right: 16px;
         }
 
+        .author {
+            font-size: 13px;
+            line-height: 16px;
+            letter-spacing: -0.05px;
+            color: $colorText;
+        }
+
         .type {
-            font-size: 14px;
-            line-height: 21px;
+            font-size: 13px;
+            line-height: 16px;
+            font-weight: 700;
             letter-spacing: -0.05px;
             color: $colorText;
         }
 
         .time {
-            font-size: 12px;
-            line-height: 18px;
+            font-size: 11px;
+            line-height: 16px;
             letter-spacing: -0.0428571px;
             color: $colorMuted;
 
