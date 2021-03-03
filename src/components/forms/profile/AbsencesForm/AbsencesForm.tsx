@@ -50,7 +50,7 @@ export const AbsencesForm: React.FC<Props> = ({ onClose }) => {
 	useEffect(() => {
 		const values = getValues()
 		const newDateMin = new Date(addDaysToDate(values.dateFrom, 1))
-		if (type == 'dayOff') {
+		if (type === 'dayOff') {
 			const newDate = new Date(addDaysToDate(values.dateFrom, 3))
 
 			setMaxDateTo(newDate)

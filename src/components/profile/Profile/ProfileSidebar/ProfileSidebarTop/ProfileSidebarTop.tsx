@@ -159,7 +159,7 @@ export const ProfileSidebarTop: React.FC = () => {
 				</DialogActions>
 			</Dialog>
 
-			<BottomBarCustom isOpen={editStatus} onCancel={closeEdit} onSave={saveChanges} />
+			{editStatus && <BottomBarCustom isOpen={editStatus} onCancel={closeEdit} onSave={saveChanges} />}
 		</>
 	)
 }

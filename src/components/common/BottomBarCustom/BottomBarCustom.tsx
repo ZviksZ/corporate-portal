@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import cn from 'classnames'
 import s from './BottomBarCustom.module.scss'
 import { AppBar } from '@material-ui/core'
@@ -12,6 +12,26 @@ type Props = {
 }
 
 export const BottomBarCustom: React.FC<Props> = ({ onCancel, onSave, isOpen }) => {
+	const keyPressHandler = useCallback(
+		(e: KeyboardEvent) => {
+			if (!isOpen) return false
+
+			if (e.key === 'Enter') {
+				onSave()
+			} else if (e.key === 'Escape') {
+				onCancel()
+			}
+		},
+		[isOpen])
+
+	useEffect(() => {
+		window.addEventListener('keydown', keyPressHandler)
+
+		return () => {
+			window.removeEventListener('keydown', keyPressHandler)
+		}
+	}, [isOpen])
+
 	return (
 		<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: isOpen })} position="fixed" color="default">
 			<Toolbar className={cn(s.editButtons)}>

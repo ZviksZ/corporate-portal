@@ -85,7 +85,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 				{main.employmentDate && (
 					<>
 						<AppSectionSubtitle>Дата трудоустройства</AppSectionSubtitle>
-						<AppSectionText>c {getFormatedDate(main.employmentDate)}</AppSectionText>
+						<AppSectionText>{getFormatedDate(main.employmentDate)}</AppSectionText>
 					</>
 				)}
 
@@ -94,7 +94,7 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 				<ProfileInfoMainSsh isMyProfile={isMyProfile} roleAdmin={roleAdmin} sshArray={main.sshKeys} />
 			</div>
 
-			<BottomBarCustom isOpen={openFormButtons} onCancel={closeEdit} onSave={saveChanges} />
+			{openFormButtons && <BottomBarCustom isOpen={openFormButtons} onCancel={closeEdit} onSave={saveChanges} />}
 		</>
 	)
 }

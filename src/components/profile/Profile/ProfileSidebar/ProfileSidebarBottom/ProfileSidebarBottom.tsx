@@ -218,7 +218,7 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 				<></>
 			)}
 
-			<BottomBarCustom isOpen={corporate} onCancel={closeEdit} onSave={saveChanges} />
+			{corporate && <BottomBarCustom isOpen={corporate} onCancel={closeEdit} onSave={saveChanges} />}
 		</div>
 	)
 }

@@ -40,7 +40,7 @@ import { store } from '../../store/store'
 import { logout } from '../../store/ducks/global/actionCreators'
 
 const BASE_URL = '/api'
-const DEV_MODE = false
+const DEV_MODE = true
 
 export const ACCESS_TKN = new TokenService()
 
@@ -137,7 +137,7 @@ export const ProfileApi = {
 		const { data } = await instance.get<ResponsePayloadInterface<ProfileDataInterface>>(`/users/${requestData.id}`)
 		return data.payload
 	},
-	async updateProfile(requestData: any, profileId: number): Promise<any> {
+	async updateProfile(requestData: any, profileId: number): Promise<void> {
 		await instance.put<ResponseInterface<string>>(`/users/${profileId}`, requestData)
 	},
 	async createUserPhoto(requestData: CreateUserPhotoInterface): Promise<any> {
