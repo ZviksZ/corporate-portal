@@ -15,6 +15,7 @@ import { ProfileInfoMainSize } from './ProfileInfoMainSize/ProfileInfoMainSize'
 import { AppSectionTitle } from '../../../../common/ui/AppSectionTitle/AppSectionTitle'
 import { AppSectionSubtitle } from '../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
 import { AppSectionText } from '../../../../common/ui/AppSectionText/AppSectionText'
+import { ProfileInfoMainSocials } from './ProfileInfoMainSocials/ProfileInfoMainSocials'
 
 type Props = {
 	isMyProfile: boolean
@@ -92,6 +93,8 @@ export const ProfileInfoMain: React.FC<Props> = ({ isMyProfile }) => {
 				<ProfileInfoMainSize roleAdmin={roleAdmin} isMyProfile={isMyProfile} editSize={editSize} openSizeEdit={openSizeEdit} setSize={setSize} size={size} tshirtSize={main.tshirtSize} />
 
 				<ProfileInfoMainSsh isMyProfile={isMyProfile} roleAdmin={roleAdmin} sshArray={main.sshKeys} />
+
+				<ProfileInfoMainSocials isPersonalProfile={isPersonalProfile} roleAdmin={roleAdmin} />
 			</div>
 
 			{openFormButtons && <BottomBarCustom isOpen={openFormButtons} onCancel={closeEdit} onSave={saveChanges} />}

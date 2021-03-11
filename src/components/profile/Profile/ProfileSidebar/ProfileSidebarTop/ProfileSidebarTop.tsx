@@ -14,6 +14,7 @@ import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCus
 import { AppButton } from '../../../../common/ui/AppButton/AppButton'
 import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
 import { AppSectionText } from '../../../../common/ui/AppSectionText/AppSectionText'
+import { ProfileSidebarTopBusy } from './ProfileSidebarTopBusy'
 
 export const ProfileSidebarTop: React.FC = () => {
 	const dispatch = useDispatch()
@@ -145,6 +146,8 @@ export const ProfileSidebarTop: React.FC = () => {
 						)}
 					</>
 				)}
+
+				<ProfileSidebarTopBusy isPersonalProfile={isPersonalProfile} roleAdmin={roleAdmin}/>
 			</div>
 
 			<Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">

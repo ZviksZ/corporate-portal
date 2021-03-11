@@ -45,7 +45,15 @@
 			"sshKeys": [
 				"KO6ASDF54SD65G4SFD1G35FD4651354ADS6FG5F6G5DA3H21AGD65H",
 				"HHHFHUDUFUDUDHHFUDFH4F5SAG45F4G5FD4G6"
-			]
+			],
+			"emailPersonal": "email_personal@mail.ru",
+			"google": "google",
+			"skype": "skype",
+			"telegram": "https://t.me/",
+			"vk": "vk",
+			"yandex": "yandex",
+			"facebook": "facebook",
+			"busy": "busy"
 		},
 		"teams": [
 			{

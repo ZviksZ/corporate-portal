@@ -83,7 +83,15 @@ export interface ProfileDataInterface {
 		employmentDate: string
 		tshirtSize: string
 		sshKeys: string[]
-		slackStatus?: string
+		slackStatus?: string,
+		emailPersonal: string,
+		google: string,
+		skype: string,
+		telegram: string,
+		vk: string,
+		yandex: string,
+		facebook: string,
+		busy: string
 	}
 	teams: ArrayItemsInterface<UnitInterface>[]
 	additional: {
