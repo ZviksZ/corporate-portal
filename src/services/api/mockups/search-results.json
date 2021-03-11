@@ -31,11 +31,35 @@
     "contractor": [
       {
         "name": "contractor 1",
-        "id": "8f625ff6bd97609c15525e2b4"
+        "id": "8f625ff6bd97609c15525e2b4",
+        "users": [
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bd97609c15525e2b4",
+            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
+          },
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bd97609c145525e2b4",
+            "photo": ""
+          }
+        ]
       },
       {
         "name": "contractor 2",
-        "id": "8f6254f6bd97609c15525e2b4"
+        "id": "8f6254f6bd97609c15525e2b4",
+        "users": [
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bd97609c15525e2b4",
+            "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE5e5lK_lYEkhaLDAvjB97JqfzZeB5FxCibw&usqp=CAU"
+          },
+          {
+            "name": "Колесников Михаил",
+            "id": "8f625ff6bd97609c145525e2b4",
+            "photo": ""
+          }
+        ]
       }
     ],
     "teams": [

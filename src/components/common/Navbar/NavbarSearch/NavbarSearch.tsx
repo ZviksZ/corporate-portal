@@ -108,6 +108,10 @@ export const NavbarSearch: React.FC = () => {
 							{searchResults.projects && searchResults.projects.length > 0 && (
 								<NavbarSearchBlock path={'projects'} title={'Проекты'} clickFn={clickLinkHandler} searchResults={searchResults.projects} />
 							)}
+
+							{searchResults.contractor && searchResults.contractor.length > 0 && (
+								<NavbarSearchBlock isContractor={true} path={'profile'} title={'Контрагенты'} clickFn={clickLinkHandler} searchResults={searchResults.contractor} />
+							)}
 						</div>
 					</Popper>
 				</ClickAwayListener>

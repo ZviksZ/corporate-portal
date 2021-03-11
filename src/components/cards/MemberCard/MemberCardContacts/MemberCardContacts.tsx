@@ -52,7 +52,7 @@ export const MemberCardContacts: React.FC<Props> = ({ member }) => {
 					<AppSectionText isTextWith={true} additionalClasses={'no-margin-bottom'}>
 						<img src={slack} className={s.textLogo} alt="" />
 						<object type="owo/uwu">
-							<AppSectionTextContent onClick={stopPropagation} href={'mailto:' + member.email || ''}>{member.slackEmail}</AppSectionTextContent>
+							<AppSectionTextContent onClick={stopPropagation} href={'slack://user?team=T0B1Q7NR2&id=' + member.slackEmail || ''}>{member.slackEmail}</AppSectionTextContent>
 						</object>
 						<ClipboardCopy text={member.slackEmail || ''} />
 					</AppSectionText>

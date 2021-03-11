@@ -1,4 +1,4 @@
-import { ProfileDataInterface, SimpleMemberUnitInterface } from '../../profile/contracts/state'
+import { ContractorSearchInterface, ProfileDataInterface, SimpleMemberUnitInterface } from '../../profile/contracts/state'
 import { LoadingStatus } from '../../../types'
 
 export interface UserImageObjectInterface {
@@ -36,7 +36,7 @@ export interface SearchResultsInterface {
 	units?: SimpleMemberUnitInterface[] | null
 	teams?: SimpleMemberUnitInterface[] | null
 	projects?: SimpleMemberUnitInterface[] | null
-	contractor?: SimpleMemberUnitInterface[] | null
+	contractor?: ContractorSearchInterface[] | null
 }
 export interface GlobalStateInterface {
 	user: UserInterface | null

@@ -148,7 +148,21 @@
         margin-top: 0;
     }
 }
+.contractorsWrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
+    .searchTitle {
+        font-size: 11px;
+        line-height: 17px;
+        margin: 0 0 7px;
+    }
+
+    .searchWrap, .searchTitle {
+        width: 100%;
+    }
+}
 .searchWrap {
     display: flex;
     flex-wrap: wrap;

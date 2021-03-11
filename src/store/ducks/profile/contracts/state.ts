@@ -35,6 +35,12 @@ export interface SimpleMemberUnitInterface {
 	photo?: string | undefined
 }
 
+export interface ContractorSearchInterface {
+	name: string
+	id: string
+	users?: SimpleMemberUnitInterface[]
+}
+
 export interface TeamInterface {
 	id: string
 	name: string
