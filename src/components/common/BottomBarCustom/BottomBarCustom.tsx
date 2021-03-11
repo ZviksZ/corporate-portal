@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import cn from 'classnames'
 import s from './BottomBarCustom.module.scss'
 import { AppBar } from '@material-ui/core'
 import Toolbar from '@material-ui/core/Toolbar'
 import { AppButton } from '../ui/AppButton/AppButton'
+import { useEventListener } from '../../../services/hooks/useEventListener'
 
 type Props = {
 	onCancel: () => void
@@ -22,15 +23,9 @@ export const BottomBarCustom: React.FC<Props> = ({ onCancel, onSave, isOpen }) =
 				onCancel()
 			}
 		},
-		[isOpen])
+		[onCancel, onSave, isOpen])
 
-	useEffect(() => {
-		window.addEventListener('keydown', keyPressHandler)
-
-		return () => {
-			window.removeEventListener('keydown', keyPressHandler)
-		}
-	}, [isOpen])
+	useEventListener('keydown', keyPressHandler)
 
 	return (
 		<AppBar className={cn('navbar', s.appbarBottom, { [s.appbarBottomShow]: isOpen })} position="fixed" color="default">
@@ -45,3 +40,5 @@ export const BottomBarCustom: React.FC<Props> = ({ onCancel, onSave, isOpen }) =
 		</AppBar>
 	)
 }
+
+

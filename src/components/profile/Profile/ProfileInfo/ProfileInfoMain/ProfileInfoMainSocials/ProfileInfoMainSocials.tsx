@@ -21,14 +21,16 @@ export const ProfileInfoMainSocials: React.FC<Props> = ({ isPersonalProfile, rol
 		setValue(event.target.value as string)
 	}, [])
 
-	const closeEdit = useCallback(() => {
+	const closeEdit = () => {
 		setOpenEdit(false)
 		setCurrentEdit('')
 		setValue('')
-	}, [])
+	}
 
-	const saveChanges = useCallback(() => {
+	const saveChanges = () => {
 		if (!profileData) return false;
+
+		console.log(value)
 		dispatch(
 			updateProfile(
 				{
@@ -40,13 +42,16 @@ export const ProfileInfoMainSocials: React.FC<Props> = ({ isPersonalProfile, rol
 		)
 
 		closeEdit()
-	}, [currentEdit, value, openEdit])
+	}
 
 	if (!profileData) {
 		return <></>
 	}
 
 	const contacts = profileData.contacts
+
+	console.log(openEdit)
+	console.log(value)
 
 	return (
 		<div className="margin-top-x2">
@@ -165,6 +170,7 @@ export const ProfileInfoMainSocials: React.FC<Props> = ({ isPersonalProfile, rol
 					setOpenEdit={setOpenEdit}
 				/>
 			)}
+
 
 			{openEdit && <BottomBarCustom isOpen={openEdit} onCancel={closeEdit} onSave={saveChanges}/>}
 		</div>
