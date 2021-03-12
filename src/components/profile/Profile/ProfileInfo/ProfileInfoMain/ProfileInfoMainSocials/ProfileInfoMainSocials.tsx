@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
 import { BottomBarCustom } from '../../../../../common/BottomBarCustom/BottomBarCustom'
 import { updateProfile } from '../../../../../../store/ducks/profile/actionCreators'
-import { ProfileSocialsItem } from './ProfileSocialsItem'
+import { ProfileSocialsItem } from './ProfileSocialsItem/ProfileSocialsItem'
 
 type Props = {
 	isPersonalProfile: boolean
@@ -30,7 +30,6 @@ export const ProfileInfoMainSocials: React.FC<Props> = ({ isPersonalProfile, rol
 	const saveChanges = () => {
 		if (!profileData) return false;
 
-		console.log(value)
 		dispatch(
 			updateProfile(
 				{
@@ -50,11 +49,10 @@ export const ProfileInfoMainSocials: React.FC<Props> = ({ isPersonalProfile, rol
 
 	const contacts = profileData.contacts
 
-	console.log(openEdit)
-	console.log(value)
+
 
 	return (
-		<div className="margin-top-x2">
+		<>
 			{contacts.emailPersonal && (
 				<ProfileSocialsItem
 					type={'emailPersonal'}
@@ -173,6 +171,6 @@ export const ProfileInfoMainSocials: React.FC<Props> = ({ isPersonalProfile, rol
 
 
 			{openEdit && <BottomBarCustom isOpen={openEdit} onCancel={closeEdit} onSave={saveChanges}/>}
-		</div>
+		</>
 	)
 }

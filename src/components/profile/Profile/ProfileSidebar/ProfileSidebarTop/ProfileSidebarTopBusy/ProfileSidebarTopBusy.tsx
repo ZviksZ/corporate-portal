@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectProfile } from '../../../../../store/ducks/profile/selectors'
+import { selectProfile } from '../../../../../../store/ducks/profile/selectors'
 import { TextField } from '@material-ui/core'
-import s from '../../Profile.module.scss'
-import { AppSectionText } from '../../../../common/ui/AppSectionText/AppSectionText'
+import s from '../../../Profile.module.scss'
+import { AppSectionText } from '../../../../../common/ui/AppSectionText/AppSectionText'
 import cn from 'classnames'
-import { AppIcon } from '../../../../common/ui/AppIcon/AppIcon'
-import { BottomBarCustom } from '../../../../common/BottomBarCustom/BottomBarCustom'
-import { updateProfile } from '../../../../../store/ducks/profile/actionCreators'
+import { AppIcon } from '../../../../../common/ui/AppIcon/AppIcon'
+import { BottomBarCustom } from '../../../../../common/BottomBarCustom/BottomBarCustom'
+import { updateProfile } from '../../../../../../store/ducks/profile/actionCreators'
 
 type Props = {
 	isPersonalProfile: boolean

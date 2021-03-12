@@ -1,15 +1,15 @@
 import React from 'react'
-import s from '../../../Profile.module.scss'
+import s from '../../../../Profile.module.scss'
 import { TextField } from '@material-ui/core'
-import { AppSectionSubtitle } from '../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
-import { AppSectionText } from '../../../../../common/ui/AppSectionText/AppSectionText'
-import { AppIcon } from '../../../../../common/ui/AppIcon/AppIcon'
-import yandex from '../../../../../../assets/images/icons/yandex.svg'
-import skype from '../../../../../../assets/images/icons/skype.svg'
-import vk from '../../../../../../assets/images/icons/vk.svg'
-import google from '../../../../../../assets/images/icons/google.svg'
-import facebook from '../../../../../../assets/images/icons/facebook.svg'
-import telegram from '../../../../../../assets/images/icons/telegram.svg'
+import { AppSectionSubtitle } from '../../../../../../common/ui/AppSectionSubtitle/AppSectionSubtitle'
+import { AppSectionText } from '../../../../../../common/ui/AppSectionText/AppSectionText'
+import { AppIcon } from '../../../../../../common/ui/AppIcon/AppIcon'
+import yandex from '../../../../../../../assets/images/icons/yandex.svg'
+import skype from '../../../../../../../assets/images/icons/skype.svg'
+import vk from '../../../../../../../assets/images/icons/vk.svg'
+import google from '../../../../../../../assets/images/icons/google.svg'
+import facebook from '../../../../../../../assets/images/icons/facebook.svg'
+import telegram from '../../../../../../../assets/images/icons/telegram.svg'
 
 type Props = {
 	type: string
@@ -26,6 +26,8 @@ type Props = {
 	isLink?: boolean
 }
 
+
+
 const getTitleText = (type: string) => {
 	switch (type) {
 		case 'emailPersonal':
@@ -36,6 +38,19 @@ const getTitleText = (type: string) => {
 			return 'Yandex'
 		case 'vk':
 			return 'vk.com'
+		default:
+			return null
+	}
+}
+
+const getLinkText = (type: string) => {
+	switch (type) {
+		case 'facebook':
+			return 'Facebook'
+		case 'skype':
+			return 'Skype'
+		case 'telegram':
+			return 'Telegram'
 		default:
 			return null
 	}
@@ -60,7 +75,20 @@ const getLogo = (type: string) => {
 	}
 }
 
-export const ProfileSocialsItem: React.FC<Props> = ({ isLink = false, setOpenEdit, withTitle, isPersonalProfile, roleAdmin, handleChangeValue, type, data, currentEdit, setValue, setCurrentEdit, value }) => {
+export const ProfileSocialsItem: React.FC<Props> = ({
+	isLink = false,
+	setOpenEdit,
+	withTitle,
+	isPersonalProfile,
+	roleAdmin,
+	handleChangeValue,
+	type,
+	data,
+	currentEdit,
+	setValue,
+	setCurrentEdit,
+	value,
+}) => {
 	const openField = () => {
 		setValue(data)
 		setCurrentEdit(type)
@@ -75,6 +103,7 @@ export const ProfileSocialsItem: React.FC<Props> = ({ isLink = false, setOpenEdi
 
 	const logo = getLogo(type)
 	const title = getTitleText(type)
+	const linkText = getLinkText(type)
 
 	return (
 		<div className={s.socialItem} onClick={openLink}>
@@ -88,7 +117,7 @@ export const ProfileSocialsItem: React.FC<Props> = ({ isLink = false, setOpenEdi
 							<div className={s.socialItemInfo}>
 								{withTitle && title && <AppSectionSubtitle>{title}</AppSectionSubtitle>}
 								<AppSectionText isTextWith={true} additionalClasses={s.profileEdit} onClick={openField}>
-									{data || 'Не указан'}
+									{linkText || data || 'Не указан'}
 									<AppIcon iconClass={'icon-edit'} classNames={s.editIcon} />
 								</AppSectionText>
 							</div>
@@ -100,7 +129,7 @@ export const ProfileSocialsItem: React.FC<Props> = ({ isLink = false, setOpenEdi
 								<div className={s.socialItemInfo}>
 									{withTitle && title && <AppSectionSubtitle>{title}</AppSectionSubtitle>}
 									<AppSectionText isTextWith={true} additionalClasses={s.profileEdit}>
-										{data}
+										{linkText || data}
 									</AppSectionText>
 								</div>
 							</>
