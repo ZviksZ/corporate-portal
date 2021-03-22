@@ -165,16 +165,14 @@ export const ProfileSidebarBottom: React.FC<Props> = ({ setOpenForm, isMyProfile
 					{time.vacation && time.vacation.length > 1 && (
 						<div className={s.applications}>
 							{time.vacation.map((item, index) => {
-								if (index != 0) {
-									return (
-										<div key={item?.from + index} className={s.appItem}>
-											<AppSectionText additionalClasses={'no-margin-bottom'}>
-												{item.name || 'Заявление'} от {item.to}
-											</AppSectionText>
-											<AppSectionText additionalClasses={cn('no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</AppSectionText>
-										</div>
-									)
-								}
+								return (
+									<div key={item?.from + index} className={s.appItem}>
+										<AppSectionText additionalClasses={'no-margin-bottom'}>
+											{item.name || 'Заявление'} от {item.from}
+										</AppSectionText>
+										<AppSectionText additionalClasses={cn('no-margin-bottom', `status-${item.status}`)}>{getStatusText(item?.status || '')}</AppSectionText>
+									</div>
+								)
 							})}
 						</div>
 					)}
